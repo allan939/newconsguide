@@ -1,0 +1,25 @@
+name: Update Website
+
+on:
+  push:
+    paths:
+      - 'deals.json'
+      - 'stats.json'
+  workflow_dispatch:  # lets you run it manually too
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build page from JSON data
+        run: python3 build.py
+
+      - name: Commit and push updated page
+        run: |
+          git config user.name "Auto Updater"
+          git config user.email "action@github.com"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Auto-update: deals and stats refreshed"
+          git push

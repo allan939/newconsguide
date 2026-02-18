@@ -1,0 +1,14 @@
+{
+  "last_updated": "February 2026",
+  "source": "HAR.com - Houston Association of Realtors",
+  "stats": {
+    "median_price": "$389K",
+    "median_price_trend": "↑ 3.2% vs last quarter",
+    "active_listings": "2,847",
+    "active_listings_trend": "↓ Inventory tightening",
+    "days_on_market": "42",
+    "days_on_market_trend": "↓ Faster than last year",
+    "builders_with_incentives": "94%",
+    "builders_with_incentives_trend": "↑ Best window in 3 years"
+  }
+}
