@@ -292,8 +292,22 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   (function(){
     var SHOW=2,INTERVAL=5000;
     function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}}
+    function findCards(widget){
+      var best=[],bestScore=0,seen=[];
+      var all=widget.querySelectorAll('*');
+      for(var i=0;i<all.length;i++){
+        var parent=all[i].parentElement;
+        if(!parent||seen.indexOf(parent)>-1)continue;
+        seen.push(parent);
+        var children=Array.from(parent.children);
+        if(children.length>bestScore&&children.length>=SHOW){
+          bestScore=children.length;best=children;
+        }
+      }
+      return best;
+    }
     function startRotator(cards){
-      cards.forEach(function(c){c.style.transition='opacity 0.6s ease';c.style.opacity='0';c.style.display='none';});
+      cards.forEach(function(c){c.style.transition='opacity 0.5s ease';c.style.display='none';c.style.opacity='0';});
       var idx=0;
       function show(){
         cards.forEach(function(c){c.style.opacity='0';});
@@ -302,29 +316,26 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
           for(var i=0;i<SHOW;i++){cards[(idx+i)%cards.length].style.display='';}
           setTimeout(function(){for(var i=0;i<SHOW;i++){cards[(idx+i)%cards.length].style.opacity='1';}},30);
           idx=(idx+SHOW)%cards.length;
-        },600);
+        },500);
       }
-      for(var i=0;i<SHOW;i++){cards[i].style.display='';} 
+      for(var i=0;i<SHOW;i++){cards[i].style.display='';}
       setTimeout(function(){for(var i=0;i<SHOW;i++){cards[i].style.opacity='1';}},30);
       idx=SHOW%cards.length;
       setInterval(show,INTERVAL);
     }
-    function getCards(widget){
-      var direct=Array.from(widget.children);
-      if(direct.length===1&&direct[0].children.length>=SHOW)return Array.from(direct[0].children);
-      if(direct.length>=SHOW)return direct;
-      return[];
-    }
     function init(){
       var widget=document.querySelector('.YLOPO_resultsWidget');
       if(!widget)return;
+      var started=false,timer=null;
       var obs=new MutationObserver(function(){
-        var cards=getCards(widget);
-        if(cards.length>=SHOW){obs.disconnect();shuffle(cards);startRotator(cards);}
+        if(started)return;
+        clearTimeout(timer);
+        timer=setTimeout(function(){
+          var cards=findCards(widget);
+          if(cards.length>=SHOW){started=true;obs.disconnect();shuffle(cards);startRotator(cards);}
+        },1000);
       });
       obs.observe(widget,{childList:true,subtree:true});
-      var cards=getCards(widget);
-      if(cards.length>=SHOW){obs.disconnect();shuffle(cards);startRotator(cards);}
     }
     document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
   })();
