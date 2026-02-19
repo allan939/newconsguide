@@ -284,13 +284,8 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
     <h2 class="section-title">Find Your<br><em>New Home</em></h2>
     <div class="section-divider" style="background:linear-gradient(90deg,var(--terra),transparent);"></div>
   </div>
-  <div class="search-placeholder reveal">
-    <div style="font-size:2.8rem;opacity:0.2;position:relative;">🏠</div>
-    <h3>Interactive Home Search</h3>
-    <p>Your live new construction search portal goes here. Powered by Ylopo — thousands of Houston new builds updated daily.</p>
-    <div class="embed-code-box">&lt;!-- Paste your Ylopo embed code here --&gt;</div>
-    <p style="font-size:0.7rem;color:var(--sand);position:relative;">Contact your Ylopo rep for your embed code to activate this section.</p>
-  </div>
+  <script>window.YLOPO_WIDGETS = { domain: 'search.askozzie.com' };</script>
+  <div class="YLOPO_searchWidget"></div>
 </section>
 
 <div class="about-wrap">
