@@ -338,12 +338,14 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
       debug('Widget found, waiting for cards...');
       var started=false,timer=null;
       var obs=new MutationObserver(function(){
-        if(started)return;
         clearTimeout(timer);
         timer=setTimeout(function(){
           var cards=findCards(widget);
           debug('DOM settled. Cards found: '+cards.length+(cards[0]?' tag='+cards[0].tagName+' class='+cards[0].className.substring(0,40):''));
-          if(cards.length>=SHOW){started=true;obs.disconnect();shuffle(cards);var limited=cards.slice(0,3);for(var i=3;i<cards.length;i++){cards[i].style.display='none';}startRotator(limited);}
+          // Always enforce: hide cards beyond 3
+          var allCards=findCards(widget);
+          for(var i=3;i<allCards.length;i++){allCards[i].style.setProperty('display','none','important');}
+          if(!started&&cards.length>=SHOW){started=true;shuffle(cards);startRotator(cards.slice(0,3));}
         },1500);
       });
       obs.observe(widget,{childList:true,subtree:true});
