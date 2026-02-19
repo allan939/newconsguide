@@ -300,13 +300,22 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
         if(!parent||seen.indexOf(parent)>-1)continue;
         seen.push(parent);
         var children=Array.from(parent.children);
-        if(children.length>bestScore&&children.length>=SHOW){
-          bestScore=children.length;best=children;
-        }
+        if(children.length<SHOW)continue;
+        var totalDesc=0;
+        for(var j=0;j<children.length;j++){totalDesc+=children[j].querySelectorAll('*').length;}
+        var avg=totalDesc/children.length;
+        var score=children.length*avg;
+        if(score>bestScore){bestScore=score;best=children;}
       }
       return best;
     }
+    function debug(msg){
+      var d=document.getElementById('_rotDbg');
+      if(!d){d=document.createElement('div');d.id='_rotDbg';d.style.cssText='position:fixed;bottom:10px;right:10px;background:rgba(0,0,0,0.8);color:#0f0;font:12px monospace;padding:8px 12px;z-index:99999;border-radius:4px;max-width:300px;';document.body.appendChild(d);}
+      d.innerHTML=msg;
+    }
     function startRotator(cards){
+      debug('Rotator active: '+cards.length+' cards found, showing '+SHOW);
       cards.forEach(function(c){c.style.transition='opacity 0.5s ease';c.style.display='none';c.style.opacity='0';});
       var idx=0;
       function show(){
@@ -325,15 +334,17 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
     }
     function init(){
       var widget=document.querySelector('.YLOPO_resultsWidget');
-      if(!widget)return;
+      if(!widget){debug('ERROR: .YLOPO_resultsWidget not found');return;}
+      debug('Widget found, waiting for cards...');
       var started=false,timer=null;
       var obs=new MutationObserver(function(){
         if(started)return;
         clearTimeout(timer);
         timer=setTimeout(function(){
           var cards=findCards(widget);
+          debug('DOM settled. Cards found: '+cards.length+(cards[0]?' tag='+cards[0].tagName+' class='+cards[0].className.substring(0,40):''));
           if(cards.length>=SHOW){started=true;obs.disconnect();shuffle(cards);startRotator(cards);}
-        },1000);
+        },1500);
       });
       obs.observe(widget,{childList:true,subtree:true});
     }
