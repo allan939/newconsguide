@@ -1,47 +1,44 @@
 {
-  "last_updated": "February 18, 2026",
+  "last_updated": "February 21, 2026",
   "deals": [
     {
       "badge": "hot",
       "badge_text": "🔥 Hot Deal",
-      "builder": "DR Horton",
-      "community": "Bridgeland · Cypress, TX",
-      "incentive": "Up to $20,000 in closing cost assistance on select inventory homes",
+      "builder": "Lennar",
+      "community": "Houston Metro Area · TX",
+      "incentive": "Up to $55,000 price reduction + up to $6,000 toward closing costs on select homes",
       "details": [
-        "Homes from $299K – $380K",
-        "3.99% rate buydown available (limited homes)",
-        "Quick move-in homes ready 30–60 days",
-        "Free refrigerator & blinds package"
+        "Refrigerator, washer & dryer included",
+        "Move-in ready appliance package",
+        "Ask about additional financing programs"
       ],
-      "expires": "February 28, 2026"
+      "expires": "March 31, 2026"
     },
     {
       "badge": "new",
-      "badge_text": "✦ New This Week",
-      "builder": "Lennar",
-      "community": "Cross Creek Ranch · Fulshear, TX",
-      "incentive": "$15,000 flex cash — use it your way: upgrades, rate buydown, or closing costs",
+      "badge_text": "✦ New Deal",
+      "builder": "KH Homes",
+      "community": "Houston Metro Area · TX",
+      "incentive": "$10,000 toward closing costs + 4.99% interest rate on select homes",
       "details": [
-        "Homes from $360K – $520K",
-        "Wi-Fi CERTIFIED™ smart home included",
-        "NextGen® multigenerational floor plans available",
-        "Designer finishes included at base price"
+        "Special financial programs available",
+        "Ask about qualification requirements",
+        "Limited homes — contact for availability"
       ],
-      "expires": "March 7, 2026"
+      "expires": "March 31, 2026"
     },
     {
       "badge": "featured",
       "badge_text": "⭐ Featured",
-      "builder": "Perry Homes",
-      "community": "Sienna · Missouri City, TX",
-      "incentive": "4.25% fixed rate financing on new contracts this month — builder-backed",
+      "builder": "Meritage Homes",
+      "community": "Houston Metro Area · TX",
+      "incentive": "Up to $7,500 in closing costs on select homes",
       "details": [
-        "Homes from $420K – $650K",
-        "One-year free HOA dues on select plans",
-        "Energy Star certified construction standard",
-        "Customizable options available on most plans"
+        "Washer, dryer & refrigerator included",
+        "Blinds included throughout",
+        "Energy-efficient construction standard"
       ],
-      "expires": "February 28, 2026"
+      "expires": "March 31, 2026"
     }
   ]
 }
