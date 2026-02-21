@@ -4,13 +4,13 @@ on:
   # Runs on the 12th of every month at 9am CT (HAR posts data around the 10th)
   schedule:
     - cron: '0 14 12 * *'
-  
+
   # Also runs when you manually edit deals.json or stats.json on GitHub
   push:
     paths:
       - 'deals.json'
       - 'stats.json'
-  
+
   # Lets you click "Run" manually anytime from GitHub Actions tab
   workflow_dispatch:
 
