@@ -9,9 +9,9 @@ This file provides context for AI assistants working on this repository.
 - Live Houston market statistics (auto-updated monthly)
 - Current builder deals and incentives (manually curated)
 - Embedded YLOPO property search widget
-- Agent bio, testimonials, and a Google Forms lead capture
+- Agent bio, testimonials, and a custom lead capture form (Google Apps Script backend)
 
-The site is statically hosted (likely via GitHub Pages) with a GitHub Actions workflow handling automatic monthly rebuilds.
+The site is statically hosted via GitHub Pages with a GitHub Actions workflow handling automatic monthly rebuilds.
 
 ---
 
@@ -26,15 +26,13 @@ newconsguide/
 ├── deals.json                          # Data: current builder deals (manually curated)
 ├── stats.json                          # Data: Houston market stats (auto-updated)
 ├── README.md                           # Minimal project description
-├── update (1).yml                      # Workflow draft/backup (not active)
 └── .github/
     └── workflows/
-        └── update.ymlupdate.yml        # Active GitHub Actions workflow (oddly named)
+        ├── update.yml                  # Active update workflow (monthly rebuild + push trigger)
+        └── auto-merge.yml             # Merges claude/** branches into main automatically
 ```
 
 > **Important:** `index.html` is a **generated artifact**. Always edit `template.html`, `deals.json`, or `stats.json` — never edit `index.html` directly, as it will be overwritten on the next build.
-
-> **Note:** The workflow file is named `update.ymlupdate.yml` (appears to be a naming error). This is the active workflow file used by GitHub Actions.
 
 ---
 
@@ -78,15 +76,15 @@ Reads `template.html`, performs string substitution using `{{placeholder}}` toke
 
 ### `scrape_stats.py`
 
-Fetches market data from **harconnect.com** (Houston Association of Realtors). It tries URLs in the pattern `houston-housing-market-{month}-{year}/` for the current and prior month, falling back to a known working URL.
+Fetches market data from **harconnect.com** (Houston Association of Realtors). It tries URLs in the pattern `houston-housing-market-{month}-{year}/` for the current and prior month, falling back to a known working 2025 year-end URL.
 
 Extracted fields via regex:
-- Median price (pattern: `median (?:home |sales )?price[^$]*\$([0-9,]+)`)
+- Median price — strict pattern `NNN,NNN` format first, then loose fallback with sanity check (must be ≥ $100K)
 - Days on Market (pattern: `Days on Market[^0-9]*([0-9]+)`)
-- Active listings (pattern: `([0-9,]+) active listings`)
+- Active listings — prefers `available propert` count; falls back to `active listings`
 - Inventory months (pattern: `([0-9.]+)-months? (?:supply|inventory)`)
 
-Prices ≥ $1,000 are formatted as `$NNNk`. The script exits cleanly (exit 0) without modifying `stats.json` if scraping fails, preserving the last known values.
+Prices ≥ $1,000 are formatted as `$NNNk`. If any individual field is missing, the scraper falls back to the corresponding value already in `stats.json`. If all three primary fields fail, the scraper **opens a GitHub Issue** (`data-update-needed` label) to alert the owner and exits without modifying `stats.json`.
 
 ---
 
@@ -98,19 +96,20 @@ Manually curated. Update this file to change the builder deals shown on the site
 
 ```json
 {
-  "last_updated": "February 18, 2026",
+  "last_updated": "February 21, 2026",
   "deals": [
     {
       "badge": "hot",           // "hot" | "new" | "featured"
       "badge_text": "🔥 Hot Deal",
-      "builder": "DR Horton",
-      "community": "Bridgeland · Cypress, TX",
-      "incentive": "Up to $20,000 in closing cost assistance...",
+      "builder": "Lennar",
+      "community": "Houston Metro Area · TX",
+      "incentive": "Up to $55,000 price reduction + up to $6,000 toward closing costs on select homes",
       "details": [
-        "Homes from $299K – $380K",
-        "3.99% rate buydown available (limited homes)"
+        "Refrigerator, washer & dryer included",
+        "Move-in ready appliance package",
+        "Ask about additional financing programs"
       ],
-      "expires": "February 28, 2026"
+      "expires": "March 31, 2026"
     }
   ]
 }
@@ -118,19 +117,19 @@ Manually curated. Update this file to change the builder deals shown on the site
 
 ### `stats.json`
 
-Auto-updated by `scrape_stats.py` and the GitHub Actions workflow. Can be edited manually if the scraper produces wrong values.
+Auto-updated by `scrape_stats.py` and the GitHub Actions workflow. Can be edited manually if the scraper produces wrong values. **Pushing changes to `stats.json` does NOT trigger the update workflow** (intentional — prevents the scraper from overwriting manually corrected values).
 
 ```json
 {
   "last_updated": "February 2026",
   "source": "HAR.com - Houston Association of Realtors",
-  "source_url": "https://...",
+  "source_url": "https://www.har.com/content/department/newsroom?pid=640",
   "stats": {
-    "median_price": "$335K",
+    "median_price": "$322K",
     "median_price_trend": "Source: HAR January 2026",
-    "active_listings": "52,727",
-    "active_listings_trend": "4.5 months inventory",
-    "days_on_market": "64",
+    "active_listings": "54,589",
+    "active_listings_trend": "4.7 months inventory",
+    "days_on_market": "66",
     "days_on_market_trend": "Days to sell · Houston MSA",
     "builders_with_incentives": "Most builders",
     "builders_with_incentives_trend": "offering incentives now"
@@ -140,23 +139,29 @@ Auto-updated by `scrape_stats.py` and the GitHub Actions workflow. Can be edited
 
 ---
 
-## GitHub Actions Workflow
+## GitHub Actions Workflows
 
-**File:** `.github/workflows/update.ymlupdate.yml`
+### `update.yml` — Main Update Workflow
 
 **Triggers:**
 - **Scheduled:** 12th of every month at 9:00 AM CT (14:00 UTC) — runs after HAR posts monthly data (~10th)
-- **Push:** When `deals.json` or `stats.json` are modified
+- **Push:** When `deals.json` is modified (stats.json push is intentionally excluded)
 - **Manual:** Via GitHub Actions → "Run workflow"
 
 **Steps:**
-1. Checkout repo
+1. Checkout repo (with write token)
 2. Set up Python 3.11
-3. Run `scrape_stats.py` (fetch latest HAR market data → update `stats.json`)
+3. Run `scrape_stats.py` (fetch latest HAR market data → update `stats.json`; opens a GitHub Issue if scraping fails)
 4. Run `build.py` (regenerate `index.html` from template + updated data)
 5. Commit and push `index.html` and `stats.json` back to the repo (commit message: `Auto-update: {Month Year} market stats refreshed`)
 
 **To trigger a manual rebuild:** Go to GitHub → Actions → "Update Website" → "Run workflow".
+
+### `auto-merge.yml` — Claude Branch Auto-Merge
+
+**Triggers:** Any push to a branch matching `claude/**`
+
+**What it does:** Automatically merges the Claude branch into `main` using a no-fast-forward merge commit (`Auto-merge from claude/...`). This allows Claude Code sessions to push to a `claude/*` branch and have changes land on `main` without manual PR review.
 
 ---
 
@@ -173,7 +178,7 @@ The single-page site (`index.html`) is divided into these sections:
 | Property Search | `#search` | YLOPO widget (embedded) |
 | About | `#about` | Agent bio and credentials |
 | Testimonials | — | Client quote cards |
-| Contact | `#contact` | Google Forms iframe for lead capture |
+| Contact | `#contact` | Custom HTML form → Google Apps Script backend |
 | Footer | — | Contact info + TREC compliance links |
 
 ---
@@ -214,10 +219,23 @@ The single-page site (`index.html`) is divided into these sections:
 
 | Integration | Purpose | Config location |
 |---|---|---|
-| **YLOPO** | Property search widget | `index.html` `#search` section |
-| **Google Forms** | Lead capture iframe | `index.html` `#contact` section |
+| **YLOPO** | Property search widget | `template.html` `#search` section |
+| **Google Apps Script** | Contact form backend (lead capture) | `template.html` `#contact` section |
 | **Google Fonts** | Outfit + Fraunces | `<head>` link tag |
 | **HAR / harconnect.com** | Market data source | `scrape_stats.py` |
+
+### Contact Form / Google Apps Script
+
+The `#contact` section is a **custom HTML form** (not a Google Forms iframe). On submit it POSTs to a Google Apps Script web app endpoint as `URLSearchParams`:
+
+```js
+var SCRIPT_URL = 'https://script.google.com/macros/s/.../exec';
+fetch(SCRIPT_URL, { method: 'POST', body: new URLSearchParams(formData) });
+```
+
+Fields collected: First name, last name, email, phone, area of interest (dropdown), price range (dropdown), message. All fields are required. A honeypot field (`.form-hp`) traps bots. On success, the form body is replaced with a `.form-success` confirmation panel.
+
+If the Google Apps Script endpoint URL ever needs to change, update `SCRIPT_URL` in `template.html`, then rebuild with `python3 build.py`.
 
 ### YLOPO Widget Configuration
 
@@ -248,13 +266,13 @@ Texas Real Estate Commission requires these two links in the footer:
 
 1. Edit `deals.json` — add, remove, or modify entries in the `deals` array
 2. Update `last_updated` at the top of `deals.json`
-3. Push to `master` — GitHub Actions will automatically rebuild `index.html`
+3. Push to `main` — GitHub Actions will automatically rebuild `index.html`
 
 ### To manually update market stats
 
-1. Edit `stats.json` directly, or
-2. Run `python3 scrape_stats.py` locally, then
-3. Run `python3 build.py` to preview `index.html` locally
+1. Edit `stats.json` directly with correct values, then
+2. Run `python3 build.py` to regenerate `index.html` locally, or
+3. Push `stats.json` to `main` and manually trigger the "Update Website" workflow from the Actions tab (the push alone will NOT trigger the workflow — only `deals.json` changes do)
 
 ### To rebuild locally
 
@@ -278,21 +296,22 @@ python3 build.py          # generates index.html from template.html
 
 - **Single file output:** All CSS is inline in `<style>`, all JS is inline in `<script>` — there are no external `.css` or `.js` files to maintain.
 - **No build tools:** No npm, webpack, or bundlers. Just Python for templating and the browser for rendering.
-- **Mobile breakpoint:** `@media(max-width:768px)` — nav links hide, sections reduce padding, about image hides, footer stacks.
+- **Mobile breakpoint:** `@media(max-width:768px)` — nav links hide, sections reduce padding, about image hides, footer stacks, form grid goes single-column.
 - **Scroll animations:** Add `.reveal` to any element that should fade up on scroll; optionally add `.reveal-delay-1` through `.reveal-delay-4` for staggered animation within a group.
 - **Button patterns:**
   - `.btn-primary` — filled terra background, used for primary CTAs
   - `.btn-outline` — transparent with brown border, used for secondary CTAs
   - `.btn-nav` — dark brown, used in navigation
   - `.btn-deal` — transparent with brown border, full-width, used inside deal cards
+  - `.btn-deal:hover` — terra fill + white text
 - **Section pattern:** Each section uses `.section-eyebrow` (small caps label) + `.section-title` (serif heading with `<em>` for italic terra accent) + `.section-divider` (thin gradient line).
 
 ---
 
 ## Known Issues / Watch-outs
 
-- **`template.html` not committed:** `build.py` reads from `template.html`, but this file is not present in the repository as tracked. The current `index.html` is the built output. If you need to make HTML/CSS changes, treat `index.html` as the source and add a `template.html` before running `build.py`.
-- **Workflow file naming:** `.github/workflows/update.ymlupdate.yml` has an unusual name (double suffix). This is the active workflow but may cause confusion. Do not rename it without verifying GitHub still picks it up.
-- **`update (1).yml`** in the repo root is not active (only files inside `.github/workflows/` are picked up by GitHub Actions). It appears to be a local copy/backup.
-- **YLOPO `yearMin: 2026`:** The results widget filters for homes built ≥ 2026. Adjust this in `index.html` (or `template.html` once established) if the search returns too few results.
-- **Stats scraper fallback:** If `scrape_stats.py` cannot find a monthly URL, it uses a hardcoded 2025 fallback URL. Verify this URL remains valid or update it annually.
+- **Stats scraper fallback URL:** If `scrape_stats.py` cannot find a current monthly URL, it falls back to a hardcoded 2025 year-end URL. Verify this URL remains valid, or update it annually (the fallback is at the end of `get_latest_har_url()` in `scrape_stats.py`).
+- **YLOPO `yearMin: 2026`:** The results widget filters for homes built ≥ 2026. Adjust this in `template.html` if the search returns too few results, then rebuild.
+- **Stats scraper GitHub Issue alerting:** When all primary stats fail to parse, `scrape_stats.py` opens a GitHub Issue tagged `data-update-needed`. Requires `GITHUB_TOKEN` and `GITHUB_REPOSITORY` env vars — only available inside GitHub Actions runs.
+- **`stats.json` push does not trigger rebuild:** This is intentional. Pushing `stats.json` alone will not invoke the update workflow, preventing the scraper from overwriting manually corrected values. To rebuild after a manual stats edit, trigger the workflow manually from the Actions tab.
+- **Auto-merge workflow:** All `claude/**` branches are automatically merged into `main`. This is convenient for AI-assisted development but means any push to a `claude/*` branch immediately lands on `main` without a review gate.
