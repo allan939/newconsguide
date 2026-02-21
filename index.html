@@ -139,6 +139,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .cta-section>p{font-size:0.88rem;color:var(--brown-light);max-width:480px;margin:0 auto 48px;line-height:1.8;position:relative;}
 .form-wrap{max-width:620px;margin:0 auto;position:relative;}
 
+/* CONTACT FORM */
+.contact-card{background:white;border:1px solid rgba(46,26,14,0.12);overflow:hidden;box-shadow:0 20px 60px rgba(46,26,14,0.1);}
+.contact-card-header{background:var(--brown);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;}
+.contact-card-header>span:first-child{font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);}
+.secure-badge{font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:6px;}
+.secure-badge::before{content:'';width:6px;height:6px;background:#7dba8c;border-radius:50%;display:inline-block;flex-shrink:0;}
+.contact-form{padding:32px 28px 24px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+.form-field{display:flex;flex-direction:column;gap:7px;}
+.form-field label{font-size:0.6rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);}
+.form-field input,.form-field select{background:var(--cream);border:1px solid rgba(46,26,14,0.2);padding:14px 16px;font-family:'Outfit',sans-serif;font-size:0.86rem;color:var(--brown);outline:none;transition:border-color 0.25s,box-shadow 0.25s;-webkit-appearance:none;appearance:none;border-radius:0;width:100%;box-sizing:border-box;}
+.form-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A5C3A' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer;}
+.form-field input::placeholder{color:var(--sand-light);}
+.form-field input:focus,.form-field select:focus{border-color:var(--terra);box-shadow:0 0 0 3px rgba(193,96,58,0.12);}
+.form-field input.cf-error,.form-field select.cf-error{border-color:#B03A2E;box-shadow:0 0 0 3px rgba(176,58,46,0.1);}
+.form-submit{width:100%;margin-top:6px;padding:17px;font-size:0.72rem;}
+.form-submit:disabled{opacity:0.65;cursor:not-allowed;transform:none !important;}
+.form-hp{opacity:0;position:absolute;top:-9999px;left:-9999px;pointer-events:none;}
+.contact-card-footer{padding:14px 28px;background:var(--cream-dark);border-top:1px solid rgba(46,26,14,0.07);display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+.contact-card-footer span{font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-light);}
+.form-success{display:none;padding:52px 28px;text-align:center;}
+.form-success.visible{display:block;}
+.form-success-icon{width:58px;height:58px;background:var(--terra);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:white;margin:0 auto 22px;line-height:1;}
+.form-success h3{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:300;color:var(--brown);margin-bottom:12px;}
+.form-success p{font-size:0.86rem;color:var(--brown-light);line-height:1.75;max-width:340px;margin:0 auto;}
+@media(max-width:768px){.form-row{grid-template-columns:1fr;}.contact-card-footer{gap:16px;}}
+
 /* FOOTER */
 footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;border-top:1px solid rgba(193,96,58,0.15);}
 .footer-logo{font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);}
@@ -401,19 +428,67 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   <h2 class="reveal">Ready to Find Your<br><em>Dream Home?</em></h2>
   <p class="reveal">Tell me what you're looking for and I'll send you the best available new construction deals — no obligation, no pressure.</p>
   <div class="form-wrap reveal">
-    <div style="background:white;border:1px solid rgba(46,26,14,0.12);overflow:hidden;box-shadow:0 20px 60px rgba(46,26,14,0.1);">
-      <div style="background:var(--brown);padding:16px 28px;display:flex;align-items:center;justify-content:space-between;">
-        <span style="font-size:0.68rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);">Get the Best Deals Sent to You</span>
-        <span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:flex;align-items:center;gap:6px;"><span style="width:6px;height:6px;background:#7dba8c;border-radius:50%;display:inline-block;"></span>Secure Form</span>
+    <div class="contact-card">
+      <div class="contact-card-header">
+        <span>Get the Best Deals Sent to You</span>
+        <span class="secure-badge">Secure Form</span>
       </div>
-      <div style="padding:8px;">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSetMeTwFf3ZXQt0eTDd8p_J9iHXcu1f-cKAHbFIjZ_lgmiDjA/viewform?embedded=true"
-                width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0" style="display:block;">Loading…</iframe>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <!-- Honeypot: hidden from humans, bots fill it in -->
+        <div class="form-hp" aria-hidden="true">
+          <label for="hp_website">Website</label>
+          <input type="text" name="website" id="hp_website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf_name">Full Name *</label>
+            <input type="text" id="cf_name" name="name" placeholder="Jane Smith" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="cf_email">Email Address *</label>
+            <input type="email" id="cf_email" name="email" placeholder="jane@email.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cf_phone">Phone Number</label>
+            <input type="tel" id="cf_phone" name="phone" placeholder="(713) 555-0100" autocomplete="tel">
+          </div>
+          <div class="form-field">
+            <label for="cf_communities">Communities of Interest</label>
+            <select id="cf_communities" name="communities">
+              <option value="" disabled selected>Select a community…</option>
+              <option value="Cypress / Towne Lake">Cypress / Towne Lake</option>
+              <option value="Katy / Cane Island">Katy / Cane Island</option>
+              <option value="Fulshear / Cross Creek Ranch">Fulshear / Cross Creek Ranch</option>
+              <option value="Conroe / Grand Central Park">Conroe / Grand Central Park</option>
+              <option value="New Caney / Valley Ranch">New Caney / Valley Ranch</option>
+              <option value="Baytown / Legends Bay">Baytown / Legends Bay</option>
+              <option value="Pearland / Shadow Creek">Pearland / Shadow Creek</option>
+              <option value="Sugar Land / Riverstone">Sugar Land / Riverstone</option>
+              <option value="Still Exploring">Still Exploring</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary form-submit" id="cf_submit">
+          Send Me the Best Deals
+        </button>
+      </form>
+
+      <div class="form-success" id="cf_success" aria-live="polite">
+        <div class="form-success-icon">✓</div>
+        <h3>You're on the list!</h3>
+        <p>I'll reach out within 2 hours with the best available deals for your area.</p>
       </div>
-      <div style="padding:14px 28px;background:var(--cream-dark);border-top:1px solid rgba(46,26,14,0.07);display:flex;justify-content:center;gap:28px;flex-wrap:wrap;">
-        <span style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-light);display:flex;align-items:center;gap:6px;">🔒 Secure & Private</span>
-        <span style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-light);display:flex;align-items:center;gap:6px;">📧 No Spam, Ever</span>
-        <span style="font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-light);display:flex;align-items:center;gap:6px;">⚡ Reply Within 2 Hours</span>
+
+      <div class="contact-card-footer">
+        <span>🔒 Secure & Private</span>
+        <span>📧 No Spam, Ever</span>
+        <span>⚡ Reply Within 2 Hours</span>
       </div>
     </div>
   </div>
@@ -477,6 +552,71 @@ const so = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
+
+// ── Contact form ──────────────────────────────────────────────────────────────
+(function () {
+  // STEP 1: Paste your deployed Apps Script Web App URL here.
+  var SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+
+  var form      = document.getElementById('contactForm');
+  var success   = document.getElementById('cf_success');
+  var submitBtn = document.getElementById('cf_submit');
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Honeypot: if the hidden field has a value, silently drop the submission
+    if (document.getElementById('hp_website').value !== '') return;
+
+    // Validate required fields
+    var nameEl  = document.getElementById('cf_name');
+    var emailEl = document.getElementById('cf_email');
+    var valid   = true;
+
+    [nameEl, emailEl].forEach(function (f) { f.classList.remove('cf-error'); });
+
+    if (!nameEl.value.trim()) {
+      nameEl.classList.add('cf-error');
+      valid = false;
+    }
+    var emailVal = emailEl.value.trim();
+    if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
+      emailEl.classList.add('cf-error');
+      valid = false;
+    }
+    if (!valid) return;
+
+    // Disable button while sending
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    var payload = JSON.stringify({
+      name:        nameEl.value.trim(),
+      email:       emailVal,
+      phone:       document.getElementById('cf_phone').value.trim(),
+      communities: document.getElementById('cf_communities').value,
+      website:     document.getElementById('hp_website').value // honeypot field
+    });
+
+    // Google Apps Script requires no-cors; the server confirms via doPost response
+    fetch(SCRIPT_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    payload
+    })
+    .then(function () {
+      form.style.display = 'none';
+      success.classList.add('visible');
+    })
+    .catch(function () {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Me the Best Deals';
+      alert('Something went wrong — please try again or call (281) 865-7146.');
+    });
+  });
+})();
 </script>
 </body>
 </html>
