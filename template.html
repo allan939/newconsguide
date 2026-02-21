@@ -581,20 +581,19 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
-    var payload = JSON.stringify({
+    // URLSearchParams works with no-cors (JSON content-type gets stripped by browser)
+    var payload = new URLSearchParams({
       area:    areaEl.value,
       price:   priceEl.value,
       name:    nameEl.value.trim(),
       phone:   phoneEl.value.trim(),
       email:   emailVal,
-      website: document.getElementById('hp_website').value // honeypot field
+      website: document.getElementById('hp_website').value
     });
 
-    // Google Apps Script requires no-cors; the server confirms via doPost response
     fetch(SCRIPT_URL, {
       method:  'POST',
       mode:    'no-cors',
-      headers: { 'Content-Type': 'application/json' },
       body:    payload
     })
     .then(function () {
