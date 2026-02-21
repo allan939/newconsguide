@@ -27,7 +27,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(245,239,228,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,26,14,0.08);transition:background 0.3s;}
-.nav-logo{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown);text-decoration:none;}
+.nav-logo{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown);text-decoration:none;display:flex;flex-direction:column;line-height:1.2;}.nav-logo small{font-size:0.52rem;font-weight:400;letter-spacing:0.18em;color:var(--sand);text-transform:uppercase;}
 .nav-logo em{color:var(--terra);font-style:normal;}
 .nav-links{display:flex;gap:36px;list-style:none;}
 .nav-links a{color:var(--brown-light);text-decoration:none;font-size:0.7rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;transition:color 0.3s;}
@@ -203,7 +203,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 <body>
 
 <nav id="navbar">
-  <a href="#" class="nav-logo">ALLAN <em>VEGA</em></a>
+  <a href="#" class="nav-logo">ALLAN <em>VEGA</em><small>Realtor &middot; New Construction Specialist</small></a>
   <ul class="nav-links">
     <li><a href="#stats">Market Stats</a></li>
     <li><a href="#deals">Builder Deals</a></li>
