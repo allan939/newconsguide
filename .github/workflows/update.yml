@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v3
         with:
@@ -31,6 +32,9 @@ jobs:
 
       - name: Auto-fetch HAR market stats
         run: python3 scrape_stats.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Build page from latest data
         run: python3 build.py
