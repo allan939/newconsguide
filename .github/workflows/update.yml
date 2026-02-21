@@ -5,11 +5,11 @@ on:
   schedule:
     - cron: '0 14 12 * *'
 
-  # Also runs when you manually edit deals.json or stats.json on GitHub
+  # Runs when deals.json is updated (stats.json excluded — manual edits must not
+  # trigger the scraper or it will overwrite correct manually-set values)
   push:
     paths:
       - 'deals.json'
-      - 'stats.json'
 
   # Lets you click "Run" manually anytime from GitHub Actions tab
   workflow_dispatch:
