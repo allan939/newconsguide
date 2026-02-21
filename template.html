@@ -154,6 +154,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .form-field input::placeholder{color:var(--sand-light);}
 .form-field input:focus,.form-field select:focus{border-color:var(--terra);box-shadow:0 0 0 3px rgba(193,96,58,0.12);}
 .form-field input.cf-error,.form-field select.cf-error{border-color:#B03A2E;box-shadow:0 0 0 3px rgba(176,58,46,0.1);}
+.form-row-single{grid-template-columns:1fr !important;}
 .form-submit{width:100%;margin-top:6px;padding:17px;font-size:0.72rem;}
 .form-submit:disabled{opacity:0.65;cursor:not-allowed;transform:none !important;}
 .form-hp{opacity:0;position:absolute;top:-9999px;left:-9999px;pointer-events:none;}
@@ -395,12 +396,12 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 </section>
 
 <section class="cta-section" id="contact">
-  <h2 class="reveal">Ready to Find Your<br><em>Dream Home?</em></h2>
-  <p class="reveal">Tell me what you're looking for and I'll send you the best available new construction deals — no obligation, no pressure.</p>
+  <h2 class="reveal">Get Your Free<br><em>New Construction Guide</em></h2>
+  <p class="reveal">Answer 4 quick questions and I'll send you a personalized guide with the best deals, builder incentives, and communities matched to your budget and area.</p>
   <div class="form-wrap reveal">
     <div class="contact-card">
       <div class="contact-card-header">
-        <span>Get the Best Deals Sent to You</span>
+        <span>Answer 4 Questions — Get the Free Guide</span>
         <span class="secure-badge">Secure Form</span>
       </div>
 
@@ -413,39 +414,54 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 
         <div class="form-row">
           <div class="form-field">
-            <label for="cf_name">Full Name *</label>
-            <input type="text" id="cf_name" name="name" placeholder="Jane Smith" required autocomplete="name">
+            <label for="cf_area">1. What area of Houston? *</label>
+            <select id="cf_area" name="area" required>
+              <option value="" disabled selected>Select an area…</option>
+              <option value="Northwest Houston / Cypress">Northwest Houston / Cypress</option>
+              <option value="West Houston / Katy">West Houston / Katy</option>
+              <option value="Southwest Houston / Fulshear">Southwest Houston / Fulshear</option>
+              <option value="North Houston / The Woodlands">North Houston / The Woodlands</option>
+              <option value="Northeast Houston / New Caney">Northeast Houston / New Caney</option>
+              <option value="East Houston / Baytown">East Houston / Baytown</option>
+              <option value="South Houston / Pearland">South Houston / Pearland</option>
+              <option value="Sugar Land / Missouri City">Sugar Land / Missouri City</option>
+              <option value="Open to Multiple Areas">Open to Multiple Areas</option>
+            </select>
           </div>
           <div class="form-field">
-            <label for="cf_email">Email Address *</label>
-            <input type="email" id="cf_email" name="email" placeholder="jane@email.com" required autocomplete="email">
+            <label for="cf_price">2. What's your budget? *</label>
+            <select id="cf_price" name="price" required>
+              <option value="" disabled selected>Select a price range…</option>
+              <option value="Under $250K">Under $250K</option>
+              <option value="$250K – $350K">$250K – $350K</option>
+              <option value="$350K – $450K">$350K – $450K</option>
+              <option value="$450K – $550K">$450K – $550K</option>
+              <option value="$550K – $700K">$550K – $700K</option>
+              <option value="$700K+">$700K+</option>
+            </select>
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
-            <label for="cf_phone">Phone Number</label>
-            <input type="tel" id="cf_phone" name="phone" placeholder="(713) 555-0100" autocomplete="tel">
+            <label for="cf_name">3. Your full name *</label>
+            <input type="text" id="cf_name" name="name" placeholder="Jane Smith" required autocomplete="name">
           </div>
           <div class="form-field">
-            <label for="cf_communities">Communities of Interest</label>
-            <select id="cf_communities" name="communities">
-              <option value="" disabled selected>Select a community…</option>
-              <option value="Cypress / Towne Lake">Cypress / Towne Lake</option>
-              <option value="Katy / Cane Island">Katy / Cane Island</option>
-              <option value="Fulshear / Cross Creek Ranch">Fulshear / Cross Creek Ranch</option>
-              <option value="Conroe / Grand Central Park">Conroe / Grand Central Park</option>
-              <option value="New Caney / Valley Ranch">New Caney / Valley Ranch</option>
-              <option value="Baytown / Legends Bay">Baytown / Legends Bay</option>
-              <option value="Pearland / Shadow Creek">Pearland / Shadow Creek</option>
-              <option value="Sugar Land / Riverstone">Sugar Land / Riverstone</option>
-              <option value="Still Exploring">Still Exploring</option>
-            </select>
+            <label for="cf_phone">4. Best phone number *</label>
+            <input type="tel" id="cf_phone" name="phone" placeholder="(713) 555-0100" required autocomplete="tel">
+          </div>
+        </div>
+
+        <div class="form-row form-row-single">
+          <div class="form-field">
+            <label for="cf_email">Email address (to send the guide) *</label>
+            <input type="email" id="cf_email" name="email" placeholder="jane@email.com" required autocomplete="email">
           </div>
         </div>
 
         <button type="submit" class="btn-primary form-submit" id="cf_submit">
-          Send Me the Best Deals
+          Send Me the Free Guide
         </button>
       </form>
 
@@ -540,16 +556,21 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     if (document.getElementById('hp_website').value !== '') return;
 
     // Validate required fields
+    var areaEl  = document.getElementById('cf_area');
+    var priceEl = document.getElementById('cf_price');
     var nameEl  = document.getElementById('cf_name');
+    var phoneEl = document.getElementById('cf_phone');
     var emailEl = document.getElementById('cf_email');
     var valid   = true;
 
-    [nameEl, emailEl].forEach(function (f) { f.classList.remove('cf-error'); });
+    [areaEl, priceEl, nameEl, phoneEl, emailEl].forEach(function (f) {
+      f.classList.remove('cf-error');
+    });
 
-    if (!nameEl.value.trim()) {
-      nameEl.classList.add('cf-error');
-      valid = false;
-    }
+    if (!areaEl.value)          { areaEl.classList.add('cf-error');  valid = false; }
+    if (!priceEl.value)         { priceEl.classList.add('cf-error'); valid = false; }
+    if (!nameEl.value.trim())   { nameEl.classList.add('cf-error');  valid = false; }
+    if (!phoneEl.value.trim())  { phoneEl.classList.add('cf-error'); valid = false; }
     var emailVal = emailEl.value.trim();
     if (!emailVal || !emailVal.includes('@') || !emailVal.includes('.')) {
       emailEl.classList.add('cf-error');
@@ -562,11 +583,12 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     submitBtn.textContent = 'Sending…';
 
     var payload = JSON.stringify({
-      name:        nameEl.value.trim(),
-      email:       emailVal,
-      phone:       document.getElementById('cf_phone').value.trim(),
-      communities: document.getElementById('cf_communities').value,
-      website:     document.getElementById('hp_website').value // honeypot field
+      area:    areaEl.value,
+      price:   priceEl.value,
+      name:    nameEl.value.trim(),
+      phone:   phoneEl.value.trim(),
+      email:   emailVal,
+      website: document.getElementById('hp_website').value // honeypot field
     });
 
     // Google Apps Script requires no-cors; the server confirms via doPost response
