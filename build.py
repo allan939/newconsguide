@@ -1,8 +1,10 @@
 import json, re
 
 # Load data
-deals = json.load(open('deals.json'))
-stats = json.load(open('stats.json'))
+with open('deals.json') as f:
+    deals = json.load(f)
+with open('stats.json') as f:
+    stats = json.load(f)
 
 # Read template
 with open('template.html') as f:
@@ -28,11 +30,13 @@ badge_styles = {
     'featured': 'background:#C1603A;'
 }
 
-for d in deals['deals']:
+delay_classes = ['reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3']
+for i, d in enumerate(deals['deals']):
     details_html = ''.join(f'<li>{item}</li>' for item in d['details'])
     badge_style = badge_styles.get(d['badge'], 'background:#C1603A;')
+    delay_class = delay_classes[i % len(delay_classes)]
     cards_html += f'''
-    <div class="deal-card reveal reveal-delay-1">
+    <div class="deal-card reveal {delay_class}">
       <span class="deal-badge" style="{badge_style}">{d["badge_text"]}</span>
       <div class="deal-builder">{d["builder"]}</div>
       <div class="deal-community">{d["community"]}</div>
