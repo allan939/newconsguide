@@ -1,5 +1,5 @@
 {
-  "last_updated": "February 21, 2026",
+  "last_updated": "March 1, 2026",
   "deals": [
     {
       "badge": "hot",
@@ -28,17 +28,17 @@
       "expires": "March 31, 2026"
     },
     {
-      "badge": "featured",
-      "badge_text": "⭐ Featured",
+      "badge": "hot",
+      "badge_text": "🔥 Hot Deal",
       "builder": "Meritage Homes",
-      "community": "Houston Metro Area · TX",
-      "incentive": "Up to $7,500 in closing costs on select homes",
+      "community": "Saddle Up Sales Event · Houston Metro Area · TX",
+      "incentive": "4.99% interest rate (5.752% APR) + up to $7,500 in closing costs on select move-in ready homes",
       "details": [
-        "Washer, dryer & refrigerator included",
-        "Blinds included throughout",
-        "Energy-efficient construction standard"
+        "Monthly payment as low as $1,877",
+        "Up to $7,500 toward closing costs",
+        "Energy-efficient homes — lower utility bills"
       ],
-      "expires": "March 31, 2026"
+      "expires": "March 15, 2026"
     }
   ]
 }
