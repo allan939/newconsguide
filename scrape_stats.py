@@ -51,7 +51,7 @@ def open_github_issue(title, body):
         print(f"Could not create GitHub Issue: {e}")
 
 
-HAR_NEWSROOM = "https://www.har.com/content/department/newsroom?pid=2222?pid=2222"
+HAR_NEWSROOM = "https://www.har.com/content/department/newsroom?pid=2222"
 
 
 def get_latest_har_url():
