@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -23,4 +24,32 @@ jobs:
           git fetch origin main
           git checkout main
           git merge --no-ff origin/${{ github.ref_name }} -m "Auto-merge from ${{ github.ref_name }}"
+          git push origin main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install anthropic
+
+      - name: Auto-fetch HAR market stats
+        run: python3 scrape_stats.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Auto-fetch builder deals (Claude + web search)
+        run: python3 scrape_deals.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Build page from latest data
+        run: python3 build.py
+
+      - name: Commit and deploy updated page
+        run: |
+          git add index.html stats.json deals.json
+          git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats and builder deals refreshed"
           git push origin main
