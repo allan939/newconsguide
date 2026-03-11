@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Merge to main and deploy
+      - name: Merge to main
         run: |
           git config user.name "Auto Merger"
           git config user.email "action@github.com"
@@ -36,12 +36,14 @@ jobs:
 
       - name: Auto-fetch HAR market stats
         run: python3 scrape_stats.py
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Auto-fetch builder deals (Claude + web search)
         run: python3 scrape_deals.py
+        continue-on-error: true
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
@@ -50,6 +52,8 @@ jobs:
 
       - name: Commit and deploy updated page
         run: |
+          git config user.name "Auto Merger"
+          git config user.email "action@github.com"
           git add index.html stats.json deals.json
           git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats and builder deals refreshed"
           git push origin main
