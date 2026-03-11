@@ -30,11 +30,19 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install Python dependencies
+        run: pip install anthropic
+
       - name: Auto-fetch HAR market stats
         run: python3 scrape_stats.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+
+      - name: Auto-fetch builder deals (Claude + web search)
+        run: python3 scrape_deals.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Build page from latest data
         run: python3 build.py
@@ -43,6 +51,6 @@ jobs:
         run: |
           git config user.name "Auto Updater"
           git config user.email "action@github.com"
-          git add index.html stats.json
-          git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats refreshed"
+          git add index.html stats.json deals.json
+          git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats and builder deals refreshed"
           git push
