@@ -1,5 +1,5 @@
 """
-Auto-scraper for Houston market stats from HAR.com / harconnect.com
+Auto-scraper for Houston market stats from HAR.com newsroom.
 Runs monthly via GitHub Actions on the 12th - updates stats.json automatically.
 
 If scraping fails OR the extracted data looks implausible, stats.json is left
@@ -51,23 +51,23 @@ def open_github_issue(title, body):
         print(f"Could not create GitHub Issue: {e}")
 
 
+HAR_NEWSROOM = "https://www.har.com/content/department/newsroom?pid=2222?pid=2222"
+
+
 def get_latest_har_url():
-    """Try monthly harconnect.com URLs, newest first."""
-    now = datetime.now()
-    for month_offset in [0, 1]:
-        m = now.month - month_offset
-        y = now.year
-        if m <= 0:
-            m += 12
-            y -= 1
-        month_name = datetime(y, m, 1).strftime('%B').lower()
-        url = f"https://www.harconnect.com/houston-housing-market-{month_name}-{y}/"
-        try:
-            fetch_page(url)
-            return url
-        except Exception:
-            pass
-    return "https://www.harconnect.com/houston-housing-market-delivers-a-strong-more-balanced-year-in-2025/"
+    """Find the latest monthly market report URL from the HAR newsroom index."""
+    try:
+        html = fetch_page(HAR_NEWSROOM)
+        # Look for links to monthly market stat articles
+        links = re.findall(r'href=["\']([^"\']*har\.com[^"\']*(?:market|housing|statistics)[^"\']*)["\']', html, re.IGNORECASE)
+        if links:
+            print(f"Found HAR article link: {links[0]}")
+            return links[0]
+        # Fallback: return the newsroom index itself and try to parse stats from it
+        return HAR_NEWSROOM
+    except Exception as e:
+        print(f"WARNING: Could not fetch HAR newsroom index ({e}) — trying newsroom directly")
+        return HAR_NEWSROOM
 
 
 def load_existing_stats():
@@ -94,7 +94,7 @@ def scrape_stats():
             f"ACTION REQUIRED: {month_year} market stats could not be fetched",
             f"The scraper failed to retrieve HAR data.\n\n"
             f"**URL attempted:** {url}\n**Error:** {e}\n\n"
-            f"Please update `stats.json` manually from:\nhttps://www.har.com/content/department/newsroom\n\n"
+            f"Please update `stats.json` manually from:\nhttps://www.har.com/content/department/newsroom?pid=2222\n\n"
             f"Then run the workflow manually from the Actions tab."
         )
         print("Keeping existing stats.json unchanged.")
@@ -136,7 +136,7 @@ def scrape_stats():
             f"The scraper fetched the page but extracted no data. "
             f"The page structure may have changed.\n\n"
             f"**URL:** {url}\n\n"
-            f"Please update `stats.json` manually from:\nhttps://www.har.com/content/department/newsroom\n\n"
+            f"Please update `stats.json` manually from:\nhttps://www.har.com/content/department/newsroom?pid=2222\n\n"
             f"Then run the workflow manually from the Actions tab."
         )
         print("Keeping existing stats.json unchanged.")
