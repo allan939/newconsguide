@@ -8,7 +8,10 @@
 <meta property="og:description" content="Exclusive builder deals, live market stats, and expert guidance on new construction homes in Houston, TX. Your agent is free — I work for you, not the builder.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Allan Vega · Houston New Construction">
+<meta property="og:url" content="https://allan939.github.io/newconsguide/">
+<meta property="og:image" content="https://allan939.github.io/newconsguide/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://allan939.github.io/newconsguide/og-image.jpg">
 <link rel="canonical" href="https://allan939.github.io/newconsguide/">
 <meta name="twitter:title" content="Houston New Construction Homes | Allan Vega">
 <meta name="twitter:description" content="Exclusive builder deals, live market stats, and expert guidance on new construction homes in Houston, TX.">
@@ -231,6 +234,40 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .myth-card p{font-size:0.82rem;line-height:1.8;color:var(--brown-light);}
 @media(max-width:768px){.myth-section{padding:60px 20px;}.myth-grid{grid-template-columns:1fr;}}
 .hero-phone{font-size:0.72rem;letter-spacing:0.12em;color:var(--brown-light);margin-top:6px;animation:fadeUp 0.8s 0.55s ease both;}.hero-phone a{color:var(--terra);text-decoration:none;font-weight:500;}.hero-phone a:hover{text-decoration:underline;}
+/* Sticky mobile call bar */
+.sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;padding:10px 16px;background:rgba(245,239,228,0.97);border-top:1px solid var(--sand-light);box-shadow:0 -4px 20px rgba(46,26,14,0.12);}
+.sticky-call a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:#fff;padding:14px 24px;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.92rem;letter-spacing:0.04em;text-decoration:none;box-shadow:0 4px 14px rgba(193,96,58,0.4);}
+.sticky-call a:hover{background:var(--terra-dark);}
+@media(max-width:768px){.sticky-call{display:block;}}
+/* Floating WhatsApp button */
+.whatsapp-float{position:fixed;bottom:80px;right:18px;z-index:901;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.45);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
+.whatsapp-float:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(37,211,102,0.55);}
+.whatsapp-float svg{width:29px;height:29px;fill:#fff;}
+@media(min-width:769px){.whatsapp-float{bottom:30px;right:28px;width:56px;height:56px;}}
+/* Exit-intent popup */
+#exit-popup{display:none;position:fixed;inset:0;background:rgba(46,26,14,0.65);z-index:2000;align-items:center;justify-content:center;}
+#exit-popup.show{display:flex;}
+.exit-popup-box{background:var(--parchment);max-width:440px;width:92%;border-radius:18px;padding:40px 34px 30px;text-align:center;position:relative;box-shadow:0 20px 60px rgba(46,26,14,0.3);}
+.exit-popup-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;color:var(--brown-light);cursor:pointer;line-height:1;padding:4px;}
+.exit-popup-close:hover{color:var(--brown);}
+.exit-popup-box .popup-eyebrow{font-family:'Outfit',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:12px;}
+.exit-popup-box h3{font-family:'Fraunces',serif;font-size:1.65rem;font-weight:400;color:var(--brown);margin-bottom:12px;line-height:1.3;}
+.exit-popup-box p{font-size:0.86rem;color:var(--brown-mid);margin-bottom:22px;line-height:1.75;}
+.exit-popup-dismiss{margin-top:14px;font-size:0.74rem;color:var(--sand);cursor:pointer;text-decoration:underline;display:block;}
+.exit-popup-dismiss:hover{color:var(--brown-light);}
+/* FAQ section */
+.faq-section{background:var(--cream);padding:80px 40px;}
+.faq-inner{max-width:780px;margin:0 auto;}
+.faq-list{margin-top:44px;display:flex;flex-direction:column;gap:2px;}
+.faq-item{background:var(--parchment);border:1px solid rgba(184,149,106,0.2);border-radius:10px;overflow:hidden;}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 24px;font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:500;color:var(--brown);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.45;}
+.faq-q:hover{color:var(--terra);}
+.faq-icon{font-size:1.2rem;color:var(--terra);flex-shrink:0;transition:transform 0.25s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;padding:0 24px;}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px;}
+.faq-a p{font-size:0.86rem;color:var(--brown-mid);line-height:1.85;}
+@media(max-width:768px){.faq-section{padding:60px 20px;}.faq-q{font-size:0.88rem;padding:16px 18px;}.faq-a{padding:0 18px;}.faq-item.open .faq-a{padding:0 18px 16px;}}
 </style>
 <script type="application/ld+json">
 {
@@ -251,8 +288,60 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   "memberOf": {"@type": "Organization", "name": "AEA Realty · The Ask Ozzie Team"}
 }
 </script>
+
+<!-- Meta (Facebook) Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2075120536666616');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2075120536666616&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel -->
+
+<!-- Google Analytics GA4 — replace G-XXXXXXXXXX with your Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-XXXXXXXXXX');
+</script>
+<!-- End GA4 -->
 </head>
 <body>
+
+<!-- Sticky mobile call bar (hidden on desktop via CSS) -->
+<div class="sticky-call">
+  <a href="tel:+12818657146">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.5 19.79 19.79 0 0 1 1.15 3.88 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call Allan Now · (281) 865-7146
+  </a>
+</div>
+
+<!-- Floating WhatsApp button -->
+<a class="whatsapp-float" href="https://wa.me/12818657146?text=Hi%20Allan%2C%20I%27m%20interested%20in%20Houston%20new%20construction%20homes." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<!-- Exit-intent popup -->
+<div id="exit-popup" role="dialog" aria-modal="true" aria-labelledby="exit-popup-title">
+  <div class="exit-popup-box">
+    <button class="exit-popup-close" id="exit-popup-close" aria-label="Close">&times;</button>
+    <p class="popup-eyebrow">Before you go</p>
+    <h3 id="exit-popup-title">Get Your Free<br><em style="color:var(--terra);font-style:italic;">New Construction Guide</em></h3>
+    <p>Builder incentives change every week. Let me send you a personalized list of the best deals in your area — no cost, no commitment.</p>
+    <a href="#contact" class="btn-primary" style="display:inline-block;" id="exit-popup-cta">Get the Free Guide →</a>
+    <span class="exit-popup-dismiss" id="exit-popup-dismiss">No thanks, I'll figure it out myself</span>
+  </div>
+</div>
 
 <nav id="navbar">
   <a href="#" class="nav-logo">ALLAN <em>VEGA</em><small>Realtor &middot; New Construction Specialist</small></a>
@@ -261,6 +350,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
     <li><a href="#deals">Builder Deals</a></li>
     <li><a href="#search">Search Homes</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -522,9 +612,51 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   </div>
 </section>
 
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <span class="section-eyebrow reveal">Buyer Questions</span>
+    <h2 class="section-title reveal">Houston New Construction<br><em>FAQs</em></h2>
+    <div class="section-divider reveal"></div>
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do I need my own agent when buying new construction in Houston? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Yes — and it costs you nothing. The builder pays my commission out of their marketing budget, so you get expert representation at no extra cost. Without an agent, you're negotiating against the builder's full-time sales rep, who works for the builder, not you. I know what incentives each builder is currently offering and can get you upgrades, rate buydowns, and closing cost credits you won't find on the sign-out front.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What builder incentives are available right now in Houston? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Incentives change monthly and vary by community, but right now Houston builders like Lennar, D.R. Horton, Perry Homes, and Meritage are offering mortgage rate buydowns to the 4–5% range, up to $30K–$55K in price reductions, and closing cost credits on select move-in ready homes. Check the Builder Deals section above or contact me for an up-to-date list for your specific budget and area.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Which Houston areas have the most new construction homes? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>The hottest new construction corridors right now are Katy / Fulshear (West), Cypress / Tomball (Northwest), The Woodlands / Conroe (North), New Caney / Porter (Northeast), and Pearland / Manvel (South). Each area has different price points and commute times. I can match you to the best communities based on your budget, school preferences, and where you work.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How long does it take to build a new construction home in Houston? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Typical Houston build times range from 4–7 months for production builders (Lennar, D.R. Horton) to 8–14 months for semi-custom builders (Perry, David Weekley). Move-in ready inventory — homes already built — are available immediately. I'll match you to a timeline that works for your situation, whether you need to move now or prefer to customize from the ground up.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Should I use the builder's preferred lender? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Sometimes yes, sometimes no. Builders often offer better incentives (extra closing cost credits or price reductions) if you use their preferred lender — but their rate may not be the lowest available. I help you compare the total picture: incentive value vs. rate difference over 30 years. Always get a quote from an outside lender first so you know exactly what you're trading away.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Is a home inspection necessary on a brand-new home? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Absolutely — and this is one of the most overlooked steps. New doesn't mean perfect. I recommend a third-party inspection at the pre-drywall stage and again at final walkthrough. Inspectors regularly catch foundation issues, roof framing gaps, HVAC and plumbing rough-in errors, and insulation misses that builders will fix for free if caught before closing — and become your problem after.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="cta-section" id="contact">
   <h2 class="reveal">Get Your Free<br><em>New Construction Guide</em></h2>
   <p class="reveal">Answer 4 quick questions and I'll send you a personalized guide with the best deals, builder incentives, and communities matched to your budget and area.</p>
+  <p class="reveal" style="font-size:0.82rem;color:var(--brown-light);margin-top:-8px;">Prefer to talk first? <a href="https://calendly.com/allanvega" target="_blank" rel="noopener" style="color:var(--terra);font-weight:500;text-decoration:underline;">Schedule a free 15-min call →</a></p>
   <div class="form-wrap reveal">
     <div class="contact-card">
       <div class="contact-card-header">
@@ -737,6 +869,10 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     .then(function () {
       form.style.display = 'none';
       success.classList.add('visible');
+      // Facebook Lead conversion event
+      if (typeof fbq === 'function') { fbq('track', 'Lead'); }
+      // Google Analytics conversion event
+      if (typeof gtag === 'function') { gtag('event', 'generate_lead', { currency: 'USD', value: 1.0 }); }
     })
     .catch(function () {
       submitBtn.disabled = false;
@@ -744,6 +880,52 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
       alert('Something went wrong — please try again or call (281) 865-7146.');
     });
   });
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = this.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); el.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+    if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded','true'); }
+  });
+});
+
+// Exit-intent popup (desktop: fires on mouse leaving viewport top; mobile: fires on 60% scroll)
+(function() {
+  var popup = document.getElementById('exit-popup');
+  if (!popup) return;
+  var shown = false;
+  var STORAGE_KEY = 'exit_popup_shown';
+
+  function dismiss() { popup.classList.remove('show'); sessionStorage.setItem(STORAGE_KEY,'1'); }
+
+  document.getElementById('exit-popup-close').addEventListener('click', dismiss);
+  document.getElementById('exit-popup-dismiss').addEventListener('click', dismiss);
+  document.getElementById('exit-popup-cta').addEventListener('click', function() {
+    dismiss();
+    if (typeof fbq === 'function') { fbq('track', 'InitiateCheckout'); }
+  });
+  popup.addEventListener('click', function(e) { if (e.target === popup) dismiss(); });
+
+  function showPopup() {
+    if (shown || sessionStorage.getItem(STORAGE_KEY)) return;
+    shown = true;
+    popup.classList.add('show');
+    if (typeof fbq === 'function') { fbq('track', 'ViewContent', {content_name: 'Exit Intent Popup'}); }
+  }
+
+  // Desktop: exit intent on mouseleave from top
+  if (window.innerWidth > 768) {
+    document.addEventListener('mouseleave', function(e) { if (e.clientY < 10) showPopup(); });
+  } else {
+    // Mobile: trigger at 60% scroll depth
+    window.addEventListener('scroll', function() {
+      var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      if (pct > 60) showPopup();
+    }, { passive: true });
+  }
 })();
 </script>
 </body>
