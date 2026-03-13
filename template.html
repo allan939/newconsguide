@@ -268,6 +268,39 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .faq-item.open .faq-a{max-height:300px;padding:0 24px 20px;}
 .faq-a p{font-size:0.86rem;color:var(--brown-mid);line-height:1.85;}
 @media(max-width:768px){.faq-section{padding:60px 20px;}.faq-q{font-size:0.88rem;padding:16px 18px;}.faq-a{padding:0 18px;}.faq-item.open .faq-a{padding:0 18px 16px;}}
+
+/* STICKY CTA BAR */
+#sticky-cta-bar{position:fixed;bottom:0;left:0;right:0;z-index:950;background:#1c0e05;border-top:2px solid #c9a96e;transform:translateY(100%);transition:transform 0.45s cubic-bezier(0.22,1,0.36,1);box-shadow:0 -8px 40px rgba(0,0,0,0.4);}
+#sticky-cta-bar.scta-visible{transform:translateY(0);}
+.scta-inner{max-width:1100px;margin:0 auto;padding:14px 52px 14px 40px;display:flex;align-items:center;gap:28px;position:relative;}
+.scta-copy{flex-shrink:0;}
+.scta-eyebrow{font-size:0.58rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#c9a96e;display:block;margin-bottom:4px;}
+.scta-headline{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:#F5EFE4;white-space:nowrap;}
+.scta-headline em{font-style:italic;color:#c9a96e;}
+.scta-form{display:flex;gap:10px;flex:1;align-items:center;}
+.scta-input{flex:1;min-width:0;background:rgba(255,255,255,0.07);border:1px solid rgba(201,169,110,0.35);color:#F5EFE4;padding:11px 16px;font-family:'Outfit',sans-serif;font-size:0.86rem;outline:none;transition:border-color 0.25s;border-radius:0;-webkit-appearance:none;}
+.scta-input::placeholder{color:rgba(245,239,228,0.38);}
+.scta-input:focus{border-color:#c9a96e;box-shadow:0 0 0 2px rgba(201,169,110,0.2);}
+.scta-input.scta-error{border-color:#c0392b;}
+.scta-submit{background:#c9a96e;color:#1c0e05;border:none;padding:11px 24px;font-family:'Outfit',sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:background 0.25s,transform 0.2s;white-space:nowrap;flex-shrink:0;}
+.scta-submit:hover{background:#d9b97e;transform:translateY(-1px);}
+.scta-submit:disabled{opacity:0.65;cursor:not-allowed;transform:none;}
+.scta-success{display:none;align-items:center;gap:14px;flex:1;}
+.scta-success.visible{display:flex;}
+.scta-success-icon{width:34px;height:34px;background:#c9a96e;color:#1c0e05;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;flex-shrink:0;line-height:1;}
+#scta-success-msg{font-family:'Fraunces',serif;font-size:1rem;font-style:italic;color:#F5EFE4;}
+.scta-close{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:none;border:none;color:rgba(245,239,228,0.35);font-size:1.5rem;cursor:pointer;line-height:1;padding:6px 8px;transition:color 0.2s;}
+.scta-close:hover{color:#F5EFE4;}
+@media(max-width:768px){
+  .scta-inner{flex-direction:column;padding:14px 44px 18px 16px;gap:12px;align-items:stretch;}
+  .scta-copy{text-align:center;}
+  .scta-headline{white-space:normal;font-size:0.95rem;}
+  .scta-form{flex-direction:column;gap:8px;}
+  .scta-submit{width:100%;padding:14px;}
+  .scta-success{justify-content:center;}
+  .scta-close{top:12px;right:10px;transform:none;}
+  body.scta-active .sticky-call{display:none;}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -340,6 +373,26 @@ gtag('config','G-HTK9Z1G2RQ');
     <p>Builder incentives change every week. Let me send you a personalized list of the best deals in your area — no cost, no commitment.</p>
     <a href="#contact" class="btn-primary" style="display:inline-block;" id="exit-popup-cta">Get the Free Guide →</a>
     <span class="exit-popup-dismiss" id="exit-popup-dismiss">No thanks, I'll figure it out myself</span>
+  </div>
+</div>
+
+<!-- Sticky CTA Bar -->
+<div id="sticky-cta-bar" role="region" aria-label="Quick contact bar">
+  <div class="scta-inner">
+    <div class="scta-copy">
+      <span class="scta-eyebrow">Free &middot; No Obligation</span>
+      <p class="scta-headline">Get <em>Exclusive Builder Deals</em> Sent to You</p>
+    </div>
+    <form class="scta-form" id="scta-form" novalidate onsubmit="submitStickyCTA(event)">
+      <input class="scta-input" id="scta-name" type="text" placeholder="First name" autocomplete="given-name" required>
+      <input class="scta-input" id="scta-phone" type="tel" placeholder="Phone number" autocomplete="tel" required>
+      <button class="scta-submit" type="submit">Send My Deals</button>
+    </form>
+    <div class="scta-success" id="scta-success">
+      <div class="scta-success-icon">&#10003;</div>
+      <p id="scta-success-msg">Got it! I'll be in touch soon.</p>
+    </div>
+    <button class="scta-close" id="scta-close" aria-label="Dismiss">&times;</button>
   </div>
 </div>
 
@@ -861,6 +914,64 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
     if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded','true'); }
   });
 });
+
+// Sticky CTA Bar — slides up after 400px scroll, dismissible for session
+(function() {
+  var bar = document.getElementById('sticky-cta-bar');
+  if (!bar) return;
+  var STORAGE_KEY = 'scta_dismissed';
+  if (sessionStorage.getItem(STORAGE_KEY)) return;
+  var shown = false;
+  window.addEventListener('scroll', function() {
+    if (shown || sessionStorage.getItem(STORAGE_KEY)) return;
+    if (window.scrollY >= 400) {
+      shown = true;
+      bar.classList.add('scta-visible');
+      document.body.classList.add('scta-active');
+    }
+  }, { passive: true });
+  document.getElementById('scta-close').addEventListener('click', function() {
+    bar.classList.remove('scta-visible');
+    document.body.classList.remove('scta-active');
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  });
+})();
+
+function submitStickyCTA(e) {
+  e.preventDefault();
+  var nameEl = document.getElementById('scta-name');
+  var phoneEl = document.getElementById('scta-phone');
+  var name = nameEl.value.trim();
+  var phone = phoneEl.value.trim();
+  nameEl.classList.remove('scta-error');
+  phoneEl.classList.remove('scta-error');
+  if (!name) { nameEl.classList.add('scta-error'); nameEl.focus(); return; }
+  if (!phone) { phoneEl.classList.add('scta-error'); phoneEl.focus(); return; }
+  var btn = document.querySelector('.scta-submit');
+  btn.disabled = true;
+  btn.textContent = 'Sending\u2026';
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCNQW8ZudeOVVPuC6rtvmAJ11RbFZzYJ34Jfcks1LakIIh1E/exec';
+  var formData = new URLSearchParams();
+  formData.append('firstName', name);
+  formData.append('phone', phone);
+  formData.append('source', 'sticky-cta-bar');
+  fetch(SCRIPT_URL, { method: 'POST', body: formData })
+    .catch(function() {})
+    .finally(function() {
+      document.getElementById('scta-form').style.display = 'none';
+      var successEl = document.getElementById('scta-success');
+      document.getElementById('scta-success-msg').textContent = 'Got it, ' + name + '! I\u2019ll send you the best deals shortly.';
+      successEl.classList.add('visible');
+      sessionStorage.setItem('scta_dismissed', '1');
+      if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Sticky CTA Bar' });
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'sticky_cta_bar' });
+      setTimeout(function() {
+        var bar = document.getElementById('sticky-cta-bar');
+        bar.classList.remove('scta-visible');
+        document.body.classList.remove('scta-active');
+      }, 4500);
+    });
+}
 
 // Exit-intent popup (desktop: fires on mouse leaving viewport top; mobile: fires on 60% scroll)
 (function() {
