@@ -50,16 +50,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .btn-nav:hover{background:var(--terra);transform:translateY(-1px);}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:130px 24px 100px;background:radial-gradient(ellipse 90% 70% at 50% -10%,rgba(193,96,58,0.14) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 90% 90%,rgba(184,149,106,0.12) 0%,transparent 55%),var(--cream);overflow:hidden;}
-.hero::before{content:'';position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:900px;height:900px;border-radius:50%;border:1px solid rgba(193,96,58,0.08);pointer-events:none;}
-.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--sand),transparent);}
-.hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;}
-.hero-tag{display:inline-flex;align-items:center;gap:12px;font-size:0.63rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--terra);margin-bottom:36px;animation:fadeUp 0.8s ease both;}
-.hero-tag::before,.hero-tag::after{content:'';display:block;width:28px;height:1px;background:var(--terra);opacity:0.5;}
-.hero h1{font-family:'Fraunces',serif;font-size:clamp(3.4rem,8vw,7.5rem);font-weight:300;line-height:0.98;letter-spacing:-0.02em;color:var(--brown);margin-bottom:14px;animation:fadeUp 0.8s 0.15s ease both;}
-.hero h1 em{font-style:italic;color:var(--terra);}
-.hero-sub{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:var(--brown-light);margin-bottom:44px;animation:fadeUp 0.8s 0.25s ease both;}
-.hero-desc{max-width:520px;margin:0 auto 52px;font-size:0.9rem;line-height:1.85;color:var(--brown-mid);animation:fadeUp 0.8s 0.35s ease both;}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding:130px 24px 100px;background:var(--brown);overflow:hidden;}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(193,96,58,0.5),transparent);}
+/* SLIDESHOW */
+.hero-slideshow{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 2s ease;will-change:opacity,transform;}
+.hero-slide.active{opacity:1;}
+.hero-slide:nth-child(1){animation:kb1 14s ease-in-out infinite alternate;}
+.hero-slide:nth-child(2){animation:kb2 14s ease-in-out infinite alternate;}
+.hero-slide:nth-child(3){animation:kb3 14s ease-in-out infinite alternate;}
+.hero-slide:nth-child(4){animation:kb4 14s ease-in-out infinite alternate;}
+.hero-slide:nth-child(5){animation:kb5 14s ease-in-out infinite alternate;}
+@keyframes kb1{from{transform:scale(1) translate(0,0);}to{transform:scale(1.1) translate(-2%,-1%);}}
+@keyframes kb2{from{transform:scale(1.08) translate(1%,0);}to{transform:scale(1) translate(-1%,1%);}}
+@keyframes kb3{from{transform:scale(1) translate(-1%,1%);}to{transform:scale(1.09) translate(2%,-1%);}}
+@keyframes kb4{from{transform:scale(1.06) translate(-1%,-1%);}to{transform:scale(1) translate(1%,1%);}}
+@keyframes kb5{from{transform:scale(1) translate(0,1%);}to{transform:scale(1.1) translate(-1%,-2%);}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(20,10,4,0.62) 0%,rgba(20,10,4,0.42) 50%,rgba(20,10,4,0.68) 100%);z-index:1;}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+.hero-tag{display:inline-flex;align-items:center;gap:12px;font-size:0.63rem;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;color:var(--terra-pale);margin-bottom:36px;animation:fadeUp 0.8s ease both;}
+.hero-tag::before,.hero-tag::after{content:'';display:block;width:28px;height:1px;background:var(--terra-pale);opacity:0.6;}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(3.4rem,8vw,7.5rem);font-weight:300;line-height:0.98;letter-spacing:-0.02em;color:var(--white);margin-bottom:14px;animation:fadeUp 0.8s 0.15s ease both;}
+.hero h1 em{font-style:italic;color:var(--terra-pale);}
+.hero-sub{font-family:'Fraunces',serif;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;font-style:italic;color:rgba(253,250,245,0.78);margin-bottom:44px;animation:fadeUp 0.8s 0.25s ease both;}
+.hero-desc{max-width:520px;margin:0 auto 52px;font-size:0.9rem;line-height:1.85;color:rgba(253,250,245,0.68);animation:fadeUp 0.8s 0.35s ease both;}
 .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s 0.45s ease both;}
 .btn-primary{background:var(--terra);color:var(--white);border:none;padding:18px 42px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block;}
 .btn-primary:hover{background:var(--terra-dark);transform:translateY(-2px);box-shadow:0 10px 32px rgba(193,96,58,0.3);}
@@ -224,7 +238,8 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .myth-card h3{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;color:var(--brown);margin-bottom:10px;line-height:1.35;}
 .myth-card p{font-size:0.82rem;line-height:1.8;color:var(--brown-light);}
 @media(max-width:768px){.myth-section{padding:60px 20px;}.myth-grid{grid-template-columns:1fr;}}
-.hero-phone{font-size:0.72rem;letter-spacing:0.12em;color:var(--brown-light);margin-top:6px;animation:fadeUp 0.8s 0.55s ease both;}.hero-phone a{color:var(--terra);text-decoration:none;font-weight:500;}.hero-phone a:hover{text-decoration:underline;}
+.hero-phone{font-size:0.72rem;letter-spacing:0.12em;color:rgba(253,250,245,0.6);margin-top:6px;animation:fadeUp 0.8s 0.55s ease both;}.hero-phone a{color:var(--terra-pale);text-decoration:none;font-weight:500;}.hero-phone a:hover{text-decoration:underline;}
+.hero .btn-outline{border-color:rgba(253,250,245,0.45);color:var(--white);}.hero .btn-outline:hover{border-color:var(--white);background:rgba(253,250,245,0.1);color:var(--white);}
 /* Sticky mobile call bar */
 .sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;padding:10px 16px;background:rgba(245,239,228,0.97);border-top:1px solid var(--sand-light);box-shadow:0 -4px 20px rgba(46,26,14,0.12);}
 .sticky-call a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:#fff;padding:14px 24px;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.92rem;letter-spacing:0.04em;text-decoration:none;box-shadow:0 4px 14px rgba(193,96,58,0.4);}
@@ -420,6 +435,14 @@ gtag('config','G-HTK9Z1G2RQ');
 </nav>
 
 <section class="hero">
+  <div class="hero-slideshow">
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=1920&q=80');"></div>
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-tag">Houston's New Construction Specialist</div>
     <h1>New <em>Construction</em><br>Done Right</h1>
@@ -916,6 +939,19 @@ gtag('config','G-HTK9Z1G2RQ');
 </footer>
 
 <script>
+
+// Hero slideshow
+(function(){
+  var slides = document.querySelectorAll('.hero-slide');
+  if(!slides.length) return;
+  var i = 0;
+  slides[0].classList.add('active');
+  setInterval(function(){
+    slides[i].classList.remove('active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active');
+  }, 6000);
+})();
 
 const navToggle = document.getElementById('navToggle');
 const navLinksList = document.querySelector('.nav-links');
