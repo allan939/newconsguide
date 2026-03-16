@@ -269,6 +269,24 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .faq-a p{font-size:0.86rem;color:var(--brown-mid);line-height:1.85;}
 @media(max-width:768px){.faq-section{padding:60px 20px;}.faq-q{font-size:0.88rem;padding:16px 18px;}.faq-a{padding:0 18px;}.faq-item.open .faq-a{padding:0 18px 16px;}}
 
+/* COMMUNITIES */
+.communities-section{padding:100px 52px;background:var(--cream);position:relative;}
+.communities-section .section-title{color:var(--brown);}
+.communities-section .section-title em{color:var(--terra);}
+.communities-section .section-eyebrow{color:var(--terra);}
+.communities-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1100px;margin:0 auto;}
+.community-card{background:var(--parchment);border:1px solid rgba(46,26,14,0.1);padding:36px 30px;position:relative;transition:all 0.3s;overflow:hidden;}
+.community-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--terra);transition:width 0.4s;}
+.community-card:hover{border-color:rgba(193,96,58,0.3);transform:translateY(-3px);box-shadow:0 16px 40px rgba(46,26,14,0.1);}
+.community-card:hover::after{width:100%;}
+.community-dir{font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;}
+.community-name{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:300;color:var(--brown);margin-bottom:6px;line-height:1.2;}
+.community-range{font-size:0.72rem;font-weight:500;letter-spacing:0.1em;color:var(--sand);margin-bottom:16px;}
+.community-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.community-tag{font-size:0.58rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;background:rgba(46,26,14,0.06);color:var(--brown-mid);}
+.community-note{font-size:0.8rem;line-height:1.8;color:var(--brown-light);}
+@media(max-width:768px){.communities-section{padding:64px 20px;}.communities-grid{grid-template-columns:1fr;}}
+
 /* STICKY CTA BAR */
 #sticky-cta-bar{position:fixed;bottom:0;left:0;right:0;z-index:950;background:#1c0e05;border-top:2px solid #c9a96e;transform:translateY(100%);transition:transform 0.45s cubic-bezier(0.22,1,0.36,1);box-shadow:0 -8px 40px rgba(0,0,0,0.4);}
 #sticky-cta-bar.scta-visible{transform:translateY(0);}
@@ -415,7 +433,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="hero-tag">Houston's New Construction Specialist</div>
     <h1>New <em>Construction</em><br>Done Right</h1>
     <p class="hero-sub">Exclusive builder access. Insider deals. Zero guesswork.</p>
-    <p class="hero-desc">Navigating Houston's new construction market requires an expert in your corner. I work directly with top builders to secure exclusive incentives — upgrades, closing costs, rate buydowns — that you simply won't find on your own.</p>
+    <p class="hero-desc">I've personally toured communities from Katy and Cypress to Conroe, Sugar Land, Pearland, and beyond. I know the builders, the programs, and the neighborhoods — and I put that knowledge to work for you to find the right home in the right area at the best possible terms.</p>
     <div class="hero-ctas">
       <a href="#deals" class="btn-primary">See This Week's Deals</a>
       <a href="#search" class="btn-outline">Search New Homes</a>
@@ -619,11 +637,13 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="about-content reveal reveal-delay-2">
       <span class="section-eyebrow">AEA Realty &middot; The Ask Ozzie Team</span>
       <h2>Why Work With<br><em>Allan Vega?</em></h2>
-      <p>I grew up in Houston, got my BBA from the University of Houston, and went straight into real estate — because I genuinely love this city and what homeownership can do for a family. I'm with <strong style="color:var(--terra-pale);">AEA Realty</strong> and part of <strong style="color:var(--terra-pale);">The Ask Ozzie Team</strong>, a group built around giving buyers the real inside track on new construction.</p>
-      <p>My relationships with Houston's top builders give you the inside track on pricing, upgrades, and every incentive program on the table. I've toured nearly every new community in Greater Houston — I know the builders, the sales teams, and exactly how to match you with the right home and the best available deal.</p>
+      <p>Born and raised in Houston. BBA from the University of Houston. I went into real estate because I genuinely love this city and I believe homeownership changes lives. I'm with <strong style="color:var(--terra-pale);">AEA Realty</strong> as part of <strong style="color:var(--terra-pale);">The Ask Ozzie Team</strong> — a group built around giving buyers the real inside track on new construction.</p>
+      <p>I've personally walked communities across every major Houston corridor — from Katy, Fulshear, and Cypress in the west and northwest, to Conroe, New Caney, and The Woodlands up north, to Pearland, Manvel, and Sugar Land in the south. I know which master-plans have the best lot sizing, which builders are currently running strong programs, and which neighborhoods are positioned to appreciate. That's not something you get from Zillow — it comes from years of showing up, walking properties, and sitting across from sales teams across Greater Houston.</p>
+      <p>When you work with me, I handle everything from start to close: helping you identify the right area for your lifestyle and commute, comparing communities and floorplans side by side, reviewing the purchase contract for red flags, coordinating your third-party inspection, and walking every room with you at final walkthrough. You make the decisions — I make sure you're making them with full information.</p>
       <div class="about-credentials">
         <div class="cred"><span class="cred-num">4+</span><span class="cred-label">Years Experience</span></div>
-        <div class="cred"><span class="cred-num">50+</span><span class="cred-label">Homes Sold</span></div>
+        <div class="cred"><span class="cred-num">50+</span><span class="cred-label">Homes Closed</span></div>
+        <div class="cred"><span class="cred-num">6</span><span class="cred-label">Houston Corridors</span></div>
         <div class="cred"><span class="cred-num">$0</span><span class="cred-label">Cost to Buyers</span></div>
       </div>
       <a href="#contact" class="btn-primary">Let's Talk — It's Free</a>
@@ -665,10 +685,86 @@ gtag('config','G-HTK9Z1G2RQ');
   </div>
 </section>
 
+<section class="communities-section">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Greater Houston Coverage</span>
+    <h2 class="section-title">I Know Every Corner of<br><em>Houston's New Construction Map</em></h2>
+    <div class="section-divider" style="background:linear-gradient(90deg,var(--terra),transparent);"></div>
+  </div>
+  <div class="communities-grid">
+    <div class="community-card reveal reveal-delay-1">
+      <div class="community-dir">West Houston</div>
+      <div class="community-name">Katy &amp; Fulshear</div>
+      <div class="community-range">From the $290s to $700K+</div>
+      <div class="community-tags">
+        <span class="community-tag">KISD Schools</span>
+        <span class="community-tag">Master-Planned</span>
+        <span class="community-tag">Family Favorite</span>
+      </div>
+      <p class="community-note">Home to Cross Creek Ranch, Cinco Ranch, Firethorne, and Tamarron. Katy ISD is one of the top-rated districts in Texas — and the resale market here is rock solid. Great for families who want large lots, great amenities, and long-term value.</p>
+    </div>
+    <div class="community-card reveal reveal-delay-2">
+      <div class="community-dir">Northwest Houston</div>
+      <div class="community-name">Cypress &amp; Tomball</div>
+      <div class="community-range">From the $270s to $550K+</div>
+      <div class="community-tags">
+        <span class="community-tag">CFISD Schools</span>
+        <span class="community-tag">Growing Fast</span>
+        <span class="community-tag">Best Value</span>
+      </div>
+      <p class="community-note">Bridgeland, Towne Lake, and Stone Gate are pulling strong demand. Cypress-Fairbanks ISD is top-tier. If Katy is stretching the budget, Cypress often delivers comparable quality at better price points — and it's growing just as fast.</p>
+    </div>
+    <div class="community-card reveal reveal-delay-3">
+      <div class="community-dir">North Houston</div>
+      <div class="community-name">The Woodlands &amp; Conroe</div>
+      <div class="community-range">From the $320s to $800K+</div>
+      <div class="community-tags">
+        <span class="community-tag">Established Feel</span>
+        <span class="community-tag">Montgomery ISD</span>
+        <span class="community-tag">Premium Communities</span>
+      </div>
+      <p class="community-note">Woodforest, Harmony, and Stewart's Forest are expanding fast north of The Woodlands. Ideal for buyers who want the established suburban look with new construction pricing and modern floorplans — and a great commute north on I-45.</p>
+    </div>
+    <div class="community-card reveal reveal-delay-4">
+      <div class="community-dir">Northeast Houston</div>
+      <div class="community-name">New Caney &amp; Porter</div>
+      <div class="community-range">From the $230s to $380K</div>
+      <div class="community-tags">
+        <span class="community-tag">Most Affordable</span>
+        <span class="community-tag">Fast-Growing</span>
+        <span class="community-tag">Low Tax Rates</span>
+      </div>
+      <p class="community-note">The most affordable new construction close to Houston. Valley Ranch Town Center is completely transforming the area. Great for first-time buyers and those looking for entry-level new construction with room to grow.</p>
+    </div>
+    <div class="community-card reveal reveal-delay-1">
+      <div class="community-dir">South Houston</div>
+      <div class="community-name">Pearland &amp; Manvel</div>
+      <div class="community-range">From the $290s to $550K+</div>
+      <div class="community-tags">
+        <span class="community-tag">Near Medical Center</span>
+        <span class="community-tag">Alvin ISD</span>
+        <span class="community-tag">No City Tax</span>
+      </div>
+      <p class="community-note">Shadow Creek Ranch, Pomona, and Meridiana are the standouts here. Close to the Texas Medical Center and Clear Lake — and Manvel has no city tax. Very popular with healthcare workers, young families, and buyers who commute south.</p>
+    </div>
+    <div class="community-card reveal reveal-delay-2">
+      <div class="community-dir">Southwest Houston</div>
+      <div class="community-name">Sugar Land &amp; Missouri City</div>
+      <div class="community-range">From the $340s to $700K+</div>
+      <div class="community-tags">
+        <span class="community-tag">Fort Bend ISD</span>
+        <span class="community-tag">Diverse &amp; Established</span>
+        <span class="community-tag">Strong Appreciation</span>
+      </div>
+      <p class="community-note">Riverstone, Sienna, and Harvest Green are some of Houston's most desirable addresses. Fort Bend ISD is nationally ranked. A highly sought-after area with a well-established lifestyle and a track record of strong home values.</p>
+    </div>
+  </div>
+</section>
+
 <section class="faq-section" id="faq">
   <div class="faq-inner">
-    <span class="section-eyebrow reveal">Buyer Questions</span>
-    <h2 class="section-title reveal">Houston New Construction<br><em>FAQs</em></h2>
+    <span class="section-eyebrow reveal">Expert Answers</span>
+    <h2 class="section-title reveal">Houston New Construction<br><em>Questions &amp; Answers</em></h2>
     <div class="section-divider reveal"></div>
     <div class="faq-list reveal">
 
@@ -684,7 +780,7 @@ gtag('config','G-HTK9Z1G2RQ');
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Which Houston areas have the most new construction homes? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>The hottest new construction corridors right now are Katy / Fulshear (West), Cypress / Tomball (Northwest), The Woodlands / Conroe (North), New Caney / Porter (Northeast), and Pearland / Manvel (South). Each area has different price points and commute times. I can match you to the best communities based on your budget, school preferences, and where you work.</p></div>
+        <div class="faq-a"><p>Greater Houston has six major new construction corridors, each with a distinct personality. Katy/Fulshear (West) is the gold standard for top-rated schools and large master-planned communities — Cross Creek Ranch, Tamarron, Firethorne. Cypress/Tomball (Northwest) offers similar quality at better prices, with Bridgeland and Towne Lake leading the charge. The Woodlands/Conroe (North) gives you an established feel with modern new construction in communities like Woodforest and Harmony. New Caney/Porter (Northeast) is Houston's most affordable entry point for new construction. Pearland/Manvel (South) is the go-to for Medical Center and Clear Lake commuters. Sugar Land/Missouri City (Southwest) is one of the most sought-after areas with Fort Bend ISD — nationally ranked. I've walked communities in every one of these corridors and can walk you through the real tradeoffs based on your commute, school priorities, and budget.</p></div> you to the best communities based on your budget, school preferences, and where you work.</p></div>
       </div>
 
       <div class="faq-item">
@@ -699,7 +795,17 @@ gtag('config','G-HTK9Z1G2RQ');
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Is a home inspection necessary on a brand-new home? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Absolutely — and this is one of the most overlooked steps. New doesn't mean perfect. I recommend a third-party inspection at the pre-drywall stage and again at final walkthrough. Inspectors regularly catch foundation issues, roof framing gaps, HVAC and plumbing rough-in errors, and insulation misses that builders will fix for free if caught before closing — and become your problem after.</p></div>
+        <div class="faq-a"><p>Absolutely — and this is one of the most overlooked steps. New doesn't mean perfect. I recommend a third-party inspection at the pre-drywall stage and again at the final walkthrough. Inspectors regularly catch foundation issues, roof framing gaps, HVAC and plumbing rough-in errors, and insulation misses that builders will correct before closing if caught in time. I have trusted inspectors I refer to regularly who know exactly what to look for in Houston new construction.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What's the difference between Katy and Cypress for new construction? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>Both are excellent — the main differences come down to price, school district, and commute. Katy is generally 10–15% more expensive, served by Katy ISD (one of the top districts in Texas), and sits along I-10 West. Cypress is served by Cypress-Fairbanks ISD (also highly rated), tends to offer more home for the money, and is better positioned for commuters heading north or downtown via Hwy 290. Builders active in both corridors include Lennar, Perry Homes, D.R. Horton, and Meritage. I've toured communities in both areas extensively and can help you compare specific floorplans and lot sizes side by side.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What does a buyer's agent actually do on a new construction purchase? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p>A lot more than most buyers realize. Before you sign anything, I help you compare communities and builders, review the lot for drainage and positioning, and flag anything unusual in the purchase contract. During construction, I coordinate your third-party inspection at the pre-drywall and final stages. At closing, I walk every room with you and create a punch list of items to be corrected. After closing, I help you navigate the builder's warranty process if issues come up. All of this is free to you — the builder covers my commission. The process is smoother, and you close with confidence knowing nothing was missed.</p></div>
       </div>
 
     </div>
