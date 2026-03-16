@@ -84,29 +84,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .stat-note{font-size:0.78rem;color:rgba(245,239,228,0.45);font-style:italic;font-family:'Fraunces',serif;}
 .stat-trend{display:inline-flex;align-items:center;gap:4px;font-size:0.63rem;letter-spacing:0.1em;margin-top:10px;padding:4px 12px;background:rgba(193,96,58,0.15);color:var(--terra-pale);}
 
-/* DEALS */
-.deals-section{padding:100px 52px;background:var(--cream-dark);position:relative;overflow:hidden;}
-.deals-section .section-title{color:var(--brown);}
-.deals-section .section-title em{color:var(--terra);}
-.deals-section .section-eyebrow{color:var(--terra);}
-.deals-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;max-width:1100px;margin:0 auto;}
-.deal-card{background:var(--parchment);border:1px solid rgba(46,26,14,0.1);padding:40px 36px;position:relative;transition:all 0.35s;overflow:hidden;}
-.deal-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--terra);transition:width 0.4s;}
-.deal-card:hover{border-color:rgba(193,96,58,0.35);transform:translateY(-4px);box-shadow:0 20px 50px rgba(46,26,14,0.12);}
-.deal-card:hover::after{width:100%;}
-.deal-badge{display:inline-block;font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;margin-bottom:20px;background:var(--terra);color:var(--white);}
-.deal-badge.hot{background:#B03A2E;}
-.deal-badge.new{background:var(--brown-mid);}
-.deal-builder{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:300;color:var(--brown);margin-bottom:4px;line-height:1.1;}
-.deal-community{font-size:0.68rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--terra);margin-bottom:22px;}
-.deal-incentive{font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;color:var(--brown-mid);margin-bottom:20px;line-height:1.5;border-left:2px solid var(--terra-pale);padding-left:14px;}
-.deal-details{list-style:none;margin-bottom:24px;}
-.deal-details li{font-size:0.8rem;line-height:1.75;color:var(--brown-mid);padding-left:16px;position:relative;}
-.deal-details li::before{content:'–';position:absolute;left:0;color:var(--terra);}
-.deal-expires{font-size:0.63rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--sand);border-top:1px solid rgba(46,26,14,0.08);padding-top:14px;margin-bottom:18px;}
-.deal-expires span{color:#B03A2E;}
-.btn-deal{width:100%;background:transparent;border:1px solid var(--brown);color:var(--brown);padding:14px;font-family:'Outfit',sans-serif;font-size:0.68rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
-.btn-deal:hover{background:var(--terra);color:var(--white);}
+/* PROCESS */
+.process-section{padding:100px 52px;background:var(--cream-dark);position:relative;overflow:hidden;}
+.process-section .section-title{color:var(--brown);}
+.process-section .section-title em{color:var(--terra);}
+.process-section .section-eyebrow{color:var(--terra);}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1100px;margin:0 auto;}
+.process-card{background:var(--parchment);border:1px solid rgba(46,26,14,0.1);padding:40px 32px;position:relative;transition:all 0.35s;overflow:hidden;}
+.process-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--terra);transition:width 0.4s;}
+.process-card:hover{border-color:rgba(193,96,58,0.35);transform:translateY(-4px);box-shadow:0 20px 50px rgba(46,26,14,0.12);}
+.process-card:hover::after{width:100%;}
+.process-step{font-family:'Fraunces',serif;font-size:3rem;font-weight:300;color:var(--terra-pale);line-height:1;margin-bottom:18px;}
+.process-title{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:400;color:var(--brown);margin-bottom:12px;line-height:1.2;}
+.process-desc{font-size:0.82rem;line-height:1.8;color:var(--brown-mid);}
 
 /* SEARCH */
 .search-section{padding:100px 52px;background:var(--cream);text-align:center;border-top:1px solid rgba(46,26,14,0.06);}
@@ -205,7 +195,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   nav{padding:0 20px;}
   .nav-links{display:none;}
   .hero{padding:110px 20px 80px;}
-  .stats-section,.deals-section,.search-section,.testimonials-section,.cta-section,footer{padding:64px 20px;}
+  .stats-section,.process-section,.search-section,.testimonials-section,.cta-section,footer{padding:64px 20px;}
   .about-section{grid-template-columns:1fr;gap:40px;padding:64px 20px;}
   .about-image-box{display:none;}
   footer{flex-direction:column;text-align:center;}
@@ -219,6 +209,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .nav-toggle{display:flex;}
   .nav-links{display:none;position:fixed;top:72px;left:0;right:0;flex-direction:column;background:rgba(245,239,228,0.99);backdrop-filter:blur(16px);padding:24px 20px;gap:24px;border-bottom:1px solid rgba(46,26,14,0.1);}
   .nav-links.open{display:flex;}
+  .process-grid{grid-template-columns:repeat(2,1fr);}
 }
 .ylopo-fallback{padding:48px;text-align:center;font-size:0.88rem;color:var(--brown-mid);line-height:1.7;}
 /* WHY YOUR OWN AGENT SECTION */
@@ -418,7 +409,7 @@ gtag('config','G-HTK9Z1G2RQ');
   <a href="#" class="nav-logo">ALLAN <em>VEGA</em><small>Realtor &middot; New Construction Specialist</small></a>
   <ul class="nav-links">
     <li><a href="#stats">Market Stats</a></li>
-    <li><a href="#deals">Builder Deals</a></li>
+    <li><a href="#process">How I Work</a></li>
     <li><a href="#search">Search Homes</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
@@ -435,7 +426,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <p class="hero-sub">Exclusive builder access. Insider deals. Zero guesswork.</p>
     <p class="hero-desc">I've personally toured communities from Katy and Cypress to Conroe, Sugar Land, Pearland, and beyond. I know the builders, the programs, and the neighborhoods — and I put that knowledge to work for you to find the right home in the right area at the best possible terms.</p>
     <div class="hero-ctas">
-      <a href="#deals" class="btn-primary">See This Week's Deals</a>
+      <a href="#process" class="btn-primary">See How I Work</a>
       <a href="#search" class="btn-outline">Search New Homes</a>
     </div>
     <p class="hero-phone"><a href="tel:+12818657146">(281) 865-7146</a> &nbsp;·&nbsp; Free consultation &nbsp;·&nbsp; No obligation</p>
@@ -503,47 +494,36 @@ gtag('config','G-HTK9Z1G2RQ');
   <p style="text-align:center;margin-top:28px;font-size:0.65rem;color:rgba(184,149,106,0.4);letter-spacing:0.1em;">Stats updated monthly · Current data as of March 2026</p>
 </section>
 
-<section class="deals-section" id="deals">
+<section class="process-section" id="process">
   <div class="section-header reveal">
-    <span class="section-eyebrow">Updated March 1, 2026</span>
-    <h2 class="section-title">Builder Deals<br><em>This Week</em></h2>
+    <span class="section-eyebrow">My Process</span>
+    <h2 class="section-title">How I Work<br><em>With You</em></h2>
     <div class="section-divider" style="background:linear-gradient(90deg,var(--terra),transparent);"></div>
   </div>
-  <div class="deals-grid">
-
-    <div class="deal-card reveal reveal-delay-1">
-      <span class="deal-badge" style="background:#B03A2E;">🔥 Hot Deal</span>
-      <div class="deal-builder">Lennar</div>
-      <div class="deal-community">Houston Metro Area · TX</div>
-      <div class="deal-incentive">&ldquo;Up to $55,000 price reduction + up to $10,000 toward closing costs on select homes&rdquo;</div>
-      <ul class="deal-details"><li>Refrigerator, washer & dryer included</li><li>Move-in ready appliance package</li><li>Ask about additional financing programs</li></ul>
-      <div class="deal-expires">Expires: <span>March 31, 2026</span></div>
-      <button class="btn-deal" onclick="document.getElementById(&apos;contact&apos;).scrollIntoView({behavior:&apos;smooth&apos;});">Claim This Deal &rarr;</button>
+  <div class="process-grid">
+    <div class="process-card reveal reveal-delay-1">
+      <div class="process-step">01</div>
+      <div class="process-title">Free Consultation</div>
+      <p class="process-desc">We talk about your budget, timeline, and the areas that interest you. No pressure, no commitment — just a conversation to understand what you're looking for.</p>
     </div>
-    
-    <div class="deal-card reveal reveal-delay-2">
-      <span class="deal-badge" style="background:#5C3820;">✦ New Deal</span>
-      <div class="deal-builder">KH Homes</div>
-      <div class="deal-community">Houston Metro Area · TX</div>
-      <div class="deal-incentive">&ldquo;$10,000 toward closing costs + 4.99% interest rate on select homes&rdquo;</div>
-      <ul class="deal-details"><li>Special financial programs available</li><li>Ask about qualification requirements</li><li>Limited homes — contact for availability</li></ul>
-      <div class="deal-expires">Expires: <span>March 31, 2026</span></div>
-      <button class="btn-deal" onclick="document.getElementById(&apos;contact&apos;).scrollIntoView({behavior:&apos;smooth&apos;});">Claim This Deal &rarr;</button>
+    <div class="process-card reveal reveal-delay-2">
+      <div class="process-step">02</div>
+      <div class="process-title">Builder Access</div>
+      <p class="process-desc">I connect you directly with the right builders and communities across the Houston metro — including inventory homes and move-in ready options you won't easily find on your own.</p>
     </div>
-    
-    <div class="deal-card reveal reveal-delay-3">
-      <span class="deal-badge" style="background:#B03A2E;">🔥 Hot Deal</span>
-      <div class="deal-builder">Meritage Homes</div>
-      <div class="deal-community">Saddle Up Sales Event · Houston Metro Area · TX</div>
-      <div class="deal-incentive">&ldquo;4.99% interest rate (5.752% APR) + up to $7,500 in closing costs on select move-in ready homes&rdquo;</div>
-      <ul class="deal-details"><li>Monthly payment as low as $1,877</li><li>Up to $7,500 toward closing costs</li><li>Energy-efficient homes — lower utility bills</li></ul>
-      <div class="deal-expires">Expires: <span>March 15, 2026</span></div>
-      <button class="btn-deal" onclick="document.getElementById(&apos;contact&apos;).scrollIntoView({behavior:&apos;smooth&apos;});">Claim This Deal &rarr;</button>
+    <div class="process-card reveal reveal-delay-3">
+      <div class="process-step">03</div>
+      <div class="process-title">I Negotiate for You</div>
+      <p class="process-desc">From rate buydowns and closing cost credits to upgrades and price reductions, I work every available program to stretch your dollar as far as it can go.</p>
     </div>
-    
+    <div class="process-card reveal reveal-delay-4">
+      <div class="process-step">04</div>
+      <div class="process-title">Keys in Hand</div>
+      <p class="process-desc">I walk you through the contract, inspections, and closing so nothing slips through the cracks. My services are 100% free to you — the builder pays my commission.</p>
+    </div>
   </div>
   <p class="reveal" style="text-align:center;margin-top:36px;font-size:0.78rem;color:var(--brown-light);line-height:1.75;max-width:580px;margin-left:auto;margin-right:auto;">
-    <strong style="color:var(--terra);">Pro tip:</strong> Working hand-in-hand with Houston's top builders, I help you unlock the incentives and programs that make the most sense for your situation. My services are completely free to you.
+    Ready to get started? <a href="#contact" style="color:var(--terra);text-decoration:none;font-weight:500;">Schedule your free consultation &rarr;</a>
   </p>
 </section>
 
@@ -902,7 +882,7 @@ gtag('config','G-HTK9Z1G2RQ');
   <div class="footer-logo">ALLAN VEGA <span>| 281-865-7146</span></div>
   <ul class="footer-links">
     <li><a href="#stats">Market Stats</a></li>
-    <li><a href="#deals">Builder Deals</a></li>
+    <li><a href="#process">How I Work</a></li>
     <li><a href="#search">Search Homes</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
