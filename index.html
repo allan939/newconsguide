@@ -377,7 +377,7 @@ gtag('config','G-HTK9Z1G2RQ');
 
 <!-- Sticky mobile call bar (hidden on desktop via CSS) -->
 <div class="sticky-call">
-  <a href="tel:+12818657146">
+  <a href="tel:+12818657146" data-track="sticky_call_bar">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.5 19.79 19.79 0 0 1 1.15 3.88 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     Call Allan Now · (281) 865-7146
   </a>
@@ -433,7 +433,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-  <a href="#contact" class="btn-nav">Get Free Guide</a>
+  <a href="#contact" class="btn-nav" data-track="nav_get_free_guide">Get Free Guide</a>
 </nav>
 
 <section class="hero">
@@ -451,10 +451,10 @@ gtag('config','G-HTK9Z1G2RQ');
     <p class="hero-sub">Exclusive builder access. Insider deals. Zero guesswork.</p>
     <p class="hero-desc">I've personally toured communities from Katy and Cypress to Conroe, Sugar Land, Pearland, and beyond. I know the builders, the programs, and the neighborhoods — and I put that knowledge to work for you to find the right home in the right area at the best possible terms.</p>
     <div class="hero-ctas">
-      <a href="#process" class="btn-primary">See How I Work</a>
-      <a href="#search" class="btn-outline">Search New Homes</a>
+      <a href="#process" class="btn-primary" data-track="hero_see_how_i_work">See How I Work</a>
+      <a href="#search" class="btn-outline" data-track="hero_search_new_homes">Search New Homes</a>
     </div>
-    <p class="hero-phone"><a href="tel:+12818657146">(281) 865-7146</a> &nbsp;·&nbsp; Free consultation &nbsp;·&nbsp; No obligation</p>
+    <p class="hero-phone"><a href="tel:+12818657146" data-track="hero_phone_click">(281) 865-7146</a> &nbsp;·&nbsp; Free consultation &nbsp;·&nbsp; No obligation</p>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
@@ -548,7 +548,7 @@ gtag('config','G-HTK9Z1G2RQ');
     </div>
   </div>
   <p class="reveal" style="text-align:center;margin-top:36px;font-size:0.78rem;color:var(--brown-light);line-height:1.75;max-width:580px;margin-left:auto;margin-right:auto;">
-    Ready to get started? <a href="#contact" style="color:var(--terra);text-decoration:none;font-weight:500;">Schedule your free consultation &rarr;</a>
+    Ready to get started? <a href="#contact" style="color:var(--terra);text-decoration:none;font-weight:500;" data-track="process_consultation">Schedule your free consultation &rarr;</a>
   </p>
 </section>
 
@@ -602,7 +602,7 @@ gtag('config','G-HTK9Z1G2RQ');
       if(widget.querySelector('.ylopo-fallback'))return;
       var fb=document.createElement('div');
       fb.className='ylopo-fallback';
-      fb.innerHTML='<p>Browse available new construction homes directly with Allan.</p><a href="tel:+12818657146" class="btn-primary" style="display:inline-block;margin-top:16px;">Call (281) 865-7146</a>';
+      fb.innerHTML='<p>Browse available new construction homes directly with Allan.</p><a href="tel:+12818657146" class="btn-primary" style="display:inline-block;margin-top:16px;" data-track="ylopo_fallback_phone">Call (281) 865-7146</a>';
       widget.appendChild(fb);
     }
 
@@ -651,7 +651,7 @@ gtag('config','G-HTK9Z1G2RQ');
         <div class="cred"><span class="cred-num">6</span><span class="cred-label">Houston Corridors</span></div>
         <div class="cred"><span class="cred-num">$0</span><span class="cred-label">Cost to Buyers</span></div>
       </div>
-      <a href="#contact" class="btn-primary">Let's Talk — It's Free</a>
+      <a href="#contact" class="btn-primary" data-track="about_lets_talk">Let's Talk — It's Free</a>
     </div>
   </div>
 </div>
@@ -842,7 +842,7 @@ gtag('config','G-HTK9Z1G2RQ');
 <section class="cta-section" id="contact">
   <h2 class="reveal">Get Your Free<br><em>New Construction Guide</em></h2>
   <p class="reveal">Answer 4 quick questions and I'll send you a personalized guide with the best deals, builder incentives, and communities matched to your budget and area.</p>
-  <p class="reveal" style="font-size:0.82rem;color:var(--brown-light);margin-top:-8px;">Prefer to talk first? <a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" style="color:var(--terra);font-weight:500;text-decoration:underline;">Schedule a free 15-min call →</a></p>
+  <p class="reveal" style="font-size:0.82rem;color:var(--brown-light);margin-top:-8px;">Prefer to talk first? <a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" style="color:var(--terra);font-weight:500;text-decoration:underline;" data-track="calendar_schedule">Schedule a free 15-min call →</a></p>
   <div class="form-wrap reveal">
     <div class="contact-card">
       <div class="contact-card-header">
@@ -1086,6 +1086,40 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
       submitBtn.textContent = 'Send Me the Free Guide';
       alert('Something went wrong — please try again or call (281) 865-7146.');
     });
+  });
+})();
+
+// CTA click tracking (GA4 + Facebook Pixel)
+(function() {
+  var PHONE_LABELS = ['sticky_call_bar', 'hero_phone_click', 'ylopo_fallback_phone'];
+  var CALENDAR_LABELS = ['calendar_schedule'];
+
+  document.addEventListener('click', function(e) {
+    var el = e.target.closest('[data-track]');
+    if (!el) return;
+    var label = el.getAttribute('data-track');
+    var isPhone = PHONE_LABELS.indexOf(label) !== -1;
+    var isCalendar = CALENDAR_LABELS.indexOf(label) !== -1;
+
+    // GA4
+    if (typeof gtag === 'function') {
+      if (isPhone) {
+        gtag('event', 'phone_call', { cta_label: label });
+      } else {
+        gtag('event', 'cta_click', { cta_label: label });
+      }
+    }
+
+    // Facebook Pixel
+    if (typeof fbq === 'function') {
+      if (isPhone) {
+        fbq('track', 'Contact', { content_name: label });
+      } else if (isCalendar) {
+        fbq('track', 'Schedule', { content_name: label });
+      } else {
+        fbq('trackCustom', 'CTAClick', { button: label });
+      }
+    }
   });
 })();
 
