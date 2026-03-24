@@ -940,6 +940,9 @@ gtag('config','G-HTK9Z1G2RQ');
 
 <script>
 
+// Single source of truth for the Apps Script endpoint
+var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCNQW8ZudeOVVPuC6rtvmAJ11RbFZzYJ34Jfcks1LakIIh1E/exec';
+
 // Hero slideshow
 (function(){
   var slides = document.querySelectorAll('.hero-slide');
@@ -1008,7 +1011,6 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
 
 // ── Contact form ──────────────────────────────────────────────────────────────
 (function () {
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCNQW8ZudeOVVPuC6rtvmAJ11RbFZzYJ34Jfcks1LakIIh1E/exec';
 
   var form      = document.getElementById('contactForm');
   var success   = document.getElementById('cf_success');
@@ -1050,6 +1052,7 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
 
     // URLSearchParams works with no-cors (JSON content-type gets stripped by browser)
     var payload = new URLSearchParams({
+      source:  'main-contact-form',
       area:    areaEl.value,
       price:   priceEl.value,
       name:    nameEl.value.trim(),
@@ -1124,12 +1127,11 @@ function submitStickyCTA(e) {
   var btn = document.querySelector('.scta-submit');
   btn.disabled = true;
   btn.textContent = 'Sending\u2026';
-  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCNQW8ZudeOVVPuC6rtvmAJ11RbFZzYJ34Jfcks1LakIIh1E/exec';
   var formData = new URLSearchParams();
-  formData.append('firstName', name);
+  formData.append('name', name);
   formData.append('phone', phone);
   formData.append('source', 'sticky-cta-bar');
-  fetch(SCRIPT_URL, { method: 'POST', body: formData })
+  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData })
     .catch(function() {})
     .finally(function() {
       document.getElementById('scta-form').style.display = 'none';
@@ -1160,7 +1162,8 @@ function submitStickyCTA(e) {
   document.getElementById('exit-popup-dismiss').addEventListener('click', dismiss);
   document.getElementById('exit-popup-cta').addEventListener('click', function() {
     dismiss();
-    if (typeof fbq === 'function') { fbq('track', 'InitiateCheckout'); }
+    if (typeof fbq === 'function') { fbq('track', 'Lead', {content_name: 'Exit Popup CTA'}); }
+    if (typeof gtag === 'function') { gtag('event', 'generate_lead', {source: 'exit_popup'}); }
   });
   popup.addEventListener('click', function(e) { if (e.target === popup) dismiss(); });
 
@@ -1169,6 +1172,7 @@ function submitStickyCTA(e) {
     shown = true;
     popup.classList.add('show');
     if (typeof fbq === 'function') { fbq('track', 'ViewContent', {content_name: 'Exit Intent Popup'}); }
+    if (typeof gtag === 'function') { gtag('event', 'view_item', {item_name: 'Exit Intent Popup'}); }
   }
 
   // Desktop: exit intent on mouseleave from top
