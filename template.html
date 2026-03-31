@@ -1066,13 +1066,13 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     var ctrl = new AbortController();
     var timer = setTimeout(function() { ctrl.abort(); }, 10000);
     fetch(SCRIPT_URL, {
-      method:  'POST',
-      mode:    'no-cors',
-      body:    payload,
-      signal:  ctrl.signal
+      method: 'POST',
+      body:   payload,
+      signal: ctrl.signal
     })
-    .then(function () {
+    .then(function (response) {
       clearTimeout(timer);
+      if (!response.ok) { throw new Error('Server error ' + response.status); }
       form.style.display = 'none';
       success.classList.add('visible');
       // Facebook Lead conversion event
