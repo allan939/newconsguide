@@ -350,6 +350,56 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .scta-close{top:12px;right:10px;transform:none;}
   body.scta-active .sticky-call{display:none;}
 }
+
+/* ── COMPREHENSIVE MOBILE POLISH ─────────────────────────── */
+@media(max-width:768px){
+  /* Hero */
+  .hero{padding:96px 20px 72px;}
+  .hero-tag{font-size:0.55rem;letter-spacing:0.16em;margin-bottom:20px;}
+  .hero h1{font-size:clamp(2.4rem,11vw,4rem);}
+  .hero-sub{font-size:1rem;margin-bottom:22px;}
+  .hero-desc{font-size:0.84rem;margin-bottom:32px;}
+  .hero-ctas{flex-direction:column;align-items:stretch;gap:10px;max-width:340px;margin-left:auto;margin-right:auto;}
+  .hero-ctas .btn-primary,.hero-ctas .btn-outline{text-align:center;padding:16px 20px;width:100%;}
+  .hero-phone{margin-top:14px;}
+
+  /* Section headers */
+  .section-header{margin-bottom:36px;}
+
+  /* Stats — keep 2 columns, reduce bloat */
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .stat-card{padding:30px 14px;}
+  .stat-number{font-size:2.4rem;}
+  .stat-label{font-size:0.6rem;}
+
+  /* Process cards — already 2-col, tighten padding */
+  .process-card{padding:24px 16px;}
+  .process-step{font-size:2rem;margin-bottom:10px;}
+  .process-title{font-size:1.05rem;}
+  .process-desc{font-size:0.8rem;}
+
+  /* Search widget */
+  .search-placeholder{padding:28px 16px;min-height:auto;}
+
+  /* Testimonials — force single column */
+  .testimonials-grid{grid-template-columns:1fr;}
+  .testimonial-card{padding:28px 24px;}
+
+  /* About credentials */
+  .about-credentials{gap:20px;}
+
+  /* Contact form — tighter so fields don't feel cramped */
+  .contact-form{padding:22px 16px 18px;}
+  .contact-card-header{padding:14px 16px;flex-wrap:wrap;gap:6px;}
+  .contact-card-footer{padding:12px 16px;}
+  .form-field input,.form-field select{padding:13px 14px;font-size:0.9rem;}
+
+  /* Extra bottom padding so submit button clears the sticky call bar */
+  .cta-section{padding-bottom:130px;}
+
+  /* Footer logo letter-spacing fix */
+  .footer-logo{letter-spacing:0.08em;}
+}
 </style>
 <script type="application/ld+json">
 {
