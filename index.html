@@ -194,13 +194,16 @@ nav.nav-scrolled{height:60px;box-shadow:0 8px 32px rgba(46,26,14,0.1);}
 @media(max-width:768px){.form-row{grid-template-columns:1fr;}.contact-card-footer{gap:16px;}}
 
 /* FOOTER */
-footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;border-top:1px solid rgba(193,96,58,0.15);}
+footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(193,96,58,0.15);}
 .footer-logo{font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);}
 .footer-logo span{color:var(--sand);font-weight:300;}
-.footer-links{display:flex;gap:28px;list-style:none;}
+.footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
 .footer-links a{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);text-decoration:none;transition:color 0.3s;}
 .footer-links a:hover{color:var(--terra-pale);}
 .footer-copy{font-size:0.65rem;color:rgba(184,149,106,0.5);letter-spacing:0.08em;}
+.footer-trec{width:100%;margin-top:8px;padding-top:16px;border-top:1px solid rgba(193,96,58,0.15);display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+.footer-trec a{color:rgba(184,149,106,0.6);font-size:0.62rem;letter-spacing:0.07em;text-decoration:none;transition:color 0.3s;text-align:center;}
+.footer-trec a:hover{color:var(--terra-pale);}
 
 /* ANIMATIONS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
@@ -223,8 +226,9 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .stats-section,.process-section,.search-section,.testimonials-section,.cta-section,footer{padding:64px 20px;}
   .about-section{grid-template-columns:1fr;gap:40px;padding:64px 20px;}
   .about-image-box{display:none;}
-  footer{flex-direction:column;text-align:center;}
-  .footer-links{flex-wrap:wrap;justify-content:center;}
+  footer{flex-direction:column;align-items:center;text-align:center;padding:40px 20px;}
+  .footer-links{justify-content:center;gap:16px;}
+  .footer-trec{flex-direction:column;align-items:center;gap:12px;}
 }
 .widget-gallery-container .grid-view-item:nth-child(n+4){display:none!important;}
 /* HAMBURGER MENU */
@@ -949,8 +953,9 @@ gtag('config','G-HTK9Z1G2RQ');
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2026 Allan Vega · AEA Realty · The Ask Ozzie Team · Houston, TX</div>
-  <div style="width:100%;margin-top:16px;border-top:1px solid rgba(193,96,58,0.15);padding-top:16px;">
-  <table width="100%"><tr><td width="50%" align="center"><a href="https://content.harstatic.com/pdf/TREC_CPN.pdf" target="_blank" style="color:rgba(184,149,106,0.6);font-size:0.6rem;letter-spacing:0.08em;">Texas Real Estate Commission Consumer Protection Notice</a></td><td width="50%" align="center"><a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=777820" target="_blank" style="color:rgba(184,149,106,0.6);font-size:0.6rem;letter-spacing:0.08em;">Texas Real Estate Commission Information About Brokerage Services</a></td></tr></table>
+  <div class="footer-trec">
+    <a href="https://content.harstatic.com/pdf/TREC_CPN.pdf" target="_blank">Texas Real Estate Commission Consumer Protection Notice</a>
+    <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=777820" target="_blank">Texas Real Estate Commission Information About Brokerage Services</a>
   </div>
 </footer>
 
