@@ -42,8 +42,8 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(245,239,228,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,26,14,0.08);transition:background 0.3s,height 0.4s cubic-bezier(0.22,1,0.36,1),box-shadow 0.4s;}
 nav.nav-scrolled{height:60px;box-shadow:0 8px 32px rgba(46,26,14,0.1);}
-.nav-logo{font-family:'Outfit',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--brown);text-decoration:none;display:flex;flex-direction:column;line-height:1.25;}.nav-logo small{font-size:0.6rem;font-weight:400;letter-spacing:0.1em;color:var(--brown-light);text-transform:uppercase;margin-top:1px;}
-.nav-logo em{color:var(--terra);font-style:normal;}
+.nav-logo{text-decoration:none;display:flex;align-items:center;}
+.nav-logo img{height:38px;width:auto;display:block;}
 .nav-links{display:flex;gap:36px;list-style:none;}
 .nav-links a{color:var(--brown-light);text-decoration:none;font-size:0.7rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;transition:color 0.3s;}
 .nav-links a:hover{color:var(--terra);}
@@ -198,8 +198,9 @@ nav.nav-scrolled{height:60px;box-shadow:0 8px 32px rgba(46,26,14,0.1);}
 
 /* FOOTER */
 footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid rgba(193,96,58,0.15);}
-.footer-logo{font-family:'Outfit',sans-serif;font-size:0.85rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream);}
-.footer-logo span{color:var(--sand);font-weight:300;}
+.footer-logo{display:flex;flex-direction:column;gap:8px;}
+.footer-logo img{height:44px;width:auto;display:block;}
+.footer-logo span{font-family:'Outfit',sans-serif;font-size:0.7rem;color:var(--sand);letter-spacing:0.06em;}
 .footer-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap;}
 .footer-links a{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--sand);text-decoration:none;transition:color 0.3s;}
 .footer-links a:hover{color:var(--terra-pale);}
@@ -398,8 +399,8 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* Extra bottom padding so submit button clears the sticky call bar */
   .cta-section{padding-bottom:130px;}
 
-  /* Footer logo letter-spacing fix */
-  .footer-logo{letter-spacing:0.08em;}
+  /* Footer logo mobile size */
+  .footer-logo img{height:36px;}
 }
 </style>
 <script type="application/ld+json">
@@ -499,7 +500,7 @@ gtag('config','G-HTK9Z1G2RQ');
 </div>
 
 <nav id="navbar">
-  <a href="#" class="nav-logo">ALLAN <em>VEGA</em><small>Realtor &middot; New Construction Specialist</small></a>
+  <a href="#" class="nav-logo"><img src="AskOzzie Logo.png" alt="AskOzzie Real Estate Team × AEA Realty"></a>
   <ul class="nav-links">
     <li><a href="#stats">Market Stats</a></li>
     <li><a href="#process">How I Work</a></li>
@@ -1010,7 +1011,10 @@ gtag('config','G-HTK9Z1G2RQ');
 </section>
 
 <footer>
-  <div class="footer-logo">ALLAN VEGA <span>| 281-865-7146</span></div>
+  <div class="footer-logo">
+    <img src="AskOzzie Team White Logo.png" alt="AskOzzie Real Estate Team × AEA Realty">
+    <span>(281) 865-7146</span>
+  </div>
   <ul class="footer-links">
     <li><a href="#stats">Market Stats</a></li>
     <li><a href="#process">How I Work</a></li>
