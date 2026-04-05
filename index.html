@@ -349,7 +349,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .scta-close{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:none;border:none;color:rgba(245,239,228,0.35);font-size:1.5rem;cursor:pointer;line-height:1;padding:6px 8px;transition:color 0.2s;}
 .scta-close:hover{color:#F5EFE4;}
 @media(max-width:768px){
-  .scta-inner{flex-direction:column;padding:14px 44px 18px 16px;gap:12px;align-items:stretch;}
+  .scta-inner{flex-direction:column;padding:14px 16px 18px;gap:12px;align-items:stretch;}
   .scta-copy{text-align:center;}
   .scta-headline{white-space:normal;font-size:0.95rem;}
   .scta-form{flex-direction:column;gap:8px;}
@@ -361,55 +361,63 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 
 /* ── COMPREHENSIVE MOBILE POLISH ─────────────────────────── */
 @media(max-width:768px){
-  /* Hero */
-  .hero{padding:96px 20px 72px;}
-  .hero-tag{font-size:0.55rem;letter-spacing:0.16em;margin-bottom:20px;}
-  .hero h1{font-size:clamp(2.4rem,11vw,4rem);}
-  .hero-sub{font-size:1rem;margin-bottom:22px;}
-  .hero-desc{font-size:0.84rem;margin-bottom:32px;}
+  /* Nav — keep height fixed so dropdown top:72px never mismatches */
+  nav.nav-scrolled{height:72px;box-shadow:0 4px 20px rgba(46,26,14,0.1);}
+  /* Hide name/divider — logo only on mobile */
+  .nav-logo-divider,.nav-logo-name{display:none;}
+  .nav-logo img{height:36px;}
+
+  /* Hero — tighter padding, smaller h1 floor */
+  .hero{padding:80px 20px 56px;}
+  .hero-tag{font-size:0.55rem;letter-spacing:0.14em;margin-bottom:18px;}
+  .hero h1{font-size:clamp(2rem,10vw,3.8rem);}
+  .hero-sub{font-size:0.95rem;margin-bottom:18px;}
+  .hero-desc{font-size:0.83rem;margin-bottom:28px;line-height:1.75;}
   .hero-ctas{flex-direction:column;align-items:stretch;gap:10px;max-width:340px;margin-left:auto;margin-right:auto;}
   .hero-ctas .btn-primary,.hero-ctas .btn-outline{text-align:center;padding:16px 20px;width:100%;}
-  .hero-phone{margin-top:14px;}
+  .hero-phone{margin-top:12px;font-size:0.68rem;}
 
   /* Section headers */
-  .section-header{margin-bottom:36px;}
+  .section-header{margin-bottom:32px;}
+  .section-eyebrow{font-size:0.68rem;}
 
-  /* Stats — keep 2 columns, reduce bloat */
+  /* Stats — 2×2 grid, tight padding */
   .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .stat-card{padding:30px 14px;}
-  .stat-number{font-size:2.4rem;}
-  .stat-label{font-size:0.6rem;}
+  .stat-card{padding:24px 12px;}
+  .stat-number{font-size:2.2rem;margin-bottom:6px;}
+  .stat-label{font-size:0.58rem;letter-spacing:0.12em;}
+  .stat-trend{font-size:0.55rem;}
 
-  /* Process cards — already 2-col, tighten padding */
-  .process-card{padding:24px 16px;}
+  /* Process — single column on mobile */
+  .process-grid{grid-template-columns:1fr;}
+  .process-card{padding:24px 20px;}
   .process-step{font-size:2rem;margin-bottom:10px;}
   .process-title{font-size:1.05rem;}
-  .process-desc{font-size:0.8rem;}
+  .process-desc{font-size:0.82rem;}
 
   /* Search widget */
   .search-placeholder{padding:28px 16px;min-height:auto;}
 
-  /* Testimonials — force single column */
+  /* Testimonials — single column */
   .testimonials-grid{grid-template-columns:1fr;}
-  .testimonial-card{padding:28px 24px;}
+  .testimonial-card{padding:28px 22px;}
 
   /* About credentials */
   .about-credentials{gap:20px;}
 
-  /* Contact form — tighter so fields don't feel cramped */
+  /* Contact form */
   .contact-form{padding:22px 16px 18px;}
-  .contact-card-header{padding:14px 16px;flex-wrap:wrap;gap:6px;}
+  .contact-card-header{padding:14px 16px;flex-direction:column;align-items:flex-start;gap:8px;}
   .contact-card-footer{padding:12px 16px;}
+  .form-field label{font-size:0.68rem;}
   .form-field input,.form-field select{padding:13px 14px;font-size:0.9rem;}
+  .form-row{gap:14px;margin-bottom:14px;}
 
   /* Extra bottom padding so submit button clears the sticky call bar */
   .cta-section{padding-bottom:130px;}
 
-  /* Footer logo mobile size */
+  /* Footer logo */
   .footer-logo img{height:40px;}
-  /* Hide name/divider in nav on mobile — logo alone is enough */
-  .nav-logo-divider,.nav-logo-name{display:none;}
-  .nav-logo img{height:36px;}
 }
 </style>
 <script type="application/ld+json">
