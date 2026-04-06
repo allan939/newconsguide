@@ -250,13 +250,12 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .nav-toggle{display:flex;}
   .btn-nav{display:none;}
   .nav-cta-mobile{display:block;}
-  .nav-links{display:none;position:fixed;top:72px;left:0;right:0;flex-direction:column;background:rgba(245,239,228,0.99);backdrop-filter:blur(16px);padding:28px 24px 32px;gap:0;border-bottom:1px solid rgba(46,26,14,0.1);}
+  .nav-links{display:none;position:fixed;top:64px;left:0;right:0;flex-direction:column;background:rgba(245,239,228,0.99);backdrop-filter:blur(16px);padding:28px 24px 32px;gap:0;border-bottom:1px solid rgba(46,26,14,0.1);}
   .nav-links.open{display:flex;}
   .nav-links li{border-bottom:1px solid rgba(46,26,14,0.06);}
   .nav-links li a{display:block;padding:14px 0;font-size:0.78rem;letter-spacing:0.14em;}
   .nav-links .nav-cta-mobile{border-bottom:none;margin-top:16px;}
   .nav-links .nav-cta-mobile a{display:block;text-align:center;background:var(--brown);color:var(--cream);padding:14px 20px;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;font-weight:500;}
-  .process-grid{grid-template-columns:repeat(2,1fr);}
 }
 .ylopo-fallback{padding:48px;text-align:center;font-size:0.88rem;color:var(--brown-mid);line-height:1.7;}
 /* WHY YOUR OWN AGENT SECTION */
@@ -365,12 +364,16 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .scta-success{justify-content:center;}
   .scta-close{top:12px;right:10px;transform:none;}
   body.scta-active .sticky-call{display:none;}
+  /* Hide SMS float when CTA bar is open — prevents overlap */
+  body.scta-active .sms-float{display:none;}
+  /* Safe-area inset for notched iPhones */
+  .scta-inner{padding-bottom:calc(18px + env(safe-area-inset-bottom));}
 }
 
 /* ── COMPREHENSIVE MOBILE POLISH ─────────────────────────── */
 @media(max-width:768px){
-  /* Nav — keep height fixed so dropdown top:72px never mismatches */
-  nav.nav-scrolled{height:72px;box-shadow:0 4px 20px rgba(46,26,14,0.1);}
+  /* Nav — consistent 64px height on mobile */
+  nav.nav-scrolled{height:64px;box-shadow:0 4px 20px rgba(46,26,14,0.1);}
   /* Show full name + subtitle on mobile */
   .nav-logo-divider{display:block;}
   .nav-logo-name{display:flex;}
@@ -385,7 +388,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .hero-sub{font-size:0.95rem;margin-bottom:18px;}
   .hero-desc{font-size:0.83rem;margin-bottom:28px;line-height:1.75;}
   .hero-ctas{flex-direction:column;align-items:stretch;gap:10px;max-width:340px;margin-left:auto;margin-right:auto;}
-  .hero-ctas .btn-primary,.hero-ctas .btn-outline{text-align:center;padding:16px 20px;width:100%;}
+  .hero-ctas .btn-primary,.hero-ctas .btn-outline{text-align:center;width:100%;}
   .hero-phone{margin-top:12px;font-size:0.68rem;}
 
   /* Section headers */
@@ -413,9 +416,6 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .testimonials-grid{grid-template-columns:1fr;}
   .testimonial-card{padding:28px 22px;}
 
-  /* About credentials */
-  .about-credentials{gap:20px;}
-
   /* Contact form */
   .contact-form{padding:22px 16px 18px;}
   .contact-card-header{padding:14px 16px;flex-direction:column;align-items:flex-start;gap:8px;}
@@ -424,8 +424,8 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .form-field input,.form-field select{padding:13px 14px;font-size:0.9rem;}
   .form-row{gap:14px;margin-bottom:14px;}
 
-  /* Extra bottom padding so submit button clears the sticky call bar */
-  .cta-section{padding-bottom:130px;}
+  /* Extra bottom padding so submit button clears sticky-call + SMS float */
+  .cta-section{padding-bottom:160px;}
 
   /* Footer logo */
   .footer-logo img{height:40px;}
@@ -479,9 +479,6 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* COMMUNITY CARDS: de-duplicate the tag look */
   .community-tag{font-size:0.56rem;letter-spacing:0.07em;}
   .community-note{font-size:0.78rem;}
-
-  /* STATS EYEBROW: left-align header */
-  .stats-section .section-header{text-align:left;}
 }
 
 /* ── MOBILE PERFORMANCE & POLISH v2 ─────────────────────── */
@@ -515,10 +512,6 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .stat-card{padding:28px 14px;}
   .stat-number{font-size:2.4rem;}
 
-  /* PROCESS CARDS: Left-accent strip — more premium than a hover underline */
-  .process-card{border-left:3px solid rgba(193,96,58,0.32);border-bottom:none;}
-  .process-card::after{display:none;}
-
   /* TOUCH: Disable hover transforms — they freeze mid-state on tap */
   .process-card:hover,
   .community-card:hover,
@@ -526,8 +519,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .community-card:hover::after,.process-card:hover::after{width:0!important;}
 
   /* TESTIMONIALS */
-  .quote-mark{font-size:3.2rem;margin-bottom:12px;}
-  .testimonial-text{font-size:1rem;line-height:1.68;}
+  .testimonial-text{font-size:1rem;line-height:1.7;font-style:italic;}
 
   /* ABOUT: Credential row wraps cleanly on narrow screens */
   .about-credentials{flex-wrap:wrap;gap:16px 32px;}
@@ -544,8 +536,8 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* COMMUNITIES */
   .community-card{padding:28px 22px;}
 
-  /* STICKY ELEMENTS: Safe area & z-order */
-  .sms-float{bottom:88px;}
+  /* STICKY ELEMENTS: SMS float clears sticky-call bar (~55px) with margin */
+  .sms-float{bottom:72px;}
 
   /* FOOTER */
   footer{gap:24px;}
@@ -881,7 +873,7 @@ gtag('config','G-HTK9Z1G2RQ');
 <div class="about-wrap">
   <div class="about-section" id="about">
     <div class="about-image reveal reveal-left">
-      <div class="about-image-box" style="padding:0;overflow:hidden;"><img alt="Allan Vega, Houston new construction specialist" style="width:100%;height:100%;object-fit:cover;display:block;" src="allan-vega.jpg" alt="Allan Vega - Houston Realtor" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+      <div class="about-image-box" style="padding:0;overflow:hidden;"><img alt="Allan Vega, Houston new construction specialist" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" src="allan-vega.jpg"></div>
     </div>
     <div class="about-content reveal reveal-right reveal-delay-2">
       <span class="section-eyebrow">AEA Realty &middot; The Ask Ozzie Team</span>
