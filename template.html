@@ -375,11 +375,11 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 @media(max-width:768px){
   /* Nav — keep height fixed so dropdown top:72px never mismatches */
   nav.nav-scrolled{height:72px;box-shadow:0 4px 20px rgba(46,26,14,0.1);}
-  /* Show name on mobile — hide only the subtitle tagline */
+  /* Show full name + subtitle on mobile */
   .nav-logo-divider{display:block;}
   .nav-logo-name{display:flex;}
-  .nav-logo-name small{display:none;}
   .nav-logo-name strong{font-size:0.78rem;letter-spacing:0.03em;}
+  .nav-logo-name small{display:block;font-size:0.5rem;letter-spacing:0.1em;}
   .nav-logo img{height:34px;}
 
   /* Hero — tighter padding, smaller h1 floor */
