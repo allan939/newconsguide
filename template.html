@@ -419,6 +419,79 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* Footer logo */
   .footer-logo img{height:40px;}
 }
+
+/* ── MOBILE PERFORMANCE & POLISH v2 ─────────────────────── */
+@media(max-width:768px){
+  /* PERFORMANCE: Kill Ken Burns zoom/pan — biggest lag source on mobile */
+  .hero-slide{animation:none!important;will-change:opacity;}
+  .hero-slideshow{will-change:auto;}
+  /* PERFORMANCE: Reduce grain texture render cost */
+  body::before{opacity:0.22;}
+
+  /* TYPOGRAPHY: Crisp rendering on high-DPI screens */
+  body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+
+  /* HERO: Stronger gradient overlay → text always readable on any photo */
+  .hero-overlay{background:linear-gradient(160deg,rgba(20,10,4,0.75) 0%,rgba(20,10,4,0.48) 45%,rgba(20,10,4,0.80) 100%);}
+  .hero h1{letter-spacing:-0.01em;line-height:1.0;}
+  .hero-tag{margin-bottom:22px;}
+  .hero-sub{margin-bottom:22px;}
+  .hero-ctas{max-width:360px;}
+  .hero-ctas .btn-primary,.hero-ctas .btn-outline{padding:18px 24px;font-size:0.88rem;letter-spacing:0.07em;}
+
+  /* CRITICAL iOS FIX: prevent viewport zoom on input focus (inputs must be ≥16px) */
+  .form-field input,.form-field select,.scta-input{font-size:16px!important;}
+
+  /* NAV: Align dropdown correctly with adjusted height */
+  nav{height:64px;}
+  nav.nav-scrolled{height:64px;}
+  .nav-links{top:64px;}
+
+  /* STATS: More breathing room per card */
+  .stat-card{padding:28px 14px;}
+  .stat-number{font-size:2.4rem;}
+
+  /* PROCESS CARDS: Left-accent strip — more premium than a hover underline */
+  .process-card{border-left:3px solid rgba(193,96,58,0.32);border-bottom:none;}
+  .process-card::after{display:none;}
+
+  /* TOUCH: Disable hover transforms — they freeze mid-state on tap */
+  .process-card:hover,
+  .community-card:hover,
+  .testimonial-card:hover{transform:none!important;box-shadow:none!important;}
+  .community-card:hover::after,.process-card:hover::after{width:0!important;}
+
+  /* TESTIMONIALS */
+  .quote-mark{font-size:3.2rem;margin-bottom:12px;}
+  .testimonial-text{font-size:1rem;line-height:1.68;}
+
+  /* ABOUT: Credential row wraps cleanly on narrow screens */
+  .about-credentials{flex-wrap:wrap;gap:16px 32px;}
+  .cred-num{font-size:2rem;}
+
+  /* FAQ: Larger tap targets */
+  .faq-q{min-height:52px;align-items:flex-start;padding:17px 18px;gap:12px;}
+  .faq-icon{margin-top:2px;flex-shrink:0;}
+
+  /* CONTACT SECTION */
+  .cta-section h2{font-size:clamp(1.9rem,7vw,2.8rem);}
+  .contact-card-footer span{font-size:0.62rem;padding:0 12px;}
+
+  /* COMMUNITIES */
+  .community-card{padding:28px 22px;}
+
+  /* STICKY ELEMENTS: Safe area & z-order */
+  .sms-float{bottom:88px;}
+  .sticky-call{padding:10px 14px;padding-bottom:calc(10px + env(safe-area-inset-bottom));}
+  .sticky-call a{border-radius:40px;font-size:0.9rem;}
+
+  /* FOOTER */
+  footer{gap:24px;}
+  .footer-logo-name{font-size:1.05rem;}
+
+  /* BUTTONS: Remove tap highlight flash */
+  a,button{-webkit-tap-highlight-color:transparent;}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1096,8 +1169,10 @@ window.addEventListener('scroll', () => {
   const y = window.scrollY;
   nav.style.background = y > 60 ? 'rgba(245,239,228,0.99)' : 'rgba(245,239,228,0.94)';
   nav.classList.toggle('nav-scrolled', y > 60);
-  if (heroSlideshow && y < window.innerHeight) {
+  if (heroSlideshow && y < window.innerHeight && window.innerWidth > 768) {
     heroSlideshow.style.transform = 'translateY(' + (y * 0.35) + 'px)';
+  } else if (heroSlideshow && window.innerWidth <= 768) {
+    heroSlideshow.style.transform = '';
   }
 }, { passive: true });
 
