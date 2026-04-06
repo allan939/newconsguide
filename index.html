@@ -9,9 +9,10 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Allan Vega · Houston New Construction">
 <meta property="og:url" content="https://allan939.github.io/newconsguide/">
-<meta property="og:image" content="https://allan939.github.io/newconsguide/og-image.jpg">
+<meta property="og:image" content="https://allan939.github.io/newconsguide/allan-vega.jpg">
+<meta property="og:image:alt" content="Allan Vega, Houston new construction specialist">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://allan939.github.io/newconsguide/og-image.jpg">
+<meta name="twitter:image" content="https://allan939.github.io/newconsguide/allan-vega.jpg">
 <link rel="canonical" href="https://allan939.github.io/newconsguide/">
 <meta name="twitter:title" content="Houston New Construction Homes | Allan Vega">
 <meta name="twitter:description" content="Exclusive builder deals, live market stats, and expert guidance on new construction homes in Houston, TX.">
@@ -315,6 +316,15 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .faq-a p{font-size:0.86rem;color:var(--brown-mid);line-height:1.85;}
 @media(max-width:768px){.faq-section{padding:60px 20px;}.faq-q{font-size:0.88rem;padding:16px 18px;}.faq-a{padding:0 18px;}.faq-item.open .faq-a{padding:0 18px 16px;}}
 
+/* CONSENT */
+.consent-banner{position:fixed;left:14px;right:14px;bottom:14px;z-index:2100;background:rgba(28,14,5,0.96);color:var(--cream);border:1px solid rgba(201,169,110,0.38);box-shadow:0 18px 44px rgba(0,0,0,0.3);padding:16px 14px;display:none;gap:12px;align-items:flex-start;}
+.consent-banner.show{display:flex;}
+.consent-copy{flex:1;font-size:0.78rem;line-height:1.6;color:rgba(245,239,228,0.86);}
+.consent-copy a{color:var(--sand-light);}
+.consent-actions{display:flex;gap:8px;flex-shrink:0;}
+.consent-btn{border:1px solid rgba(201,169,110,0.45);padding:10px 14px;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;background:transparent;color:var(--cream);cursor:pointer;}
+.consent-btn.accept{background:#c9a96e;color:#1c0e05;border-color:#c9a96e;}
+
 /* COMMUNITIES */
 .communities-section{padding:100px 52px;background:var(--cream);position:relative;}
 .communities-section .section-title{color:var(--brown);}
@@ -368,6 +378,9 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   body.scta-active .sms-float{display:none;}
   /* Safe-area inset for notched iPhones */
   .scta-inner{padding-bottom:calc(18px + env(safe-area-inset-bottom));}
+  .consent-banner{left:10px;right:10px;bottom:10px;padding:14px 12px;flex-direction:column;}
+  .consent-actions{width:100%;}
+  .consent-btn{flex:1;text-align:center;}
 }
 
 /* ── COMPREHENSIVE MOBILE POLISH ─────────────────────────── */
@@ -507,6 +520,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   nav{height:64px;}
   nav.nav-scrolled{height:64px;}
   .nav-links{top:64px;}
+  .nav-links{max-height:calc(100vh - 64px);overflow:auto;}
 
   /* STATS: More breathing room per card */
   .stat-card{padding:28px 14px;}
@@ -545,6 +559,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 
   /* BUTTONS: Remove tap highlight flash */
   a,button{-webkit-tap-highlight-color:transparent;}
+  body.mobile-menu-open{overflow:hidden;}
 }
 
 /* ── MOBILE REFINEMENTS v4 ─────────────────────────────────── */
@@ -620,34 +635,18 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 }
 </script>
 
-<!-- Meta (Facebook) Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','2075120536666616');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
+<noscript><img height="1" width="1" style="display:none" alt=""
 src="https://www.facebook.com/tr?id=2075120536666616&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
-
-<!-- Google Analytics GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
-<script>
-window.dataLayer=window.dataLayer||[];
-function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-HTK9Z1G2RQ');
-</script>
-<!-- End GA4 -->
 </head>
 <body>
+
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie consent">
+  <p class="consent-copy">We use analytics cookies (Google Analytics and Meta Pixel) to improve this site and measure ad performance. <a href="#privacy">Learn more</a>.</p>
+  <div class="consent-actions">
+    <button type="button" id="consent-decline" class="consent-btn">Decline</button>
+    <button type="button" id="consent-accept" class="consent-btn accept">Accept</button>
+  </div>
+</div>
 
 <!-- Sticky mobile call bar (hidden on desktop via CSS) -->
 <div class="sticky-call">
@@ -1214,6 +1213,12 @@ gtag('config','G-HTK9Z1G2RQ');
   </div>
 </section>
 
+<section id="privacy" style="padding:38px 52px;background:var(--cream);border-top:1px solid rgba(46,26,14,0.08);">
+  <p style="max-width:960px;margin:0 auto;font-size:0.76rem;line-height:1.8;color:var(--brown-light);">
+    <strong style="color:var(--brown);font-weight:600;">Privacy note:</strong> This site may use analytics and ad measurement technologies (Google Analytics and Meta Pixel) only after consent. Contact Allan Vega at <a href="mailto:info@askozzie.com" style="color:var(--terra);text-decoration:underline;">info@askozzie.com</a> to request data access or deletion.
+  </p>
+</section>
+
 <footer>
   <div class="footer-logo">
     <img src="AskOzzie Team White Logo.png" alt="AskOzzie Real Estate Team × AEA Realty">
@@ -1249,6 +1254,58 @@ gtag('config','G-HTK9Z1G2RQ');
 
 // Single source of truth for the Apps Script endpoint
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCNQW8ZudeOVVPuC6rtvmAJ11RbFZzYJ34Jfcks1LakIIh1E/exec';
+var CONSENT_KEY = 'analytics_consent_v1';
+
+function loadTrackingScripts() {
+  if (window.__trackingLoaded) return;
+  window.__trackingLoaded = true;
+
+  // Google Analytics GA4
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ';
+  document.head.appendChild(ga);
+  gtag('js', new Date());
+  gtag('config', 'G-HTK9Z1G2RQ');
+
+  // Meta Pixel
+  !function(f,b,e,v,n,t,s){
+    if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s);
+  }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2075120536666616');
+  fbq('track', 'PageView');
+}
+
+function initConsentBanner() {
+  var banner = document.getElementById('consent-banner');
+  if (!banner) return;
+  var saved = localStorage.getItem(CONSENT_KEY);
+  if (saved === 'accepted') {
+    loadTrackingScripts();
+    return;
+  }
+  if (saved === 'declined') {
+    return;
+  }
+  banner.classList.add('show');
+  document.getElementById('consent-accept').addEventListener('click', function(){
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    banner.classList.remove('show');
+    loadTrackingScripts();
+  });
+  document.getElementById('consent-decline').addEventListener('click', function(){
+    localStorage.setItem(CONSENT_KEY, 'declined');
+    banner.classList.remove('show');
+  });
+}
+initConsentBanner();
 
 // Hero slideshow
 (function(){
@@ -1265,9 +1322,30 @@ var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCN
 
 const navToggle = document.getElementById('navToggle');
 const navLinksList = document.querySelector('.nav-links');
+function closeMobileMenu() {
+  if (!navLinksList || !navToggle) return;
+  navLinksList.classList.remove('open');
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.setAttribute('aria-label', 'Open menu');
+  document.body.classList.remove('mobile-menu-open');
+}
 if (navToggle) {
-  navToggle.addEventListener('click', () => navLinksList.classList.toggle('open'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinksList.classList.remove('open')));
+  navToggle.setAttribute('aria-expanded', 'false');
+  navToggle.addEventListener('click', () => {
+    const open = navLinksList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('mobile-menu-open', open);
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', closeMobileMenu));
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMobileMenu();
+  });
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth > 768) return;
+    if (!navLinksList.classList.contains('open')) return;
+    if (!navLinksList.contains(e.target) && !navToggle.contains(e.target)) closeMobileMenu();
+  });
 }
 const ro = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -1289,10 +1367,10 @@ window.addEventListener('scroll', () => {
   nav.style.background = y > 60 ? 'rgba(245,239,228,0.99)' : 'rgba(245,239,228,0.94)';
   nav.classList.toggle('nav-scrolled', y > 60);
   // Hide nav on scroll down, reveal on scroll up
-  if (y > 120) {
-    const goingDown = y > lastScrollY;
-    nav.classList.toggle('nav-hidden', goingDown);
-    if (goingDown) navLinksList.classList.remove('open');
+    if (y > 120) {
+      const goingDown = y > lastScrollY;
+      nav.classList.toggle('nav-hidden', goingDown);
+      if (goingDown) closeMobileMenu();
   } else {
     nav.classList.remove('nav-hidden');
   }
@@ -1375,7 +1453,7 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending…';
 
-    // URLSearchParams works with no-cors (JSON content-type gets stripped by browser)
+    // URLSearchParams keeps the payload lightweight and form-compatible
     var payload = new URLSearchParams({
       source:  'main-contact-form',
       area:    areaEl.value,
@@ -1497,9 +1575,9 @@ function submitStickyCTA(e) {
   formData.append('source', 'sticky-cta-bar');
   var sctaCtrl = new AbortController();
   setTimeout(function() { sctaCtrl.abort(); }, 10000);
-  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData, signal: sctaCtrl.signal })
-    .catch(function() {})
-    .finally(function() {
+  fetch(SCRIPT_URL, { method: 'POST', body: formData, signal: sctaCtrl.signal })
+    .then(function(response) {
+      if (!response.ok) { throw new Error('Server error ' + response.status); }
       document.getElementById('scta-form').style.display = 'none';
       var successEl = document.getElementById('scta-success');
       document.getElementById('scta-success-msg').textContent = 'Got it, ' + name + '! I\u2019ll send you the best deals shortly.';
@@ -1512,6 +1590,11 @@ function submitStickyCTA(e) {
         bar.classList.remove('scta-visible');
         document.body.classList.remove('scta-active');
       }, 4500);
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send My Deals';
+      alert('We could not send your request. Please try again or call (281) 865-7146.');
     });
 }
 
