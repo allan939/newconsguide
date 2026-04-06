@@ -546,6 +546,59 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* BUTTONS: Remove tap highlight flash */
   a,button{-webkit-tap-highlight-color:transparent;}
 }
+
+/* ── MOBILE REFINEMENTS v4 ─────────────────────────────────── */
+@media(max-width:768px){
+
+  /* HERO: tighter headline, hide the scroll indicator */
+  .hero h1{line-height:0.95;}
+  .hero-scroll{display:none;}
+
+  /* STATS: bigger numbers, fix illegible trend & label sizes */
+  .stat-number{font-size:2.7rem;}
+  .stat-label{font-size:0.62rem;letter-spacing:0.1em;}
+  .stat-trend{font-size:0.62rem;padding:4px 10px;}
+  .stat-note{font-size:0.72rem;}
+
+  /* ABOUT: show photo as compact portrait — humanizes mobile experience */
+  .about-image{display:block;}
+  .about-image-box{
+    width:100px;height:100px;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    border:2px solid rgba(193,96,58,0.25);
+    margin:0 0 24px;
+    overflow:hidden;
+  }
+  .about-image-box::after{display:none;}
+
+  /* MYTH SECTION: left-align on mobile */
+  .myth-inner{text-align:left;}
+  .myth-title{font-size:clamp(1.5rem,6vw,2.1rem);margin-bottom:32px;}
+
+  /* PROCESS: more breathing room between steps */
+  .process-card{padding:28px 0;}
+
+  /* CONTACT FORM CARD: Fraunces header — not generic Outfit caps */
+  .contact-card-header>span:first-child{
+    font-family:'Fraunces',serif;
+    font-weight:300;
+    font-size:0.98rem;
+    letter-spacing:0.01em;
+    text-transform:none;
+  }
+
+  /* FAQ: readable answer text */
+  .faq-q{font-size:0.92rem;}
+  .faq-a p{font-size:0.88rem;line-height:1.9;}
+
+  /* NAV DROPDOWN: less heavy CTA button */
+  .nav-links .nav-cta-mobile a{letter-spacing:0.1em;font-size:0.76rem;}
+
+  /* FOOTER SOCIAL: larger touch targets */
+  .footer-social-link{width:38px;height:38px;}
+  .footer-social{gap:12px;margin-top:4px;}
+}
 </style>
 <script type="application/ld+json">
 {
