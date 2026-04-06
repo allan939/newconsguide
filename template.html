@@ -273,18 +273,21 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .hero-phone{font-size:0.72rem;letter-spacing:0.12em;color:rgba(253,250,245,0.6);margin-top:6px;animation:fadeUp 0.8s 0.55s ease both;}.hero-phone a{color:var(--terra-pale);text-decoration:none;font-weight:500;}.hero-phone a:hover{text-decoration:underline;}
 .hero .btn-outline{border-color:rgba(253,250,245,0.45);color:var(--white);}.hero .btn-outline:hover{border-color:var(--white);background:rgba(253,250,245,0.1);color:var(--white);}
 /* Sticky mobile call bar */
-.sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--brown);border-top:1px solid rgba(193,96,58,0.22);box-shadow:0 -6px 32px rgba(20,10,4,0.3);}
-.sticky-call-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;padding-bottom:calc(12px + env(safe-area-inset-bottom));gap:12px;}
-.sticky-call-info{display:flex;flex-direction:column;line-height:1.3;min-width:0;}
-.sticky-call-name{font-family:'Fraunces',serif;font-weight:300;font-size:1rem;color:var(--cream);white-space:nowrap;}
-.sticky-call-title{font-size:0.55rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);margin-top:1px;}
-.sticky-call a{display:inline-flex;align-items:center;gap:9px;background:var(--terra);color:var(--white);padding:11px 20px;font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:1rem;letter-spacing:0.01em;text-decoration:none;flex-shrink:0;transition:background 0.2s;}
+.sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--brown);border-top:1px solid rgba(193,96,58,0.18);box-shadow:0 -4px 24px rgba(20,10,4,0.25);}
+.sticky-call-actions{display:grid;grid-template-columns:1fr 1fr;padding:10px 14px;padding-bottom:calc(10px + env(safe-area-inset-bottom));gap:10px;}
+.sticky-btn-call,.sticky-btn-text{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 10px;font-family:'Outfit',sans-serif;font-weight:500;font-size:0.82rem;letter-spacing:0.04em;text-decoration:none;transition:opacity 0.2s;}
+.sticky-btn-call{background:var(--terra);color:var(--white);}
+.sticky-btn-call:hover{opacity:0.88;}
+.sticky-btn-text{background:transparent;color:var(--cream);border:1px solid rgba(253,250,245,0.2);}
+.sticky-btn-text:hover{border-color:rgba(253,250,245,0.45);}
+.sticky-btn-call svg,.sticky-btn-text svg{width:15px;height:15px;flex-shrink:0;}
+@media(max-width:768px){.sticky-call{display:block;}}
 /* Footer social */
 .footer-social{display:flex;gap:10px;align-items:center;}
 .footer-social-link{width:34px;height:34px;border:1px solid rgba(184,149,106,0.2);display:flex;align-items:center;justify-content:center;color:var(--sand);text-decoration:none;transition:color 0.3s,border-color 0.3s,background 0.3s;}
 .footer-social-link:hover{color:var(--terra-pale);border-color:rgba(193,96,58,0.4);background:rgba(193,96,58,0.08);}
 .footer-social-link svg{width:15px;height:15px;fill:currentColor;}
-@media(max-width:768px){.sticky-call{display:block;}.footer-social{justify-content:center;}}
+@media(max-width:768px){.footer-social{justify-content:center;}}
 /* Floating SMS button */
 .sms-float{position:fixed;bottom:80px;right:18px;z-index:901;width:52px;height:52px;background:var(--terra);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(193,96,58,0.45);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;}
 .sms-float:hover{transform:scale(1.08);box-shadow:0 6px 22px rgba(193,96,58,0.55);}
@@ -553,14 +556,14 @@ gtag('config','G-HTK9Z1G2RQ');
 
 <!-- Sticky mobile call bar (hidden on desktop via CSS) -->
 <div class="sticky-call">
-  <div class="sticky-call-inner">
-    <div class="sticky-call-info">
-      <span class="sticky-call-name">Allan Vega</span>
-      <span class="sticky-call-title">Realtor &middot; New Construction Specialist</span>
-    </div>
-    <a href="tel:+12818657146" data-track="sticky_call_bar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.5 19.79 19.79 0 0 1 1.15 3.88 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <div class="sticky-call-actions">
+    <a href="tel:+12818657146" class="sticky-btn-call" data-track="sticky_call_bar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.5 19.79 19.79 0 0 1 1.15 3.88 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       Call Allan
+    </a>
+    <a href="sms:+12818657146?body=Hi%20Allan%2C%20I%27m%20interested%20in%20Houston%20new%20construction%20homes." class="sticky-btn-text" data-track="sticky_text_bar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Text Allan
     </a>
   </div>
 </div>
