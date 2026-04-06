@@ -431,6 +431,59 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .footer-logo img{height:40px;}
 }
 
+/* ── MOBILE EDITORIAL v3 ─────────────────────────────────── */
+@media(max-width:768px){
+
+  /* SECTION HEADERS: left-aligned — editorial, not template */
+  .section-header{text-align:left;}
+  .section-divider{margin:14px 0 0;}
+
+  /* EYEBROW: softer letter-spacing — 0.28em is an AI design cliché */
+  .section-eyebrow{letter-spacing:0.13em;font-size:0.6rem;}
+
+  /* HERO TAG: drop the decorative side-lines */
+  .hero-tag::before,.hero-tag::after{display:none;}
+  .hero-tag{letter-spacing:0.15em;gap:0;}
+
+  /* PROCESS: editorial numbered list, not card boxes */
+  .process-grid{gap:0;}
+  .process-card{
+    background:none;
+    border:none;
+    border-top:1px solid rgba(46,26,14,0.1);
+    border-left:none!important;
+    padding:24px 0;
+    box-shadow:none!important;
+  }
+  .process-card:hover{transform:none!important;}
+  .process-step{font-size:1.3rem;color:var(--terra);margin-bottom:6px;font-weight:300;}
+  .process-title{font-size:1.08rem;margin-bottom:8px;}
+  .process-desc{font-size:0.83rem;color:var(--brown-mid);}
+
+  /* TESTIMONIALS: pure quote style — no card boxes */
+  .testimonials-grid{gap:0;}
+  .testimonials-section{text-align:left;}
+  .testimonial-card{
+    background:none;
+    border:none;
+    border-top:1px solid rgba(46,26,14,0.1);
+    padding:28px 0;
+    box-shadow:none!important;
+  }
+  .quote-mark{font-size:2.6rem;opacity:0.5;margin-bottom:6px;line-height:1;}
+  .testimonial-text{font-size:0.97rem;font-style:italic;line-height:1.7;}
+
+  /* MYTH CARDS: breathe more */
+  .myth-card{padding:26px 22px;}
+
+  /* COMMUNITY CARDS: de-duplicate the tag look */
+  .community-tag{font-size:0.56rem;letter-spacing:0.07em;}
+  .community-note{font-size:0.78rem;}
+
+  /* STATS EYEBROW: left-align header */
+  .stats-section .section-header{text-align:left;}
+}
+
 /* ── MOBILE PERFORMANCE & POLISH v2 ─────────────────────── */
 @media(max-width:768px){
   /* PERFORMANCE: Kill Ken Burns zoom/pan — biggest lag source on mobile */
