@@ -273,8 +273,12 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .hero-phone{font-size:0.72rem;letter-spacing:0.12em;color:rgba(253,250,245,0.6);margin-top:6px;animation:fadeUp 0.8s 0.55s ease both;}.hero-phone a{color:var(--terra-pale);text-decoration:none;font-weight:500;}.hero-phone a:hover{text-decoration:underline;}
 .hero .btn-outline{border-color:rgba(253,250,245,0.45);color:var(--white);}.hero .btn-outline:hover{border-color:var(--white);background:rgba(253,250,245,0.1);color:var(--white);}
 /* Sticky mobile call bar */
-.sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;padding:10px 16px;background:rgba(245,239,228,0.97);border-top:1px solid var(--sand-light);box-shadow:0 -4px 20px rgba(46,26,14,0.12);}
-.sticky-call a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--terra);color:#fff;padding:14px 24px;border-radius:50px;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.92rem;letter-spacing:0.04em;text-decoration:none;box-shadow:0 4px 14px rgba(193,96,58,0.4);}
+.sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--brown);border-top:1px solid rgba(193,96,58,0.22);box-shadow:0 -6px 32px rgba(20,10,4,0.3);}
+.sticky-call-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;padding-bottom:calc(12px + env(safe-area-inset-bottom));gap:12px;}
+.sticky-call-info{display:flex;flex-direction:column;line-height:1.3;min-width:0;}
+.sticky-call-name{font-family:'Fraunces',serif;font-weight:300;font-size:1rem;color:var(--cream);white-space:nowrap;}
+.sticky-call-title{font-size:0.55rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand);margin-top:1px;}
+.sticky-call a{display:inline-flex;align-items:center;gap:7px;background:var(--terra);color:var(--white);padding:11px 18px;font-family:'Outfit',sans-serif;font-weight:600;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;flex-shrink:0;transition:background 0.2s;}
 .sticky-call a:hover{background:var(--terra-dark);}
 @media(max-width:768px){.sticky-call{display:block;}}
 /* Floating SMS button */
@@ -363,9 +367,12 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 @media(max-width:768px){
   /* Nav — keep height fixed so dropdown top:72px never mismatches */
   nav.nav-scrolled{height:72px;box-shadow:0 4px 20px rgba(46,26,14,0.1);}
-  /* Hide name/divider — logo only on mobile */
-  .nav-logo-divider,.nav-logo-name{display:none;}
-  .nav-logo img{height:36px;}
+  /* Show name on mobile — hide only the subtitle tagline */
+  .nav-logo-divider{display:block;}
+  .nav-logo-name{display:flex;}
+  .nav-logo-name small{display:none;}
+  .nav-logo-name strong{font-size:0.78rem;letter-spacing:0.03em;}
+  .nav-logo img{height:34px;}
 
   /* Hero — tighter padding, smaller h1 floor */
   .hero{padding:80px 20px 56px;}
@@ -482,8 +489,6 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 
   /* STICKY ELEMENTS: Safe area & z-order */
   .sms-float{bottom:88px;}
-  .sticky-call{padding:10px 14px;padding-bottom:calc(10px + env(safe-area-inset-bottom));}
-  .sticky-call a{border-radius:40px;font-size:0.9rem;}
 
   /* FOOTER */
   footer{gap:24px;}
@@ -544,10 +549,16 @@ gtag('config','G-HTK9Z1G2RQ');
 
 <!-- Sticky mobile call bar (hidden on desktop via CSS) -->
 <div class="sticky-call">
-  <a href="tel:+12818657146" data-track="sticky_call_bar">
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.5 19.79 19.79 0 0 1 1.15 3.88 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-    Call Allan Now · (281) 865-7146
-  </a>
+  <div class="sticky-call-inner">
+    <div class="sticky-call-info">
+      <span class="sticky-call-name">Allan Vega</span>
+      <span class="sticky-call-title">New Construction Specialist</span>
+    </div>
+    <a href="tel:+12818657146" data-track="sticky_call_bar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.5 12.5 19.79 19.79 0 0 1 1.15 3.88 2 2 0 0 1 3.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (281) 865-7146
+    </a>
+  </div>
 </div>
 
 <!-- Floating SMS button -->
