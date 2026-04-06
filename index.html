@@ -40,8 +40,9 @@ body{font-family:'Outfit',sans-serif;font-weight:300;background:var(--parchment)
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.045'/%3E%3C/svg%3E");pointer-events:none;z-index:9998;opacity:0.6;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(245,239,228,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,26,14,0.08);transition:background 0.3s,height 0.4s cubic-bezier(0.22,1,0.36,1),box-shadow 0.4s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(245,239,228,0.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,26,14,0.08);transition:background 0.3s,height 0.4s cubic-bezier(0.22,1,0.36,1),box-shadow 0.4s,transform 0.4s cubic-bezier(0.22,1,0.36,1);}
 nav.nav-scrolled{height:60px;box-shadow:0 8px 32px rgba(46,26,14,0.1);}
+nav.nav-hidden{transform:translateY(-100%);}
 .nav-logo{text-decoration:none;display:flex;align-items:center;gap:14px;}
 .nav-logo img{height:44px;width:auto;display:block;}
 .nav-logo-divider{width:1px;height:32px;background:rgba(46,26,14,0.18);flex-shrink:0;}
@@ -1194,10 +1195,20 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 const nav = document.getElementById('navbar');
 const heroSlideshow = document.querySelector('.hero-slideshow');
+let lastScrollY = 0;
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
   nav.style.background = y > 60 ? 'rgba(245,239,228,0.99)' : 'rgba(245,239,228,0.94)';
   nav.classList.toggle('nav-scrolled', y > 60);
+  // Hide nav on scroll down, reveal on scroll up
+  if (y > 120) {
+    const goingDown = y > lastScrollY;
+    nav.classList.toggle('nav-hidden', goingDown);
+    if (goingDown) navLinksList.classList.remove('open');
+  } else {
+    nav.classList.remove('nav-hidden');
+  }
+  lastScrollY = y;
   if (heroSlideshow && y < window.innerHeight && window.innerWidth > 768) {
     heroSlideshow.style.transform = 'translateY(' + (y * 0.35) + 'px)';
   } else if (heroSlideshow && window.innerWidth <= 768) {
