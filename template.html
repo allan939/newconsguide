@@ -8,11 +8,11 @@
 <meta property="og:description" content="Exclusive builder deals, live market stats, and expert guidance on new construction homes in Houston, TX. I work alongside top builders to find the best deals for buyers.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Allan Vega · Houston New Construction">
-<meta property="og:url" content="https://allan939.github.io/newconsguide/">
-<meta property="og:image" content="https://allan939.github.io/newconsguide/og-image.jpg">
+<meta property="og:url" content="https://allanvrealestate.com/">
+<meta property="og:image" content="https://allanvrealestate.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://allan939.github.io/newconsguide/og-image.jpg">
-<link rel="canonical" href="https://allan939.github.io/newconsguide/">
+<meta name="twitter:image" content="https://allanvrealestate.com/og-image.jpg">
+<link rel="canonical" href="https://allanvrealestate.com/">
 <meta name="twitter:title" content="Houston New Construction Homes | Allan Vega">
 <meta name="twitter:description" content="Exclusive builder deals, live market stats, and expert guidance on new construction homes in Houston, TX.">
 
@@ -356,6 +356,11 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .scta-close{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:none;border:none;color:rgba(245,239,228,0.35);font-size:1.5rem;cursor:pointer;line-height:1;padding:6px 8px;transition:color 0.2s;}
 .scta-close:hover{color:#F5EFE4;}
 @media(max-width:768px){
+  /* Mobile cleanup: keep one persistent CTA (call bar) to reduce clutter/lag */
+  #sticky-cta-bar,.sms-float,.nav-links .nav-cta-mobile,.hero-ctas .btn-outline{display:none!important;}
+  #exit-popup{display:none!important;}
+  body::before{display:none;}
+  nav,.nav-links{backdrop-filter:none;-webkit-backdrop-filter:none;}
   .scta-inner{flex-direction:column;padding:14px 16px 18px;gap:12px;align-items:stretch;}
   .scta-copy{text-align:center;}
   .scta-headline{white-space:normal;font-size:0.95rem;}
@@ -363,7 +368,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .scta-submit{width:100%;padding:14px;}
   .scta-success{justify-content:center;}
   .scta-close{top:12px;right:10px;transform:none;}
-  body.scta-active .sticky-call{display:none;}
+  body.scta-active .sticky-call{display:block;}
   /* Hide SMS float when CTA bar is open — prevents overlap */
   body.scta-active .sms-float{display:none;}
   /* Safe-area inset for notched iPhones */
@@ -607,7 +612,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   "name": "Allan Vega",
   "jobTitle": "New Construction Specialist",
   "telephone": "+12818657146",
-  "url": "https://allan939.github.io/newconsguide/",
+  "url": "https://allanvrealestate.com/",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Houston",
@@ -1456,10 +1461,11 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
   });
 });
 
-// Sticky CTA Bar — slides up after 400px scroll, dismissible for session
+// Sticky CTA Bar — desktop/tablet only; dismissible for session
 (function() {
   var bar = document.getElementById('sticky-cta-bar');
   if (!bar) return;
+  if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
   var STORAGE_KEY = 'scta_dismissed';
   if (sessionStorage.getItem(STORAGE_KEY)) return;
   var shown = false;
@@ -1515,10 +1521,11 @@ function submitStickyCTA(e) {
     });
 }
 
-// Exit-intent popup (desktop: fires on mouse leaving viewport top; mobile: fires on 60% scroll)
+// Exit-intent popup (desktop only to reduce mobile CTA noise/perf)
 (function() {
   var popup = document.getElementById('exit-popup');
   if (!popup) return;
+  if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
   var shown = false;
   var STORAGE_KEY = 'exit_popup_shown';
 

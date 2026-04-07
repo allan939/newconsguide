@@ -18,7 +18,7 @@ This repo now includes a GitHub Actions workflow that auto-deploys your static s
 2. Commit.
 3. Push to `work`.
 4. Wait ~1–3 minutes for the Actions run to complete.
-5. Refresh https://allan939.github.io/newconsguide/
+5. Refresh https://allanvrealestate.com/
 
 ## Notes
 - If deployment fails, check **Actions** tab logs in GitHub.
