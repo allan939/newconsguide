@@ -381,6 +381,8 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .scta-close{position:absolute;top:50%;right:14px;transform:translateY(-50%);background:none;border:none;color:rgba(245,239,228,0.35);font-size:1.5rem;cursor:pointer;line-height:1;padding:6px 8px;transition:color 0.2s;}
 .scta-close:hover{color:#F5EFE4;}
 @media(max-width:768px){
+  /* Mobile cleanup: keep one persistent CTA (call bar) to reduce clutter/lag */
+  #sticky-cta-bar,.sms-float,.nav-links .nav-cta-mobile,.hero-ctas .btn-outline{display:none!important;}
   .scta-inner{flex-direction:column;padding:14px 16px 18px;gap:12px;align-items:stretch;}
   .scta-copy{text-align:center;}
   .scta-headline{white-space:normal;font-size:0.95rem;}
@@ -388,7 +390,7 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .scta-submit{width:100%;padding:14px;}
   .scta-success{justify-content:center;}
   .scta-close{top:12px;right:10px;transform:none;}
-  body.scta-active .sticky-call{display:none;}
+  body.scta-active .sticky-call{display:block;}
   /* Hide SMS float when CTA bar is open — prevents overlap */
   body.scta-active .sms-float{display:none;}
   /* Safe-area inset for notched iPhones */
@@ -1579,10 +1581,11 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
   });
 });
 
-// Sticky CTA Bar — slides up after 400px scroll, dismissible for session
+// Sticky CTA Bar — desktop/tablet only; dismissible for session
 (function() {
   var bar = document.getElementById('sticky-cta-bar');
   if (!bar) return;
+  if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) return;
   var STORAGE_KEY = 'scta_dismissed';
   if (sessionStorage.getItem(STORAGE_KEY)) return;
   var shown = false;
