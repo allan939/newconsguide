@@ -9,6 +9,15 @@
 <title>Privacy Policy | Allan Vega · Houston New Construction</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23C1603A'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='serif' fill='%23FDFAF5'>A</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<!-- GA4 with Consent Mode v2 — defaults denied until user accepts -->
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
+<script>gtag('js',new Date());gtag('config','G-HTK9Z1G2RQ');</script>
+<!-- Meta Pixel loaded conditionally after consent -->
 <style>
 :root{
   --cream:#F5EFE4;--cream-dark:#EDE3D3;--parchment:#FAF6EF;
@@ -74,6 +83,14 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
 .footer-trec a{color:var(--sand);text-decoration:none;font-size:0.62rem;transition:color 0.2s;}
 .footer-trec a:hover{color:var(--terra-pale);}
 
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--brown);border-top:2px solid rgba(193,96,58,0.4);padding:16px 52px;display:none;align-items:center;justify-content:space-between;gap:24px;box-shadow:0 -4px 24px rgba(0,0,0,0.2);}
+.cookie-text{font-size:0.82rem;color:var(--sand-light);line-height:1.65;flex:1;}
+.cookie-text a{color:var(--terra-pale);text-decoration:underline;}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-decline{background:none;border:1px solid rgba(212,180,140,0.35);color:var(--sand-light);padding:9px 18px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;}
+.cookie-decline:hover{border-color:var(--sand-light);color:var(--white);}
+.cookie-accept{background:var(--terra);border:none;color:var(--white);padding:9px 22px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.cookie-accept:hover{background:var(--terra-dark);}
 @media(max-width:768px){
   nav{padding:0 20px;height:64px;}
   .nav-links{display:none;}
@@ -82,6 +99,8 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
   .policy-wrap{padding:44px 20px 72px;}
   .policy-contact-box{padding:18px 20px;}
   .policy-toc{padding:18px 20px;}
+  #cookie-banner{flex-direction:column;align-items:flex-start;padding:18px 20px;gap:14px;}
+  .cookie-btns{width:100%;justify-content:flex-end;}
 }
 </style>
 </head>
@@ -283,6 +302,22 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
     <a href="privacy-policy.html">Privacy Policy</a>
   </div>
 </footer>
+
+<script>
+var AV_CONSENT_KEY='av_cookie_consent';
+function avLoadMetaPixel(){if(typeof fbq!=='undefined')return;!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2075120536666616');fbq('track','PageView');}
+function avGrantConsent(){gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});avLoadMetaPixel();}
+function acceptCookies(){localStorage.setItem(AV_CONSENT_KEY,'accepted');document.getElementById('cookie-banner').style.display='none';avGrantConsent();}
+function declineCookies(){localStorage.setItem(AV_CONSENT_KEY,'declined');document.getElementById('cookie-banner').style.display='none';}
+(function(){var c=localStorage.getItem(AV_CONSENT_KEY);if(c==='accepted'){avGrantConsent();}else if(!c){document.getElementById('cookie-banner').style.display='flex';}})();
+</script>
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">We use cookies for analytics and advertising to help improve this site. <a href="privacy-policy.html">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accept All</button>
+  </div>
+</div>
 
 </body>
 </html>

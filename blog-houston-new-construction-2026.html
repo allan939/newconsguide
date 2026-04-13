@@ -29,29 +29,15 @@
   "mainEntityOfPage": "https://allan939.github.io/newconsguide/blog-houston-new-construction-2026.html"
 }
 </script>
-<!-- Meta (Facebook) Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','2075120536666616');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2075120536666616&ev=PageView&noscript=1"/></noscript>
-<!-- Google Analytics GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
+<!-- GA4 with Consent Mode v2 — defaults denied until user accepts -->
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','G-HTK9Z1G2RQ');
+gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
+<script>gtag('js',new Date());gtag('config','G-HTK9Z1G2RQ');</script>
+<!-- Meta Pixel loaded conditionally after consent -->
 <style>
 :root{
   --cream:#F5EFE4;--cream-dark:#EDE3D3;--parchment:#FAF6EF;
@@ -111,6 +97,21 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
 .footer-trec a{color:var(--sand);text-decoration:none;font-size:0.62rem;transition:color 0.2s;}
 .footer-trec a:hover{color:var(--terra-pale);}
 
+.related-articles{background:var(--cream-dark);padding:40px 32px;margin-top:52px;}
+.related-articles h3{font-family:'Fraunces',serif;font-size:1rem;font-weight:300;color:var(--brown);margin-bottom:18px;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{background:var(--parchment);padding:20px;text-decoration:none;display:block;transition:transform 0.2s;}
+.related-card:hover{transform:translateY(-2px);}
+.related-cat{display:block;font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:8px;}
+.related-title{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:300;color:var(--brown);line-height:1.35;}
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--brown);border-top:2px solid rgba(193,96,58,0.4);padding:16px 52px;display:none;align-items:center;justify-content:space-between;gap:24px;box-shadow:0 -4px 24px rgba(0,0,0,0.2);}
+.cookie-text{font-size:0.82rem;color:var(--sand-light);line-height:1.65;flex:1;}
+.cookie-text a{color:var(--terra-pale);text-decoration:underline;}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-decline{background:none;border:1px solid rgba(212,180,140,0.35);color:var(--sand-light);padding:9px 18px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;}
+.cookie-decline:hover{border-color:var(--sand-light);color:var(--white);}
+.cookie-accept{background:var(--terra);border:none;color:var(--white);padding:9px 22px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.cookie-accept:hover{background:var(--terra-dark);}
 @media(max-width:768px){
   nav{padding:0 20px;height:64px;}
   .nav-links{display:none;}
@@ -118,6 +119,10 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
   .article-header{padding:60px 20px 48px;}
   .article-body{padding:44px 20px 72px;}
   .article-cta{padding:22px 20px;}
+  .related-articles{padding:28px 20px;}
+  .related-grid{grid-template-columns:1fr;}
+  #cookie-banner{flex-direction:column;align-items:flex-start;padding:18px 20px;gap:14px;}
+  .cookie-btns{width:100%;justify-content:flex-end;}
 }
 </style>
 </head>
@@ -178,6 +183,20 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
     <a href="index.html#contact">Request your free Houston new construction game plan</a> — I'll map builders, incentives, and payment options side by side so you can compare with confidence.
   </div>
 
+  <div class="related-articles">
+    <h3>Related Articles</h3>
+    <div class="related-grid">
+      <a href="blog-builder-incentives-houston.html" class="related-card">
+        <span class="related-cat">Builder Incentives</span>
+        <span class="related-title">How to Maximize Builder Incentives in Houston</span>
+      </a>
+      <a href="blog-katy-vs-cypress-new-construction.html" class="related-card">
+        <span class="related-cat">Neighborhood Guide</span>
+        <span class="related-title">Katy vs Cypress for New Construction Homes</span>
+      </a>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -197,8 +216,52 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
   <div class="footer-trec">
     <a href="https://content.harstatic.com/pdf/TREC_CPN.pdf" target="_blank">Texas Real Estate Commission Consumer Protection Notice</a>
     <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=777820" target="_blank">Texas Real Estate Commission Information About Brokerage Services</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
   </div>
 </footer>
+
+<script>
+var AV_CONSENT_KEY = 'av_cookie_consent';
+function avLoadMetaPixel() {
+  if (typeof fbq !== 'undefined') return;
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','2075120536666616');
+  fbq('track','PageView');
+}
+function avGrantConsent() {
+  gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+  avLoadMetaPixel();
+}
+function acceptCookies() {
+  localStorage.setItem(AV_CONSENT_KEY,'accepted');
+  document.getElementById('cookie-banner').style.display='none';
+  avGrantConsent();
+}
+function declineCookies() {
+  localStorage.setItem(AV_CONSENT_KEY,'declined');
+  document.getElementById('cookie-banner').style.display='none';
+}
+(function() {
+  var c = localStorage.getItem(AV_CONSENT_KEY);
+  if (c === 'accepted') { avGrantConsent(); }
+  else if (!c) { document.getElementById('cookie-banner').style.display='flex'; }
+})();
+</script>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">We use cookies for analytics and advertising to help improve this site. <a href="privacy-policy.html">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accept All</button>
+  </div>
+</div>
 
 </body>
 </html>

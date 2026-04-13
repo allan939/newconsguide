@@ -604,6 +604,10 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* BLOG SECTION: full-width single column on mobile */
   .blog-cards{grid-template-columns:1fr;}
   .blog-card{padding:28px 24px;}
+
+  /* COOKIE BANNER: stack on mobile */
+  #cookie-banner{flex-direction:column;align-items:flex-start;padding:18px 20px;gap:14px;}
+  .cookie-btns{width:100%;justify-content:flex-end;}
 }
 
 /* BLOG SECTION */
@@ -620,6 +624,17 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .blog-card-link{display:inline-flex;align-items:center;gap:5px;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--terra);text-decoration:none;transition:gap 0.2s,color 0.2s;}
 .blog-card-link:hover{color:var(--terra-dark);gap:9px;}
 .blog-section-cta{margin-top:8px;}
+
+/* COOKIE CONSENT BANNER */
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--brown);border-top:2px solid rgba(193,96,58,0.4);padding:16px 52px;display:none;align-items:center;justify-content:space-between;gap:24px;box-shadow:0 -4px 24px rgba(0,0,0,0.2);}
+.cookie-text{font-size:0.82rem;color:var(--sand-light);line-height:1.65;flex:1;}
+.cookie-text a{color:var(--terra-pale);text-decoration:underline;transition:color 0.2s;}
+.cookie-text a:hover{color:var(--white);}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-decline{background:none;border:1px solid rgba(212,180,140,0.35);color:var(--sand-light);padding:9px 18px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;}
+.cookie-decline:hover{border-color:var(--sand-light);color:var(--white);}
+.cookie-accept{background:var(--terra);border:none;color:var(--white);padding:9px 22px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.cookie-accept:hover{background:var(--terra-dark);}
 </style>
 <script type="application/ld+json">
 {
@@ -689,32 +704,24 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 }
 </script>
 
-<!-- Meta (Facebook) Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','2075120536666616');
-fbq('track','PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2075120536666616&ev=PageView&noscript=1"/></noscript>
-<!-- End Meta Pixel -->
-
-<!-- Google Analytics GA4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
+<!-- Google Analytics GA4 with Consent Mode v2 — defaults denied until user accepts -->
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  analytics_storage:'denied',
+  ad_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
+<script>
 gtag('js',new Date());
 gtag('config','G-HTK9Z1G2RQ');
 </script>
-<!-- End GA4 -->
+<!-- Meta Pixel loaded conditionally after consent — see cookie consent JS at bottom -->
 </head>
 <body>
 
@@ -791,16 +798,10 @@ gtag('config','G-HTK9Z1G2RQ');
 <section class="hero">
   <div class="hero-slideshow">
     <div class="hero-slide" style="background-image:url('754287548.jpeg');"></div>
-    <div class="hero-slide" style="background-image:url('754881733.jpeg');"></div>
     <div class="hero-slide" style="background-image:url('757946320.jpeg');"></div>
-    <div class="hero-slide" style="background-image:url('743535176.jpeg');"></div>
     <div class="hero-slide" style="background-image:url('762400500.jpeg');"></div>
-    <div class="hero-slide" style="background-image:url('743179765.jpeg');"></div>
-    <div class="hero-slide" style="background-image:url('762396524.jpeg');"></div>
     <div class="hero-slide" style="background-image:url('744052384.jpeg');background-position:center 35%;"></div>
-    <div class="hero-slide" style="background-image:url('745277687.jpeg');background-position:center center;"></div>
     <div class="hero-slide" style="background-image:url('750025310.jpeg');background-position:center center;"></div>
-    <div class="hero-slide" style="background-image:url('750025325.jpeg');background-position:center center;"></div>
     <div class="hero-slide" style="background-image:url('753769423.jpeg');background-position:center center;"></div>
   </div>
   <div class="hero-overlay"></div>
@@ -1658,6 +1659,63 @@ function submitStickyCTA(e) {
     }, { passive: true });
   }
 })();
+
+// ── Cookie Consent ────────────────────────────────────────────────────────────
+var AV_CONSENT_KEY = 'av_cookie_consent';
+
+function avLoadMetaPixel() {
+  if (typeof fbq !== 'undefined') return; // already loaded
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','2075120536666616');
+  fbq('track','PageView');
+}
+
+function avGrantConsent() {
+  gtag('consent','update',{
+    analytics_storage:'granted',
+    ad_storage:'granted',
+    ad_user_data:'granted',
+    ad_personalization:'granted'
+  });
+  avLoadMetaPixel();
+}
+
+function acceptCookies() {
+  localStorage.setItem(AV_CONSENT_KEY,'accepted');
+  document.getElementById('cookie-banner').style.display='none';
+  avGrantConsent();
+}
+
+function declineCookies() {
+  localStorage.setItem(AV_CONSENT_KEY,'declined');
+  document.getElementById('cookie-banner').style.display='none';
+}
+
+(function() {
+  var c = localStorage.getItem(AV_CONSENT_KEY);
+  if (c === 'accepted') {
+    avGrantConsent();
+  } else if (!c) {
+    document.getElementById('cookie-banner').style.display='flex';
+  }
+})();
 </script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">We use cookies for analytics and advertising to help improve this site and measure what's working. <a href="privacy-policy.html">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accept All</button>
+  </div>
+</div>
+
 </body>
 </html>
