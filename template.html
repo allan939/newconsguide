@@ -600,7 +600,26 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   /* FOOTER SOCIAL: larger touch targets */
   .footer-social-link{width:38px;height:38px;}
   .footer-social{gap:12px;margin-top:4px;}
+
+  /* BLOG SECTION: full-width single column on mobile */
+  .blog-cards{grid-template-columns:1fr;}
+  .blog-card{padding:28px 24px;}
 }
+
+/* BLOG SECTION */
+.blog-section{background:var(--cream-dark);padding:88px 24px;}
+.blog-section-inner{max-width:1100px;margin:0 auto;text-align:center;}
+.blog-section-title{margin-bottom:0;}
+.blog-section-sub{font-size:0.95rem;color:var(--brown-light);max-width:560px;margin:20px auto 52px;line-height:1.75;}
+.blog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:left;margin-bottom:44px;}
+.blog-card{background:var(--parchment);padding:32px;border:1px solid rgba(46,26,14,0.08);transition:transform 0.25s ease,box-shadow 0.25s ease;}
+.blog-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(46,26,14,0.1);}
+.blog-card-cat{display:inline-block;font-size:0.58rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:12px;}
+.blog-card-title{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:300;color:var(--brown);line-height:1.35;margin-bottom:12px;}
+.blog-card-desc{font-size:0.85rem;color:var(--brown-light);line-height:1.75;margin-bottom:20px;}
+.blog-card-link{display:inline-flex;align-items:center;gap:5px;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--terra);text-decoration:none;transition:gap 0.2s,color 0.2s;}
+.blog-card-link:hover{color:var(--terra-dark);gap:9px;}
+.blog-section-cta{margin-top:8px;}
 </style>
 <script type="application/ld+json">
 {
@@ -714,6 +733,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li class="nav-cta-mobile"><a href="#contact" data-track="nav_get_free_guide">Get Free Guide</a></li>
   </ul>
   <a href="#contact" class="btn-nav" data-track="nav_get_free_guide">Get Free Guide</a>
@@ -1216,6 +1236,39 @@ gtag('config','G-HTK9Z1G2RQ');
   </div>
 </section>
 
+<!-- BLOG SECTION -->
+<section id="blog" class="blog-section">
+  <div class="blog-section-inner">
+    <span class="section-eyebrow" style="color:var(--terra);">Resources &amp; Insights</span>
+    <h2 class="section-title blog-section-title">Houston New Construction <em>Blog</em></h2>
+    <div class="section-divider"></div>
+    <p class="blog-section-sub">Market updates, builder incentive strategies, and neighborhood comparisons to help you buy smart.</p>
+    <div class="blog-cards">
+      <article class="blog-card reveal reveal-delay-1">
+        <span class="blog-card-cat">Market Outlook</span>
+        <h3 class="blog-card-title">Houston New Construction Market Outlook for 2026</h3>
+        <p class="blog-card-desc">Inventory, pricing, builder incentives, and what buyers should prioritize to structure the best deal this year.</p>
+        <a href="blog-houston-new-construction-2026.html" class="blog-card-link" data-track="blog_houston_2026">Read Article →</a>
+      </article>
+      <article class="blog-card reveal reveal-delay-2">
+        <span class="blog-card-cat">Builder Incentives</span>
+        <h3 class="blog-card-title">How to Maximize Builder Incentives in Houston</h3>
+        <p class="blog-card-desc">A practical framework for comparing rate buydowns, lender credits, and closing cost support side by side.</p>
+        <a href="blog-builder-incentives-houston.html" class="blog-card-link" data-track="blog_builder_incentives">Read Article →</a>
+      </article>
+      <article class="blog-card reveal reveal-delay-3">
+        <span class="blog-card-cat">Neighborhood Guide</span>
+        <h3 class="blog-card-title">Katy vs Cypress for New Construction Homes</h3>
+        <p class="blog-card-desc">Two of Houston's top new construction submarkets compared — schools, taxes, commute, pricing, and buyer fit.</p>
+        <a href="blog-katy-vs-cypress-new-construction.html" class="blog-card-link" data-track="blog_katy_cypress">Read Article →</a>
+      </article>
+    </div>
+    <div class="blog-section-cta">
+      <a href="blog.html" class="btn-outline" data-track="blog_view_all">View All Articles</a>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-logo">
     <img src="AskOzzie Team White Logo.png" alt="AskOzzie Real Estate Team × AEA Realty">
@@ -1238,6 +1291,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <li><a href="#process">How I Work</a></li>
     <li><a href="#search">Search Homes</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2026 Allan Vega · AEA Realty · The Ask Ozzie Team · Houston, TX</div>
