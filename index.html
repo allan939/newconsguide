@@ -610,65 +610,121 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .cookie-btns{width:100%;justify-content:flex-end;}
 }
 
-/* ── MOBILE GRAPHICS v6 ─────────────────────────────────────
-   Visual polish: larger photo, terra accents, stronger contrast
+/* ── MOBILE OVERHAUL v7 ─────────────────────────────────────
+   Comprehensive professional polish — single authoritative block
+   Fixes: hero desc wall-of-text, about photo, process steps,
+   testimonials, community cards, consistent spacing rhythm
    ─────────────────────────────────────────────────────────── */
 @media(max-width:768px){
 
-  /* HERO: Stronger bottom gradient → text always legible over any photo */
-  .hero-overlay{background:linear-gradient(175deg,rgba(20,10,4,0.60) 0%,rgba(20,10,4,0.30) 45%,rgba(20,10,4,0.85) 100%);}
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero{padding:88px 20px 72px;min-height:100svh;}
+  .hero-overlay{background:linear-gradient(180deg,rgba(20,10,4,0.52) 0%,rgba(20,10,4,0.28) 42%,rgba(20,10,4,0.86) 100%);}
+  .hero h1{font-size:clamp(2.8rem,12vw,4.2rem);line-height:0.92;letter-spacing:-0.02em;}
+  .hero-sub{font-size:1.05rem;color:rgba(253,250,245,0.88);margin-bottom:32px;letter-spacing:0.01em;}
+  .hero-desc{display:none;}  /* Wall of text kills hero impact on mobile — headline + CTA carry it */
+  .hero-ctas .btn-primary{padding:19px 32px;font-size:0.9rem;letter-spacing:0.08em;}
+  .hero-phone{font-size:0.7rem;margin-top:14px;}
 
-  /* STATS: Proper cell dividers on 2×2 grid */
-  .stats-grid{gap:0;background:none;}
-  .stat-card{border-bottom:1px solid rgba(255,255,255,0.06);}
-  .stat-card:nth-child(odd){border-right:1px solid rgba(255,255,255,0.06);}
+  /* ── MYTH / WHY SECTION ───────────────────────────────── */
+  .myth-section{padding:52px 20px;}
+  .myth-title{font-size:clamp(1.5rem,6vw,2rem);line-height:1.25;margin-bottom:28px;}
+  .myth-grid{gap:10px;}
+  .myth-card{padding:22px 20px;border-left:3px solid transparent;}
+  .myth-card--highlight{border-left-color:var(--terra);background:rgba(193,96,58,0.06);}
+  .myth-icon{font-size:1.2rem;margin-bottom:10px;}
+  .myth-card h3{font-size:0.97rem;margin-bottom:8px;}
+  .myth-card p{font-size:0.82rem;line-height:1.75;}
+
+  /* ── STATS ────────────────────────────────────────────── */
+  .stats-section{padding:52px 20px;}
+  .stats-grid{gap:0;background:rgba(255,255,255,0.04);grid-template-columns:repeat(2,1fr);}
+  .stat-card{padding:30px 16px;border:none;border-bottom:1px solid rgba(255,255,255,0.05);}
+  .stat-card:nth-child(odd){border-right:1px solid rgba(255,255,255,0.05);}
   .stat-card:nth-child(3),.stat-card:nth-child(4){border-bottom:none;}
+  .stat-number{font-size:2.8rem;letter-spacing:-0.02em;line-height:1;}
+  .stat-label{font-size:0.6rem;letter-spacing:0.14em;margin-bottom:8px;}
+  .stat-note{font-size:0.7rem;}
+  .stat-trend{font-size:0.6rem;padding:5px 10px;}
 
-  /* ABOUT: Full-width editorial portrait (was 100×100 circle) */
-  .about-section{align-items:flex-start;}
+  /* ── PROCESS ──────────────────────────────────────────── */
+  .process-section{padding:52px 20px;}
+  .process-grid{gap:0;max-width:600px;margin:0 auto;}
+  .process-card{
+    background:none!important;border:none!important;
+    border-left:3px solid var(--terra)!important;
+    padding:18px 0 18px 20px!important;
+    box-shadow:none!important;margin-bottom:2px;
+  }
+  .process-step{
+    font-family:'Outfit',sans-serif;font-size:0.58rem;font-weight:700;
+    letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--terra);margin-bottom:6px;line-height:1;
+  }
+  .process-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;color:var(--brown);margin-bottom:7px;}
+  .process-desc{font-size:0.84rem;line-height:1.78;color:var(--brown-mid);}
+
+  /* ── ABOUT ────────────────────────────────────────────── */
+  .about-section{padding:0!important;gap:0!important;align-items:flex-start;}
+  .about-image{width:100%;}
   .about-image-box{
-    width:100%;
-    max-width:none;
-    height:260px;
-    aspect-ratio:auto;
-    border-radius:0;
-    border:none;
-    margin:0 0 32px;
-    overflow:hidden;
-    position:relative;
+    width:100%;max-width:none;height:280px;aspect-ratio:auto;
+    border-radius:0;border:none;margin:0;overflow:hidden;position:relative;
   }
   .about-image-box::before{
-    content:'';
-    position:absolute;
-    bottom:0;left:0;right:0;
-    height:50%;
-    background:linear-gradient(to top,rgba(46,26,14,0.65),transparent);
-    z-index:1;
-    pointer-events:none;
+    content:'';position:absolute;bottom:0;left:0;right:0;height:50%;
+    background:linear-gradient(to top,rgba(46,26,14,0.70),transparent);
+    z-index:1;pointer-events:none;
   }
   .about-image-box::after{display:none;}
   .about-image-box img{object-position:center 20%;}
+  .about-content{padding:32px 20px 52px;}
+  .about-content p:not(:first-of-type){display:none;}  /* Show only lead paragraph — keep page scannable */
+  .about-content p{font-size:0.88rem;line-height:1.85;margin-bottom:20px;}
+  .about-content h2{font-size:clamp(1.9rem,7vw,2.6rem);margin-bottom:16px;}
+  .about-credentials{gap:20px 32px;margin:24px 0 28px;flex-wrap:wrap;}
+  .cred-num{font-size:1.9rem;}
+  .cred-label{font-size:0.58rem;}
 
-  /* PROCESS: Terra left-stripe replaces flat top border */
-  .process-card{
-    border-top:none!important;
-    border-left:3px solid var(--terra)!important;
-    padding:20px 0 20px 18px!important;
-    margin-bottom:4px;
+  /* ── TESTIMONIALS ─────────────────────────────────────── */
+  .testimonials-section{padding:52px 20px;text-align:left;}
+  .testimonials-grid{gap:0;max-width:600px;margin:0 auto;}
+  .testimonial-card{
+    background:none!important;border:none!important;box-shadow:none!important;
+    border-top:1px solid rgba(46,26,14,0.12)!important;padding:24px 0!important;
   }
+  .quote-mark{font-size:2.4rem;color:var(--terra);opacity:0.55;line-height:1;margin-bottom:6px;}
+  .testimonial-text{font-size:0.95rem;line-height:1.75;font-style:italic;}
+  .testimonial-author{font-size:0.68rem;letter-spacing:0.12em;margin-top:14px;}
+  .testimonial-detail{font-size:0.68rem;margin-top:3px;}
 
-  /* MYTH: Accent border on highlight card */
-  .myth-card{border-left:3px solid transparent;padding-left:20px;}
-  .myth-card--highlight{border-left-color:var(--terra);}
+  /* ── COMMUNITIES ──────────────────────────────────────── */
+  .communities-section{padding:52px 20px;}
+  .community-card{padding:22px 20px;}
+  .community-name{font-size:1.3rem;}
+  .community-range{font-size:0.68rem;margin-bottom:12px;}
+  .community-note{display:none;}  /* Hidden on mobile — compact scannable cards */
+  .community-tags{margin-bottom:10px;gap:5px;}
+  .community-tag{font-size:0.54rem;padding:3px 8px;background:rgba(193,96,58,0.08);color:var(--terra);}
 
-  /* BLOG CARDS: Terra top-bar accent matching blog post card style */
-  .blog-card{border-top:3px solid var(--terra);padding-top:28px;}
+  /* ── BLOG SECTION ─────────────────────────────────────── */
+  .blog-section{padding:52px 20px;}
+  .blog-cards{gap:14px;}
+  .blog-card{border-top:3px solid var(--terra)!important;padding:24px 20px!important;}
+  .blog-card-title{font-size:1.05rem;}
+  .blog-card-desc{font-size:0.82rem;}
 
-  /* TESTIMONIALS: Terra quote mark */
-  .quote-mark{color:var(--terra);opacity:0.5;font-size:2.8rem;}
+  /* ── CONTACT ──────────────────────────────────────────── */
+  .cta-section{padding:52px 20px 140px;}
+  .cta-section h2{font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.1;}
 
-  /* COMMUNITY: Terra-tinted tag pills */
-  .community-tag{background:rgba(193,96,58,0.08);color:var(--terra);}
+  /* ── FOOTER ───────────────────────────────────────────── */
+  footer{padding:44px 20px 32px;}
+  .footer-logo-name{font-size:1.1rem;}
+  .footer-logo-meta{font-size:0.6rem;line-height:1.6;}
+  .footer-links{gap:8px 20px;}
+  .footer-links a{font-size:0.62rem;}
+  .footer-copy{font-size:0.62rem;}
 }
 
 /* BLOG SECTION */
