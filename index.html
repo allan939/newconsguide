@@ -610,6 +610,67 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
   .cookie-btns{width:100%;justify-content:flex-end;}
 }
 
+/* ── MOBILE GRAPHICS v6 ─────────────────────────────────────
+   Visual polish: larger photo, terra accents, stronger contrast
+   ─────────────────────────────────────────────────────────── */
+@media(max-width:768px){
+
+  /* HERO: Stronger bottom gradient → text always legible over any photo */
+  .hero-overlay{background:linear-gradient(175deg,rgba(20,10,4,0.60) 0%,rgba(20,10,4,0.30) 45%,rgba(20,10,4,0.85) 100%);}
+
+  /* STATS: Proper cell dividers on 2×2 grid */
+  .stats-grid{gap:0;background:none;}
+  .stat-card{border-bottom:1px solid rgba(255,255,255,0.06);}
+  .stat-card:nth-child(odd){border-right:1px solid rgba(255,255,255,0.06);}
+  .stat-card:nth-child(3),.stat-card:nth-child(4){border-bottom:none;}
+
+  /* ABOUT: Full-width editorial portrait (was 100×100 circle) */
+  .about-section{align-items:flex-start;}
+  .about-image-box{
+    width:100%;
+    max-width:none;
+    height:260px;
+    aspect-ratio:auto;
+    border-radius:0;
+    border:none;
+    margin:0 0 32px;
+    overflow:hidden;
+    position:relative;
+  }
+  .about-image-box::before{
+    content:'';
+    position:absolute;
+    bottom:0;left:0;right:0;
+    height:50%;
+    background:linear-gradient(to top,rgba(46,26,14,0.65),transparent);
+    z-index:1;
+    pointer-events:none;
+  }
+  .about-image-box::after{display:none;}
+  .about-image-box img{object-position:center 20%;}
+
+  /* PROCESS: Terra left-stripe replaces flat top border */
+  .process-card{
+    border-top:none!important;
+    border-left:3px solid var(--terra)!important;
+    padding:20px 0 20px 18px!important;
+    margin-bottom:4px;
+  }
+
+  /* MYTH: Accent border on highlight card */
+  .myth-card{border-left:3px solid transparent;padding-left:20px;}
+  .myth-card--highlight{border-left-color:var(--terra);}
+
+  /* BLOG CARDS: Terra top-bar accent matching blog post card style */
+  .blog-card{border-top:3px solid var(--terra);padding-top:28px;}
+
+  /* TESTIMONIALS: Terra quote mark */
+  .quote-mark{color:var(--terra);opacity:0.5;font-size:2.8rem;}
+
+  /* COMMUNITY: Terra-tinted tag pills */
+  .community-tag{background:rgba(193,96,58,0.08);color:var(--terra);}
+}
+
 /* BLOG SECTION */
 .blog-section{background:var(--cream-dark);padding:88px 24px;}
 .blog-section-inner{max-width:1100px;margin:0 auto;text-align:center;}
