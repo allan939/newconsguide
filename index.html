@@ -283,6 +283,58 @@ footer{padding:44px 52px;background:var(--brown);display:flex;align-items:center
 .myth-section{position:relative;overflow:hidden;}
 .myth-section::after{content:'';position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(193,96,58,0.08) 0%,transparent 65%);pointer-events:none;}
 
+/* ── LUXURY v2 ───────────────────────────────────────────────
+   Gradient text · animated hero glow · premium card depth
+   ─────────────────────────────────────────────────────────── */
+
+/* GRADIENT TEXT on all italic em accents */
+.section-title em,.myth-title em,.cta-section h2 em{
+  background:linear-gradient(135deg,var(--terra) 0%,#d4784c 45%,var(--terra-pale) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;color:transparent;
+}
+/* Dark-bg sections need lighter gradient */
+.stats-section .section-title em,.hero h1 em,.about-content h2 em{
+  background:linear-gradient(135deg,var(--terra-pale) 0%,var(--sand-light) 60%,rgba(237,213,200,0.7) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;color:transparent;text-shadow:none;
+}
+
+/* HERO: Animated warm glow pulse + gradient CTA */
+@keyframes heroGlow{0%,100%{opacity:0.5;}50%{opacity:1;}}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 35%,rgba(193,96,58,0.14) 0%,transparent 70%);z-index:1;animation:heroGlow 7s ease-in-out infinite;pointer-events:none;}
+.hero .btn-primary{background:linear-gradient(135deg,var(--terra-dark) 0%,var(--terra) 55%,#d4703e 100%);box-shadow:0 4px 24px rgba(193,96,58,0.4);}
+.hero .btn-primary:hover{background:linear-gradient(135deg,var(--terra) 0%,#d4703e 100%);box-shadow:0 8px 36px rgba(193,96,58,0.55);}
+
+/* STATS: Darker premium background */
+.stats-section{background:linear-gradient(160deg,#1e0c05 0%,var(--brown) 40%,#1a0904 100%);}
+
+/* PROCESS CARDS: Premium elevated treatment */
+.process-card{background:linear-gradient(145deg,var(--parchment) 0%,var(--cream) 100%);border:none;box-shadow:0 4px 24px rgba(46,26,14,0.07);}
+.process-step{
+  background:linear-gradient(135deg,var(--terra) 0%,var(--terra-pale) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;font-size:3rem;font-weight:300;line-height:1;margin-bottom:18px;
+}
+
+/* TESTIMONIALS: Large decorative background quote mark */
+.testimonials-section{position:relative;overflow:hidden;}
+.testimonials-section::before{content:'\201C';font-family:'Fraunces',serif;font-size:36rem;line-height:0.75;color:rgba(46,26,14,0.028);position:absolute;top:-20px;left:-20px;pointer-events:none;font-weight:300;z-index:0;}
+.testimonials-grid{position:relative;z-index:1;}
+
+/* MYTH CARDS: Gradient background + better shadow */
+.myth-card{background:linear-gradient(145deg,var(--parchment) 0%,var(--cream) 100%);box-shadow:0 4px 20px rgba(46,26,14,0.06);}
+.myth-card--highlight{background:linear-gradient(145deg,rgba(193,96,58,0.07) 0%,var(--parchment) 100%);border-color:rgba(193,96,58,0.28);box-shadow:0 8px 32px rgba(193,96,58,0.1);}
+
+/* COMMUNITY CARDS: Premium gradient bg */
+.community-card{background:linear-gradient(145deg,var(--parchment) 0%,var(--cream) 100%);box-shadow:0 4px 16px rgba(46,26,14,0.06);}
+
+/* FOOTER: Deeper gradient */
+footer{background:linear-gradient(175deg,#1e0c05 0%,var(--brown) 60%);}
+
+/* NAV: Gradient border on scroll */
+nav.nav-scrolled{border-bottom:1px solid rgba(193,96,58,0.2);box-shadow:0 8px 32px rgba(46,26,14,0.1);}
+
 @media(max-width:768px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
