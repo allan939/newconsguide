@@ -335,6 +335,103 @@ footer{background:linear-gradient(175deg,#1e0c05 0%,var(--brown) 60%);}
 /* NAV: Gradient border on scroll */
 nav.nav-scrolled{border-bottom:1px solid rgba(193,96,58,0.2);box-shadow:0 8px 32px rgba(46,26,14,0.1);}
 
+/* ── LUXURY v3 ───────────────────────────────────────────────
+   Dark glass sections · animated glow · Base44-level premium
+   ─────────────────────────────────────────────────────────── */
+
+/* HERO: Pulsing bottom glow line + stronger overlay radial */
+@keyframes heroBorderPulse{0%,100%{opacity:0.45;}55%{opacity:1;}}
+.hero::after{animation:heroBorderPulse 4s ease-in-out infinite;}
+
+/* PROCESS SECTION: Flip to dark glass */
+.process-section{background:linear-gradient(165deg,#160902 0%,var(--brown) 45%,#1a0904 100%);}
+.process-section .section-title{color:var(--cream);}
+.process-section .section-eyebrow{color:var(--sand);}
+.process-section>p{color:rgba(245,239,228,0.5)!important;}
+.process-section>p a{color:var(--terra-pale)!important;}
+.process-section::before{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;background:radial-gradient(circle,rgba(193,96,58,0.12) 0%,transparent 65%);pointer-events:none;}
+.process-card{
+  background:rgba(255,255,255,0.04);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.09);
+  box-shadow:0 8px 40px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.process-card:hover{
+  background:rgba(255,255,255,0.08);
+  border-color:rgba(193,96,58,0.5);
+  box-shadow:0 28px 64px rgba(0,0,0,0.45),0 0 0 1px rgba(193,96,58,0.2),inset 0 1px 0 rgba(255,255,255,0.1);
+}
+.process-title{color:var(--cream);}
+.process-desc{color:rgba(245,239,228,0.62);}
+
+/* TESTIMONIALS SECTION: Flip to dark glass */
+.testimonials-section{background:linear-gradient(160deg,#1a0904 0%,var(--brown) 50%,#160902 100%);}
+.testimonials-section .section-title{color:var(--cream);}
+.testimonials-section .section-eyebrow{color:var(--sand);}
+.testimonials-section::before{color:rgba(245,239,228,0.015);}
+.testimonial-card{
+  background:rgba(255,255,255,0.04)!important;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.09)!important;
+  box-shadow:0 8px 40px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.06)!important;
+}
+.testimonial-card:hover{
+  background:rgba(255,255,255,0.08)!important;
+  border-color:rgba(193,96,58,0.45)!important;
+  box-shadow:0 24px 60px rgba(0,0,0,0.45)!important;
+}
+.testimonial-text{color:rgba(245,239,228,0.88);}
+.quote-mark{color:var(--terra-pale);opacity:0.65;}
+.testimonial-author{color:var(--terra-pale);}
+.testimonial-detail{color:var(--sand);}
+
+/* BLOG SECTION: Flip to dark glass */
+.blog-section{background:linear-gradient(160deg,#160902 0%,var(--brown) 55%,#1a0904 100%);}
+.blog-section-sub{color:rgba(245,239,228,0.55);}
+.blog-card{
+  background:rgba(255,255,255,0.04)!important;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.09)!important;
+  box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+.blog-card:hover{
+  background:rgba(255,255,255,0.08)!important;
+  border-color:rgba(193,96,58,0.45)!important;
+  box-shadow:0 24px 56px rgba(0,0,0,0.45);
+  transform:translateY(-4px);
+}
+.blog-card-title{color:var(--cream);}
+.blog-card-desc{color:rgba(245,239,228,0.6);}
+
+/* CONTACT CARD: Subtle living glow animation */
+@keyframes cardGlow{
+  0%,100%{box-shadow:0 32px 96px rgba(46,26,14,0.18),0 4px 16px rgba(46,26,14,0.06);}
+  50%{box-shadow:0 40px 100px rgba(46,26,14,0.22),0 4px 20px rgba(46,26,14,0.08),0 0 0 2px rgba(193,96,58,0.08);}
+}
+.contact-card{animation:cardGlow 5s ease-in-out infinite;}
+
+/* MYTH CARDS: Better hover lift */
+.myth-card{transition:all 0.4s cubic-bezier(0.22,1,0.36,1);}
+.myth-card:hover{transform:translateY(-3px);box-shadow:0 20px 52px rgba(46,26,14,0.13);border-color:rgba(193,96,58,0.28);}
+
+/* COMMUNITY CARDS: Glass + lift on hover */
+.community-card:hover{transform:translateY(-3px);}
+
+/* FAQ: Premium open state */
+.faq-item.open{box-shadow:0 8px 32px rgba(46,26,14,0.08);border-color:rgba(193,96,58,0.28);}
+
+/* MOBILE: Fix text + border colors for dark-flipped sections */
+@media(max-width:768px){
+  /* Process dark section on mobile */
+  .process-desc{color:rgba(245,239,228,0.62);}
+  .process-title{color:var(--cream);}
+  /* Testimonials dark section on mobile */
+  .testimonial-card{border-top-color:rgba(255,255,255,0.1)!important;}
+  /* Blog dark section on mobile */
+  .blog-card-title{color:var(--cream);}
+  .blog-card-desc{color:rgba(245,239,228,0.6);}
+}
+
 @media(max-width:768px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
