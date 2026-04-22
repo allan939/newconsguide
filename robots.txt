@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://allan939.github.io/newconsguide/sitemap.xml
+Sitemap: https://allanvrealestate.com/sitemap.xml
