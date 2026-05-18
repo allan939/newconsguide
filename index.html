@@ -349,8 +349,40 @@ footer{padding:60px 52px 36px;background:var(--dark);border-top:1px solid var(--
 /* MYTH CARDS: Subtle hover lift */
 .myth-card{transition:all 0.4s cubic-bezier(0.22,1,0.36,1);}
 .myth-card:hover{transform:translateY(-2px);}
-/* COMMUNITY CARDS: Subtle hover lift */
+/* COMMUNITY CARDS: Subtle hover lift + name highlight */
 .community-card:hover{transform:translateY(-2px);}
+.community-name{transition:color 0.3s;}
+.community-card:hover .community-name{color:var(--veridian);}
+
+/* ── VISUAL UPGRADE PASS 2 ─────────────────────────────────────────────────
+   Ghost numbers · gradient stats · eyebrow lines · circular icons
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* SECTION EYEBROW: small decorative line prefix */
+.section-eyebrow{display:flex;align-items:center;gap:10px;}
+.section-eyebrow::before{content:'';display:block;width:18px;height:1px;background:currentColor;opacity:0.45;flex-shrink:0;}
+
+/* SECTION DIVIDER LINE: gradient fade */
+.section-line{background:linear-gradient(90deg,var(--obsidian) 0%,transparent 100%) !important;}
+.stats-section .section-line,.testimonials-section .section-line,.about-content .section-line,.cta-section .section-line{background:linear-gradient(90deg,rgba(253,252,249,0.35) 0%,transparent 100%) !important;}
+
+/* STAT NUMBERS: warm off-white → gold gradient */
+.stat-number{background:linear-gradient(150deg,var(--off-white) 20%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;}
+
+/* PROCESS CARDS: large ghost watermark step number */
+.process-grid{counter-reset:step;}
+.process-card{counter-increment:step;position:relative;overflow:hidden;}
+.process-card::after{content:counter(step,decimal-leading-zero);position:absolute;bottom:-24px;right:14px;font-family:'Playfair Display',Georgia,serif;font-size:8rem;font-weight:700;color:rgba(26,26,24,0.042);line-height:1;pointer-events:none;transition:color 0.4s cubic-bezier(0.22,1,0.36,1),transform 0.45s cubic-bezier(0.22,1,0.36,1);z-index:0;}
+.process-card:hover::after{color:rgba(45,62,48,0.08);transform:translateY(-6px);}
+.process-card-top,.process-title,.process-desc{position:relative;z-index:1;}
+
+/* MYTH ICONS: circular badge with hover glow */
+.myth-icon{border-radius:50%;transition:border-color 0.35s,background 0.35s,box-shadow 0.35s;}
+.myth-card:hover .myth-icon{border-color:rgba(45,62,48,0.35);background:rgba(45,62,48,0.05);box-shadow:0 0 0 4px rgba(45,62,48,0.06);}
+
+/* FAQ: open question inherits veridian accent */
+.faq-item.open .faq-q{color:var(--veridian);}
+.faq-item.open{background:rgba(45,62,48,0.02);}
 
 .widget-gallery-container .grid-view-item:nth-child(n+4){display:none!important;}
 /* HAMBURGER MENU */
@@ -445,6 +477,7 @@ footer{padding:60px 52px 36px;background:var(--dark);border-top:1px solid var(--
   .process-grid{grid-template-columns:1fr;}
   .process-card{padding:28px 20px;}
   .process-card:hover{transform:none !important;}
+  .process-card:hover::after{transform:none !important;}
   /* Search */
   .search-section{padding:52px 20px;}
   /* About */
