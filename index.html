@@ -69,13 +69,13 @@ h1,h2,h3{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-weight:800;}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(255,255,255,0.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:height 0.3s ease,box-shadow 0.3s ease,transform 0.4s ease;}
 nav.nav-scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,0.07);}
 nav.nav-hidden{transform:translateY(-100%);}
-.nav-logo{text-decoration:none;display:flex;align-items:center;gap:10px;}
-.nav-logo-icon{width:34px;height:34px;background:var(--veridian);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.nav-logo-icon img{height:22px;width:auto;display:block;filter:brightness(0) invert(1);}
-.nav-logo-divider{width:1px;height:22px;background:var(--border-strong);flex-shrink:0;margin:0 2px;}
-.nav-logo-name{display:flex;flex-direction:column;line-height:1.2;}
-.nav-logo-name strong{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:0.9rem;font-weight:700;letter-spacing:-0.01em;color:var(--text-1);}
-.nav-logo-name small{font-family:'Inter',system-ui,sans-serif;font-size:0.68rem;font-weight:400;letter-spacing:0;color:var(--text-3);margin-top:1px;}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:12px;}
+.nav-logo-icon{width:44px;height:44px;background:var(--veridian);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(45,62,48,0.25);}
+.nav-logo-icon img{height:28px;width:auto;display:block;filter:brightness(0) invert(1);}
+.nav-logo-divider{width:1px;height:26px;background:var(--border-strong);flex-shrink:0;margin:0 2px;}
+.nav-logo-name{display:flex;flex-direction:column;line-height:1.25;}
+.nav-logo-name strong{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:1rem;font-weight:800;letter-spacing:-0.02em;color:var(--text-1);}
+.nav-logo-name small{font-family:'Inter',system-ui,sans-serif;font-size:0.7rem;font-weight:400;letter-spacing:0;color:var(--text-2);margin-top:2px;}
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{font-family:'Inter',system-ui,sans-serif;color:var(--text-2);text-decoration:none;font-size:0.875rem;font-weight:400;letter-spacing:0;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text-1);}
@@ -427,9 +427,9 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   nav{height:60px;padding:0 20px;}
   nav.nav-scrolled{height:60px;box-shadow:0 2px 16px rgba(0,0,0,0.08);}
   .nav-links{top:60px;}
-  .nav-logo-icon{width:30px;height:30px;}
-  .nav-logo-icon img{height:18px;}
-  .nav-logo-name strong{font-size:0.85rem;}
+  .nav-logo-icon{width:36px;height:36px;border-radius:8px;}
+  .nav-logo-icon img{height:22px;}
+  .nav-logo-name strong{font-size:0.9rem;}
   .nav-logo-name small{display:none;}
   /* Hero */
   .hero-headline{font-size:clamp(2.6rem,10vw,4rem);}
