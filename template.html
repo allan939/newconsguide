@@ -185,6 +185,12 @@ nav.nav-hidden{transform:translateY(-100%);}
 .process-step{font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;color:var(--text-3);text-transform:uppercase;}
 .process-title{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:1.1rem;font-weight:700;color:var(--text-1);margin-bottom:10px;line-height:1.3;}
 .process-desc{font-size:0.875rem;line-height:1.7;color:var(--text-2);}
+.process-right{display:flex;flex-direction:column;}
+.process-timeline{display:flex;align-items:flex-start;margin-bottom:28px;padding:20px 24px;background:var(--surface);border:1px solid var(--border);border-radius:16px;}
+.pt-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 auto;}
+.pt-node{width:34px;height:34px;border-radius:50%;background:var(--veridian);color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:0.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pt-label{font-family:'Inter',system-ui,sans-serif;font-size:0.67rem;font-weight:500;color:var(--text-2);text-align:center;max-width:68px;line-height:1.35;}
+.pt-connector{flex:1;height:2px;background:linear-gradient(90deg,var(--veridian) 0%,rgba(45,62,48,0.12) 100%);margin:17px 6px 0;border-radius:1px;}
 
 /* SEARCH */
 .search-section{padding:120px 52px;background:var(--bg);border-top:1px solid var(--border);text-align:center;}
@@ -506,6 +512,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .process-grid{grid-template-columns:1fr;gap:12px;}
   .process-card{padding:26px 22px;}
   .process-card:hover{transform:none !important;}
+  .process-timeline{display:none;}
   .process-intro-text{font-size:0.875rem;}
 
   /* ── SEARCH ── */
@@ -1020,38 +1027,61 @@ gtag('config','G-HTK9Z1G2RQ');
       <p class="process-intro-text">From first conversation to keys in hand — a proven system built around getting you the best home at the best terms. Every step is handled for you, at zero cost.</p>
       <a href="#contact" class="process-intro-link" data-track="process_consultation">Schedule a free call →</a>
     </div>
-    <div class="process-grid">
-      <div class="process-card reveal reveal-delay-1">
-        <div class="process-card-top">
-          <div class="process-icon">&#127968;</div>
-          <span class="process-step">01</span>
+    <div class="process-right">
+      <div class="process-timeline reveal reveal-delay-1">
+        <div class="pt-step">
+          <div class="pt-node">1</div>
+          <div class="pt-label">Free Consultation</div>
         </div>
-        <div class="process-title">Free Consultation</div>
-        <p class="process-desc">We talk about your budget, timeline, and the areas that interest you. No pressure, no commitment — just a conversation to understand what you're looking for.</p>
+        <div class="pt-connector"></div>
+        <div class="pt-step">
+          <div class="pt-node">2</div>
+          <div class="pt-label">Builder Access</div>
+        </div>
+        <div class="pt-connector"></div>
+        <div class="pt-step">
+          <div class="pt-node">3</div>
+          <div class="pt-label">I Negotiate for You</div>
+        </div>
+        <div class="pt-connector"></div>
+        <div class="pt-step">
+          <div class="pt-node">4</div>
+          <div class="pt-label">Keys in Hand</div>
+        </div>
       </div>
-      <div class="process-card reveal reveal-delay-2">
-        <div class="process-card-top">
-          <div class="process-icon">&#128273;</div>
-          <span class="process-step">02</span>
+      <div class="process-grid">
+        <div class="process-card reveal reveal-delay-1">
+          <div class="process-card-top">
+            <div class="process-icon">&#127968;</div>
+            <span class="process-step">01</span>
+          </div>
+          <div class="process-title">Free Consultation</div>
+          <p class="process-desc">We talk about your budget, timeline, and the areas that interest you. No pressure, no commitment — just a conversation to understand what you're looking for. Most buyers go from confused to clear in 15 minutes.</p>
         </div>
-        <div class="process-title">Builder Access</div>
-        <p class="process-desc">I connect you directly with the right builders and communities across Houston — including inventory homes and move-in ready options you won't find on your own.</p>
-      </div>
-      <div class="process-card reveal reveal-delay-3">
-        <div class="process-card-top">
-          <div class="process-icon">&#9878;&#65039;</div>
-          <span class="process-step">03</span>
+        <div class="process-card reveal reveal-delay-2">
+          <div class="process-card-top">
+            <div class="process-icon">&#128273;</div>
+            <span class="process-step">02</span>
+          </div>
+          <div class="process-title">Builder Access</div>
+          <p class="process-desc">I shortcut you to the 3–5 communities that actually fit your criteria — including inventory homes and move-in ready options you won't find searching on your own.</p>
         </div>
-        <div class="process-title">I Negotiate for You</div>
-        <p class="process-desc">Rate buydowns, closing cost credits, free upgrades — I work every available builder program to stretch your dollar as far as it can go.</p>
-      </div>
-      <div class="process-card reveal reveal-delay-4">
-        <div class="process-card-top">
-          <div class="process-icon">&#10003;</div>
-          <span class="process-step">04</span>
+        <div class="process-card reveal reveal-delay-3">
+          <div class="process-card-top">
+            <div class="process-icon">&#9878;&#65039;</div>
+            <span class="process-step">03</span>
+          </div>
+          <div class="process-title">I Negotiate for You</div>
+          <p class="process-desc">Rate buydowns, closing cost credits, free upgrades — I work every available builder program to stretch your dollar as far as it can go.</p>
         </div>
-        <div class="process-title">Keys in Hand</div>
-        <p class="process-desc">Contract review, inspections, final walkthrough — nothing slips through the cracks. My services are 100% free to you. The builder pays my commission.</p>
+        <div class="process-card reveal reveal-delay-4">
+          <div class="process-card-top">
+            <div class="process-icon">&#10003;</div>
+            <span class="process-step">04</span>
+          </div>
+          <div class="process-title">Keys in Hand</div>
+          <p class="process-desc">Contract review, inspections, final walkthrough — nothing slips through the cracks. My services are 100% free to you. The builder pays my commission.</p>
+        </div>
       </div>
     </div>
   </div>
