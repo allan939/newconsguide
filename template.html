@@ -259,6 +259,11 @@ nav.nav-hidden{transform:translateY(-100%);}
 .community-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
 .community-tag{font-family:'Inter',system-ui,sans-serif;font-size:0.7rem;font-weight:500;padding:3px 10px;border-radius:20px;background:rgba(45,62,48,0.07);color:var(--veridian);}
 .community-note{font-size:0.83rem;line-height:1.7;color:var(--text-2);}
+.community-best{font-family:'Inter',system-ui,sans-serif;font-size:0.78rem;font-weight:600;color:var(--veridian);margin-bottom:10px;line-height:1.4;font-style:italic;}
+.map-wrapper{max-width:1200px;margin:0 auto 52px;padding:28px 32px;background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;}
+.coverage-map{width:100%;height:auto;display:block;}
+.coverage-cta{max-width:1200px;margin:40px auto 0;text-align:center;padding:40px 48px;background:var(--surface);border:1px solid var(--border);border-radius:16px;}
+.coverage-cta-text{font-family:'Fraunces',Georgia,serif;font-size:1.2rem;color:var(--text-1);margin-bottom:24px;line-height:1.55;font-style:italic;}
 
 /* FAQ */
 .faq-section{background:var(--bg);padding:120px 52px;border-top:1px solid var(--border);}
@@ -273,8 +278,9 @@ nav.nav-hidden{transform:translateY(-100%);}
 .faq-icon{font-family:'Inter',system-ui,sans-serif;font-size:1rem;color:var(--text-3);flex-shrink:0;transition:transform 0.35s;}
 .faq-item.open .faq-icon{transform:rotate(45deg);color:var(--veridian);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height 0.45s ease,padding 0.45s ease;padding:0;}
-.faq-item.open .faq-a{max-height:300px;padding:0 0 22px;}
+.faq-item.open .faq-a{max-height:400px;padding:0 0 22px;}
 .faq-a p{font-size:0.875rem;color:var(--text-2);line-height:1.7;}
+.faq-a p strong{color:var(--text-1);font-weight:600;}
 
 /* CTA / CONTACT */
 .cta-section{padding:120px 52px;background:var(--dark);border-top:1px solid var(--line-dark);}
@@ -538,6 +544,9 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .communities-grid{grid-template-columns:1fr;gap:10px;}
   .community-card{padding:24px 20px;}
   .community-card:hover{transform:none !important;}
+  .map-wrapper{display:none;}
+  .coverage-cta{padding:28px 20px;}
+  .coverage-cta-text{font-size:1rem;}
 
   /* ── FAQ ── */
   .faq-section{padding:60px 20px;}
@@ -1231,10 +1240,47 @@ gtag('config','G-HTK9Z1G2RQ');
     <h2 class="section-title">I Know Every Corner of<br><em>Houston's New Construction Map</em></h2>
     <div class="section-line"></div>
   </div>
+  <div class="map-wrapper reveal">
+    <svg class="coverage-map" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Houston new construction corridors map">
+      <circle cx="350" cy="160" r="70" fill="none" stroke="rgba(45,62,48,0.1)" stroke-width="1" stroke-dasharray="3,5"/>
+      <line x1="350" y1="132" x2="350" y2="55" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <line x1="370" y1="140" x2="431" y2="79" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <line x1="378" y1="160" x2="465" y2="160" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <line x1="350" y1="188" x2="350" y2="275" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <line x1="330" y1="180" x2="269" y2="241" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <line x1="322" y1="160" x2="235" y2="160" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <line x1="330" y1="140" x2="269" y2="79" stroke="rgba(45,62,48,0.18)" stroke-width="1.5"/>
+      <circle cx="350" cy="160" r="28" fill="#2D3E30"/>
+      <text x="350" y="157" text-anchor="middle" fill="white" font-size="7.5" font-family="Inter,system-ui,sans-serif" font-weight="700" letter-spacing="0.08em">HOUSTON</text>
+      <text x="350" y="168" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="6" font-family="Inter,system-ui,sans-serif" letter-spacing="0.05em">HUB</text>
+      <circle cx="350" cy="55" r="10" fill="#2D3E30"/>
+      <text x="350" y="31" text-anchor="middle" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">The Woodlands</text>
+      <text x="350" y="43" text-anchor="middle" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Conroe · NORTH</text>
+      <circle cx="431" cy="79" r="10" fill="#2D3E30"/>
+      <text x="445" y="75" text-anchor="start" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">New Caney</text>
+      <text x="445" y="87" text-anchor="start" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Porter · NE</text>
+      <circle cx="465" cy="160" r="10" fill="#2D3E30"/>
+      <text x="479" y="156" text-anchor="start" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">Baytown</text>
+      <text x="479" y="168" text-anchor="start" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Crosby · EAST</text>
+      <circle cx="350" cy="275" r="10" fill="#2D3E30"/>
+      <text x="350" y="292" text-anchor="middle" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">Pearland</text>
+      <text x="350" y="304" text-anchor="middle" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Manvel · SOUTH</text>
+      <circle cx="269" cy="241" r="10" fill="#2D3E30"/>
+      <text x="255" y="237" text-anchor="end" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">Sugar Land</text>
+      <text x="255" y="249" text-anchor="end" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Missouri City · SW</text>
+      <circle cx="235" cy="160" r="10" fill="#C1603A"/>
+      <text x="221" y="156" text-anchor="end" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">Katy</text>
+      <text x="221" y="168" text-anchor="end" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Fulshear · WEST</text>
+      <circle cx="269" cy="79" r="10" fill="#2D3E30"/>
+      <text x="255" y="75" text-anchor="end" fill="#2D3E30" font-size="10.5" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-weight="700">Cypress</text>
+      <text x="255" y="87" text-anchor="end" fill="#5C3820" font-size="9" font-family="Inter,system-ui,sans-serif">&amp; Tomball · NW</text>
+    </svg>
+  </div>
   <div class="communities-grid">
     <div class="community-card reveal reveal-delay-1">
       <div class="community-dir">West Houston</div>
       <div class="community-name">Katy &amp; Fulshear</div>
+      <div class="community-best">Best for families wanting top-rated schools + master-planned amenities.</div>
       <div class="community-range">From the $290s to $700K+</div>
       <div class="community-tags">
         <span class="community-tag">KISD Schools</span>
@@ -1246,6 +1292,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-2">
       <div class="community-dir">Northwest Houston</div>
       <div class="community-name">Cypress &amp; Tomball</div>
+      <div class="community-best">Best for buyers who want Katy-quality at a more competitive price.</div>
       <div class="community-range">From the $270s to $550K+</div>
       <div class="community-tags">
         <span class="community-tag">CFISD Schools</span>
@@ -1257,6 +1304,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-3">
       <div class="community-dir">North Houston</div>
       <div class="community-name">The Woodlands &amp; Conroe</div>
+      <div class="community-best">Best for buyers wanting an established, polished suburban feel.</div>
       <div class="community-range">From the $320s to $800K+</div>
       <div class="community-tags">
         <span class="community-tag">Established Feel</span>
@@ -1268,6 +1316,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-4">
       <div class="community-dir">Northeast Houston</div>
       <div class="community-name">New Caney &amp; Porter</div>
+      <div class="community-best">Best for first-time buyers wanting the most affordable new builds.</div>
       <div class="community-range">From the $190s to $380K</div>
       <div class="community-tags">
         <span class="community-tag">Most Affordable</span>
@@ -1279,6 +1328,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-1">
       <div class="community-dir">South Houston</div>
       <div class="community-name">Pearland &amp; Manvel</div>
+      <div class="community-best">Best for Medical Center or Clear Lake commuters.</div>
       <div class="community-range">From the $290s to $550K+</div>
       <div class="community-tags">
         <span class="community-tag">Near Medical Center</span>
@@ -1290,6 +1340,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-2">
       <div class="community-dir">Southwest Houston</div>
       <div class="community-name">Sugar Land &amp; Missouri City</div>
+      <div class="community-best">Best for buyers prioritizing nationally ranked schools + long-term value.</div>
       <div class="community-range">From the $340s to $700K+</div>
       <div class="community-tags">
         <span class="community-tag">Fort Bend ISD</span>
@@ -1301,6 +1352,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-3">
       <div class="community-dir">East Houston</div>
       <div class="community-name">Baytown</div>
+      <div class="community-best">Best for energy-sector workers or buyers wanting East I-10 access.</div>
       <div class="community-range">From the $200s to $350K</div>
       <div class="community-tags">
         <span class="community-tag">Goose Creek CISD</span>
@@ -1312,6 +1364,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="community-card reveal reveal-delay-4">
       <div class="community-dir">East Houston</div>
       <div class="community-name">Crosby</div>
+      <div class="community-best">Best for buyers wanting the most space — and the most peace — per dollar.</div>
       <div class="community-range">From the $240s to $320K</div>
       <div class="community-tags">
         <span class="community-tag">Crosby ISD</span>
@@ -1320,6 +1373,10 @@ gtag('config','G-HTK9Z1G2RQ');
       </div>
       <p class="community-note">Crosby offers some of the most affordable new construction in the greater Houston area. Off Hwy 90 and FM 2100, it has a quiet small-town feel with larger lots and room to breathe. A great fit for buyers who want a brand-new home without stretching the budget — and don't mind trading the city buzz for peace and space.</p>
     </div>
+  </div>
+  <div class="coverage-cta reveal">
+    <p class="coverage-cta-text">"Tell me your budget and commute — I'll tell you which corridor makes the most sense."</p>
+    <a href="#contact" class="btn-primary" data-track="coverage_corridor_cta">Get My Corridor Match →</a>
   </div>
 </section>
 
@@ -1332,42 +1389,47 @@ gtag('config','G-HTK9Z1G2RQ');
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Do I need my own agent when buying new construction in Houston? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Yes — and it costs you nothing. The builder pays my commission out of their marketing budget, so you get expert representation at no extra cost. Having your own agent means you have a seasoned pro helping you navigate the process, understand the contract, and make full use of every builder incentive program available — upgrades, rate buydowns, and closing cost credits that are easy to miss without guidance.</p></div>
+        <div class="faq-a"><p><strong>Yes — the builder's rep works for the builder, not you, and my cost to you is $0.</strong> The builder pays my commission out of their marketing budget, so you get expert representation at no extra cost. Having your own agent means you have a seasoned pro helping you navigate the process, understand the contract, and make full use of every builder incentive program available — upgrades, rate buydowns, and closing cost credits that are easy to miss without guidance.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Will the builder give me a worse deal if I bring my own agent? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><p><strong>No — my commission is already baked into their marketing budget, so the builder pays the same either way.</strong> In practice, my clients usually get better deals because I know how to work each builder's incentive structures — which programs are stackable, which deadlines are real, and which "offers" have room to move. You're simply leaving money on the table if you go in without representation.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What builder incentives are available right now in Houston? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Incentives change monthly and vary by community, but right now Houston builders like Lennar, D.R. Horton, Perry Homes, and Meritage are offering mortgage rate buydowns to the 4–5% range, up to $30K–$55K in price reductions, and closing cost credits on select move-in ready homes. Contact me for an up-to-date list for your specific budget and area.</p></div>
+        <div class="faq-a"><p><strong>Right now Houston builders are offering rate buydowns to the 4–5% range and up to $55K in price reductions — but incentives are time-limited and vary by community.</strong> Right now builders like Lennar, D.R. Horton, Perry Homes, and Meritage are offering mortgage rate buydowns to the 4–5% range, up to $30K–$55K in price reductions, and closing cost credits on select move-in ready homes. Contact me for an up-to-date list for your specific budget and area.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Which Houston areas have the most new construction homes? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Greater Houston has six major new construction corridors, each with a distinct personality. Katy/Fulshear (West) is the gold standard for top-rated schools and large master-planned communities — Cross Creek Ranch, Tamarron, Firethorne. Cypress/Tomball (Northwest) offers similar quality at better prices, with Bridgeland and Towne Lake leading the charge. The Woodlands/Conroe (North) gives you an established feel with modern new construction in communities like Grand Central Park, Woodforest, and Stewart's Forest. New Caney/Porter (Northeast) is Houston's most affordable entry point for new construction. Pearland/Manvel (South) is the go-to for Medical Center and Clear Lake commuters. Sugar Land/Missouri City (Southwest) is one of the most sought-after areas with Fort Bend ISD — nationally ranked. I've walked communities in every one of these corridors and can guide you to the best communities based on your budget, school preferences, and where you work.</p></div>
+        <div class="faq-a"><p><strong>Greater Houston has six active new construction corridors — each with different price ranges, schools, and commute profiles.</strong> Each has a distinct personality. Katy/Fulshear (West) is the gold standard for top-rated schools and large master-planned communities — Cross Creek Ranch, Tamarron, Firethorne. Cypress/Tomball (Northwest) offers similar quality at better prices, with Bridgeland and Towne Lake leading the charge. The Woodlands/Conroe (North) gives you an established feel with modern new construction in communities like Grand Central Park, Woodforest, and Stewart's Forest. New Caney/Porter (Northeast) is Houston's most affordable entry point for new construction. Pearland/Manvel (South) is the go-to for Medical Center and Clear Lake commuters. Sugar Land/Missouri City (Southwest) is one of the most sought-after areas with Fort Bend ISD — nationally ranked. I've walked communities in every one of these corridors and can guide you to the best communities based on your budget, school preferences, and where you work.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How long does it take to build a new construction home in Houston? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Typical Houston build times range from 4–7 months for production builders (Lennar, D.R. Horton) to 8–14 months for semi-custom builders (Perry, David Weekley). Move-in ready inventory — homes already built — are available immediately. I'll match you to a timeline that works for your situation, whether you need to move now or prefer to customize from the ground up.</p></div>
+        <div class="faq-a"><p><strong>Production builders like Lennar and D.R. Horton typically deliver in 4–7 months; semi-custom builders run 8–14 months; move-in ready inventory is available now.</strong> I'll match you to a timeline that works for your situation, whether you need to move now or prefer to customize from the ground up.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Should I use the builder's preferred lender? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Sometimes yes, sometimes no. Builders often offer better incentives (extra closing cost credits or price reductions) if you use their preferred lender — but their rate may not be the lowest available. I help you compare the total picture: incentive value vs. rate difference over 30 years. Always get a quote from an outside lender first so you know exactly what you're trading away.</p></div>
+        <div class="faq-a"><p><strong>Sometimes yes, sometimes no — it depends on whether their incentive credit outweighs any rate difference over 30 years.</strong> Builders often offer better incentives (extra closing cost credits or price reductions) if you use their preferred lender — but their rate may not be the lowest available. I help you compare the total picture. Always get a quote from an outside lender first so you know exactly what you're trading away.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Is a home inspection necessary on a brand-new home? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Absolutely — and this is one of the most overlooked steps. New doesn't mean perfect. I recommend a third-party inspection at the pre-drywall stage and again at the final walkthrough. Inspectors regularly catch foundation issues, roof framing gaps, HVAC and plumbing rough-in errors, and insulation misses that builders will correct before closing if caught in time. I have trusted inspectors I refer to regularly who know exactly what to look for in Houston new construction.</p></div>
+        <div class="faq-a"><p><strong>Absolutely — new doesn't mean perfect, and catching issues at the pre-drywall stage is the most powerful protection a buyer has.</strong> This is one of the most overlooked steps. I recommend a third-party inspection at the pre-drywall stage and again at the final walkthrough. Inspectors regularly catch foundation issues, roof framing gaps, HVAC and plumbing rough-in errors, and insulation misses that builders will correct before closing if caught in time. I have trusted inspectors I refer to regularly who know exactly what to look for in Houston new construction.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What's the difference between Katy and Cypress for new construction? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>Both are excellent — the main differences come down to price, school district, and commute. Katy is generally 10–15% more expensive, served by Katy ISD (one of the top districts in Texas), and sits along I-10 West. Cypress is served by Cypress-Fairbanks ISD (also highly rated), tends to offer more home for the money, and is better positioned for commuters heading north or downtown via Hwy 290. Builders active in both corridors include Lennar, Perry Homes, D.R. Horton, and Meritage. I've toured communities in both areas extensively and can help you compare specific floorplans and lot sizes side by side.</p></div>
+        <div class="faq-a"><p><strong>Both are excellent — Katy runs 10–15% more expensive with Katy ISD; Cypress offers comparable quality at a better price with a different commute profile.</strong> The main differences come down to price, school district, and commute. Katy is generally 10–15% more expensive, served by Katy ISD (one of the top districts in Texas), and sits along I-10 West. Cypress is served by Cypress-Fairbanks ISD (also highly rated), tends to offer more home for the money, and is better positioned for commuters heading north or downtown via Hwy 290. Builders active in both corridors include Lennar, Perry Homes, D.R. Horton, and Meritage. I've toured communities in both areas extensively and can help you compare specific floorplans and lot sizes side by side.</p></div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What does a buyer's agent actually do on a new construction purchase? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p>A lot more than most buyers realize. Before you sign anything, I help you compare communities and builders, review the lot for drainage and positioning, and flag anything unusual in the purchase contract. During construction, I coordinate your third-party inspection at the pre-drywall and final stages. At closing, I walk every room with you and create a punch list of items to be corrected. After closing, I help you navigate the builder's warranty process if issues come up. All of this is free to you — the builder covers my commission. The process is smoother, and you close with confidence knowing nothing was missed.</p></div>
+        <div class="faq-a"><p><strong>A lot more than most buyers realize — and all of it is free to you.</strong> Before you sign anything, I help you compare communities and builders, review the lot for drainage and positioning, and flag anything unusual in the purchase contract. During construction, I coordinate your third-party inspection at the pre-drywall and final stages. At closing, I walk every room with you and create a punch list of items to be corrected. After closing, I help you navigate the builder's warranty process if issues come up. All of this is free to you — the builder covers my commission. The process is smoother, and you close with confidence knowing nothing was missed.</p></div>
       </div>
 
     </div>
