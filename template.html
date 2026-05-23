@@ -494,7 +494,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 
   /* ── SECTION HEADERS (global) ── */
   .section-title{font-size:clamp(1.8rem,6.5vw,2.8rem);}
-  .section-header{padding:0 4px;}
+  .section-header{padding:0 4px;margin-bottom:36px;}
 
   /* ── MYTH / WHY ── */
   .myth-section{padding:60px 20px;}
@@ -507,7 +507,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .stats-section{padding:60px 20px;}
   .stats-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
   .stat-card{padding:24px 14px 20px;}
-  .stat-number{font-size:2.2rem;}
+  .stat-number{font-size:2rem;overflow-wrap:break-word;}
   .stat-label{font-size:0.68rem;}
   .stat-trend{font-size:0.68rem;padding:4px 10px;}
   .stats-update-note{font-size:0.72rem;margin-top:20px;}
@@ -551,6 +551,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   /* ── FAQ ── */
   .faq-section{padding:60px 20px;}
   .faq-q{font-size:0.9rem;padding:20px 0;}
+  .faq-list{margin-top:32px;}
 
   /* ── CTA / CONTACT ── */
   .cta-section{padding:60px 20px 110px;}
@@ -561,8 +562,9 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .contact-form{padding:22px 18px 18px;}
   .form-row{grid-template-columns:1fr;gap:14px;}
   .form-field input,.form-field select{padding:14px 0;}
-  .contact-card-footer{padding:12px 16px;gap:0;}
-  .contact-card-footer span{font-size:0.68rem;padding:0 10px;}
+  .contact-card-footer{padding:10px 12px;gap:0;justify-content:space-between;}
+  .contact-card-footer span{font-size:0.6rem;padding:0 4px;}
+  .contact-card-footer span+span::before{display:none;}
 
   /* ── BLOG ── */
   .blog-section{padding:60px 20px;}
