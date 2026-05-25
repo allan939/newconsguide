@@ -346,6 +346,16 @@ nav.nav-hidden{transform:translateY(-100%);}
 .blog-card-desc{font-size:0.875rem;color:var(--text-2);line-height:1.7;margin-bottom:18px;}
 .blog-card-link{display:inline-flex;align-items:center;gap:5px;font-family:'Inter',system-ui,sans-serif;font-size:0.875rem;font-weight:500;color:var(--veridian);text-decoration:none;border-bottom:1px solid rgba(45,62,48,0.25);padding-bottom:1px;transition:gap 0.2s,border-color 0.2s;}
 .blog-card-link:hover{gap:9px;border-color:var(--veridian);}
+.blog-guides{margin:0 0 44px;padding:32px;background:linear-gradient(180deg,#ffffff 0%,#f8f9fa 100%);border:1px solid var(--border);border-radius:20px;text-align:left;}
+.blog-guides-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:22px;}
+.blog-guides-header h3{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:1.35rem;font-weight:700;color:var(--text-1);letter-spacing:-0.02em;}
+.blog-guides-header p{max-width:520px;font-size:0.9rem;color:var(--text-2);line-height:1.7;}
+.blog-guides-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.guide-link-card{display:block;padding:20px;border:1px solid var(--border);border-radius:16px;background:var(--surface);text-decoration:none;transition:transform 0.25s,box-shadow 0.25s,border-color 0.25s;}
+.guide-link-card:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.06);border-color:rgba(45,62,48,0.18);}
+.guide-link-kicker{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--veridian);margin-bottom:10px;}
+.guide-link-card h3{font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:1rem;font-weight:700;color:var(--text-1);margin-bottom:8px;line-height:1.3;}
+.guide-link-card p{font-size:0.84rem;color:var(--text-2);line-height:1.65;}
 .blog-section-cta{margin-top:8px;}
 
 /* FOOTER */
@@ -595,6 +605,9 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .blog-cards{grid-template-columns:1fr;gap:12px;}
   .blog-card{padding:26px 22px;}
   .blog-card:hover{transform:none !important;}
+  .blog-guides{padding:24px 18px;}
+  .blog-guides-grid{grid-template-columns:1fr;gap:12px;}
+  .guide-link-card:hover{transform:none;}
 
   /* ── FOOTER ── */
   footer{padding:0;}
@@ -1510,7 +1523,7 @@ gtag('config','G-HTK9Z1G2RQ');
     <span class="section-eyebrow">Resources &amp; Insights</span>
     <h2 class="section-title blog-section-title">Houston New Construction <em>Blog</em></h2>
     <div class="section-line" style="margin:20px auto 0;"></div>
-    <p class="blog-section-sub">Market updates, builder incentive strategies, and neighborhood comparisons to help you buy smart.</p>
+    <p class="blog-section-sub">Market updates, builder incentive strategies, neighborhood comparisons, and city guides to help you buy smart.</p>
     <div class="blog-cards">
       <article class="blog-card reveal reveal-delay-1">
         <span class="blog-card-cat">Market Outlook</span>
@@ -1530,6 +1543,37 @@ gtag('config','G-HTK9Z1G2RQ');
         <p class="blog-card-desc">Two of Houston's top new construction submarkets compared  -  schools, taxes, commute, pricing, and buyer fit.</p>
         <a href="blog-katy-vs-cypress-new-construction.html" class="blog-card-link" data-track="blog_katy_cypress">Read Article →</a>
       </article>
+    </div>
+    <div class="blog-guides reveal reveal-delay-2">
+      <div class="blog-guides-header">
+        <div>
+          <span class="section-eyebrow">Popular Area Guides</span>
+          <h3>Start with the Houston corridor that fits your life best.</h3>
+        </div>
+        <p>These location pages are built for high-intent buyers comparing schools, commute, builder style, and overall fit before they start touring.</p>
+      </div>
+      <div class="blog-guides-grid">
+        <a href="katy-new-construction-homes.html" class="guide-link-card" data-track="guide_katy_home">
+          <span class="guide-link-kicker">West Houston</span>
+          <h3>Katy New Construction</h3>
+          <p>For buyers prioritizing Katy ISD, master-planned communities, and long-term resale confidence.</p>
+        </a>
+        <a href="cypress-new-construction-homes.html" class="guide-link-card" data-track="guide_cypress_home">
+          <span class="guide-link-kicker">Northwest</span>
+          <h3>Cypress New Construction</h3>
+          <p>For buyers chasing more home for the money with strong schools and deep builder selection.</p>
+        </a>
+        <a href="fulshear-new-construction-homes.html" class="guide-link-card" data-track="guide_fulshear_home">
+          <span class="guide-link-kicker">West Growth</span>
+          <h3>Fulshear New Construction</h3>
+          <p>For buyers who want newer MPCs, bigger-lot feel, and a west-side lifestyle beyond central Katy.</p>
+        </a>
+        <a href="pearland-new-construction-homes.html" class="guide-link-card" data-track="guide_pearland_home">
+          <span class="guide-link-kicker">South Houston</span>
+          <h3>Pearland New Construction</h3>
+          <p>For Medical Center, 288, and Clear Lake commuters comparing Pearland and Manvel-area options.</p>
+        </a>
+      </div>
     </div>
     <div class="blog-section-cta">
       <a href="blog.html" class="btn-outline" data-track="blog_view_all">View All Articles</a>
@@ -1570,6 +1614,7 @@ gtag('config','G-HTK9Z1G2RQ');
         <li><a href="#about">About Allan</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li><a href="blog.html#area-guides">Area Guides</a></li>
       </ul>
     </div>
 

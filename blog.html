@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Houston new construction real estate blog by Allan Vega — market insights, builder incentives, neighborhood comparisons, and buyer guides for Houston homebuyers.">
+<meta name="description" content="Houston new construction blog and area guides by Allan Vega — market insights, builder incentives, neighborhood comparisons, and city pages for Houston homebuyers.">
 <link rel="canonical" href="https://allanvrealestate.com/blog.html">
-<meta property="og:title" content="Blog | Houston New Construction · Allan Vega">
-<meta property="og:description" content="Market insights, builder incentives, and buyer guides for Houston new construction homes.">
+<meta property="og:title" content="Blog &amp; Area Guides | Houston New Construction · Allan Vega">
+<meta property="og:description" content="Market insights, builder incentives, neighborhood comparisons, and city guides for Houston new construction homes.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://allanvrealestate.com/blog.html">
 <meta property="og:image" content="https://allanvrealestate.com/allan-vega.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Blog | Houston New Construction · Allan Vega">
-<meta name="twitter:description" content="Market insights, builder incentives, and buyer guides for Houston new construction homes.">
-<title>Blog | Houston New Construction · Allan Vega</title>
+<meta name="twitter:title" content="Blog &amp; Area Guides | Houston New Construction · Allan Vega">
+<meta name="twitter:description" content="Market insights, builder incentives, neighborhood comparisons, and city guides for Houston new construction homes.">
+<title>Blog &amp; Area Guides | Houston New Construction · Allan Vega</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23C1603A'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='serif' fill='%23FDFAF5'>A</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <script type="application/ld+json">
@@ -21,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "Blog",
   "name": "Houston New Construction Blog",
-  "description": "Market insights, builder incentives, and buyer guides for Houston new construction.",
+  "description": "Market insights, builder incentives, buyer guides, and area pages for Houston new construction.",
   "url": "https://allanvrealestate.com/blog.html",
   "author": {
     "@type": "Person",
@@ -30,6 +30,26 @@
     "telephone": "+12818657146",
     "url": "https://allanvrealestate.com/"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://allanvrealestate.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog & Area Guides",
+      "item": "https://allanvrealestate.com/blog.html"
+    }
+  ]
 }
 </script>
 <!-- GA4 with Consent Mode v2 — defaults denied until user accepts -->
@@ -68,6 +88,11 @@ nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-c
 
 /* PAGE HEADER */
 .blog-header{background:var(--brown);padding:88px 24px 72px;text-align:center;}
+.blog-breadcrumbs{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;}
+.blog-breadcrumbs a{color:var(--sand-light);text-decoration:none;transition:color 0.2s;}
+.blog-breadcrumbs a:hover{color:var(--terra-pale);}
+.blog-breadcrumbs span{color:rgba(212,180,140,0.5);}
+.blog-breadcrumbs [aria-current="page"]{color:var(--terra-pale);}
 .blog-header-eyebrow{display:inline-block;font-size:0.62rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra-pale);margin-bottom:18px;}
 .blog-header h1{font-family:'Fraunces',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:20px;}
 .blog-header h1 em{color:var(--terra-pale);font-style:italic;}
@@ -88,6 +113,16 @@ nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-c
 .post-card-link{display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--terra);text-decoration:none;transition:gap 0.2s,color 0.2s;}
 .post-card-link:hover{color:var(--terra-dark);gap:10px;}
 .post-card-divider{height:3px;background:linear-gradient(90deg,var(--terra),var(--terra-pale),transparent);}
+.guide-hub{margin-top:52px;padding:40px;background:var(--cream);border:1px solid rgba(46,26,14,0.08);}
+.guide-hub-header{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:24px;}
+.guide-hub-header h2{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:300;color:var(--brown);line-height:1.2;}
+.guide-hub-header p{max-width:540px;font-size:0.9rem;color:var(--brown-light);line-height:1.75;}
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+.guide-card{background:var(--parchment);border:1px solid rgba(46,26,14,0.08);padding:24px;text-decoration:none;display:block;transition:transform 0.2s,box-shadow 0.2s;}
+.guide-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(46,26,14,0.08);}
+.guide-card-kicker{display:block;font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;}
+.guide-card h3{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:300;color:var(--brown);margin-bottom:10px;line-height:1.25;}
+.guide-card p{font-size:0.88rem;color:var(--brown-light);line-height:1.75;}
 
 /* FOOTER */
 footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;text-align:center;}
@@ -119,6 +154,8 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
   .blog-header{padding:64px 20px 52px;}
   .blog-grid-wrap{padding:48px 20px 72px;}
   .post-card-body{padding:24px;}
+  .guide-hub{padding:28px 20px;}
+  .guide-grid{grid-template-columns:1fr;}
   #cookie-banner{flex-direction:column;align-items:flex-start;padding:18px 20px;gap:14px;}
   .cookie-btns{width:100%;justify-content:flex-end;}
 }
@@ -146,9 +183,14 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
 </nav>
 
 <header class="blog-header">
+  <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <span aria-current="page">Blog &amp; Area Guides</span>
+  </nav>
   <span class="blog-header-eyebrow">Houston New Construction</span>
   <h1>Insights &amp; <em>Buyer Guides</em></h1>
-  <p>Market updates, builder incentive strategies, and neighborhood comparisons — everything you need to buy smart in Houston.</p>
+  <p>Market updates, builder incentive strategies, neighborhood comparisons, and city-specific guides to help you buy smart in Houston.</p>
 </header>
 
 <div class="blog-grid-wrap">
@@ -188,6 +230,38 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
     </article>
 
   </div>
+
+  <section id="area-guides" class="guide-hub" aria-labelledby="area-guides-title">
+    <div class="guide-hub-header">
+      <div>
+        <span class="post-card-category">Area Guides</span>
+        <h2 id="area-guides-title">Popular Houston new construction corridors</h2>
+      </div>
+      <p>These city pages are built for buyers comparing commute, school districts, community style, and builder fit before they start booking tours.</p>
+    </div>
+    <div class="guide-grid">
+      <a href="katy-new-construction-homes.html" class="guide-card">
+        <span class="guide-card-kicker">West Houston</span>
+        <h3>Katy TX New Construction Homes</h3>
+        <p>For buyers prioritizing Katy ISD, recognizable master-planned communities, and a polished west-side resale profile.</p>
+      </a>
+      <a href="cypress-new-construction-homes.html" class="guide-card">
+        <span class="guide-card-kicker">Northwest Houston</span>
+        <h3>Cypress TX New Construction Homes</h3>
+        <p>For buyers looking for strong Cy-Fair schools, flexible builder options, and more home for the money.</p>
+      </a>
+      <a href="fulshear-new-construction-homes.html" class="guide-card">
+        <span class="guide-card-kicker">West Growth Corridor</span>
+        <h3>Fulshear TX New Construction Homes</h3>
+        <p>For buyers chasing newer MPCs, bigger-lot feel, and a quieter west-of-Katy lifestyle with room to grow.</p>
+      </a>
+      <a href="pearland-new-construction-homes.html" class="guide-card">
+        <span class="guide-card-kicker">South Houston</span>
+        <h3>Pearland TX New Construction Homes</h3>
+        <p>For Medical Center, 288, and Clear Lake commuters comparing Pearland and Manvel-area new construction.</p>
+      </a>
+    </div>
+  </section>
 </div>
 
 <footer>
