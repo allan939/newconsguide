@@ -110,6 +110,8 @@ nav.nav-hidden{transform:translateY(-100%);}
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{font-family:'Inter',system-ui,sans-serif;color:var(--text-2);text-decoration:none;font-size:0.875rem;font-weight:400;letter-spacing:0;transition:color 0.2s;}
 .nav-links a:hover{color:var(--text-1);}
+.nav-calendar-link{font-family:'Inter',system-ui,sans-serif;font-size:0.84rem;font-weight:500;color:var(--veridian);text-decoration:none;border-bottom:1px solid rgba(45,62,48,0.22);padding-bottom:2px;transition:border-color 0.2s,color 0.2s;white-space:nowrap;}
+.nav-calendar-link:hover{color:var(--veridian-dark);border-color:rgba(45,62,48,0.42);}
 .btn-nav{background:var(--veridian);color:#fff;border:none;padding:9px 18px;font-family:'Inter',system-ui,sans-serif;font-size:0.875rem;font-weight:500;letter-spacing:0;border-radius:8px;cursor:pointer;transition:background 0.2s,box-shadow 0.2s;text-decoration:none;white-space:nowrap;box-shadow:0 1px 3px rgba(45,62,48,0.3);}
 .btn-nav:hover{background:var(--veridian-dark);box-shadow:0 2px 8px rgba(45,62,48,0.35);}
 
@@ -145,6 +147,8 @@ nav.nav-hidden{transform:translateY(-100%);}
 .hero-proof{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:1rem;}
 .hero-proof-item{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.08);font-family:'Inter',system-ui,sans-serif;font-size:0.76rem;font-weight:500;line-height:1.2;color:rgba(255,255,255,0.76);}
 .hero-proof-item::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(197,164,126,0.45);flex-shrink:0;}
+.hero-calendar-link{display:inline-flex;align-items:center;gap:8px;margin-top:1rem;font-family:'Inter',system-ui,sans-serif;font-size:0.84rem;font-weight:500;color:rgba(255,255,255,0.82);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:2px;transition:color 0.2s,border-color 0.2s;}
+.hero-calendar-link:hover{color:#fff;border-color:rgba(255,255,255,0.48);}
 .hero .btn-outline{border-color:rgba(255,255,255,0.35);color:white;}
 .hero .btn-outline:hover{border-color:white;background:rgba(255,255,255,0.08);color:white;}
 .explore-link{color:rgba(255,255,255,0.55);text-decoration:none;margin-top:1.5rem;display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:0.78rem;font-weight:400;transition:color 0.25s;}
@@ -318,6 +322,8 @@ nav.nav-hidden{transform:translateY(-100%);}
 .contact-card-footer{padding:14px 32px;border-top:1px solid var(--line-dark);display:flex;justify-content:center;align-items:center;gap:0;flex-wrap:wrap;}
 .contact-card-footer span{font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:rgba(253,252,249,0.25);padding:0 16px;position:relative;}
 .contact-card-footer span+span::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:1px;height:10px;background:rgba(255,255,255,0.08);}
+.contact-card-alt-link{width:100%;margin-top:12px;text-align:center;font-family:'Inter',system-ui,sans-serif;font-size:0.8rem;font-weight:500;color:rgba(253,252,249,0.64);text-decoration:none;border-bottom:1px solid rgba(253,252,249,0.14);padding-bottom:2px;display:inline-flex;justify-content:center;transition:color 0.2s,border-color 0.2s;}
+.contact-card-alt-link:hover{color:var(--off-white);border-color:rgba(253,252,249,0.38);}
 .form-success{display:none;padding:52px 28px;text-align:center;}
 .form-success.visible{display:block;}
 .form-success-icon{width:52px;height:52px;background:var(--veridian);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--off-white);margin:0 auto 20px;line-height:1;}
@@ -412,7 +418,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:768px){
   .nav-toggle{display:flex;}
-  .btn-nav{display:none;}
+  .btn-nav,.nav-calendar-link{display:none;}
   .nav-cta-mobile{display:block;}
   body.menu-open{overflow:hidden;}
   /* Hamburger → X animation */
@@ -424,8 +430,10 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .nav-links li{border-bottom:1px solid var(--border);}
   .nav-links li:last-child{border-bottom:none;}
   .nav-links li a{display:block;padding:15px 0;font-size:0.925rem;color:var(--text-1);font-weight:500;}
-  .nav-links .nav-cta-mobile{border-bottom:none;margin-top:auto;padding-top:18px;}
-  .nav-links .nav-cta-mobile a{display:block;text-align:center;background:var(--veridian);color:var(--off-white);padding:15px 20px;font-size:0.9rem;font-weight:600;text-transform:none;text-decoration:none;font-family:'Inter',system-ui,sans-serif;border-radius:10px;letter-spacing:0.01em;}
+  .nav-links .nav-cta-mobile{border-bottom:none;}
+  .nav-links .nav-cta-mobile-secondary{margin-top:auto;padding-top:18px;}
+  .nav-links .nav-cta-mobile-secondary a{display:block;text-align:center;background:transparent;color:var(--text-1);padding:14px 18px;font-size:0.88rem;font-weight:600;text-transform:none;text-decoration:none;font-family:'Inter',system-ui,sans-serif;border-radius:10px;letter-spacing:0.01em;border:1px solid var(--border-strong);}
+  .nav-links .nav-cta-mobile:not(.nav-cta-mobile-secondary) a{display:block;text-align:center;background:var(--veridian);color:var(--off-white);padding:15px 20px;font-size:0.9rem;font-weight:600;text-transform:none;text-decoration:none;font-family:'Inter',system-ui,sans-serif;border-radius:10px;letter-spacing:0.01em;margin-top:10px;}
 }
 /* STICKY MOBILE CALL BAR */
 .sticky-call{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;background:rgba(15,18,16,0.96);border-top:1px solid var(--line-dark);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 -10px 30px rgba(0,0,0,0.22);transform:translateY(calc(100% + env(safe-area-inset-bottom)));opacity:0;pointer-events:none;transition:transform 0.28s ease,opacity 0.28s ease;}
@@ -500,6 +508,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .hero-proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:0.95rem;}
   .hero-proof-item{justify-content:center;padding:10px 8px;font-size:0.72rem;}
   .hero-proof-item:last-child{grid-column:1 / -1;}
+  .hero-calendar-link{margin-top:0.95rem;font-size:0.8rem;}
   .explore-link{display:none;}
   .hero-slide{animation:none !important;will-change:opacity;}
   .hero-scroll{display:none;}
@@ -579,6 +588,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .contact-card-footer{padding:12px 18px;gap:8px;flex-direction:column;align-items:flex-start;}
   .contact-card-footer span{font-size:0.66rem;padding:0;}
   .contact-card-footer span+span::before{display:none;}
+  .contact-card-alt-link{width:auto;margin-top:4px;justify-content:flex-start;font-size:0.74rem;}
 
   /* ── BLOG ── */
   .blog-section{padding:60px 20px;}
@@ -851,8 +861,10 @@ gtag('config','G-HTK9Z1G2RQ');
     <li><a href="#about">About</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li class="nav-cta-mobile nav-cta-mobile-secondary"><a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" data-track="nav_mobile_calendar_schedule">Book 15-Min Call</a></li>
     <li class="nav-cta-mobile"><a href="#contact" data-track="nav_get_free_guide">Get Free Guide →</a></li>
   </ul>
+  <a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" class="nav-calendar-link" data-track="nav_calendar_schedule">Book 15-Min Call</a>
   <a href="#contact" class="btn-nav" data-track="nav_get_free_guide">Get Free Guide ↗</a>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
@@ -887,6 +899,7 @@ gtag('config','G-HTK9Z1G2RQ');
         <span class="hero-proof-item">Inspections guided</span>
         <span class="hero-proof-item">100% free to buyers</span>
       </div>
+      <a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" class="hero-calendar-link" data-track="hero_calendar_schedule">Need quick answers? Book a 15-min call →</a>
       <a href="#stats" class="explore-link">Scroll to explore ↓</a>
     </div>
   </div>
@@ -982,6 +995,7 @@ gtag('config','G-HTK9Z1G2RQ');
         <span>Secure &amp; Private</span>
         <span>No Spam, Ever</span>
         <span>Reply Within 2 Hours</span>
+        <a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" class="contact-card-alt-link" data-track="contact_calendar_schedule">Rather talk first? Book a 15-min call</a>
       </div>
     </div>
     </div>
@@ -1059,7 +1073,7 @@ gtag('config','G-HTK9Z1G2RQ');
       <h2 class="section-title">Engineered for<br><em>Certainty.</em></h2>
       <div class="section-line"></div>
       <p class="process-intro-text">From first conversation to keys in hand  -  a proven system built around getting you the best home at the best terms. Every step is handled for you, at zero cost.</p>
-      <a href="#contact" class="process-intro-link" data-track="process_consultation">Schedule a free call →</a>
+      <a href="https://calendar.app.google/6nuCX1wFPMU1C9tZ7" target="_blank" rel="noopener" class="process-intro-link" data-track="process_calendar_schedule">Schedule a free call →</a>
     </div>
     <div class="process-right">
       <div class="process-timeline reveal reveal-delay-1">
@@ -1787,7 +1801,7 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
 // CTA click tracking (GA4 + Facebook Pixel)
 (function() {
   var PHONE_LABELS = ['sticky_call_bar', 'hero_phone_click', 'ylopo_fallback_phone'];
-  var CALENDAR_LABELS = ['calendar_schedule'];
+  var CALENDAR_LABELS = ['calendar_schedule', 'nav_calendar_schedule', 'nav_mobile_calendar_schedule', 'hero_calendar_schedule', 'process_calendar_schedule', 'contact_calendar_schedule'];
 
   document.addEventListener('click', function(e) {
     var el = e.target.closest('[data-track]');
