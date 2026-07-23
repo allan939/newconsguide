@@ -920,8 +920,9 @@ footer > * {
   margin: 0 0 40px;
   padding: 26px 28px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(45, 62, 48, 0.06), rgba(45, 62, 48, 0.02));
-  border: 1px solid rgba(45, 62, 48, 0.16);
+  background: linear-gradient(180deg, rgba(193, 96, 58, 0.07), rgba(193, 96, 58, 0.02));
+  border: 1px solid rgba(193, 96, 58, 0.2);
+  box-shadow: 0 8px 28px rgba(46, 26, 14, 0.05);
 }
 
 .answer-box-label {
@@ -932,7 +933,7 @@ footer > * {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--veridian);
+  color: #a04e2e;
 }
 
 .answer-box p {
@@ -955,6 +956,7 @@ footer > * {
   border-radius: 16px;
   background: var(--bg-alt);
   border: 1px solid var(--border);
+  box-shadow: 0 8px 28px rgba(46, 26, 14, 0.04);
 }
 
 .author-box img {
@@ -996,6 +998,7 @@ footer > * {
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--surface, #fff);
+  box-shadow: 0 8px 28px rgba(46, 26, 14, 0.04);
 }
 
 .toc-label {
@@ -1027,15 +1030,17 @@ footer > * {
 }
 
 .toc a:hover {
-  color: var(--veridian);
-  border-bottom-color: rgba(45, 62, 48, 0.3);
+  color: #a04e2e;
+  border-bottom-color: rgba(193, 96, 58, 0.35);
 }
 
 .assumptions-table-wrap {
   margin: 24px 0 32px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: 14px;
   border: 1px solid var(--border);
+  box-shadow: 0 8px 28px rgba(46, 26, 14, 0.04);
 }
 
 table.assumptions-table {
@@ -1081,7 +1086,7 @@ table.assumptions-table tr:last-child td {
 
 table.assumptions-table tr.total-row th,
 table.assumptions-table tr.total-row td {
-  background: rgba(45, 62, 48, 0.05);
+  background: rgba(193, 96, 58, 0.07);
   font-weight: 800;
 }
 
@@ -1092,6 +1097,7 @@ table.assumptions-table tr.total-row td {
   border-radius: 14px;
   border: 1px solid rgba(197, 164, 126, 0.35);
   background: rgba(197, 164, 126, 0.08);
+  box-shadow: 0 8px 28px rgba(46, 26, 14, 0.03);
 }
 
 .limitations-box h3,
