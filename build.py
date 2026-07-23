@@ -14,6 +14,8 @@ SITEMAP_PAGES = [
     {'source': 'blog-houston-new-construction-2026.html', 'loc': 'blog-houston-new-construction-2026.html', 'changefreq': 'monthly', 'priority': '0.8'},
     {'source': 'blog-katy-vs-cypress-new-construction.html', 'loc': 'blog-katy-vs-cypress-new-construction.html', 'changefreq': 'monthly', 'priority': '0.8'},
     {'source': 'blog-builder-incentives-houston.html', 'loc': 'blog-builder-incentives-houston.html', 'changefreq': 'monthly', 'priority': '0.8'},
+    {'source': 'houston-new-construction-under-300k.html', 'loc': 'houston-new-construction-under-300k.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'how-much-is-3-5-percent-down-houston.html', 'loc': 'how-much-is-3-5-percent-down-houston.html', 'changefreq': 'monthly', 'priority': '0.9'},
 ]
 
 
