@@ -1,0 +1,402 @@
+<!--
+  ============================================================
+  REUSABLE ARTICLE TEMPLATE — newconsguide / allanvrealestate.com
+  ============================================================
+  How to use:
+  1. Duplicate this file, rename to a descriptive slug
+     (e.g. houston-new-construction-under-300k.html).
+  2. Replace every {{TOKEN}} below. Do not leave a {{TOKEN}} in
+     the published file — grep for "{{" before publishing.
+  3. Do not invent numbers for {{...}} tokens inside the
+     financial-assumptions table, FAQ, or body copy. If a fact
+     isn't confirmed, leave a <div class="verify-box"> in its
+     place instead of guessing.
+  4. Add the new file's path to build.py's SITEMAP_PAGES list
+     and to blog.html's post grid, then run `python3 build.py`.
+  5. Every article must have: a direct answer near the top, an
+     author/license box, published + last-verified dates, real
+     Houston examples, a financial-assumptions table (if the
+     topic involves numbers), a limitations section, primary
+     source links, FAQ, related guides, one CTA, and the
+     rates/incentives-change disclaimer. Do not skip any of these.
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{META_DESCRIPTION}}">
+<link rel="canonical" href="https://allanvrealestate.com/{{SLUG}}.html">
+<meta property="og:title" content="{{TITLE}} | Allan Vega">
+<meta property="og:description" content="{{META_DESCRIPTION}}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://allanvrealestate.com/{{SLUG}}.html">
+<meta property="og:image" content="https://allanvrealestate.com/allan-vega.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{META_DESCRIPTION}}">
+<title>{{TITLE}} | Allan Vega</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='12' fill='%23C1603A'/><text y='72' x='50' text-anchor='middle' font-size='60' font-family='serif' fill='%23FDFAF5'>A</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,600&family=Fira+Code&display=swap" rel="stylesheet">
+
+<!-- Article + Breadcrumb structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{TITLE}}",
+  "description": "{{META_DESCRIPTION}}",
+  "datePublished": "{{DATE_PUBLISHED}}",
+  "dateModified": "{{DATE_LAST_VERIFIED}}",
+  "author": {
+    "@type": "Person",
+    "name": "Allan Vega",
+    "url": "https://allanvrealestate.com/",
+    "jobTitle": "Real Estate Agent"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AEA Realty · The Ask Ozzie Team"
+  },
+  "url": "https://allanvrealestate.com/{{SLUG}}.html",
+  "mainEntityOfPage": "https://allanvrealestate.com/{{SLUG}}.html",
+  "inLanguage": "en-US"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://allanvrealestate.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog & Area Guides", "item": "https://allanvrealestate.com/blog.html"},
+    {"@type": "ListItem", "position": 3, "name": "{{TITLE}}", "item": "https://allanvrealestate.com/{{SLUG}}.html"}
+  ]
+}
+</script>
+<!-- FAQPage schema — only include questions that actually appear in the FAQ section below -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "{{FAQ_Q1}}",
+      "acceptedAnswer": {"@type": "Answer", "text": "{{FAQ_A1}}"}
+    }
+  ]
+}
+</script>
+
+<!-- GA4 with Consent Mode v2 — defaults denied until user accepts -->
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{
+  analytics_storage:'denied',
+  ad_storage:'denied',
+  ad_user_data:'denied',
+  ad_personalization:'denied',
+  wait_for_update:500
+});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HTK9Z1G2RQ"></script>
+<script>gtag('js',new Date());gtag('config','G-HTK9Z1G2RQ');</script>
+<!-- Meta Pixel loaded conditionally after consent -->
+<style>
+:root{
+  --cream:#F5EFE4;--cream-dark:#EDE3D3;--parchment:#FAF6EF;
+  --terra:#C1603A;--terra-dark:#A04E2E;--terra-pale:#EDD5C8;
+  --brown:#2E1A0E;--brown-mid:#5C3820;--brown-light:#8A5C3A;
+  --sand:#B8956A;--sand-light:#D4B48C;--white:#FDFAF5;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Outfit',sans-serif;font-weight:300;background:var(--parchment);color:var(--brown);}
+nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:72px;background:rgba(245,239,228,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(46,26,14,0.08);}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:14px;}
+.nav-logo img{height:44px;width:auto;display:block;}
+.nav-logo-divider{width:1px;height:32px;background:rgba(46,26,14,0.18);flex-shrink:0;}
+.nav-logo-name{display:flex;flex-direction:column;line-height:1.2;}
+.nav-logo-name strong{font-family:'Outfit',sans-serif;font-size:0.88rem;font-weight:700;letter-spacing:0.04em;color:var(--brown);}
+.nav-logo-name small{font-family:'Outfit',sans-serif;font-size:0.58rem;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--brown-light);margin-top:2px;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:var(--brown-light);text-decoration:none;font-size:0.7rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--terra);}
+.btn-nav{background:var(--brown);color:var(--cream);border:none;padding:11px 22px;font-family:'Outfit',sans-serif;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;}
+.btn-nav:hover{background:var(--terra);}
+.article-header{background:var(--brown);padding:80px 24px 64px;text-align:center;}
+.article-breadcrumbs{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:22px;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;}
+.article-breadcrumbs a{color:var(--sand-light);text-decoration:none;transition:color 0.2s;}
+.article-breadcrumbs a:hover{color:var(--terra-pale);}
+.article-breadcrumbs span{color:rgba(212,180,140,0.5);}
+.article-breadcrumbs [aria-current="page"]{color:var(--terra-pale);}
+.article-back{display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--sand-light);text-decoration:none;margin-bottom:24px;transition:color 0.2s;}
+.article-back:hover{color:var(--terra-pale);}
+.article-category{display:block;font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra-pale);margin-bottom:16px;}
+.article-header h1{font-family:'Fraunces',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:300;color:var(--white);line-height:1.15;max-width:760px;margin:0 auto 18px;}
+.article-meta{font-size:0.75rem;color:var(--sand);letter-spacing:0.08em;}
+.article-body{max-width:720px;margin:0 auto;padding:60px 24px 88px;}
+.article-body h2{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:300;color:var(--brown);margin:44px 0 14px;line-height:1.3;}
+.article-body p{font-size:1rem;color:var(--brown-mid);line-height:1.85;margin-bottom:20px;}
+.article-body a{color:var(--terra);text-decoration:none;border-bottom:1px solid rgba(193,96,58,0.28);}
+.article-body a:hover{color:var(--terra-dark);border-color:rgba(160,78,46,0.5);}
+.article-body ul,.article-body ol{margin:0 0 24px 24px;}
+.article-body li{font-size:0.96rem;color:var(--brown-mid);line-height:1.8;margin-bottom:8px;}
+.article-cta{background:var(--cream);border:1px solid rgba(193,96,58,0.2);border-left:4px solid var(--terra);padding:28px 32px;margin-top:52px;}
+.article-cta strong{display:block;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:300;color:var(--brown);margin-bottom:10px;line-height:1.4;}
+.article-cta a{color:var(--terra);font-size:0.92rem;text-decoration:none;font-weight:500;transition:color 0.2s;}
+.article-cta a:hover{color:var(--terra-dark);}
+.related-articles{background:var(--cream-dark);padding:40px 32px;margin-top:52px;}
+.related-articles h3{font-family:'Fraunces',serif;font-size:1rem;font-weight:300;color:var(--brown);margin-bottom:18px;letter-spacing:0.02em;}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.related-card{background:var(--parchment);padding:20px;text-decoration:none;display:block;transition:transform 0.2s;}
+.related-card:hover{transform:translateY(-2px);}
+.related-cat{display:block;font-size:0.58rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:8px;}
+.related-title{font-family:'Fraunces',serif;font-size:0.95rem;font-weight:300;color:var(--brown);line-height:1.35;}
+footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;text-align:center;}
+.footer-logo{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:28px;}
+.footer-logo img{height:40px;width:auto;opacity:0.85;}
+.footer-logo-name{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:300;color:var(--white);}
+.footer-logo-name em{color:var(--terra-pale);font-style:italic;}
+.footer-logo-meta{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--sand);}
+.footer-links{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 28px;margin-bottom:24px;}
+.footer-links a{color:var(--sand-light);text-decoration:none;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+.footer-links a:hover{color:var(--terra-pale);}
+.footer-copy{font-size:0.72rem;color:var(--sand);margin-bottom:16px;}
+.footer-trec{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;}
+.footer-trec a{color:var(--sand);text-decoration:none;font-size:0.62rem;transition:color 0.2s;}
+.footer-trec a:hover{color:var(--terra-pale);}
+#cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--brown);border-top:2px solid rgba(193,96,58,0.4);padding:16px 52px;display:none;align-items:center;justify-content:space-between;gap:24px;box-shadow:0 -4px 24px rgba(0,0,0,0.2);}
+.cookie-text{font-size:0.82rem;color:var(--sand-light);line-height:1.65;flex:1;}
+.cookie-text a{color:var(--terra-pale);text-decoration:underline;}
+.cookie-btns{display:flex;gap:10px;flex-shrink:0;}
+.cookie-decline{background:none;border:1px solid rgba(212,180,140,0.35);color:var(--sand-light);padding:9px 18px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:border-color 0.2s,color 0.2s;}
+.cookie-decline:hover{border-color:var(--sand-light);color:var(--white);}
+.cookie-accept{background:var(--terra);border:none;color:var(--white);padding:9px 22px;font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;}
+.cookie-accept:hover{background:var(--terra-dark);}
+@media(max-width:768px){
+  nav{padding:0 20px;height:64px;}
+  .nav-links{display:none;}
+  .btn-nav{padding:9px 16px;font-size:0.7rem;}
+  .article-header{padding:60px 20px 48px;}
+  .article-body{padding:44px 20px 72px;}
+  .article-cta{padding:22px 20px;}
+  .related-articles{padding:28px 20px;}
+  .related-grid{grid-template-columns:1fr;}
+  #cookie-banner{flex-direction:column;align-items:flex-start;padding:18px 20px;gap:14px;}
+  .cookie-btns{width:100%;justify-content:flex-end;}
+}
+</style>
+<link rel="stylesheet" href="content-pages.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="AskOzzie Logo.png" alt="AskOzzie Real Estate Team × AEA Realty">
+    <span class="nav-logo-divider"></span>
+    <span class="nav-logo-name">
+      <strong>Allan Vega</strong>
+      <small>Realtor · New Construction Specialist</small>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#stats">Market Stats</a></li>
+    <li><a href="index.html#search">Search Homes</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="btn-nav">Get Free Guide</a>
+</nav>
+
+<header class="article-header">
+  <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="blog.html">Blog</a>
+    <span>/</span>
+    <span aria-current="page">{{BREADCRUMB_LABEL}}</span>
+  </nav>
+  <a href="blog.html" class="article-back">← All Articles</a>
+  <span class="article-category">{{CATEGORY}}</span>
+  <h1>{{TITLE}}</h1>
+  <p class="article-meta">Published {{DATE_PUBLISHED_HUMAN}} &nbsp;·&nbsp; Last verified {{DATE_LAST_VERIFIED_HUMAN}} &nbsp;·&nbsp; By Allan Vega</p>
+</header>
+
+<div class="article-body">
+
+  <!-- AUTHOR / LICENSE BOX -->
+  <div class="author-box">
+    <img src="allan-vega.jpg" alt="Allan Vega">
+    <div>
+      <div class="author-box-name">Allan Vega</div>
+      <div class="author-box-meta">Realtor, AEA Realty · The Ask Ozzie Team &middot; TREC License #777820<br>Houston, TX &middot; (281) 865-7146 &middot; English &amp; Español</div>
+    </div>
+  </div>
+
+  <!-- DIRECT ANSWER — 2-4 sentences answering the title question, no fluff -->
+  <div class="answer-box">
+    <span class="answer-box-label">Short answer</span>
+    <p>{{DIRECT_ANSWER}}</p>
+  </div>
+
+  <!-- TABLE OF CONTENTS — include for articles with 4+ H2 sections -->
+  <nav class="toc" aria-label="Table of contents">
+    <span class="toc-label">In this guide</span>
+    <ol>
+      <li><a href="#section-1">{{TOC_ITEM_1}}</a></li>
+      <li><a href="#section-2">{{TOC_ITEM_2}}</a></li>
+      <li><a href="#section-3">{{TOC_ITEM_3}}</a></li>
+      <li><a href="#faq">Frequently asked questions</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="section-1">{{H2_SECTION_1}}</h2>
+  <p>{{BODY_PARAGRAPH}}</p>
+
+  <!-- FINANCIAL ASSUMPTIONS TABLE — required whenever the article includes a payment example -->
+  <div class="assumptions-table-wrap">
+    <table class="assumptions-table">
+      <caption>Example only — not a loan quote, pre-approval, or offer of credit. Verified {{DATE_LAST_VERIFIED_HUMAN}}.</caption>
+      <tbody>
+        <tr><th>Home price</th><td>{{HOME_PRICE}}</td></tr>
+        <tr><th>Down payment</th><td>{{DOWN_PAYMENT_PCT}} ({{DOWN_PAYMENT_AMOUNT}})</td></tr>
+        <tr><th>Interest rate (assumed)</th><td>{{INTEREST_RATE}}</td></tr>
+        <tr><th>Loan term</th><td>{{LOAN_TERM}}</td></tr>
+        <tr><th>Estimated principal &amp; interest</th><td>{{PRINCIPAL_INTEREST}}</td></tr>
+        <tr><th>Estimated property taxes (monthly)</th><td>{{PROPERTY_TAXES}}</td></tr>
+        <tr><th>Estimated homeowners insurance (monthly)</th><td>{{INSURANCE}}</td></tr>
+        <tr><th>HOA / MUD (monthly)</th><td>{{HOA_MUD}}</td></tr>
+        <tr class="total-row"><th>Estimated total monthly payment</th><td>{{TOTAL_MONTHLY}}</td></tr>
+        <tr><th>Estimated cash to close</th><td>{{CASH_TO_CLOSE}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="section-2">{{H2_SECTION_2}}</h2>
+  <p>{{BODY_PARAGRAPH}}</p>
+
+  <h2 id="section-3">{{H2_SECTION_3}}</h2>
+  <p>{{BODY_PARAGRAPH}}</p>
+
+  <!-- VERIFY BOX — use anywhere a fact needs Allan's confirmation before publishing -->
+  <div class="verify-box">
+    <span class="verify-box-label">Needs verification before publishing</span>
+    <p>{{WHAT_NEEDS_VERIFICATION}}</p>
+  </div>
+
+  <!-- LIMITATIONS -->
+  <div class="limitations-box">
+    <h3>Limitations of this guide</h3>
+    <p>{{LIMITATIONS_TEXT}}</p>
+  </div>
+
+  <h2>Frequently asked questions</h2>
+  <div id="faq">
+    <div class="faq-item">
+      <h3>{{FAQ_Q1}}</h3>
+      <p>{{FAQ_A1}}</p>
+    </div>
+  </div>
+
+  <h2>Primary sources</h2>
+  <ul class="sources-list">
+    <li><a href="{{SOURCE_URL_1}}" target="_blank" rel="noopener">{{SOURCE_NAME_1}}</a></li>
+  </ul>
+
+  <div class="disclaimer-box">
+    <h3>A note on accuracy</h3>
+    <p>Rates, builder incentives, property taxes, insurance, HOA/MUD fees, loan qualification rules, and home availability change — sometimes weekly. The figures above were accurate as of {{DATE_LAST_VERIFIED_HUMAN}} and are for illustration only. Confirm current numbers with a lender, builder, and the relevant appraisal district before making a decision.</p>
+  </div>
+
+  <div class="article-cta">
+    <strong>{{CTA_HEADLINE}}</strong>
+    <a href="index.html#contact">{{CTA_LINK_TEXT}}</a> — {{CTA_SUPPORTING_TEXT}}
+  </div>
+
+  <div class="related-articles">
+    <h3>Related Guides</h3>
+    <div class="related-grid">
+      <a href="{{RELATED_URL_1}}" class="related-card">
+        <span class="related-cat">{{RELATED_CAT_1}}</span>
+        <span class="related-title">{{RELATED_TITLE_1}}</span>
+      </a>
+      <a href="{{RELATED_URL_2}}" class="related-card">
+        <span class="related-cat">{{RELATED_CAT_2}}</span>
+        <span class="related-title">{{RELATED_TITLE_2}}</span>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <img src="AskOzzie Team White Logo.png" alt="AskOzzie Real Estate Team × AEA Realty">
+    <div class="footer-logo-name">Allan <em>Vega</em></div>
+    <div class="footer-logo-meta">Realtor &nbsp;·&nbsp; New Construction Specialist &nbsp;·&nbsp; (281) 865-7146</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html#stats">Market Stats</a></li>
+    <li><a href="index.html#search">Search Homes</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Allan Vega · AEA Realty · The Ask Ozzie Team · Houston, TX</div>
+  <div class="footer-trec">
+    <a href="https://content.harstatic.com/pdf/TREC_CPN.pdf" target="_blank">Texas Real Estate Commission Consumer Protection Notice</a>
+    <a href="https://www.har.com/mhf/terms/dispBrokerInfo?sitetype=aws&cid=777820" target="_blank">Texas Real Estate Commission Information About Brokerage Services</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+  </div>
+</footer>
+
+<script>
+var AV_CONSENT_KEY = 'av_cookie_consent';
+function avLoadMetaPixel() {
+  if (typeof fbq !== 'undefined') return;
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','2075120536666616');
+  fbq('track','PageView');
+}
+function avGrantConsent() {
+  gtag('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+  avLoadMetaPixel();
+}
+function acceptCookies() {
+  localStorage.setItem(AV_CONSENT_KEY,'accepted');
+  document.getElementById('cookie-banner').style.display='none';
+  avGrantConsent();
+}
+function declineCookies() {
+  localStorage.setItem(AV_CONSENT_KEY,'declined');
+  document.getElementById('cookie-banner').style.display='none';
+}
+(function() {
+  var c = localStorage.getItem(AV_CONSENT_KEY);
+  if (c === 'accepted') { avGrantConsent(); }
+  else if (!c) { document.getElementById('cookie-banner').style.display='flex'; }
+})();
+</script>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <p class="cookie-text">We use cookies for analytics and advertising to help improve this site. <a href="privacy-policy.html">Privacy Policy</a></p>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+    <button class="cookie-accept" onclick="acceptCookies()">Accept All</button>
+  </div>
+</div>
+
+</body>
+</html>

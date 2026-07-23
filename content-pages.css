@@ -908,3 +908,282 @@ footer > * {
     text-align: left;
   }
 }
+
+/* ============================================================
+   ARTICLE TEMPLATE COMPONENTS
+   Answer box, TOC, author box, assumptions table, limitations,
+   FAQ, verification callouts, disclaimer. Used by the reusable
+   article-template.html and any article built from it.
+   ============================================================ */
+
+.answer-box {
+  margin: 0 0 40px;
+  padding: 26px 28px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(45, 62, 48, 0.06), rgba(45, 62, 48, 0.02));
+  border: 1px solid rgba(45, 62, 48, 0.16);
+}
+
+.answer-box-label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--veridian);
+}
+
+.answer-box p {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-1);
+}
+
+.answer-box p + p {
+  margin-top: 12px;
+}
+
+.author-box {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin: 0 0 40px;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+}
+
+.author-box img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.author-box-name {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-1);
+}
+
+.author-box-meta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-2);
+  margin-top: 3px;
+}
+
+.article-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--text-3);
+  margin-top: 4px;
+}
+
+.toc {
+  margin: 0 0 44px;
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface, #fff);
+}
+
+.toc-label {
+  display: block;
+  margin-bottom: 10px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.toc ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.toc li {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  margin-bottom: 0;
+}
+
+.toc a {
+  color: var(--text-2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.toc a:hover {
+  color: var(--veridian);
+  border-bottom-color: rgba(45, 62, 48, 0.3);
+}
+
+.assumptions-table-wrap {
+  margin: 24px 0 32px;
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+}
+
+table.assumptions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.88rem;
+  min-width: 460px;
+}
+
+table.assumptions-table caption {
+  text-align: left;
+  padding: 14px 18px;
+  font-size: 0.78rem;
+  color: var(--text-3);
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+table.assumptions-table th,
+table.assumptions-table td {
+  padding: 11px 18px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+table.assumptions-table th {
+  width: 55%;
+  font-weight: 500;
+  color: var(--text-2);
+}
+
+table.assumptions-table td {
+  font-weight: 700;
+  color: var(--text-1);
+  text-align: right;
+}
+
+table.assumptions-table tr:last-child th,
+table.assumptions-table tr:last-child td {
+  border-bottom: none;
+}
+
+table.assumptions-table tr.total-row th,
+table.assumptions-table tr.total-row td {
+  background: rgba(45, 62, 48, 0.05);
+  font-weight: 800;
+}
+
+.limitations-box,
+.disclaimer-box {
+  margin: 32px 0;
+  padding: 20px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(197, 164, 126, 0.35);
+  background: rgba(197, 164, 126, 0.08);
+}
+
+.limitations-box h3,
+.disclaimer-box h3 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-1);
+}
+
+.limitations-box p,
+.limitations-box li,
+.disclaimer-box p {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+
+.verify-box {
+  margin: 20px 0;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px dashed rgba(193, 96, 58, 0.55);
+  background: rgba(193, 96, 58, 0.06);
+}
+
+.verify-box-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #a04e2e;
+}
+
+.verify-box p,
+.verify-box li {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: var(--text-2);
+  margin-bottom: 4px;
+}
+
+.faq-item {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.faq-item h3 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  margin-bottom: 0;
+}
+
+.sources-list {
+  margin: 20px 0 0 1.1rem;
+  padding: 0;
+}
+
+.sources-list li {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+  .assumptions-table-wrap {
+    margin: 20px -20px 28px;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .author-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
