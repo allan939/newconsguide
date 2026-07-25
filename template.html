@@ -1943,8 +1943,8 @@ function submitStickyCTA(e) {
   var sctaCtrl = new AbortController();
   setTimeout(function() { sctaCtrl.abort(); }, 10000);
   fetch(SCRIPT_URL, { method: 'POST', body: formData, signal: sctaCtrl.signal })
-    .catch(function() {})
-    .finally(function() {
+    .then(function(response) {
+      if (!response.ok) { throw new Error('Server error ' + response.status); }
       document.getElementById('scta-form').style.display = 'none';
       var successEl = document.getElementById('scta-success');
       document.getElementById('scta-success-msg').textContent = 'Got it, ' + name + '! I\u2019ll be in touch within 2 hours.';
@@ -1957,6 +1957,11 @@ function submitStickyCTA(e) {
         bar.classList.remove('scta-visible');
         document.body.classList.remove('scta-active');
       }, 4500);
+    })
+    .catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Get Free Advice';
+      alert('Something went wrong \u2014 please try again or call (281) 865-7146.');
     });
 }
 
