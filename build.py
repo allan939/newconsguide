@@ -7,6 +7,7 @@ SITE_URL = 'https://allanvrealestate.com'
 SITEMAP_PAGES = [
     {'source': 'index.html', 'loc': '', 'changefreq': 'weekly', 'priority': '1.0'},
     {'source': 'blog.html', 'loc': 'blog.html', 'changefreq': 'weekly', 'priority': '0.9'},
+    {'source': 'faq.html', 'loc': 'faq.html', 'changefreq': 'monthly', 'priority': '0.8'},
     {'source': 'katy-new-construction-homes.html', 'loc': 'katy-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
     {'source': 'cypress-new-construction-homes.html', 'loc': 'cypress-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
     {'source': 'fulshear-new-construction-homes.html', 'loc': 'fulshear-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
