@@ -177,6 +177,30 @@ nav.nav-hidden{transform:translateY(-100%);}
 .stat-trend{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:400;margin-top:10px;color:var(--veridian);background:none;border:none;padding:0;}
 .stats-update-note{text-align:center;margin-top:28px;font-family:'Inter',system-ui,sans-serif;font-size:0.75rem;color:var(--text-3);max-width:1200px;margin-left:auto;margin-right:auto;}
 
+/* DEALS */
+.deals-section{padding:120px 52px;background:var(--bg);border-top:1px solid var(--border);}
+.deals-section .section-eyebrow{color:var(--veridian);}
+.deals-section .section-title{color:var(--text-1);}
+.deals-section .section-title em{color:var(--veridian);}
+.deals-section .section-header{max-width:1200px;margin-left:auto;margin-right:auto;}
+.deals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:0 auto;}
+.deal-card{padding:28px;background:var(--surface);border:none;border-top:3px solid var(--veridian);border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,0.06);transition:box-shadow 0.25s,transform 0.25s;display:flex;flex-direction:column;}
+.deal-card:hover{box-shadow:0 4px 20px rgba(0,0,0,0.1);transform:translateY(-2px);}
+.deal-badge{display:inline-block;align-self:flex-start;font-family:'Inter',system-ui,sans-serif;font-size:0.68rem;font-weight:600;letter-spacing:0.03em;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+.deal-badge.hot{background:rgba(176,58,46,0.1);color:#b03a2e;}
+.deal-badge.new{background:rgba(197,164,126,0.2);color:#8a6a3a;}
+.deal-badge.featured{background:rgba(45,62,48,0.09);color:var(--veridian);}
+.deal-builder{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--text-1);margin-bottom:4px;line-height:1.2;}
+.deal-community{font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px;}
+.deal-incentive{font-size:0.9rem;font-weight:500;line-height:1.6;color:var(--text-1);margin-bottom:14px;}
+.deal-details{list-style:none;margin-bottom:16px;flex-grow:1;}
+.deal-detail{position:relative;padding-left:16px;font-size:0.82rem;line-height:1.7;color:var(--text-2);}
+.deal-detail::before{content:'\2013';position:absolute;left:0;color:var(--veridian);opacity:0.6;}
+.deal-expires{font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;color:var(--text-3);margin-bottom:16px;}
+.deal-cta{width:100%;text-align:center;}
+.deals-update-note{text-align:center;margin-top:28px;font-family:'Inter',system-ui,sans-serif;font-size:0.75rem;color:var(--text-3);max-width:1200px;margin-left:auto;margin-right:auto;}
+@media(max-width:768px){.deals-grid{grid-template-columns:1fr;}}
+
 /* PROCESS */
 .process-section{padding:120px 52px;background:var(--bg);border-top:1px solid var(--border);}
 .process-section .section-title{color:var(--text-1);}
@@ -892,6 +916,7 @@ gtag('config','G-HTK9Z1G2RQ');
   </a>
   <ul class="nav-links">
     <li><a href="#stats">Market</a></li>
+    <li><a href="#deals">Deals</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#search">Search</a></li>
     <li><a href="blog.html">Blog</a></li>
@@ -1092,6 +1117,17 @@ gtag('config','G-HTK9Z1G2RQ');
   <p class="stats-update-note reveal">Stats updated monthly · Current data as of {{stats_updated}}</p>
 </section>
 
+<section class="deals-section" id="deals">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">Current Incentives</span>
+    <h2 class="section-title">Builder Deals<br><em>Live Right Now</em></h2>
+  </div>
+  <div class="deals-grid">
+{{deals_cards}}
+  </div>
+  <p class="deals-update-note reveal">Deals verified against builder sites · Current as of {{deals_updated}}. Terms change without notice  -  ask me to confirm before you visit a model home.</p>
+</section>
+
 <section class="process-section" id="process">
   <div class="process-layout">
     <div class="process-intro reveal">
@@ -1258,7 +1294,7 @@ gtag('config','G-HTK9Z1G2RQ');
       <p>Honestly, most buyers come in thinking they don't need an agent for new construction. By closing, none of them would go back and do it without one.</p>
       <div class="about-credentials">
         <div class="cred"><span class="cred-num">4+</span><span class="cred-label">Years Experience</span></div>
-        <div class="cred"><span class="cred-num">50+</span><span class="cred-label">Homes Closed</span></div>
+        <div class="cred"><span class="cred-num">50+</span><span class="cred-label">Team Homes Closed</span></div>
         <div class="cred"><span class="cred-num">6</span><span class="cred-label">Houston Corridors</span></div>
         <div class="cred"><span class="cred-num">$0</span><span class="cred-label">Cost to Buyers</span></div>
       </div>
@@ -1584,6 +1620,27 @@ gtag('config','G-HTK9Z1G2RQ');
           <span class="guide-link-kicker">South Houston</span>
           <h3>Pearland New Construction</h3>
           <p>For Medical Center, 288, and Clear Lake commuters comparing Pearland and Manvel-area options.</p>
+        </a>
+      </div>
+    </div>
+    <div class="blog-guides reveal reveal-delay-3">
+      <div class="blog-guides-header">
+        <div>
+          <span class="section-eyebrow">First-Time &amp; Budget-Conscious Buyers</span>
+          <h3>Buying on a tighter budget? Start here instead.</h3>
+        </div>
+        <p>Separate from the guides above  -  these are built for buyers prioritizing affordability and low-down-payment financing over master-planned amenities.</p>
+      </div>
+      <div class="blog-guides-grid" style="grid-template-columns:repeat(2,1fr);">
+        <a href="houston-new-construction-under-300k.html" class="guide-link-card" data-track="guide_under300k_home">
+          <span class="guide-link-kicker">Affordable Corridors</span>
+          <h3>Houston New Construction Under $300K</h3>
+          <p>Where new construction still starts under $300K near Houston, what makes up your monthly payment, and why property taxes and MUD fees vary so much by community.</p>
+        </a>
+        <a href="how-much-is-3-5-percent-down-houston.html" class="guide-link-card" data-track="guide_35down_home">
+          <span class="guide-link-kicker">First-Time Buyers</span>
+          <h3>How Much Is 3.5% Down on a Houston Home?</h3>
+          <p>What FHA's 3.5% minimum down payment actually looks like in dollars at different price points, plus current Houston-area FHA loan limits and real cash-to-close.</p>
         </a>
       </div>
     </div>
