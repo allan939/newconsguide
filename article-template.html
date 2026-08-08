@@ -1,12 +1,12 @@
 <!--
   ============================================================
-  REUSABLE ARTICLE TEMPLATE — newconsguide / allanvrealestate.com
+  REUSABLE ARTICLE TEMPLATE  -  newconsguide / allanvrealestate.com
   ============================================================
   How to use:
   1. Duplicate this file, rename to a descriptive slug
      (e.g. houston-new-construction-under-300k.html).
   2. Replace every {{TOKEN}} below. Do not leave a {{TOKEN}} in
-     the published file — grep for "{{" before publishing.
+     the published file  -  grep for "{{" before publishing.
   3. Do not invent numbers for {{...}} tokens inside the
      financial-assumptions table, FAQ, or body copy. If a fact
      isn't confirmed, leave a <div class="verify-box"> in its
@@ -75,7 +75,7 @@
   ]
 }
 </script>
-<!-- FAQPage schema — only include questions that actually appear in the FAQ section below -->
+<!-- FAQPage schema  -  only include questions that actually appear in the FAQ section below -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -90,7 +90,7 @@
 }
 </script>
 
-<!-- GA4 with Consent Mode v2 — defaults denied until user accepts -->
+<!-- GA4 with Consent Mode v2  -  defaults denied until user accepts -->
 <script>
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
@@ -238,13 +238,13 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
     </div>
   </div>
 
-  <!-- DIRECT ANSWER — 2-4 sentences answering the title question, no fluff -->
+  <!-- DIRECT ANSWER  -  2-4 sentences answering the title question, no fluff -->
   <div class="answer-box">
     <span class="answer-box-label">Short answer</span>
     <p>{{DIRECT_ANSWER}}</p>
   </div>
 
-  <!-- TABLE OF CONTENTS — include for articles with 4+ H2 sections -->
+  <!-- TABLE OF CONTENTS  -  include for articles with 4+ H2 sections -->
   <div class="toc" role="navigation" aria-label="Table of contents">
     <span class="toc-label">In this guide</span>
     <ol>
@@ -258,10 +258,10 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
   <h2 id="section-1">{{H2_SECTION_1}}</h2>
   <p>{{BODY_PARAGRAPH}}</p>
 
-  <!-- FINANCIAL ASSUMPTIONS TABLE — required whenever the article includes a payment example -->
+  <!-- FINANCIAL ASSUMPTIONS TABLE  -  required whenever the article includes a payment example -->
   <div class="assumptions-table-wrap">
     <table class="assumptions-table">
-      <caption>Example only — not a loan quote, pre-approval, or offer of credit. Verified {{DATE_LAST_VERIFIED_HUMAN}}.</caption>
+      <caption>Example only  -  not a loan quote, pre-approval, or offer of credit. Verified {{DATE_LAST_VERIFIED_HUMAN}}.</caption>
       <tbody>
         <tr><th>Home price</th><td>{{HOME_PRICE}}</td></tr>
         <tr><th>Down payment</th><td>{{DOWN_PAYMENT_PCT}} ({{DOWN_PAYMENT_AMOUNT}})</td></tr>
@@ -283,7 +283,7 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
   <h2 id="section-3">{{H2_SECTION_3}}</h2>
   <p>{{BODY_PARAGRAPH}}</p>
 
-  <!-- VERIFY BOX — use anywhere a fact needs Allan's confirmation before publishing -->
+  <!-- VERIFY BOX  -  use anywhere a fact needs Allan's confirmation before publishing -->
   <div class="verify-box">
     <span class="verify-box-label">Needs verification before publishing</span>
     <p>{{WHAT_NEEDS_VERIFICATION}}</p>
@@ -310,12 +310,12 @@ footer{background:var(--brown);color:var(--sand-light);padding:60px 24px 40px;te
 
   <div class="disclaimer-box">
     <h3>A note on accuracy</h3>
-    <p>Rates, builder incentives, property taxes, insurance, HOA/MUD fees, loan qualification rules, and home availability change — sometimes weekly. The figures above were accurate as of {{DATE_LAST_VERIFIED_HUMAN}} and are for illustration only. Confirm current numbers with a lender, builder, and the relevant appraisal district before making a decision.</p>
+    <p>Rates, builder incentives, property taxes, insurance, HOA/MUD fees, loan qualification rules, and home availability change  -  sometimes weekly. The figures above were accurate as of {{DATE_LAST_VERIFIED_HUMAN}} and are for illustration only. Confirm current numbers with a lender, builder, and the relevant appraisal district before making a decision.</p>
   </div>
 
   <div class="article-cta">
     <strong>{{CTA_HEADLINE}}</strong>
-    <a href="index.html#contact">{{CTA_LINK_TEXT}}</a> — {{CTA_SUPPORTING_TEXT}}
+    <a href="index.html#contact">{{CTA_LINK_TEXT}}</a>  -  {{CTA_SUPPORTING_TEXT}}
   </div>
 
   <div class="related-articles">
