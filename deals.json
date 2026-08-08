@@ -1,44 +1,44 @@
 {
-  "last_updated": "March 1, 2026",
+  "last_updated": "August 8, 2026",
   "deals": [
     {
       "badge": "hot",
       "badge_text": "🔥 Hot Deal",
-      "builder": "Lennar",
-      "community": "Houston Metro Area · TX",
-      "incentive": "Up to $55,000 price reduction + up to $10,000 toward closing costs on select homes",
+      "builder": "Perry Homes",
+      "community": "Summer Sales Event · Houston Metro Area · TX",
+      "incentive": "Up to $55,000 in flex cash + a 4.99% interest rate (5.178% APR) on select inventory homes",
       "details": [
-        "Refrigerator, washer & dryer included",
-        "Move-in ready appliance package",
-        "Ask about additional financing programs"
+        "Financing incentive requires using a Perry-affiliated lender (Crestmark or Parkstone)",
+        "Present the offer at your first Perry Homes model home visit",
+        "Home must close by September 30, 2026"
       ],
-      "expires": "March 31, 2026"
-    },
-    {
-      "badge": "new",
-      "badge_text": "✦ New Deal",
-      "builder": "KH Homes",
-      "community": "Houston Metro Area · TX",
-      "incentive": "$10,000 toward closing costs + 4.99% interest rate on select homes",
-      "details": [
-        "Special financial programs available",
-        "Ask about qualification requirements",
-        "Limited homes — contact for availability"
-      ],
-      "expires": "March 31, 2026"
+      "expires": "September 30, 2026"
     },
     {
       "badge": "hot",
       "badge_text": "🔥 Hot Deal",
       "builder": "Meritage Homes",
-      "community": "Saddle Up Sales Event · Houston Metro Area · TX",
-      "incentive": "4.99% interest rate (5.752% APR) + up to $7,500 in closing costs on select move-in ready homes",
+      "community": "Lowest Prices of the Year · Houston Metro Area · TX",
+      "incentive": "Save up to $50,000 on select homes + rates as low as 2.99% (5.752% APR) plus up to $7,500 toward closing costs",
       "details": [
-        "Monthly payment as low as $1,877",
-        "Up to $7,500 toward closing costs",
-        "Energy-efficient homes — lower utility bills"
+        "Up to a $10,000 bonus available on select move-in ready homes",
+        "Energy-efficient homes — lower utility bills",
+        "Terms vary by community — ask me which lots qualify"
       ],
-      "expires": "March 15, 2026"
+      "expires": "September 21, 2026"
+    },
+    {
+      "badge": "featured",
+      "badge_text": "⭐ Featured",
+      "builder": "Lennar & D.R. Horton",
+      "community": "Houston Metro Area · TX",
+      "incentive": "Both builders are running active price adjustments, rate buydowns, and closing-cost credits across Houston-area communities right now",
+      "details": [
+        "Offers vary significantly by community and change weekly",
+        "D.R. Horton's in-house lender (DHI Mortgage) often unlocks the deepest incentives",
+        "Contact me for the current, community-specific breakdown"
+      ],
+      "expires": "Ongoing — verify with me before visiting"
     }
   ]
 }
