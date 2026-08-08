@@ -5,12 +5,6 @@ on:
   schedule:
     - cron: '0 14 12 * *'
 
-  # Runs when deals.json is updated (stats.json excluded — manual edits must not
-  # trigger the scraper or it will overwrite correct manually-set values)
-  push:
-    paths:
-      - 'deals.json'
-
   # Lets you click "Run" manually anytime from GitHub Actions tab
   workflow_dispatch:
 
@@ -43,6 +37,6 @@ jobs:
         run: |
           git config user.name "Auto Updater"
           git config user.email "action@github.com"
-          git add index.html stats.json deals.json
-          git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats and builder deals refreshed"
+          git add index.html stats.json
+          git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats refreshed"
           git push
