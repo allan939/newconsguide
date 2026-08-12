@@ -53,23 +53,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,600;1,9..144,700;1,9..144,800&family=Fira+Code&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:            #F9F7F4;
-  --bg-alt:        #F0EDE8;
-  --surface:       #FDFCFA;
+  --bg:            #FFFFFF;
+  --bg-alt:        #F5F5F4;
+  --surface:       #FFFFFF;
   --border:        rgba(0,0,0,0.09);
   --border-strong: rgba(0,0,0,0.16);
   --text-1:        #1a1714;
   --text-2:        #5a5045;
   --text-3:        #756a5e;
   --off-white:     #fdfcf9;
-  --obsidian:      #1a1a18;
+  --obsidian:      #0a0a09;
   --obsidian-2:    #2a2a26;
   --veridian:      #2d3e30;
   --veridian-dark: #1e2d22;
   --veridian-mid:  #4a7060;
   --gold:          #c5a47e;
-  --dark:          #1a1714;
-  --dark-2:        #141918;
+  --dark:          #0a0a09;
+  --dark-2:        #060706;
   --line:          rgba(0,0,0,0.08);
   --line-dark:     rgba(255,255,255,0.07);
 }
@@ -118,8 +118,8 @@ nav.nav-hidden{transform:translateY(-100%);}
 
 /* HERO */
 .hero{min-height:100vh;min-height:100svh;position:relative;background:var(--dark);overflow:hidden;display:flex;flex-direction:column;}
-.hero-slideshow{position:absolute;inset:0;z-index:0;overflow:hidden;will-change:transform;display:grid;grid-template-columns:repeat(6,1fr);gap:0;}
-.hero-slide{position:relative;width:100%;height:100%;background-size:cover;background-position:center;opacity:1;overflow:hidden;}
+.hero-slideshow{position:absolute;inset:0;z-index:0;overflow:hidden;will-change:transform;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#000;}
+.hero-slide{position:relative;width:100%;height:100%;background-size:cover;background-position:center;opacity:1;overflow:hidden;filter:grayscale(55%) contrast(1.08) brightness(0.9);}
 @keyframes kb1{from{transform:scale(1) translate(0,0);}to{transform:scale(1.08) translate(-1.5%,-1%);}}
 @keyframes kb2{from{transform:scale(1.06) translate(1%,0);}to{transform:scale(1) translate(-1%,1%);}}
 @keyframes kb3{from{transform:scale(1) translate(-1%,1%);}to{transform:scale(1.07) translate(1.5%,-1%);}}
@@ -130,14 +130,7 @@ nav.nav-hidden{transform:translateY(-100%);}
 .hero-slide:nth-child(4){animation:kb4 16s ease-in-out infinite alternate;}
 .hero-slide:nth-child(5){animation:kb1 16s ease-in-out infinite alternate;}
 .hero-slide:nth-child(6){animation:kb2 16s ease-in-out infinite alternate;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,12,10,0.55) 0%,rgba(10,12,10,0.5) 35%,rgba(10,12,10,0.85) 100%);z-index:1;}
-.hero-proof-card{position:absolute;left:6%;bottom:2.5rem;z-index:3;background:rgba(20,22,20,0.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.14);border-radius:14px;padding:18px 22px;max-width:220px;animation:fadeUp 0.9s 0.5s ease both;}
-.hero-proof-card-label{font-family:'Inter',system-ui,sans-serif;font-size:0.62rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;}
-.hero-proof-card-num{font-family:'Fraunces',Georgia,serif;font-size:1.7rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.02em;}
-.hero-proof-card-sub{font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.55);margin-top:4px;line-height:1.4;}
-.hero-proof-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;}
-.hero-proof-card-tags span{font-family:'Inter',system-ui,sans-serif;font-size:0.6rem;font-weight:600;letter-spacing:0.03em;color:rgba(255,255,255,0.75);border:1px solid rgba(255,255,255,0.18);border-radius:20px;padding:3px 9px;}
-@media(max-width:768px){.hero-proof-card{display:none;}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,7,6,0.72) 0%,rgba(6,7,6,0.68) 35%,rgba(6,7,6,0.92) 100%);z-index:1;}
 /* Coordinates  -  hidden by design intent */
 .coordinates{display:none;}
 /* Hero layout  -  centered column */
@@ -898,20 +891,12 @@ gtag('config','G-HTK9Z1G2RQ');
 <section class="hero">
   <div class="hero-slideshow">
     <div class="hero-slide" style="background-image:url('754287548.jpeg');"></div>
-    <div class="hero-slide" style="background-image:url('757946320.jpeg');"></div>
     <div class="hero-slide" style="background-image:url('762400500.jpeg');"></div>
     <div class="hero-slide" style="background-image:url('744052384.jpeg');background-position:center 35%;"></div>
-    <div class="hero-slide" style="background-image:url('750025310.jpeg');background-position:center center;"></div>
     <div class="hero-slide" style="background-image:url('753769423.jpeg');background-position:center center;"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="coordinates">29°45′46″N 95°22′59″W<br>Elevation  -  Houston, Texas</div>
-  <div class="hero-proof-card" aria-hidden="true">
-    <div class="hero-proof-card-label">Featured this month</div>
-    <div class="hero-proof-card-num">{{median_price}}</div>
-    <div class="hero-proof-card-sub">Median new build · rate buydowns available</div>
-    <div class="hero-proof-card-tags"><span>FHA</span><span>VA</span><span>Buydown</span></div>
-  </div>
   <div class="hero-inner">
     <div class="hero-headline-area">
       <span class="hero-tag">Houston's New Construction Specialist · Se Habla Español</span>
