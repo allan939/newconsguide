@@ -181,24 +181,19 @@ nav.nav-hidden{transform:translateY(-100%);}
 .process-section .section-title{color:var(--text-1);}
 .process-section .section-title em{color:var(--veridian);}
 .process-section .section-eyebrow{color:var(--veridian);}
-.process-layout{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;}
-.process-intro-text{font-size:0.88rem;line-height:1.7;color:var(--text-2);margin-top:20px;}
+.process-intro-text{font-size:0.95rem;line-height:1.7;color:var(--text-2);margin-top:20px;max-width:640px;}
 .process-intro-link{display:inline-flex;align-items:center;gap:6px;margin-top:24px;font-family:'Inter',system-ui,sans-serif;font-size:0.875rem;font-weight:500;color:var(--veridian);text-decoration:none;border-bottom:1px solid rgba(45,62,48,0.3);padding-bottom:2px;transition:border-color 0.2s;}
 .process-intro-link:hover{border-color:var(--veridian);}
-.process-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 36px;}
-.process-card{padding:32px 8px 0;border:none;border-radius:0;background:transparent;border-top:1px solid var(--border);box-shadow:none;}
-.process-card:hover{}
-.process-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;}
-.process-icon{width:auto;height:auto;border:none;border-radius:0;display:flex;align-items:center;justify-content:center;font-size:1.3rem;background:none;}
-.process-step{font-family:'Fraunces',Georgia,serif;font-size:2.1rem;font-weight:800;letter-spacing:-0.02em;color:var(--veridian);opacity:0.22;text-transform:none;line-height:1;}
-.process-title{font-family:'Fraunces',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--text-1);margin-bottom:10px;line-height:1.3;}
-.process-desc{font-size:0.875rem;line-height:1.7;color:var(--text-2);}
-.process-right{display:flex;flex-direction:column;}
-.process-timeline{display:flex;align-items:flex-start;margin-bottom:28px;padding:20px 24px;background:var(--surface);border:1px solid var(--border);border-radius:16px;}
-.pt-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 auto;}
-.pt-node{width:34px;height:34px;border-radius:50%;background:var(--veridian);color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:0.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.pt-label{font-family:'Inter',system-ui,sans-serif;font-size:0.67rem;font-weight:500;color:var(--text-2);text-align:center;max-width:68px;line-height:1.35;}
-.pt-connector{flex:1;height:2px;background:linear-gradient(90deg,var(--veridian) 0%,rgba(45,62,48,0.12) 100%);margin:17px 6px 0;border-radius:1px;}
+.path-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1300px;margin:0 auto;}
+.path-card{position:relative;display:block;aspect-ratio:3/4;border-radius:18px;overflow:hidden;text-decoration:none;background:var(--obsidian);}
+.path-card-media{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(35%) contrast(1.05) brightness(0.8);transition:transform 0.5s cubic-bezier(0.22,1,0.36,1),filter 0.4s ease;}
+.path-card:hover .path-card-media{transform:scale(1.06);filter:grayscale(10%) brightness(0.7);}
+.path-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,6,0.94) 0%,rgba(6,7,6,0.55) 42%,rgba(6,7,6,0.08) 72%);}
+.path-card-body{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:24px 20px;}
+.path-card-num{position:absolute;top:20px;right:20px;z-index:1;font-family:'Fraunces',Georgia,serif;font-size:1.6rem;font-weight:800;color:rgba(255,255,255,0.5);}
+.path-card-kicker{font-family:'Inter',system-ui,sans-serif;font-size:0.63rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:8px;display:block;}
+.path-card-title{font-family:'Fraunces',Georgia,serif;font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.15;}
+.path-card-desc{font-family:'Inter',system-ui,sans-serif;font-size:0.8rem;line-height:1.55;color:rgba(255,255,255,0.72);}
 
 /* SEARCH */
 .search-section{padding:150px 52px;background:var(--bg);border-top:1px solid var(--border);text-align:center;}
@@ -557,13 +552,11 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .stats-update-note{font-size:0.72rem;margin-top:20px;}
 
   /* ── PROCESS ── */
-  .process-section{padding:72px 20px;}
-  .process-layout{grid-template-columns:1fr;gap:28px;}
-  .process-grid{grid-template-columns:1fr;gap:12px;}
-  .process-card{padding:28px 4px 0;}
-  .process-card:hover{transform:none !important;}
-  .process-timeline{display:none;}
+  .process-section{padding:72px 0 72px 20px;}
+  .process-section .section-header{padding-right:20px;}
   .process-intro-text{font-size:0.875rem;}
+  .path-row{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:74%;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-right:20px;-webkit-overflow-scrolling:touch;}
+  .path-card{scroll-snap-align:start;}
 
   /* ── SEARCH ── */
   .search-section{padding:72px 20px;}
@@ -1073,71 +1066,50 @@ gtag('config','G-HTK9Z1G2RQ');
 </section>
 
 <section class="process-section" id="process">
-  <div class="process-layout">
-    <div class="process-intro reveal">
-      <span class="section-eyebrow">How It Works</span>
-      <h2 class="section-title">What working with me<br><em>actually looks like.</em></h2>
-      <div class="section-line"></div>
-      <p class="process-intro-text">New construction sounds simple until you're face-to-face with a builder's sales rep. Here's exactly what I do  -  from our first conversation to the day you get your keys. All at zero cost to you.</p>
-      <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="process-intro-link" data-track="process_calendar_schedule">Schedule a free call →</a>
-    </div>
-    <div class="process-right">
-      <div class="process-timeline reveal reveal-delay-1">
-        <div class="pt-step">
-          <div class="pt-node">1</div>
-          <div class="pt-label">Free Consultation</div>
-        </div>
-        <div class="pt-connector"></div>
-        <div class="pt-step">
-          <div class="pt-node">2</div>
-          <div class="pt-label">Builder Access</div>
-        </div>
-        <div class="pt-connector"></div>
-        <div class="pt-step">
-          <div class="pt-node">3</div>
-          <div class="pt-label">I Negotiate for You</div>
-        </div>
-        <div class="pt-connector"></div>
-        <div class="pt-step">
-          <div class="pt-node">4</div>
-          <div class="pt-label">Keys in Hand</div>
-        </div>
+  <div class="section-header reveal">
+    <span class="section-eyebrow">How It Works</span>
+    <h2 class="section-title">What working with me<br><em>actually looks like.</em></h2>
+    <div class="section-line"></div>
+    <p class="process-intro-text">New construction sounds simple until you're face-to-face with a builder's sales rep. Here's exactly what I do  -  from our first conversation to the day you get your keys. All at zero cost to you.</p>
+    <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="process-intro-link" data-track="process_calendar_schedule">Schedule a free call →</a>
+  </div>
+  <div class="path-row">
+    <a href="#contact" class="path-card reveal reveal-delay-1" data-track="process_card_1">
+      <div class="path-card-media" style="background-image:url('754287548.jpeg');"></div>
+      <span class="path-card-num">01</span>
+      <div class="path-card-body">
+        <span class="path-card-kicker">Zero pressure</span>
+        <h3 class="path-card-title">Free Consultation</h3>
+        <p class="path-card-desc">Budget, timeline, and where you want to live. Most buyers leave with an actual game plan in about 15 minutes.</p>
       </div>
-      <div class="process-grid">
-        <div class="process-card reveal reveal-delay-1">
-          <div class="process-card-top">
-            <div class="process-icon">&#127968;</div>
-            <span class="process-step">01</span>
-          </div>
-          <div class="process-title">Free Consultation</div>
-          <p class="process-desc">We talk about your budget, where you want to live, and your timeline. No pitch, no pressure. Most buyers tell me they went from overwhelmed to having an actual game plan in about 15 minutes.</p>
-        </div>
-        <div class="process-card reveal reveal-delay-2">
-          <div class="process-card-top">
-            <div class="process-icon">&#128273;</div>
-            <span class="process-step">02</span>
-          </div>
-          <div class="process-title">Builder Access</div>
-          <p class="process-desc">I cut through the noise and show you the 3–5 communities that actually match what you need  -  including move-in ready inventory and builder programs that don't get advertised publicly.</p>
-        </div>
-        <div class="process-card reveal reveal-delay-3">
-          <div class="process-card-top">
-            <div class="process-icon">&#9878;&#65039;</div>
-            <span class="process-step">03</span>
-          </div>
-          <div class="process-title">I Negotiate for You</div>
-          <p class="process-desc">This is where it pays off. I know which programs are stackable, which deadlines are real, and what has room to move. Rate buydowns, closing cost credits, upgrades  -  I push every lever.</p>
-        </div>
-        <div class="process-card reveal reveal-delay-4">
-          <div class="process-card-top">
-            <div class="process-icon">&#10003;</div>
-            <span class="process-step">04</span>
-          </div>
-          <div class="process-title">Keys in Hand</div>
-          <p class="process-desc">Contract review, inspections, final walkthrough  -  nothing slips through the cracks. My services are 100% free to you. The builder pays my commission.</p>
-        </div>
+    </a>
+    <a href="#contact" class="path-card reveal reveal-delay-2" data-track="process_card_2">
+      <div class="path-card-media" style="background-image:url('762400500.jpeg');"></div>
+      <span class="path-card-num">02</span>
+      <div class="path-card-body">
+        <span class="path-card-kicker">Move-in ready + more</span>
+        <h3 class="path-card-title">Builder Access</h3>
+        <p class="path-card-desc">The 3–5 communities that actually match what you need, including programs that don't get advertised publicly.</p>
       </div>
-    </div>
+    </a>
+    <a href="#contact" class="path-card reveal reveal-delay-3" data-track="process_card_3">
+      <div class="path-card-media" style="background-image:url('744052384.jpeg');background-position:center 35%;"></div>
+      <span class="path-card-num">03</span>
+      <div class="path-card-body">
+        <span class="path-card-kicker">Rate buydowns · credits</span>
+        <h3 class="path-card-title">I Negotiate for You</h3>
+        <p class="path-card-desc">I know which programs are stackable, which deadlines are real, and what has room to move.</p>
+      </div>
+    </a>
+    <a href="#contact" class="path-card reveal reveal-delay-4" data-track="process_card_4">
+      <div class="path-card-media" style="background-image:url('753769423.jpeg');background-position:center center;"></div>
+      <span class="path-card-num">04</span>
+      <div class="path-card-body">
+        <span class="path-card-kicker">$0 cost to you</span>
+        <h3 class="path-card-title">Keys in Hand</h3>
+        <p class="path-card-desc">Contract review, inspections, final walkthrough  -  nothing slips through the cracks.</p>
+      </div>
+    </a>
   </div>
 </section>
 
