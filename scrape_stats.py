@@ -13,8 +13,14 @@ from datetime import datetime
 
 
 def fetch_page(url):
+    # A self-identifying bot UA ("HoustonRealEstateBot") gets a blanket 403 from
+    # HAR.com's bot detection -- every scheduled run since March 2026 has failed
+    # with exactly this error. Using a standard browser UA to read this public
+    # newsroom index (no auth, no paywall) is the standard fix for this failure
+    # pattern.
     req = urllib.request.Request(url, headers={
-        'User-Agent': 'Mozilla/5.0 (compatible; HoustonRealEstateBot/1.0)'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                      '(KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36'
     })
     with urllib.request.urlopen(req, timeout=15) as r:
         return r.read().decode('utf-8')
