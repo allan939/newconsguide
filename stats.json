@@ -1,13 +1,13 @@
 {
-  "last_updated": "July 2026",
+  "last_updated": "August 2026",
   "source": "HAR.com - Houston Association of Realtors",
   "source_url": "https://www.har.com/content/department/newsroom?pid=2222",
   "stats": {
-    "median_price": "$340K",
-    "median_price_trend": "Source: HAR July 2026",
-    "active_listings": "40,750",
-    "active_listings_trend": "5.5 months inventory",
-    "days_on_market": "53",
+    "median_price": "$330K",
+    "median_price_trend": "Source: HAR August 2026",
+    "active_listings": "60,390",
+    "active_listings_trend": "5.3 months inventory (single-family)",
+    "days_on_market": "54",
     "days_on_market_trend": "Days to sell \u00b7 Houston MSA",
     "builders_with_incentives": "Most builders",
     "builders_with_incentives_trend": "offering incentives now"
