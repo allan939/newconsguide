@@ -99,8 +99,8 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:800;}
 .btn-outline:hover{border-color:var(--text-1);background:var(--text-1);color:#fff;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:rgba(255,255,255,0.96);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--border);transition:height 0.3s ease,box-shadow 0.3s ease,transform 0.4s ease;}
-nav.nav-scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,0.07);}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:1px solid transparent;transition:height 0.3s ease,box-shadow 0.3s ease,transform 0.4s ease,background 0.3s ease,backdrop-filter 0.3s ease,border-color 0.3s ease;}
+nav.nav-scrolled{height:60px;box-shadow:0 2px 20px rgba(0,0,0,0.07);background:rgba(255,255,255,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom-color:var(--border);}
 nav.nav-hidden{transform:translateY(-100%);}
 .nav-logo{text-decoration:none;display:flex;align-items:center;gap:12px;}
 .nav-logo-img{height:36px;width:auto;display:block;flex-shrink:0;}
@@ -117,7 +117,7 @@ nav.nav-hidden{transform:translateY(-100%);}
 .btn-nav:hover{background:var(--veridian-dark);box-shadow:0 2px 8px rgba(45,62,48,0.35);}
 
 /* HERO */
-.hero{position:relative;background:var(--bg);overflow:hidden;display:flex;flex-direction:column;padding-top:64px;}
+.hero{position:relative;background:var(--bg);overflow:hidden;display:flex;flex-direction:column;padding-top:0;}
 .hero-bg{position:absolute;inset:0;z-index:0;background-image:url('754287548.jpeg');background-size:cover;background-position:center 30%;filter:blur(7px) grayscale(45%) brightness(1.18) saturate(0.85);opacity:0.32;transform:scale(1.06);}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(255,255,255,0.45) 0%,rgba(255,255,255,0.85) 55%,var(--bg) 92%),radial-gradient(ellipse at 28% 4%,rgba(45,62,48,0.08),transparent 55%);}
 /* Scattered photo installation  -  replaces the old full-bleed mosaic */
@@ -511,7 +511,9 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 /* MOBILE */
 @media(max-width:768px){
   /* ── NAV ── */
-  nav{height:60px;padding:0 16px;}
+  /* Transparent-over-hero-photo is a desktop affectation; mobile keeps the
+     header solid immediately for legibility and tap-target clarity. */
+  nav{height:60px;padding:0 16px;background:rgba(255,255,255,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom-color:var(--border);}
   nav.nav-scrolled{height:60px;box-shadow:0 2px 12px rgba(0,0,0,0.07);}
   .nav-logo-img{height:28px;}
   .nav-logo-name strong{font-size:0.88rem;}
@@ -1646,10 +1648,13 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 let lastScrollY = 0;
+// Nav stays transparent while it's floating over the hero photo installation,
+// then solidifies once the user scrolls past it (desktop only -- mobile keeps
+// a solid nav always, see the max-width:768px rule).
+const navSolidThreshold = heroSlideshow ? heroSlideshow.offsetTop + heroSlideshow.offsetHeight - 40 : 400;
 window.addEventListener('scroll', () => {
   const y = window.scrollY;
-  nav.style.background = y > 60 ? 'rgba(255,255,255,0.97)' : 'rgba(255,255,255,0.92)';
-  nav.classList.toggle('nav-scrolled', y > 60);
+  nav.classList.toggle('nav-scrolled', y > navSolidThreshold);
   // Hide nav on scroll down, reveal on scroll up
   if (y > 120) {
     const goingDown = y > lastScrollY;
