@@ -17,6 +17,13 @@ SITEMAP_PAGES = [
     {'source': 'blog-builder-incentives-houston.html', 'loc': 'blog-builder-incentives-houston.html', 'changefreq': 'monthly', 'priority': '0.8'},
     {'source': 'houston-new-construction-under-300k.html', 'loc': 'houston-new-construction-under-300k.html', 'changefreq': 'monthly', 'priority': '0.9'},
     {'source': 'how-much-is-3-5-percent-down-houston.html', 'loc': 'how-much-is-3-5-percent-down-houston.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'baytown-new-construction-homes.html', 'loc': 'baytown-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'crosby-new-construction-homes.html', 'loc': 'crosby-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'league-city-new-construction-homes.html', 'loc': 'league-city-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'new-caney-porter-new-construction-homes.html', 'loc': 'new-caney-porter-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'sugar-land-missouri-city-new-construction-homes.html', 'loc': 'sugar-land-missouri-city-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'webster-new-construction-homes.html', 'loc': 'webster-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
+    {'source': 'woodlands-conroe-new-construction-homes.html', 'loc': 'woodlands-conroe-new-construction-homes.html', 'changefreq': 'monthly', 'priority': '0.9'},
 ]
 
 
