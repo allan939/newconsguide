@@ -131,7 +131,7 @@ nav.nav-hidden{transform:translateY(-100%);}
 .hero-daynight-toggle.is-day .hero-daynight-toggle-icon{background:#e8b84b;}
 @media(max-width:768px){.hero-daynight-toggle{top:70px;right:4%;padding:5px 12px 5px 5px;}}
 /* Single clean hero photo  -  replaces the old scattered/rotated photo collage */
-.hero-photo-single{position:relative;width:92%;max-width:620px;aspect-ratio:16/10;margin:44px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);z-index:1;}
+.hero-photo-single{position:relative;width:100%;max-width:560px;aspect-ratio:16/11;margin:0;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);z-index:1;}
 .hero-photo-single-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(15%) contrast(1.06) brightness(0.94);transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);}
 .hero-photo-single:hover .hero-photo-single-img{transform:scale(1.05);}
 .hero-photo-single::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,6,0.6) 0%,rgba(6,7,6,0) 45%);z-index:1;}
@@ -142,18 +142,20 @@ nav.nav-hidden{transform:translateY(-100%);}
 .hero-photo-caption-title{font-family:'Spectral',Georgia,serif;font-size:1.3rem;font-style:italic;font-weight:600;}
 /* Coordinates  -  hidden by design intent */
 .coordinates{display:none;}
-/* Hero layout  -  centered column below the photo installation */
-.hero-inner{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:center;text-align:center;padding:56px 6% 100px;max-width:900px;margin:0 auto;width:100%;}
+/* Hero layout  -  split: text on the left, one clean photo on the right */
+.hero-split{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;max-width:1300px;margin:0 auto;padding:64px 6% 48px;width:100%;}
+.hero-text-col{text-align:left;}
+.hero-photo-col{display:flex;justify-content:center;}
 .hero-headline-area{width:100%;}
 .hero-tag{font-family:'Inter',system-ui,sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--veridian);border:none;background:none;display:inline-block;padding:0;border-radius:0;margin-bottom:1.6rem;animation:fadeUp 0.9s ease both;}
-.hero-headline{font-family:'Spectral',Georgia,serif;font-size:clamp(3.2rem,7vw,6.4rem);font-weight:800;line-height:0.98;letter-spacing:-0.035em;color:var(--text-1);animation:fadeUp 0.9s 0.15s ease both;margin-bottom:0;}
+.hero-headline{font-family:'Spectral',Georgia,serif;font-size:clamp(2.6rem,4.6vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em;color:var(--text-1);animation:fadeUp 0.9s 0.15s ease both;margin-bottom:0;}
 .hero-headline span{display:block;}
 .hero-headline em{font-style:italic;font-weight:800;color:var(--veridian);}
 /* Hero footer  -  now inline after headline */
-.hero-footer{position:relative;bottom:auto;right:auto;text-align:center;max-width:600px;z-index:3;animation:fadeUp 0.9s 0.3s ease both;margin-top:2rem;}
+.hero-footer{position:relative;bottom:auto;right:auto;text-align:left;max-width:520px;z-index:3;animation:fadeUp 0.9s 0.3s ease both;margin-top:1.6rem;}
 .hero-sub{font-family:'Inter',system-ui,sans-serif;font-size:1.05rem;font-weight:400;color:var(--text-2);margin-bottom:2rem;line-height:1.6;}
-.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.hero-proof{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:1.2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;}
+.hero-ctas{display:flex;gap:12px;justify-content:flex-start;flex-wrap:wrap;}
+.hero-proof{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:0;margin-top:1.2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;}
 .hero-proof-item{display:inline-flex;align-items:center;font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:400;letter-spacing:0.02em;line-height:1.2;color:var(--text-3);padding:0 22px;border-right:1px solid var(--border);}
 .hero-proof-item:last-child{border-right:none;}
 .hero-proof-item::before{display:none;}
@@ -549,9 +551,10 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   html{scroll-padding-top:72px;}
   .hero{padding-top:56px;}
   .hero-headline{font-size:clamp(2.3rem,9.5vw,3.5rem);line-height:0.99;letter-spacing:-0.025em;}
-  .hero-inner{flex:none;padding:32px 20px 56px;text-align:center;}
+  .hero-split{grid-template-columns:1fr;gap:28px;padding:64px 20px 56px;}
+  .hero-text-col{text-align:center;}
   .hero-tag{font-size:0.63rem;letter-spacing:0.18em;line-height:1.4;padding:5px 12px;margin-bottom:1.2rem;max-width:320px;}
-  .hero-footer{margin-top:1.2rem;max-width:100%;}
+  .hero-footer{margin-top:1.2rem;max-width:100%;text-align:center;}
   .hero-sub{font-size:0.92rem;margin-bottom:1.2rem;line-height:1.55;}
   .hero-ctas{flex-direction:column;align-items:stretch;gap:9px;max-width:100%;margin-left:auto;margin-right:auto;}
   .hero-ctas .btn-primary,.hero-ctas .btn-outline{display:block;text-align:center;padding:15px 18px;font-size:0.88rem;border-radius:10px;}
@@ -686,7 +689,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 /* ── EXTRA-SMALL SCREENS (<= 390px) ── */
 @media(max-width:390px){
   .hero-headline{font-size:clamp(2.1rem,9.5vw,2.9rem);letter-spacing:-0.02em;}
-  .hero-inner{padding:28px 18px 48px;}
+  .hero-split{padding:64px 18px 48px;}
   .hero-ctas{max-width:100%;}
   .stats-grid{gap:10px;}
   .stat-card{padding:20px 12px 16px;}
@@ -937,37 +940,40 @@ gtag('config','G-HTK9Z1G2RQ');
     <span id="heroDaynightLabel">Night</span>
   </button>
   <div class="coordinates">29°45′46″N 95°22′59″W<br>Elevation  -  Houston, Texas</div>
-  <div class="hero-photo-single">
-    <div class="hero-photo-single-img" style="background-image:url('houston-home-modern-dusk.jpeg');"></div>
-    <span class="hero-play-btn" aria-hidden="true"></span>
-    <span class="hero-photo-caption">
-      <span class="hero-photo-caption-kicker">Move-In Ready</span>
-      <span class="hero-photo-caption-title">New Build</span>
-    </span>
+  <div class="hero-split">
+    <div class="hero-text-col">
+      <div class="hero-headline-area">
+        <span class="hero-tag">Houston's New Construction Specialist · Se Habla Español</span>
+        <h1 class="hero-headline">Built By The Builder. <em>Negotiated By Me.</em></h1>
+      </div>
+      <div class="hero-footer">
+        <p class="hero-sub">I drive the Houston corridors every week. I know which builders have real programs right now  -  and I'll make sure you don't walk in and leave money on the table.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary" data-track="hero_get_free_guide">Get Free Guide ↗</a>
+          <a href="#search" class="btn-outline" data-track="hero_search_new_homes">Search Homes</a>
+        </div>
+        <div class="hero-proof" aria-label="Buyer benefits">
+          <span class="hero-proof-item">Rate buydowns negotiated</span>
+          <span class="hero-proof-item">Pre-drywall inspections</span>
+          <span class="hero-proof-item">Zero cost to you  -  ever</span>
+        </div>
+        <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="hero-calendar-link" data-track="hero_calendar_schedule">Have questions? Book a free 15-min call →</a>
+      </div>
+    </div>
+    <div class="hero-photo-col">
+      <div class="hero-photo-single">
+        <div class="hero-photo-single-img" style="background-image:url('houston-home-modern-dusk.jpeg');"></div>
+        <span class="hero-play-btn" aria-hidden="true"></span>
+        <span class="hero-photo-caption">
+          <span class="hero-photo-caption-kicker">Move-In Ready</span>
+          <span class="hero-photo-caption-title">New Build</span>
+        </span>
+      </div>
+    </div>
   </div>
-  <div class="hero-inner">
-    <div class="hero-headline-area">
-      <span class="hero-tag">Houston's New Construction Specialist · Se Habla Español</span>
-      <h1 class="hero-headline">Built By The Builder. <em>Negotiated By Me.</em></h1>
-    </div>
-    <div class="hero-footer">
-      <p class="hero-sub">I drive the Houston corridors every week. I know which builders have real programs right now  -  and I'll make sure you don't walk in and leave money on the table.</p>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn-primary" data-track="hero_get_free_guide">Get Free Guide ↗</a>
-        <a href="#search" class="btn-outline" data-track="hero_search_new_homes">Search Homes</a>
-      </div>
-      <div class="hero-proof" aria-label="Buyer benefits">
-        <span class="hero-proof-item">Rate buydowns negotiated</span>
-        <span class="hero-proof-item">Pre-drywall inspections</span>
-        <span class="hero-proof-item">Zero cost to you  -  ever</span>
-      </div>
-      <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="hero-calendar-link" data-track="hero_calendar_schedule">Have questions? Book a free 15-min call →</a>
-      <a href="#stats" class="explore-link">Scroll to explore ↓</a>
-    </div>
-    <div class="hero-scroll" aria-hidden="true">
-      <div class="hero-scroll-line"></div>
-      <span class="hero-scroll-label">Scroll</span>
-    </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span class="hero-scroll-label">Scroll</span>
   </div>
 </section>
 
