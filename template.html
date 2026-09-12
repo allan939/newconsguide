@@ -1674,16 +1674,29 @@ window.addEventListener('load', updateMobileCallBar);
 updateMobileCallBar();
 
 function animateCounter(el, target, pre='', suf='') {
+  const finalText = pre + target.toLocaleString() + suf;
+  const duration = 1800;
   let start = 0;
+  let done = false;
+  const finish = () => {
+    if (done) return;
+    done = true;
+    el.textContent = finalText;
+  };
   const step = (ts) => {
+    if (done) return;
     if (!start) start = ts;
-    const p = Math.min((ts - start) / 1800, 1);
+    const p = Math.min((ts - start) / duration, 1);
     const eased = 1 - Math.pow(1 - p, 3);
     el.textContent = pre + Math.floor(eased * target).toLocaleString() + suf;
     if (p < 1) requestAnimationFrame(step);
-    else el.textContent = pre + target.toLocaleString() + suf;
+    else finish();
   };
   requestAnimationFrame(step);
+  // Safety net: guarantee the correct final number shows even if rAF timing
+  // misbehaves (backgrounded tab, low-power throttling, etc.) -- a stat that
+  // gets stuck mid-count on a real estate site is worse than no animation.
+  setTimeout(finish, duration + 200);
 }
 
 const so = new IntersectionObserver((entries) => {
