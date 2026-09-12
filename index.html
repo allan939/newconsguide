@@ -130,25 +130,16 @@ nav.nav-hidden{transform:translateY(-100%);}
 .hero-daynight-toggle-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;background:var(--veridian);transition:background 0.4s ease;}
 .hero-daynight-toggle.is-day .hero-daynight-toggle-icon{background:#e8b84b;}
 @media(max-width:768px){.hero-daynight-toggle{top:70px;right:4%;padding:5px 12px 5px 5px;}}
-/* Scattered photo installation  -  replaces the old full-bleed mosaic */
-.hero-slideshow{position:relative;width:92%;max-width:1120px;height:440px;margin:44px auto 0;z-index:1;}
-.hero-photo{position:absolute;border-radius:14px;background-size:cover;background-position:center;box-shadow:0 20px 46px rgba(0,0,0,0.45);border:1px solid rgba(255,255,255,0.08);filter:grayscale(30%) contrast(1.06) brightness(0.98);transition:transform 0.5s cubic-bezier(0.22,1,0.36,1),filter 0.4s ease,box-shadow 0.4s ease;}
-.hero-photo:hover{transform:rotate(var(--rot,0deg)) scale(1.08);filter:grayscale(10%) contrast(1.08) brightness(1.02);box-shadow:0 26px 54px rgba(0,0,0,0.6);z-index:5;}
-.hero-photo-1{top:0;left:1%;width:11%;min-width:88px;aspect-ratio:3/4;--rot:-8deg;transform:rotate(var(--rot));}
-.hero-photo-2{top:0;left:29%;width:7%;min-width:58px;aspect-ratio:1/1;--rot:5deg;transform:rotate(var(--rot));border-radius:10px;}
-.hero-photo-3{top:2%;left:76%;width:10%;min-width:84px;aspect-ratio:4/5;--rot:7deg;transform:rotate(var(--rot));}
-.hero-photo-4{top:6%;left:37%;width:22%;min-width:210px;aspect-ratio:3/4;--rot:-2deg;transform:rotate(var(--rot));z-index:2;box-shadow:0 30px 60px rgba(0,0,0,0.55);filter:grayscale(15%) contrast(1.08) brightness(0.92);}
-.hero-photo-5{bottom:6%;left:5%;width:9%;min-width:76px;aspect-ratio:1/1;--rot:-5deg;transform:rotate(var(--rot));}
-.hero-photo-6{bottom:0;left:68%;width:12%;min-width:100px;aspect-ratio:3/4;--rot:6deg;transform:rotate(var(--rot));}
-.hero-connectors{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;}
-.hero-connectors path{fill:none;stroke:var(--border-strong);stroke-width:1;}
-.hero-connectors circle{fill:var(--veridian);opacity:0.55;}
+/* Single clean hero photo  -  replaces the old scattered/rotated photo collage */
+.hero-photo-single{position:relative;width:92%;max-width:620px;aspect-ratio:16/10;margin:44px auto 0;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.08);z-index:1;}
+.hero-photo-single-img{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(15%) contrast(1.06) brightness(0.94);transition:transform 0.6s cubic-bezier(0.22,1,0.36,1);}
+.hero-photo-single:hover .hero-photo-single-img{transform:scale(1.05);}
+.hero-photo-single::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,6,0.6) 0%,rgba(6,7,6,0) 45%);z-index:1;}
 .hero-play-btn{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;z-index:3;}
 .hero-play-btn::after{content:'';width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent var(--dark);margin-left:2px;}
 .hero-photo-caption{position:absolute;left:16px;bottom:14px;z-index:3;color:#fff;}
 .hero-photo-caption-kicker{display:block;font-family:'Inter',system-ui,sans-serif;font-size:0.6rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:2px;}
 .hero-photo-caption-title{font-family:'Spectral',Georgia,serif;font-size:1.3rem;font-style:italic;font-weight:600;}
-.hero-photo-4::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,7,6,0.55) 0%,rgba(6,7,6,0) 45%);border-radius:14px;}
 /* Coordinates  -  hidden by design intent */
 .coordinates{display:none;}
 /* Hero layout  -  centered column below the photo installation */
@@ -569,13 +560,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .hero-proof-item:last-child{grid-column:1 / -1;}
   .hero-calendar-link{margin-top:0.95rem;font-size:0.8rem;}
   .explore-link{display:none;}
-  .hero-slideshow{height:290px;width:94%;margin:24px auto 0;}
-  .hero-connectors{display:none;}
-  .hero-photo-2,.hero-photo-6{display:none;}
-  .hero-photo-1{width:22%;min-width:0;top:0;left:2%;}
-  .hero-photo-3{width:22%;min-width:0;top:2%;left:76%;}
-  .hero-photo-4{width:54%;min-width:0;top:4%;left:23%;}
-  .hero-photo-5{width:20%;min-width:0;bottom:0;left:4%;}
+  .hero-photo-single{width:94%;max-width:420px;margin:24px auto 0;}
   .hero-photo-caption-title{font-size:1rem;}
   .hero-photo-caption-kicker{font-size:0.54rem;}
   .hero-scroll{display:none;}
@@ -703,7 +688,6 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .hero-headline{font-size:clamp(2.1rem,9.5vw,2.9rem);letter-spacing:-0.02em;}
   .hero-inner{padding:28px 18px 48px;}
   .hero-ctas{max-width:100%;}
-  .hero-slideshow{height:250px;}
   .stats-grid{gap:10px;}
   .stat-card{padding:20px 12px 16px;}
   .stat-number{font-size:2.1rem;}
@@ -953,33 +937,18 @@ gtag('config','G-HTK9Z1G2RQ');
     <span id="heroDaynightLabel">Night</span>
   </button>
   <div class="coordinates">29°45′46″N 95°22′59″W<br>Elevation  -  Houston, Texas</div>
-  <div class="hero-slideshow">
-    <svg class="hero-connectors" viewBox="0 0 1120 440" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M100,60 C220,20 300,40 340,90"></path>
-      <path d="M460,110 C550,60 640,50 700,80"></path>
-      <path d="M250,340 C320,300 380,280 430,260"></path>
-      <path d="M760,120 C830,180 880,260 900,340"></path>
-      <circle cx="100" cy="60" r="3"></circle>
-      <circle cx="700" cy="80" r="3"></circle>
-      <circle cx="900" cy="340" r="3"></circle>
-    </svg>
-    <div class="hero-photo hero-photo-1" style="background-image:url('houston-home-stone-facade.jpeg');"></div>
-    <div class="hero-photo hero-photo-2" style="background-image:url('houston-home-sunset-facade.jpeg');"></div>
-    <div class="hero-photo hero-photo-3" style="background-image:url('houston-home-dusk-facade.jpeg');"></div>
-    <div class="hero-photo hero-photo-4" style="background-image:url('houston-home-modern-dusk.jpeg');">
-      <span class="hero-play-btn" aria-hidden="true"></span>
-      <span class="hero-photo-caption">
-        <span class="hero-photo-caption-kicker">Move-In Ready</span>
-        <span class="hero-photo-caption-title">New Build</span>
-      </span>
-    </div>
-    <div class="hero-photo hero-photo-5" style="background-image:url('houston-home-aerial-view.jpeg');background-position:center 35%;"></div>
-    <div class="hero-photo hero-photo-6" style="background-image:url('houston-home-primary-bath.jpeg');"></div>
+  <div class="hero-photo-single">
+    <div class="hero-photo-single-img" style="background-image:url('houston-home-modern-dusk.jpeg');"></div>
+    <span class="hero-play-btn" aria-hidden="true"></span>
+    <span class="hero-photo-caption">
+      <span class="hero-photo-caption-kicker">Move-In Ready</span>
+      <span class="hero-photo-caption-title">New Build</span>
+    </span>
   </div>
   <div class="hero-inner">
     <div class="hero-headline-area">
       <span class="hero-tag">Houston's New Construction Specialist · Se Habla Español</span>
-      <h1 class="hero-headline">New Construction <em>Done Right.</em></h1>
+      <h1 class="hero-headline">Built By The Builder. <em>Negotiated By Me.</em></h1>
     </div>
     <div class="hero-footer">
       <p class="hero-sub">I drive the Houston corridors every week. I know which builders have real programs right now  -  and I'll make sure you don't walk in and leave money on the table.</p>
@@ -1672,12 +1641,10 @@ gtag('config','G-HTK9Z1G2RQ');
 // Single source of truth for the Apps Script endpoint
 var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx5W72jf2fAoCR1n7eYXCNQW8ZudeOVVPuC6rtvmAJ11RbFZzYJ34Jfcks1LakIIh1E/exec';
 
-// Hero mosaic tiles render statically side-by-side now (see .hero-slideshow grid) - no crossfade needed.
-
 const navToggle = document.getElementById('navToggle');
 const navLinksList = document.querySelector('.nav-links');
 const nav = document.getElementById('navbar');
-const heroSlideshow = document.querySelector('.hero-slideshow');
+const heroSlideshow = document.querySelector('.hero-photo-single');
 const heroSection = document.querySelector('.hero');
 const stickyCallBar = document.querySelector('.sticky-call');
 const exitPopupEl = document.getElementById('exit-popup');
