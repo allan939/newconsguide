@@ -240,17 +240,22 @@ nav.nav-hidden{transform:translateY(-100%);}
 .testimonials-section .section-title em{color:var(--veridian);}
 .testimonials-section .section-eyebrow{color:var(--veridian);}
 .testimonials-section .section-line{background:var(--border-strong);}
-.testimonial-featured{max-width:820px;margin:0 auto 72px;padding-top:28px;border-top:1px solid var(--border-strong);text-align:center;}
+.testimonial-featured{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:center;max-width:1000px;margin:0 auto 88px;padding-top:36px;border-top:1px solid var(--border-strong);}
 .testimonial-featured-tag{display:block;font-family:'Fira Code',monospace;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:var(--veridian);margin-bottom:22px;}
-.quote-mark--lg{margin:0 auto 14px;font-size:5.5rem;}
-.testimonial-featured-text{font-family:'Spectral',Georgia,serif;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:500;font-style:italic;line-height:1.42;letter-spacing:-0.01em;color:var(--text-1);margin-bottom:30px;}
-.testimonial-featured-author{display:flex;flex-direction:column;gap:4px;}
-.testimonial-featured-author .testimonial-author{font-size:0.92rem;}
+.testimonial-featured-text{font-family:'Spectral',Georgia,serif;font-size:clamp(1.35rem,2.2vw,1.85rem);font-weight:500;font-style:italic;line-height:1.42;letter-spacing:-0.01em;color:var(--text-1);margin-bottom:26px;}
+.testimonial-featured-author{display:flex;align-items:center;gap:14px;}
+.testimonial-featured-author .testimonial-author{font-size:0.92rem;display:block;}
 .testimonial-featured-author .testimonial-detail{font-size:0.78rem;}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 48px;max-width:1200px;margin:0 auto;}
-.testimonial-card{padding:24px 0 0;background:transparent;border:none;border-top:1px solid var(--border);}
-.quote-mark{display:block;font-family:'Spectral',Georgia,serif;font-size:3rem;line-height:0.7;color:var(--veridian);opacity:0.2;margin-bottom:10px;user-select:none;}
-.testimonial-text{font-family:'Inter',system-ui,sans-serif;font-size:0.96rem;font-weight:400;font-style:italic;line-height:1.72;color:var(--text-1);margin-bottom:20px;}
+.testimonial-avatar{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:rgba(62,107,176,0.14);border:1px solid rgba(62,107,176,0.3);display:flex;align-items:center;justify-content:center;font-family:'Spectral',Georgia,serif;font-weight:700;font-size:0.85rem;color:var(--veridian);}
+.testimonial-stat-callout{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:36px 20px;border:1px solid var(--border-strong);border-radius:18px;background:var(--surface);}
+.testimonial-stat-num{font-family:'Spectral',Georgia,serif;font-size:2.6rem;font-weight:800;color:var(--veridian);line-height:1;margin-bottom:10px;}
+.testimonial-stat-label{font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.04em;color:var(--text-3);line-height:1.5;}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1200px;margin:0 auto;}
+.testimonial-card{padding:28px 26px;background:var(--surface);border:1px solid var(--border);border-radius:16px;}
+.testimonial-card-offset{transform:translateY(28px);}
+.testimonial-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.testimonial-stars{color:var(--veridian);font-size:0.8rem;letter-spacing:2px;}
+.testimonial-text{font-family:'Inter',system-ui,sans-serif;font-size:0.92rem;font-weight:400;font-style:italic;line-height:1.7;color:var(--text-1);margin-bottom:18px;}
 .testimonial-author{font-family:'Inter',system-ui,sans-serif;font-size:0.84rem;font-weight:600;color:var(--text-1);}
 .testimonial-detail{font-family:'Inter',system-ui,sans-serif;font-size:0.76rem;color:var(--text-3);margin-top:3px;}
 
@@ -621,13 +626,11 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 
   /* ── TESTIMONIALS ── */
   .testimonials-section{padding:72px 20px;}
-  .testimonial-featured{margin:0 auto 44px;padding-top:20px;}
+  .testimonial-featured{grid-template-columns:1fr;margin:0 auto 44px;padding-top:20px;gap:24px;}
   .testimonial-featured-text{font-size:1.32rem;}
-  .quote-mark--lg{font-size:4rem;}
-  .testimonials-grid{grid-template-columns:1fr;gap:28px;}
-  .testimonial-card{padding:20px 0 0;}
+  .testimonials-grid{grid-template-columns:1fr;gap:20px;}
+  .testimonial-card-offset{transform:none;}
   .testimonial-text{font-size:1rem;}
-  .quote-mark{font-size:3rem;}
 
   /* ── MARQUEE ── */
   .marquee-section{padding:40px 0;}
@@ -1292,29 +1295,46 @@ gtag('config','G-HTK9Z1G2RQ');
     <h2 class="section-title">What My Clients<br><em>Are Saying</em></h2>
   </div>
   <div class="testimonial-featured reveal">
-    <span class="testimonial-featured-tag">Featured Story</span>
-    <span class="quote-mark quote-mark--lg">"</span>
-    <p class="testimonial-featured-text">Allan saved us $18,000 in upgrades and closing costs we never would have known to ask for. He knew exactly what the builder's programs offered and made sure we got every dollar of it.</p>
-    <div class="testimonial-featured-author">
-      <span class="testimonial-author">Marcus & Tanya R.</span>
-      <span class="testimonial-detail">Perry Homes · Sienna, 2024</span>
+    <div class="testimonial-featured-text-col">
+      <span class="testimonial-featured-tag">Featured Story</span>
+      <p class="testimonial-featured-text">Allan saved us $18,000 in upgrades and closing costs we never would have known to ask for. He knew exactly what the builder's programs offered and made sure we got every dollar of it.</p>
+      <div class="testimonial-featured-author">
+        <span class="testimonial-avatar">MT</span>
+        <div>
+          <span class="testimonial-author">Marcus & Tanya R.</span>
+          <span class="testimonial-detail">Perry Homes · Sienna, 2024</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-stat-callout">
+      <span class="testimonial-stat-num">$18K</span>
+      <span class="testimonial-stat-label">Saved in upgrades<br>&amp; closing costs</span>
     </div>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card reveal reveal-delay-1">
-      <span class="quote-mark">"</span>
+      <div class="testimonial-card-head">
+        <span class="testimonial-avatar">PK</span>
+        <span class="testimonial-stars">★★★★★</span>
+      </div>
       <p class="testimonial-text">Okay so I had literally zero idea what I was doing  -  first house ever AND it was new construction lol. I had so many questions and Allan answered every single one without making me feel dumb about it. Walked me through the inspection, the final walkthrough, the warranty stuff... I actually felt calm by the end. 10/10 would recommend.</p>
       <div class="testimonial-author">Priya K.</div>
       <div class="testimonial-detail">DR Horton · Bridgeland, 2025</div>
     </div>
-    <div class="testimonial-card reveal reveal-delay-2">
-      <span class="quote-mark">"</span>
+    <div class="testimonial-card testimonial-card-offset reveal reveal-delay-2">
+      <div class="testimonial-card-head">
+        <span class="testimonial-avatar">DA</span>
+        <span class="testimonial-stars">★★★★★</span>
+      </div>
       <p class="testimonial-text">The deal Allan found us wasn't even advertised. He has a network and relationships that you just can't get going in alone. Worth every minute of our time.</p>
       <div class="testimonial-author">Derek & Alicia M.</div>
       <div class="testimonial-detail">Lennar · Cross Creek Ranch, 2025</div>
     </div>
     <div class="testimonial-card reveal reveal-delay-3">
-      <span class="quote-mark">"</span>
+      <div class="testimonial-card-head">
+        <span class="testimonial-avatar">HB</span>
+        <span class="testimonial-stars">★★★★★</span>
+      </div>
       <p class="testimonial-text">Saved me money I didn't even know I could ask for. Just do it.</p>
       <div class="testimonial-author">Houston Buyer</div>
       <div class="testimonial-detail">Katy, TX · 2025</div>
