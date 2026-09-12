@@ -264,18 +264,27 @@ nav.nav-hidden{transform:translateY(-100%);}
 .myth-inner{max-width:1200px;margin:0 auto;}
 .myth-title{font-family:'Spectral',Georgia,serif;font-size:clamp(2rem,3.6vw,3.1rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:var(--text-1);margin-bottom:0;}
 .myth-title em{font-style:italic;font-weight:800;color:var(--veridian);}
-.myth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px 36px;margin-top:56px;}
-.myth-card{padding:32px 8px 4px;border:none;border-radius:0;background:transparent;box-shadow:none;border-top:1px solid var(--border);}
-.myth-card--highlight{padding:36px 32px 32px;border-top:none;}
-.myth-num{font-family:'Inter',system-ui,sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.16em;color:var(--veridian);text-transform:uppercase;margin-bottom:16px;opacity:0.6;}
-.myth-num::after{display:none;}
+.myth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
+.myth-card{padding:36px 30px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:none;transition:border-color 0.3s,transform 0.3s;}
+.myth-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
+.myth-num{font-family:'Spectral',Georgia,serif;font-size:2.4rem;font-weight:800;color:var(--veridian);opacity:0.4;margin-bottom:6px;display:block;line-height:1;}
 .myth-icon{font-size:1.3rem;margin-bottom:12px;}
-.myth-card h3{font-family:'Spectral',Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--text-1);margin-bottom:10px;line-height:1.3;}
-.myth-card h3::before{content:'';display:block;width:28px;height:2px;background:var(--veridian);opacity:0.4;margin-bottom:16px;border-radius:2px;}
-.myth-card--highlight h3::before{background:rgba(255,255,255,0.55);opacity:1;}
+.myth-card h3{font-family:'Spectral',Georgia,serif;font-size:1.15rem;font-weight:700;color:var(--text-1);margin-bottom:10px;line-height:1.3;}
 .myth-card p{font-size:0.875rem;line-height:1.75;color:var(--text-2);}
-.myth-card--highlight{background:var(--obsidian-2);border-radius:14px;box-shadow:0 0 0 1px rgba(62,107,176,0.35),0 24px 50px rgba(0,0,0,0.4);}
-.myth-card--highlight .myth-num{color:rgba(255,255,255,0.5);}
+.myth-card--highlight{background:var(--obsidian-2);border-color:transparent;box-shadow:0 0 0 1px rgba(62,107,176,0.35),0 24px 50px rgba(0,0,0,0.4);}
+.myth-card--highlight .myth-num{color:var(--veridian-mid);opacity:0.7;}
+
+/* HOME BUYING JOURNEY  -  horizontal roadmap, pre-approval to closing */
+.journey-section{padding:150px 52px;background:var(--bg-alt);border-top:1px solid var(--border);}
+.journey-section .section-header{max-width:600px;margin:0 auto 0;}
+.journey-intro-text{max-width:560px;margin:20px auto 0;text-align:center;color:var(--text-2);font-size:1rem;line-height:1.6;}
+.journey-track{position:relative;max-width:1300px;margin:80px auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:20px;}
+.journey-line{position:absolute;top:22px;left:0;right:0;height:1px;background:var(--border);z-index:0;}
+.journey-stop{position:relative;z-index:1;text-align:center;padding:0 6px;}
+.journey-stop-marker{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--bg-alt);border:1px solid var(--border-strong);margin:0 auto 22px;font-family:'Spectral',Georgia,serif;font-weight:800;font-size:1rem;color:var(--veridian);}
+.journey-stop--final .journey-stop-marker{background:var(--veridian);border-color:var(--veridian);color:#fff;}
+.journey-stop-title{font-family:'Spectral',Georgia,serif;font-size:1rem;font-weight:700;color:var(--text-1);margin-bottom:8px;line-height:1.3;}
+.journey-stop-desc{font-size:0.8rem;line-height:1.6;color:var(--text-2);}
 .myth-card--highlight h3{color:#fff;}
 .myth-card--highlight p{color:rgba(255,255,255,0.75);}
 
@@ -347,7 +356,7 @@ nav.nav-hidden{transform:translateY(-100%);}
 .cta-section .section-eyebrow{color:rgba(253,252,249,0.3);background:rgba(255,255,255,0.06);}
 .cta-section-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
 .cta-intro h2{font-family:'Spectral',Georgia,serif;font-size:clamp(2.4rem,4.6vw,3.8rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:var(--off-white);margin-bottom:24px;}
-.cta-intro h2 em{font-style:italic;font-weight:800;color:rgba(253,252,249,0.45);}
+.cta-intro h2 em{font-style:italic;font-weight:800;color:var(--veridian);}
 .cta-intro>p{font-size:0.875rem;color:rgba(253,252,249,0.55);line-height:1.7;margin-bottom:14px;}
 .cta-calendar-link{font-family:'Inter',system-ui,sans-serif;font-size:0.875rem;font-weight:500;color:var(--veridian-mid);text-decoration:none;border-bottom:1px solid rgba(169,217,122,0.3);padding-bottom:2px;transition:border-color 0.2s;display:inline-block;}
 .cta-calendar-link:hover{border-color:var(--veridian-mid);}
@@ -585,10 +594,16 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   /* ── MYTH / WHY ── */
   .myth-section{padding:72px 20px;}
   .myth-title{font-size:clamp(1.8rem,7vw,2.7rem);line-height:1.03;letter-spacing:-0.025em;}
-  .myth-grid{grid-template-columns:1fr;gap:12px;margin-top:36px;}
-  .myth-card{padding:28px 4px 4px;}
-  .myth-card--highlight{padding:28px 22px 24px;}
+  .myth-grid{grid-template-columns:1fr;gap:16px;margin-top:36px;}
+  .myth-card{padding:28px 22px;}
   .myth-card:hover{transform:none !important;}
+
+  /* ── JOURNEY ── */
+  .journey-section{padding:72px 20px;}
+  .journey-track{grid-template-columns:1fr;gap:36px;margin-top:48px;max-width:420px;}
+  .journey-line{top:0;bottom:0;left:22px;right:auto;width:1px;height:auto;}
+  .journey-stop{text-align:left;padding-left:60px;}
+  .journey-stop-marker{position:absolute;left:0;top:0;margin:0;}
 
   /* ── STATS ── */
   .stats-section{padding:72px 20px;}
@@ -1092,17 +1107,61 @@ gtag('config','G-HTK9Z1G2RQ');
     <h2 class="myth-title reveal">Why you want your own agent<br><em>in the room.</em></h2>
     <div class="myth-grid">
       <div class="myth-card reveal reveal-delay-1">
+        <span class="myth-num">01</span>
         <h3>Builders work better with prepared buyers</h3>
         <p>Builder reps move faster and offer more when the buyer comes in knowing what they want. I make sure you show up ready  -  and that they take you seriously.</p>
       </div>
       <div class="myth-card myth-card--highlight reveal reveal-delay-2">
+        <span class="myth-num">02</span>
         <h3>My fee comes from the builder, not you</h3>
         <p>The builder has my commission built into their marketing budget regardless. If you don't bring your own agent, that money stays with the builder. You might as well have someone in your corner.</p>
       </div>
       <div class="myth-card reveal reveal-delay-3">
+        <span class="myth-num">03</span>
         <h3>The programs are real  -  if you know to ask</h3>
         <p>Rate buydowns to the 4–5% range, $30K–$55K price cuts, closing cost credits. Builders have these programs. Most buyers just never know to ask  -  or don't know how to ask for the right ones.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey-section">
+  <div class="section-header centered reveal">
+    <span class="section-eyebrow">Your Path To Keys</span>
+    <h2 class="section-title">From Pre-Approval<br><em>to the Closing Table.</em></h2>
+    <p class="journey-intro-text">Here's exactly how it goes once we start working together  -  no surprises, no mystery steps.</p>
+  </div>
+  <div class="journey-track">
+    <div class="journey-line" aria-hidden="true"></div>
+    <div class="journey-stop reveal reveal-delay-1">
+      <span class="journey-stop-marker">1</span>
+      <h3 class="journey-stop-title">Get Pre-Approved</h3>
+      <p class="journey-stop-desc">Know your real budget before you look at a single home. I connect you with lenders who actually close on time.</p>
+    </div>
+    <div class="journey-stop reveal reveal-delay-2">
+      <span class="journey-stop-marker">2</span>
+      <h3 class="journey-stop-title">Home Search</h3>
+      <p class="journey-stop-desc">I bring you the communities and move-in ready homes that actually fit your budget and timeline.</p>
+    </div>
+    <div class="journey-stop reveal reveal-delay-3">
+      <span class="journey-stop-marker">3</span>
+      <h3 class="journey-stop-title">Offer &amp; Contract</h3>
+      <p class="journey-stop-desc">I negotiate rate buydowns, upgrades, and closing cost credits directly with the builder's rep  -  on your behalf.</p>
+    </div>
+    <div class="journey-stop reveal reveal-delay-4">
+      <span class="journey-stop-marker">4</span>
+      <h3 class="journey-stop-title">Inspections</h3>
+      <p class="journey-stop-desc">Pre-drywall and final inspections by a licensed inspector, so nothing gets covered up before you move in.</p>
+    </div>
+    <div class="journey-stop reveal reveal-delay-1">
+      <span class="journey-stop-marker">5</span>
+      <h3 class="journey-stop-title">Final Walkthrough</h3>
+      <p class="journey-stop-desc">We walk the finished home together and get every last item on the punch list fixed before closing.</p>
+    </div>
+    <div class="journey-stop journey-stop--final reveal reveal-delay-2">
+      <span class="journey-stop-marker">6</span>
+      <h3 class="journey-stop-title">Closing Table</h3>
+      <p class="journey-stop-desc">Sign the papers, get your keys. I review every line of the closing disclosure with you first.</p>
     </div>
   </div>
 </section>
