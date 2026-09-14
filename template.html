@@ -598,12 +598,15 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
   .myth-card{padding:28px 22px;}
   .myth-card:hover{transform:none !important;}
 
-  /* ── JOURNEY ── */
-  .journey-section{padding:72px 20px;}
-  .journey-track{grid-template-columns:1fr;gap:36px;margin-top:48px;max-width:420px;}
-  .journey-line{top:0;bottom:0;left:22px;right:auto;width:1px;height:auto;}
-  .journey-stop{text-align:left;padding-left:60px;}
-  .journey-stop-marker{position:absolute;left:0;top:0;margin:0;}
+  /* ── JOURNEY ──  kept horizontal + scroll-snapped on mobile, unlike the
+     vertical process timeline above, so the two don't converge into the
+     same "line with circles" look once stacked. */
+  .journey-section{padding:72px 0 72px 20px;}
+  .journey-section .section-header,.journey-intro-text{padding-right:20px;}
+  .journey-track{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;margin-top:48px;padding:6px 20px 22px 0;-webkit-overflow-scrolling:touch;}
+  .journey-line{display:none;}
+  .journey-stop{flex:0 0 auto;width:210px;scroll-snap-align:start;text-align:left;padding:0 26px 0 0;}
+  .journey-stop-marker{margin:0 0 20px;}
 
   /* ── STATS ── */
   .stats-section{padding:72px 20px;}
