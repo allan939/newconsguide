@@ -265,14 +265,18 @@ nav.nav-hidden{transform:translateY(-100%);}
 .myth-title{font-family:'Spectral',Georgia,serif;font-size:clamp(2rem,3.6vw,3.1rem);font-weight:800;line-height:1.0;letter-spacing:-0.03em;color:var(--text-1);margin-bottom:0;}
 .myth-title em{font-style:italic;font-weight:800;color:var(--veridian);}
 .myth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;}
-.myth-card{padding:36px 30px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:none;transition:border-color 0.3s,transform 0.3s;}
+.myth-card{position:relative;padding:36px 30px;border:1px solid var(--border);border-radius:16px;background:var(--surface);box-shadow:none;transition:border-color 0.3s,transform 0.3s;}
 .myth-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
-.myth-num{font-family:'Spectral',Georgia,serif;font-size:2.4rem;font-weight:800;color:var(--veridian);opacity:0.4;margin-bottom:6px;display:block;line-height:1;}
-.myth-icon{font-size:1.3rem;margin-bottom:12px;}
+.myth-card-top{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+.myth-icon{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;background:rgba(62,107,176,0.12);color:var(--veridian);flex-shrink:0;}
+.myth-icon svg{width:20px;height:20px;}
+.myth-num{font-family:'Spectral',Georgia,serif;font-size:1.6rem;font-weight:800;color:var(--veridian);opacity:0.45;line-height:1;}
+.myth-badge{position:absolute;top:-13px;left:28px;background:var(--veridian);color:#fff;font-family:'Inter',system-ui,sans-serif;font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:20px;}
 .myth-card h3{font-family:'Spectral',Georgia,serif;font-size:1.15rem;font-weight:700;color:var(--text-1);margin-bottom:10px;line-height:1.3;}
 .myth-card p{font-size:0.875rem;line-height:1.75;color:var(--text-2);}
 .myth-card--highlight{background:var(--obsidian-2);border-color:transparent;box-shadow:0 0 0 1px rgba(62,107,176,0.35),0 24px 50px rgba(0,0,0,0.4);}
-.myth-card--highlight .myth-num{color:var(--veridian-mid);opacity:0.7;}
+.myth-card--highlight .myth-icon{background:rgba(62,107,176,0.22);}
+.myth-card--highlight .myth-num{color:var(--veridian-mid);opacity:0.8;}
 
 /* HOME BUYING JOURNEY  -  horizontal roadmap, pre-approval to closing */
 .journey-section{padding:150px 52px;background:var(--bg-alt);border-top:1px solid var(--border);}
@@ -1110,17 +1114,27 @@ gtag('config','G-HTK9Z1G2RQ');
     <h2 class="myth-title reveal">Why you want your own agent<br><em>in the room.</em></h2>
     <div class="myth-grid">
       <div class="myth-card reveal reveal-delay-1">
-        <span class="myth-num">01</span>
+        <div class="myth-card-top">
+          <span class="myth-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+          <span class="myth-num">01</span>
+        </div>
         <h3>Builders work better with prepared buyers</h3>
         <p>Builder reps move faster and offer more when the buyer comes in knowing what they want. I make sure you show up ready  -  and that they take you seriously.</p>
       </div>
       <div class="myth-card myth-card--highlight reveal reveal-delay-2">
-        <span class="myth-num">02</span>
+        <span class="myth-badge">The Real Reason</span>
+        <div class="myth-card-top">
+          <span class="myth-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+          <span class="myth-num">02</span>
+        </div>
         <h3>My fee comes from the builder, not you</h3>
         <p>The builder has my commission built into their marketing budget regardless. If you don't bring your own agent, that money stays with the builder. You might as well have someone in your corner.</p>
       </div>
       <div class="myth-card reveal reveal-delay-3">
-        <span class="myth-num">03</span>
+        <div class="myth-card-top">
+          <span class="myth-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg></span>
+          <span class="myth-num">03</span>
+        </div>
         <h3>The programs are real  -  if you know to ask</h3>
         <p>Rate buydowns to the 4–5% range, $30K–$55K price cuts, closing cost credits. Builders have these programs. Most buyers just never know to ask  -  or don't know how to ask for the right ones.</p>
       </div>
