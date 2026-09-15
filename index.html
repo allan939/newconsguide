@@ -405,9 +405,12 @@ nav.nav-hidden{transform:translateY(-100%);}
 .blog-section .section-eyebrow{color:var(--veridian);}
 .blog-section-sub{font-size:0.9rem;color:var(--text-2);max-width:500px;margin:18px auto 52px;line-height:1.7;}
 .blog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px;text-align:left;margin-bottom:44px;}
-.blog-card{padding:32px;background:transparent;border:none;border-top:1px solid var(--border);border-radius:0;transition:none;}
-.blog-card:hover{box-shadow:none;transform:none;}
-.blog-card-cat{display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--veridian);margin-bottom:12px;}
+.blog-card{padding:0;background:var(--surface);border:1px solid var(--border);border-radius:2px;overflow:hidden;transition:border-color 0.25s,transform 0.25s;}
+.blog-card:hover{border-color:var(--border-strong);transform:translateY(-4px);}
+.blog-card-media{display:block;position:relative;aspect-ratio:16/10;background-size:cover;background-position:center;}
+.blog-card-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,9,0) 45%,rgba(10,10,9,0.9) 100%);}
+.blog-card-body{padding:24px 26px 26px;}
+.blog-card-cat{position:absolute;left:18px;bottom:14px;z-index:1;display:inline-block;font-family:'Inter',system-ui,sans-serif;font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-1);margin-bottom:0;}
 .blog-card-title{font-family:'Spectral',Georgia,serif;font-size:1.05rem;font-weight:700;color:var(--text-1);line-height:1.35;margin-bottom:10px;}
 .blog-card-desc{font-size:0.875rem;color:var(--text-2);line-height:1.7;margin-bottom:18px;}
 .blog-card-link{display:inline-flex;align-items:center;gap:5px;font-family:'Inter',system-ui,sans-serif;font-size:0.875rem;font-weight:500;color:var(--veridian);text-decoration:none;border-bottom:1px solid rgba(62,107,176,0.25);padding-bottom:1px;transition:gap 0.2s,border-color 0.2s;}
@@ -695,8 +698,7 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 
   /* ── BLOG ── */
   .blog-section{padding:72px 20px;}
-  .blog-cards{grid-template-columns:1fr;gap:12px;}
-  .blog-card{padding:26px 22px;}
+  .blog-cards{grid-template-columns:1fr;gap:18px;}
   .blog-card:hover{transform:none !important;}
   .blog-guides{padding:32px 4px;}
   .blog-guides-grid{grid-template-columns:1fr;gap:12px;}
@@ -1668,22 +1670,34 @@ gtag('config','G-HTK9Z1G2RQ');
     <p class="blog-section-sub">Market updates, builder incentive strategies, neighborhood comparisons, and city guides to help you buy smart.</p>
     <div class="blog-cards">
       <article class="blog-card reveal reveal-delay-1">
-        <span class="blog-card-cat">Market Outlook</span>
-        <h3 class="blog-card-title">Houston New Construction Market Outlook for 2026</h3>
-        <p class="blog-card-desc">Inventory, pricing, builder incentives, and what buyers should prioritize to structure the best deal this year.</p>
-        <a href="blog-houston-new-construction-2026.html" class="blog-card-link" data-track="blog_houston_2026">Read Article →</a>
+        <a href="blog-houston-new-construction-2026.html" class="blog-card-media" style="background-image:url('houston-home-stone-facade.jpeg');" data-track="blog_houston_2026">
+          <span class="blog-card-cat">Market Outlook</span>
+        </a>
+        <div class="blog-card-body">
+          <h3 class="blog-card-title">Houston New Construction Market Outlook for 2026</h3>
+          <p class="blog-card-desc">Inventory, pricing, builder incentives, and what buyers should prioritize to structure the best deal this year.</p>
+          <a href="blog-houston-new-construction-2026.html" class="blog-card-link" data-track="blog_houston_2026">Read Article →</a>
+        </div>
       </article>
       <article class="blog-card reveal reveal-delay-2">
-        <span class="blog-card-cat">Builder Incentives</span>
-        <h3 class="blog-card-title">How to Maximize Builder Incentives in Houston</h3>
-        <p class="blog-card-desc">A practical framework for comparing rate buydowns, lender credits, and closing cost support side by side.</p>
-        <a href="blog-builder-incentives-houston.html" class="blog-card-link" data-track="blog_builder_incentives">Read Article →</a>
+        <a href="blog-builder-incentives-houston.html" class="blog-card-media" style="background-image:url('houston-home-sunset-facade.jpeg');" data-track="blog_builder_incentives">
+          <span class="blog-card-cat">Builder Incentives</span>
+        </a>
+        <div class="blog-card-body">
+          <h3 class="blog-card-title">How to Maximize Builder Incentives in Houston</h3>
+          <p class="blog-card-desc">A practical framework for comparing rate buydowns, lender credits, and closing cost support side by side.</p>
+          <a href="blog-builder-incentives-houston.html" class="blog-card-link" data-track="blog_builder_incentives">Read Article →</a>
+        </div>
       </article>
       <article class="blog-card reveal reveal-delay-3">
-        <span class="blog-card-cat">Neighborhood Guide</span>
-        <h3 class="blog-card-title">Katy vs Cypress for New Construction Homes</h3>
-        <p class="blog-card-desc">Two of Houston's top new construction submarkets compared  -  schools, taxes, commute, pricing, and buyer fit.</p>
-        <a href="blog-katy-vs-cypress-new-construction.html" class="blog-card-link" data-track="blog_katy_cypress">Read Article →</a>
+        <a href="blog-katy-vs-cypress-new-construction.html" class="blog-card-media" style="background-image:url('houston-home-primary-bath.jpeg');" data-track="blog_katy_cypress">
+          <span class="blog-card-cat">Neighborhood Guide</span>
+        </a>
+        <div class="blog-card-body">
+          <h3 class="blog-card-title">Katy vs Cypress for New Construction Homes</h3>
+          <p class="blog-card-desc">Two of Houston's top new construction submarkets compared  -  schools, taxes, commute, pricing, and buyer fit.</p>
+          <a href="blog-katy-vs-cypress-new-construction.html" class="blog-card-link" data-track="blog_katy_cypress">Read Article →</a>
+        </div>
       </article>
     </div>
     <div class="blog-section-cta">
