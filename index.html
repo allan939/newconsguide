@@ -341,19 +341,12 @@ nav.nav-hidden{transform:translateY(-100%);}
 .faq-section .section-title{color:var(--text-1);}
 .faq-section .section-title em{color:var(--veridian);}
 .faq-list{margin-top:52px;display:flex;flex-direction:column;}
-.faq-item{border-top:1px solid var(--border);}
+.faq-item{display:grid;grid-template-columns:80px 1fr;gap:28px;padding:44px 0;border-top:1px solid var(--border);align-items:start;}
 .faq-item:last-child{border-bottom:1px solid var(--border);}
-.faq-q{width:100%;background:none;border:none;text-align:left;padding:26px 0;font-family:'Inter',system-ui,sans-serif;font-size:1.02rem;font-weight:500;color:var(--text-1);cursor:pointer;display:flex;align-items:center;gap:16px;line-height:1.45;transition:color 0.2s;}
-.faq-q>:last-child{margin-left:auto;}
-.faq-num{font-family:'Spectral',Georgia,serif;font-size:0.85rem;font-weight:700;color:var(--veridian);opacity:0.5;flex-shrink:0;}
-.faq-q:hover{color:var(--veridian);}
-.faq-icon{font-family:'Inter',system-ui,sans-serif;font-size:1rem;color:var(--text-3);flex-shrink:0;transition:transform 0.35s;}
-.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--veridian);}
-.faq-a{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows 0.5s cubic-bezier(0.22,1,0.36,1);}
-.faq-item.open .faq-a{grid-template-rows:1fr;}
-.faq-a p{font-size:0.875rem;color:var(--text-2);line-height:1.7;overflow:hidden;margin:0;padding:0 0 22px;opacity:0;transform:translateY(-6px);transition:opacity 0.35s ease,transform 0.35s ease;}
-.faq-item.open .faq-a p{opacity:1;transform:translateY(0);transition:opacity 0.4s ease 0.1s,transform 0.4s ease 0.1s;}
-.faq-a p strong{color:var(--text-1);font-weight:600;}
+.faq-item-num{font-family:'Spectral',Georgia,serif;font-size:2.6rem;font-weight:700;color:var(--veridian);opacity:0.32;line-height:1;}
+.faq-item-q{font-family:'Spectral',Georgia,serif;font-size:1.3rem;font-weight:700;color:var(--text-1);line-height:1.4;margin-bottom:14px;}
+.faq-item-a{font-size:0.9rem;color:var(--text-2);line-height:1.75;margin:0;}
+.faq-item-a strong{color:var(--text-1);font-weight:600;}
 
 /* CTA / CONTACT */
 .cta-section{padding:150px 52px;background:var(--dark);border-top:1px solid var(--line-dark);}
@@ -679,7 +672,9 @@ footer{background:var(--dark);border-top:1px solid var(--line-dark);}
 
   /* ── FAQ ── */
   .faq-section{padding:72px 20px;}
-  .faq-q{font-size:0.95rem;padding:22px 0;}
+  .faq-item{grid-template-columns:44px 1fr;gap:16px;padding:30px 0;}
+  .faq-item-num{font-size:1.6rem;}
+  .faq-item-q{font-size:1.08rem;}
   .faq-list{margin-top:32px;}
 
   /* ── CTA / CONTACT ── */
@@ -1642,18 +1637,27 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="faq-list reveal">
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span class="faq-num">01</span>Do I need my own agent when buying new construction in Houston? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p><strong>Yes  -  the builder's rep works for the builder, not you, and my cost to you is $0.</strong> The builder pays my commission out of their marketing budget, so you get expert representation at no extra cost. Having your own agent means you have a seasoned pro helping you navigate the process, understand the contract, and make full use of every builder incentive program available  -  upgrades, rate buydowns, and closing cost credits that are easy to miss without guidance.</p></div>
+        <span class="faq-item-num">01</span>
+        <div class="faq-item-body">
+          <h3 class="faq-item-q">Do I need my own agent when buying new construction in Houston?</h3>
+          <p class="faq-item-a"><strong>Yes  -  the builder's rep works for the builder, not you, and my cost to you is $0.</strong> The builder pays my commission out of their marketing budget, so you get expert representation at no extra cost. Having your own agent means you have a seasoned pro helping you navigate the process, understand the contract, and make full use of every builder incentive program available  -  upgrades, rate buydowns, and closing cost credits that are easy to miss without guidance.</p>
+        </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span class="faq-num">02</span>What builder incentives are available right now in Houston? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p><strong>Right now Houston builders are offering rate buydowns to the 4–5% range and up to $55K in price reductions  -  but incentives are time-limited and vary by community.</strong> Builders like Lennar, D.R. Horton, Perry Homes, and Meritage are offering mortgage rate buydowns, price reductions, and closing cost credits on select move-in ready homes. Contact me for an up-to-date list for your specific budget and area.</p></div>
+        <span class="faq-item-num">02</span>
+        <div class="faq-item-body">
+          <h3 class="faq-item-q">What builder incentives are available right now in Houston?</h3>
+          <p class="faq-item-a"><strong>Right now Houston builders are offering rate buydowns to the 4–5% range and up to $55K in price reductions  -  but incentives are time-limited and vary by community.</strong> Builders like Lennar, D.R. Horton, Perry Homes, and Meritage are offering mortgage rate buydowns, price reductions, and closing cost credits on select move-in ready homes. Contact me for an up-to-date list for your specific budget and area.</p>
+        </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false"><span class="faq-num">03</span>Which Houston areas have the most new construction homes? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><p><strong>Greater Houston has six active new construction corridors  -  each with different price ranges, schools, and commute profiles.</strong> I've walked communities in every one of these corridors and can guide you to the best fit based on your budget, school preferences, and where you work.</p></div>
+        <span class="faq-item-num">03</span>
+        <div class="faq-item-body">
+          <h3 class="faq-item-q">Which Houston areas have the most new construction homes?</h3>
+          <p class="faq-item-a"><strong>Greater Houston has six active new construction corridors  -  each with different price ranges, schools, and commute profiles.</strong> I've walked communities in every one of these corridors and can guide you to the best fit based on your budget, school preferences, and where you work.</p>
+        </div>
       </div>
 
     </div>
@@ -2014,16 +2018,6 @@ document.querySelectorAll('.stat-number').forEach(el => so.observe(el));
     }
   });
 })();
-
-// FAQ accordion
-document.querySelectorAll('.faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = this.closest('.faq-item');
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(function(el) { el.classList.remove('open'); el.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
-    if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded','true'); }
-  });
-});
 
 // Sticky CTA Bar  -  desktop/tablet only; dismissible for session
 (function() {
