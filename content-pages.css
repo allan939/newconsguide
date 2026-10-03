@@ -37,13 +37,13 @@ body {
   overflow-x: clip;
   background: var(--bg);
   color: var(--text-1);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-weight: 800;
 }
 
@@ -104,7 +104,7 @@ body > nav {
 }
 
 .nav-logo-name strong {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 1rem;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -112,7 +112,7 @@ body > nav {
 }
 
 .nav-logo-name small {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.65rem;
   font-weight: 400;
   letter-spacing: 0;
@@ -127,7 +127,7 @@ body > nav {
 }
 
 .nav-links a {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   color: var(--text-2);
   text-decoration: none;
   font-size: 0.875rem;
@@ -146,7 +146,7 @@ body > nav {
   color: #fff;
   border: none;
   padding: 9px 18px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0;
@@ -202,7 +202,7 @@ body > nav {
   border: none;
   box-shadow: none;
   margin-bottom: 26px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -240,7 +240,7 @@ body > nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -259,7 +259,7 @@ body > nav {
   z-index: 1;
   max-width: 920px;
   margin: 0 auto 16px;
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: clamp(2.75rem, 6vw, 4.5rem);
   font-weight: 800;
   line-height: 1.03;
@@ -278,7 +278,7 @@ body > nav {
   z-index: 1;
   max-width: 700px;
   margin: 0 auto;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.75;
   color: rgba(20, 23, 26, 0.66);
@@ -296,7 +296,7 @@ body > nav {
   align-items: center;
   gap: 8px;
   margin-bottom: 20px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0;
@@ -362,7 +362,7 @@ body > nav {
   border-radius: 999px;
   background: rgba(28, 61, 107, 0.06);
   color: var(--veridian);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -379,7 +379,7 @@ body > nav {
 .related-title,
 .related-articles h3,
 .article-body h2 {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   letter-spacing: -0.02em;
   color: var(--text-1);
 }
@@ -394,7 +394,7 @@ body > nav {
 .post-card p,
 .guide-hub-header p,
 .guide-card p {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   color: var(--text-2);
 }
 
@@ -406,7 +406,7 @@ body > nav {
 }
 
 .post-card-meta {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -422,7 +422,7 @@ body > nav {
   width: fit-content;
   color: var(--veridian);
   text-decoration: none;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.88rem;
   font-weight: 600;
   transition: gap 0.2s ease, color 0.2s ease;
@@ -511,7 +511,7 @@ body > nav {
 
 .article-body p,
 .article-body li {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.82;
   color: var(--text-2);
@@ -553,7 +553,7 @@ body > nav {
 .article-cta strong {
   display: block;
   margin-bottom: 12px;
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.2;
@@ -578,7 +578,7 @@ body > nav {
   background: rgba(111, 150, 201, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--off-white);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
@@ -605,7 +605,7 @@ body > nav {
 .footer-copy,
 .footer-links a,
 .footer-trec a {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
 }
 
 footer {
@@ -638,7 +638,7 @@ footer > * {
 }
 
 .footer-logo-name {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--off-white);
@@ -723,7 +723,7 @@ footer > * {
 
 .cookie-text {
   flex: 1;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.82rem;
   line-height: 1.65;
   color: rgba(253, 252, 249, 0.48);
@@ -748,7 +748,7 @@ footer > * {
 .cookie-accept {
   padding: 9px 18px;
   border-radius: 6px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.78rem;
   cursor: pointer;
   transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
@@ -935,7 +935,7 @@ footer > * {
 .answer-box-label {
   display: block;
   margin-bottom: 8px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -975,14 +975,14 @@ footer > * {
 }
 
 .author-box-name {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--text-1);
 }
 
 .author-box-meta {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.78rem;
   line-height: 1.6;
   color: var(--text-2);
@@ -993,7 +993,7 @@ footer > * {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 16px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.72rem;
   color: var(--text-3);
   margin-top: 4px;
@@ -1011,7 +1011,7 @@ footer > * {
 .toc-label {
   display: block;
   margin-bottom: 10px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1053,7 +1053,7 @@ footer > * {
 table.assumptions-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.88rem;
   min-width: 460px;
 }
@@ -1109,7 +1109,7 @@ table.assumptions-table tr.total-row td {
 
 .limitations-box h3,
 .disclaimer-box h3 {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 0.95rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -1136,7 +1136,7 @@ table.assumptions-table tr.total-row td {
 .verify-box-label {
   display: block;
   margin-bottom: 6px;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Public Sans', system-ui, sans-serif;
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1165,7 +1165,7 @@ table.assumptions-table tr.total-row td {
 }
 
 .faq-item h3 {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: 'Newsreader', Georgia, serif;
   font-size: 1.02rem;
   font-weight: 700;
   color: var(--text-1);

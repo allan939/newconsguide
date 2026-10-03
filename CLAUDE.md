@@ -49,7 +49,7 @@ newconsguide/
 ├── AI_TRUST_SEO_AUDIT.md, AI_VISIBILITY_PLAN.md,
 │   WEBSITE_AUDIT_2026-08-08.md, WEBSITE_AUDIT_2026-09-11.md   # Planning/audit notes (not linked from the site)
 ├── AskOzzie Logo.png / AskOzzie Team White Logo.png
-├── houston-home-*.jpeg (6 files), houston-skyline-dusk.jpeg   # Site photography. houston-home-modern-dusk.jpeg is the homepage hero photo; houston-home-sunset-facade.jpeg is the og:image / twitter:image. Grep for a filename before deleting any image.
+├── houston-home-*.jpeg (6 files), houston-skyline-dusk.jpeg   # Site photography. houston-skyline-dusk.jpeg is the homepage hero photo (houston-home-modern-dusk.jpeg is the About photo); houston-home-sunset-facade.jpeg is the og:image / twitter:image. Grep for a filename before deleting any image.
 └── .github/
     └── workflows/
         ├── update.yml                  # Monthly stats rebuild (schedule + manual dispatch)
@@ -171,9 +171,9 @@ The homepage (`index.html`) runs in this order:
 | Section | ID / class | Description |
 |---|---|---|
 | Navigation | `#navbar` (fixed) | Logo, nav links, "Book 15-Min Call" link, "Get Free Guide" button; hamburger menu on mobile |
-| Hero | `.hero` | Split layout: text left (headline, subhead, "Get Free Guide" + "Call or text" buttons, calendar link, 50+/$0/2 hrs facts row), full-height photo right (photo on top on mobile) |
+| Hero | `.hero` | Full-bleed `houston-skyline-dusk.jpeg` behind a dark gradient; white headline, subhead, "Get Free Guide" + "Call or text" buttons, calendar link, 50+/$0/2 hrs facts row. On mobile the copy sits at the bottom of a full-height photo |
 | Benefits strip | `.hero-proof-band` | Three one-line buyer benefits under the hero |
-| About | `#about` | Agent bio, credentials, Houston skyline photo |
+| About | `#about` | Agent bio, credentials, modern-dusk house photo |
 | Why your own agent | `.myth-section` | Three cards; the middle one is the navy highlight card |
 | Testimonials | `.testimonials-section` | Featured quote + $18K stat, three client cards |
 | Journey | `.journey-section` | Six-step pre-approval to closing timeline |
@@ -193,7 +193,7 @@ Also on the page: mobile sticky call bar (`.sticky-call`), desktop sticky lead b
 
 ## Design System
 
-Current look (live since 2026-10-02): a light **"Stone"** palette with a navy accent, Spectral headlines and Inter body text. The same tokens are defined in both `template.html` (`:root`) and `content-pages.css` (`:root`), so the homepage and all content pages match. Keep them in sync.
+Current look (2026-10-02): a light **"Stone"** palette with a navy accent, Newsreader headlines and Public Sans body text, and a full-bleed Houston skyline hero with white copy over a dark wash. The same tokens are defined in both `template.html` (`:root`) and `content-pages.css` (`:root`), so the homepage and all content pages match. Keep them in sync.
 
 ### Color Palette (CSS custom properties)
 
@@ -216,11 +216,11 @@ The variable names (`--veridian`, `--gold`, `--obsidian`) are historical; their 
 
 ### Typography
 
-- **Spectral** (Google Fonts, serif) — headings, stat numbers, testimonials. Headings use weight 800.
-- **Inter** (Google Fonts, sans-serif) — body text, nav, buttons, labels.
+- **Newsreader** (Google Fonts, serif) — headings, stat numbers, testimonials. Headings use weight 800.
+- **Public Sans** (Google Fonts, sans-serif) — body text, nav, buttons, labels.
 - **Fira Code** is still loaded but the `.mono` class isn't used anywhere.
 
-Allan tried Plus Jakarta Sans and Archivo during the redesign and rejected both. **Don't change fonts without asking him.**
+Allan picked Newsreader + Public Sans on 2026-10-02, replacing Spectral + Inter, which he felt still looked AI. He rejected Plus Jakarta Sans and Archivo before that. **Don't change fonts without asking him.**
 
 ### Style rules from the 2026-10 redesign
 
@@ -232,9 +232,13 @@ These came out of an "it looks too AI" review. Keep new sections consistent:
 
 ### Animation Conventions
 
-- `.reveal` class + IntersectionObserver — fade-up on scroll for most content blocks
-- `.reveal-delay-1/2/3/4` — staggered delays (0.1s–0.4s)
-- CSS keyframes: `fadeUp`, `fadeIn`
+Motion was redone 2026-10-02 to replace the generic fade-up-on-everything. The CSS is the `/* ── MOTION */` block in `template.html`; the JS is the `<script>` right after the hero (it must stay there so the hero entrance doesn't wait on the blocking YLOPO script).
+
+- Add `data-motion="..."` to an element to animate it on scroll: `heading` (words rise out of a mask, plain-text headings only), `stagger` (children follow ~80ms apart), `rise` (block lifts in; elements entering together stagger automatically), `fade`, `media`, `step`, `journey`, `map`. Pick the type that matches the element; don't put `rise` on everything.
+- Hidden "before" states only apply under `html.motion` (set by a tiny script in `<head>`, with a 2.5s failsafe), so no-JS visitors get a static page.
+- Easing tokens: `--ease-out`, `--ease-in-out`, `--ease-drawer`, `--ease-pop`. Entrance keyframes use the individual `translate`/`scale` properties so they don't fight existing `transform`s.
+- Buttons get `scale(0.97)` on `:active`; hover effects are gated behind `@media(hover:hover) and (pointer:fine)`. `prefers-reduced-motion` drops all movement and keeps opacity fades.
+- New `data-motion` elements below the YLOPO widget are picked up by the `motionScan()` call in the main script; ones above it by the call just before the YLOPO `<script>`.
 
 ---
 
@@ -244,7 +248,7 @@ These came out of an "it looks too AI" review. Keep new sections consistent:
 |---|---|---|
 | **YLOPO** | Property search widget | `template.html` `#search` section |
 | **Google Apps Script** | Contact form backend (lead capture) | `template.html` `#contact` section |
-| **Google Fonts** | Spectral + Inter (+ unused Fira Code) | `<head>` link tag on every page |
+| **Google Fonts** | Newsreader + Public Sans (+ unused Fira Code) | `<head>` link tag on every page |
 | **HAR.com** newsroom | Market data source | `scrape_stats.py` |
 
 ### Contact Form / Google Apps Script
@@ -314,7 +318,7 @@ python3 build.py          # generates index.html from template.html
 - **`index.html` is self-contained:** all its CSS is inline in `<style>`, all its JS is inline in `<script>` — no external `.css`/`.js` for the homepage. The blog/guide pages are the exception: they share the external `content-pages.css` stylesheet (see Repository Structure).
 - **No build tools:** No npm, webpack, or bundlers. Just Python for templating and the browser for rendering.
 - **Mobile breakpoint:** `@media(max-width:768px)` — nav collapses to a hamburger menu, hero stacks (photo first), sections reduce padding, footer stacks, form grid goes single-column. Most homepage traffic (ads) is on phones, so check every change at ~390px width.
-- **Scroll animations:** Add `.reveal` to any element that should fade up on scroll; optionally add `.reveal-delay-1` through `.reveal-delay-4` for staggered animation within a group.
+- **Scroll animations:** Add a `data-motion` attribute (see "Animation Conventions"). The old `.reveal` classes are gone.
 - **Button patterns** (all 8px radius, not pills):
   - `.btn-primary` — filled navy (`--veridian`), white text, primary CTAs
   - `.btn-outline` — transparent with border, secondary CTAs
