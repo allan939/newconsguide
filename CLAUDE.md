@@ -7,7 +7,6 @@ This file provides context for AI assistants working on this repository.
 **newconsguide** is the marketing website for **Allan Vega**, a Houston new construction real estate specialist. The homepage (`index.html`) is the main conversion page; the site also includes a small blog and a handful of area/topic guide pages for SEO. It targets homebuyers looking for new construction homes in the Houston metro area and presents:
 
 - Live Houston market statistics (auto-updated monthly)
-- Current builder deals and incentives (manually curated)
 - Embedded YLOPO property search widget
 - Agent bio, testimonials, and a custom lead capture form (Google Apps Script backend)
 - A blog index and topical/area guide pages for SEO (see "Content Pages" below)
@@ -41,12 +40,16 @@ newconsguide/
 ├── cypress-new-construction-homes.html
 ├── fulshear-new-construction-homes.html
 ├── pearland-new-construction-homes.html
+├── baytown-, crosby-, league-city-, new-caney-porter-, sugar-land-missouri-city-,
+│   webster-, woodlands-conroe-new-construction-homes.html   # More area guide pages
+├── faq.html                            # Full buyer FAQ page (homepage #faq shows 3 of these)
 ├── houston-new-construction-under-300k.html
 ├── how-much-is-3-5-percent-down-houston.html
-├── allan-vega.jpg                      # Headshot; also used as the og:image / twitter:image on every page
+├── llms.txt                            # Plain-text site summary for AI crawlers
+├── AI_TRUST_SEO_AUDIT.md, AI_VISIBILITY_PLAN.md,
+│   WEBSITE_AUDIT_2026-08-08.md, WEBSITE_AUDIT_2026-09-11.md   # Planning/audit notes (not linked from the site)
 ├── AskOzzie Logo.png / AskOzzie Team White Logo.png
-├── 754287548.jpeg, 757946320.jpeg, 762400500.jpeg,
-│   744052384.jpeg, 750025310.jpeg, 753769423.jpeg   # Hero slideshow images (index.html #hero) — these 6 numbered files ARE referenced; don't assume a numbered .jpeg is safe to delete without grepping for its filename first
+├── houston-home-*.jpeg (6 files), houston-skyline-dusk.jpeg   # Site photography. houston-home-modern-dusk.jpeg is the homepage hero photo; houston-home-sunset-facade.jpeg is the og:image / twitter:image. Grep for a filename before deleting any image.
 └── .github/
     └── workflows/
         ├── update.yml                  # Monthly stats rebuild (schedule + manual dispatch)
@@ -112,15 +115,15 @@ Auto-updated by `scrape_stats.py` and the GitHub Actions workflow. Can be edited
 
 ```json
 {
-  "last_updated": "February 2026",
+  "last_updated": "August 2026",
   "source": "HAR.com - Houston Association of Realtors",
-  "source_url": "https://www.har.com/content/department/newsroom?pid=640",
+  "source_url": "https://www.har.com/content/department/newsroom?pid=2222",
   "stats": {
-    "median_price": "$322K",
-    "median_price_trend": "Source: HAR January 2026",
-    "active_listings": "54,589",
-    "active_listings_trend": "4.7 months inventory",
-    "days_on_market": "66",
+    "median_price": "$330K",
+    "median_price_trend": "Source: HAR August 2026",
+    "active_listings": "60,390",
+    "active_listings_trend": "5.3 months inventory (single-family)",
+    "days_on_market": "54",
     "days_on_market_trend": "Days to sell · Houston MSA",
     "builders_with_incentives": "Most builders",
     "builders_with_incentives_trend": "offering incentives now"
@@ -163,52 +166,75 @@ Deployment is the **classic branch-based GitHub Pages build** (Settings → Page
 
 ## Website Sections
 
-The homepage (`index.html`) is divided into these sections:
+The homepage (`index.html`) runs in this order:
 
-| Section | ID | Description |
+| Section | ID / class | Description |
 |---|---|---|
-| Navigation | (fixed) | Logo, nav links, "Get Free Guide" CTA |
-| Hero | — | Main headline, subhead, dual CTAs |
-| Market Stats | `#stats` | 4-card grid from `stats.json` |
-| Property Search | `#search` | YLOPO widget (embedded) |
-| About | `#about` | Agent bio and credentials |
-| Testimonials | — | Client quote cards |
+| Navigation | `#navbar` (fixed) | Logo, nav links, "Book 15-Min Call" link, "Get Free Guide" button; hamburger menu on mobile |
+| Hero | `.hero` | Split layout: text left (headline, subhead, "Get Free Guide" + "Call or text" buttons, calendar link, 50+/$0/2 hrs facts row), full-height photo right (photo on top on mobile) |
+| Benefits strip | `.hero-proof-band` | Three one-line buyer benefits under the hero |
+| About | `#about` | Agent bio, credentials, Houston skyline photo |
+| Why your own agent | `.myth-section` | Three cards; the middle one is the navy highlight card |
+| Testimonials | `.testimonials-section` | Featured quote + $18K stat, three client cards |
+| Journey | `.journey-section` | Six-step pre-approval to closing timeline |
+| Market Stats | `#stats` | 4 stats from `stats.json` (the only `{{placeholder}}` section) |
+| Process | `#process` | Alternating photo/text timeline |
 | Contact | `#contact` | Custom HTML form → Google Apps Script backend |
-| Footer | — | Contact info + TREC compliance links |
+| Property Search | `#search` | YLOPO widget (embedded) |
+| Area links | `.marquee-section` | Static wrapped list of area-guide links (no longer animated) |
+| Corridors | `.communities-section` | Coverage map SVG + per-area rows |
+| FAQ | `#faq` | 3 Q&As + link to `faq.html` |
+| Blog | `#blog` | 3 article cards + link to `blog.html` |
+| Footer | `footer` | Contact info + TREC compliance links (dark) |
+
+Also on the page: mobile sticky call bar (`.sticky-call`), desktop sticky lead bar (`#sticky-cta-bar`, its own name+phone form), exit-intent popup (`#exit-popup`), floating SMS button, cookie consent banner (gates GA4 + Meta Pixel).
 
 ---
 
 ## Design System
 
-### Color Palette (CSS custom properties) — "veridian" palette
+Current look (live since 2026-10-02): a light **"Stone"** palette with a navy accent, Spectral headlines and Inter body text. The same tokens are defined in both `template.html` (`:root`) and `content-pages.css` (`:root`), so the homepage and all content pages match. Keep them in sync.
 
-| Variable | Hex | Usage |
+### Color Palette (CSS custom properties)
+
+| Variable | Value | Usage |
 |---|---|---|
-| `--bg` | `#F9F7F4` | Main background |
-| `--bg-alt` | `#F0EDE8` | Alternate section backgrounds |
-| `--surface` | `#FDFCFA` | Cards, form backgrounds |
-| `--off-white` | `#fdfcf9` | Near-white for buttons/text on dark |
-| `--obsidian` / `--obsidian-2` | `#1a1a18` / `#2a2a26` | Dark sections |
-| `--veridian` | `#2d3e30` | Primary brand/accent (deep green) |
-| `--veridian-dark` | `#1e2d22` | Hover states |
-| `--veridian-mid` | `#4a7060` | Secondary accent |
-| `--gold` | `#c5a47e` | Tertiary accent |
-| `--text-1` / `--text-2` / `--text-3` | `#1a1714` / `#5a5045` / `#9a8e82` | Primary / secondary / muted text |
-| `--border` / `--border-strong` | `rgba(0,0,0,.09)` / `rgba(0,0,0,.16)` | Card/section borders |
+| `--bg` | `#dfe1de` | Main page background |
+| `--bg-alt` | `#e6e8e5` | Alternate section backgrounds |
+| `--surface` | `#eceeeb` | Cards, form, page headers, nav when scrolled |
+| `--text-1` / `--text-2` / `--text-3` | `#14171a` / `#40454b` / `#565c63` | Primary / secondary / muted text |
+| `--border` / `--border-strong` | `#c9ccc7` / `#a3a7a1` | Card/section borders |
+| `--veridian` | `#1c3d6b` | Primary accent (navy): buttons, links, highlight card |
+| `--veridian-dark` | `#142e52` | Hover states |
+| `--veridian-mid` | `#2f5d96` | Focus rings, buttons that sit on dark bars |
+| `--ink` (homepage) / `--dark` (content pages) | `#1b1f24` | Dark chrome: footer, sticky bars, cookie banner |
+| `--off-white` | `#fdfcf9` | Text on navy/dark backgrounds |
 
-> This replaced an earlier terra-cotta/cream/brown palette (`--terra`, `--cream`, `--brown`, etc.) in a "standardize veridian color palette" pass. If you see references to `--terra`/`--cream`/`--brown` anywhere, they're stale — this table is current.
+The variable names (`--veridian`, `--gold`, `--obsidian`) are historical; their values are navy/ink now. On the homepage `--dark` is a *light* surface value (it used to be the dark section background), so use `--ink` for anything that should be dark.
+
+> History: terra-cotta/cream → green "veridian" → near-black + blue (`#3e6bb0`) → current Stone. Allan rejected the near-black look as "looking AI". If you see `#0a0a09`, `#3e6bb0`, Fraunces or `--terra`, it's stale.
 
 ### Typography
 
-- **Inter** (Google Fonts, sans-serif) — body text, nav, buttons, labels
-- **Fraunces** (Google Fonts, serif/display) — headings, stat numbers, testimonials, deal builder names
-- **Fira Code** (Google Fonts, monospace) — `.mono` class, small uppercase/tracked labels
+- **Spectral** (Google Fonts, serif) — headings, stat numbers, testimonials. Headings use weight 800.
+- **Inter** (Google Fonts, sans-serif) — body text, nav, buttons, labels.
+- **Fira Code** is still loaded but the `.mono` class isn't used anywhere.
+
+Allan tried Plus Jakarta Sans and Archivo during the redesign and rejected both. **Don't change fonts without asking him.**
+
+### Style rules from the 2026-10 redesign
+
+These came out of an "it looks too AI" review. Keep new sections consistent:
+- Headings are plain sentences: no small uppercase "eyebrow" label above every section, no "plain words + *blue italic phrase*" split, no thin accent line under titles.
+- No decorative 01/02/03 numbers, no arrows (↗ →) in button labels, no glow/blur backgrounds, no fake UI (play buttons without video, etc.).
+- One label per intent: the guide CTA is always "Get Free Guide"; calendar links say "Book a 15-min call".
+- **Design passes must not delete content.** Change styling/layout only; removing any visible text, section or element needs Allan's OK first.
 
 ### Animation Conventions
 
 - `.reveal` class + IntersectionObserver — fade-up on scroll for most content blocks
 - `.reveal-delay-1/2/3/4` — staggered delays (0.1s–0.4s)
-- CSS keyframes: `fadeUp`, `fadeIn`, `scrollPulse`
+- CSS keyframes: `fadeUp`, `fadeIn`
 
 ---
 
@@ -218,8 +244,8 @@ The homepage (`index.html`) is divided into these sections:
 |---|---|---|
 | **YLOPO** | Property search widget | `template.html` `#search` section |
 | **Google Apps Script** | Contact form backend (lead capture) | `template.html` `#contact` section |
-| **Google Fonts** | Inter + Fraunces + Fira Code | `<head>` link tag |
-| **HAR / harconnect.com** | Market data source | `scrape_stats.py` |
+| **Google Fonts** | Spectral + Inter (+ unused Fira Code) | `<head>` link tag on every page |
+| **HAR.com** newsroom | Market data source | `scrape_stats.py` |
 
 ### Contact Form / Google Apps Script
 
@@ -230,7 +256,7 @@ var SCRIPT_URL = 'https://script.google.com/macros/s/.../exec';
 fetch(SCRIPT_URL, { method: 'POST', body: new URLSearchParams(formData) });
 ```
 
-Fields collected: First name, last name, email, phone, area of interest (dropdown), price range (dropdown), message. All fields are required. A honeypot field (`.form-hp`) traps bots. On success, the form body is replaced with a `.form-success` confirmation panel.
+Fields collected: area of Houston (dropdown), budget (dropdown), full name, phone, email. All fields are required. A honeypot field (`.form-hp`) traps bots. On success, the form body is replaced with a `.form-success` confirmation panel.
 
 If the Google Apps Script endpoint URL ever needs to change, update `SCRIPT_URL` in `template.html`, then rebuild with `python3 build.py`.
 
@@ -245,7 +271,7 @@ The widget uses domain `allan.askozzie.com` and the script is loaded from `searc
 <div class="YLOPO_resultsWidget" data-search='{"locations":[...],...}'></div>
 ```
 
-The results widget is configured to show Houston-area new construction homes (Crosby, Baytown, Katy, New Caney, TX) priced $250K–$500K, year built ≥ 2026. A JavaScript MutationObserver limits visible cards to 3 via DOM manipulation.
+The results widget is configured to show Houston-area new construction homes (Crosby, Baytown, Katy, New Caney, TX) priced $250K–$500K, year built ≥ 2025 (`yearMin: 2025`, `limit: 4`). A JavaScript MutationObserver keeps at most 3 cards (2 on mobile) and rotates which ones are shown; if nothing loads within 8 seconds it shows a "call Allan" fallback.
 
 ### TREC Compliance (Footer)
 
@@ -287,14 +313,14 @@ python3 build.py          # generates index.html from template.html
 
 - **`index.html` is self-contained:** all its CSS is inline in `<style>`, all its JS is inline in `<script>` — no external `.css`/`.js` for the homepage. The blog/guide pages are the exception: they share the external `content-pages.css` stylesheet (see Repository Structure).
 - **No build tools:** No npm, webpack, or bundlers. Just Python for templating and the browser for rendering.
-- **Mobile breakpoint:** `@media(max-width:768px)` — nav links hide, sections reduce padding, about image hides, footer stacks, form grid goes single-column.
+- **Mobile breakpoint:** `@media(max-width:768px)` — nav collapses to a hamburger menu, hero stacks (photo first), sections reduce padding, footer stacks, form grid goes single-column. Most homepage traffic (ads) is on phones, so check every change at ~390px width.
 - **Scroll animations:** Add `.reveal` to any element that should fade up on scroll; optionally add `.reveal-delay-1` through `.reveal-delay-4` for staggered animation within a group.
-- **Button patterns:**
-  - `.btn-primary` — filled veridian background, used for primary CTAs
-  - `.btn-outline` — transparent with border, used for secondary CTAs
-  - `.btn-nav` — filled veridian, used in navigation
-  - `.btn-deal` — transparent border, full-width, used inside deal cards
-- **Section pattern:** Each section uses `.section-eyebrow` (small caps label) + `.section-title` (serif heading with `<em>` for italic veridian accent) + `.section-line` (thin accent line).
+- **Button patterns** (all 8px radius, not pills):
+  - `.btn-primary` — filled navy (`--veridian`), white text, primary CTAs
+  - `.btn-outline` — transparent with border, secondary CTAs
+  - `.btn-nav` — filled navy, used in navigation
+- **Section pattern:** `.section-header` + `.section-title` (a plain-sentence Spectral heading). See "Style rules" under Design System; the old `.section-eyebrow`/`<em>` accent/`.section-line` pattern was removed on purpose.
+- **Tracking:** clickable CTAs carry `data-track="..."` labels that feed GA4 `cta_click`/`phone_call` and Meta Pixel events (see the click handler near `PHONE_LABELS` in `template.html`). Keep existing labels stable when restyling; a label in `PHONE_LABELS` counts as a phone-call conversion.
 - **Lead-capture forms must verify the response before showing success.** Both the main `#contact` form and the sticky CTA bar POST to the same Google Apps Script `SCRIPT_URL` — always check `response.ok` in `.then()` before showing the success panel/firing `fbq`/`gtag` conversion events, and show a retry message in `.catch()`. Do not use `no-cors` mode or an unconditional `.finally()` for "success," since that reports success (and fires fake ad-platform conversions) even when the lead was never actually delivered.
 
 ---
@@ -302,8 +328,10 @@ python3 build.py          # generates index.html from template.html
 ## Known Issues / Watch-outs
 
 - **Stats scraper URL fallback:** If `scrape_stats.py`'s link-search on the HAR newsroom index finds nothing, it falls back to re-parsing the newsroom index page itself (`get_latest_har_url()` in `scrape_stats.py`). This can silently pull stale or wrong-article data with no warning printed — see the watch-out under `scrape_stats.py` above. Spot-check `stats.json` after any auto-update.
-- **YLOPO `yearMin: 2026`:** The results widget filters for homes built ≥ 2026. Adjust this in `template.html` if the search returns too few results, then rebuild.
+- **YLOPO `yearMin: 2025`:** The results widget filters for homes built ≥ 2025. Adjust this in `template.html` if the search returns too few results, then rebuild.
 - **Stats scraper GitHub Issue alerting:** When all primary stats fail to parse, `scrape_stats.py` opens a GitHub Issue tagged `data-update-needed`. Requires `GITHUB_TOKEN` and `GITHUB_REPOSITORY` env vars — only available inside GitHub Actions runs.
 - **`stats.json` push does not trigger rebuild:** This is intentional. Pushing `stats.json` alone will not invoke the update workflow, preventing the scraper from overwriting manually corrected values. To rebuild after a manual stats edit, trigger the workflow manually from the Actions tab. **`auto-merge.yml` must never be given a reason to touch `stats.json` either** — see the callout under `auto-merge.yml` above for what happened when it briefly did.
 - **Auto-merge workflow:** All `claude/**` branches are automatically merged into `main`. This is convenient for AI-assisted development but means any push to a `claude/*` branch immediately lands on `main` without a review gate.
 - **`article-template.html` is publicly served as-is:** it's a tracked file at repo root with `{{TOKEN}}` placeholders, so GitHub Pages will serve it at `/article-template.html` if anyone requests that URL directly. It's not linked from any page or listed in `sitemap.xml`, so exposure is low, but be aware it's not access-controlled.
+- **Pushing to GitHub:** the repo is `allan939/newconsguide`; this Mac's git credentials are the **AllanV125** account, which has collaborator access. A 403 on push means that access was removed. Ask Allan to re-add the collaborator rather than changing credentials.
+- **Sticky lead bar promises a guide but collects no email:** `#sticky-cta-bar` asks only for name + phone while its button says "Get Free Guide" (the main form collects email "to send the guide"). Allan follows up by phone; flag it if that changes.

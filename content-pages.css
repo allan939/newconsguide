@@ -766,14 +766,14 @@ footer > * {
 }
 
 .cookie-accept {
-  background: var(--veridian);
+  background: var(--veridian-mid);
   border: none;
   color: var(--off-white);
   font-weight: 500;
 }
 
 .cookie-accept:hover {
-  background: var(--veridian-dark);
+  background: var(--veridian);
 }
 
 @media (max-width: 1024px) {
