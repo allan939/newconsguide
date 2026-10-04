@@ -2408,7 +2408,8 @@ document.querySelectorAll('.stat-number, .testimonial-stat-num').forEach(el => s
 
 // CTA click tracking (GA4 + Facebook Pixel)
 (function() {
-  var PHONE_LABELS = ['sticky_call_bar', 'hero_phone_click', 'ylopo_fallback_phone'];
+  var PHONE_LABELS = ['sticky_call_bar', 'hero_phone_click', 'ylopo_fallback_phone', 'contact_phone_click'];
+  var TEXT_LABELS = ['sticky_text_bar'];
   var CALENDAR_LABELS = ['calendar_schedule', 'nav_calendar_schedule', 'nav_mobile_calendar_schedule', 'hero_calendar_schedule', 'process_calendar_schedule', 'contact_calendar_schedule'];
 
   document.addEventListener('click', function(e) {
@@ -2416,12 +2417,15 @@ document.querySelectorAll('.stat-number, .testimonial-stat-num').forEach(el => s
     if (!el) return;
     var label = el.getAttribute('data-track');
     var isPhone = PHONE_LABELS.indexOf(label) !== -1;
+    var isText = TEXT_LABELS.indexOf(label) !== -1;
     var isCalendar = CALENDAR_LABELS.indexOf(label) !== -1;
 
     // GA4
     if (typeof gtag === 'function') {
       if (isPhone) {
         gtag('event', 'phone_call', { cta_label: label });
+      } else if (isText) {
+        gtag('event', 'text_message', { cta_label: label });
       } else {
         gtag('event', 'cta_click', { cta_label: label });
       }
@@ -2429,7 +2433,7 @@ document.querySelectorAll('.stat-number, .testimonial-stat-num').forEach(el => s
 
     // Facebook Pixel
     if (typeof fbq === 'function') {
-      if (isPhone) {
+      if (isPhone || isText) {
         fbq('track', 'Contact', { content_name: label });
       } else if (isCalendar) {
         fbq('track', 'Schedule', { content_name: label });

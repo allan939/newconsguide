@@ -87,11 +87,11 @@ gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user
     <li><a href="faq.html">FAQ</a></li>
     <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="index.html#contact">Contact</a></li>
-    <li class="nav-cta-mobile nav-cta-mobile-secondary"><a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener">Book a 15-Min Call</a></li>
-    <li class="nav-cta-mobile"><a href="index.html#contact">Get Free Guide</a></li>
+    <li class="nav-cta-mobile nav-cta-mobile-secondary"><a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" data-track="nav_mobile_calendar_schedule">Book a 15-Min Call</a></li>
+    <li class="nav-cta-mobile"><a href="index.html#contact" data-track="nav_get_free_guide">Get Free Guide</a></li>
   </ul>
-  <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="nav-calendar-link">Book a 15-Min Call</a>
-  <a href="index.html#contact" class="btn-nav">Get Free Guide</a>
+  <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="nav-calendar-link" data-track="nav_calendar_schedule">Book a 15-Min Call</a>
+  <a href="index.html#contact" class="btn-nav" data-track="nav_get_free_guide">Get Free Guide</a>
   <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
 </nav>
 
@@ -165,10 +165,10 @@ gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user
     <strong>Ready to explore Cypress new construction?</strong>
     <p>I'll pull current inventory, builder programs, and a community comparison matched to your budget - no cost, no commitment.</p>
     <div class="article-cta-actions">
-      <a href="index.html#contact" class="cta-btn cta-btn--primary">Get Free Guide</a>
-      <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="cta-btn">Book a 15-Min Call</a>
+      <a href="index.html#contact" class="cta-btn cta-btn--primary" data-track="article_get_free_guide">Get Free Guide</a>
+      <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="cta-btn" data-track="article_calendar_schedule">Book a 15-Min Call</a>
     </div>
-    <a href="tel:+12818657146" class="article-cta-phone">Or call/text Allan at (281) 865-7146</a>
+    <a href="tel:+12818657146" class="article-cta-phone" data-track="article_phone_click">Or call/text Allan at (281) 865-7146</a>
   </div>
 
   <div class="related-articles">
@@ -220,11 +220,29 @@ gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user
 
 <div class="sticky-call">
   <span class="sticky-call-label">Call / Text Allan · (281) 865-7146</span>
-  <a href="tel:+12818657146">Call</a>
-  <a href="sms:+12818657146?body=Hi%20Allan%2C%20I%27m%20interested%20in%20Houston%20new%20construction%20homes.">Text</a>
+  <a href="tel:+12818657146" data-track="sticky_call_bar">Call</a>
+  <a data-track="sticky_text_bar" href="sms:+12818657146?body=Hi%20Allan%2C%20I%27m%20interested%20in%20Houston%20new%20construction%20homes.">Text</a>
 </div>
 
 <script>
+(function () {
+  // CTA click tracking (GA4 + Meta Pixel), same events as the homepage
+  var PHONE = ['sticky_call_bar', 'article_phone_click'];
+  var TEXT = ['sticky_text_bar'];
+  var CALENDAR = ['nav_calendar_schedule', 'nav_mobile_calendar_schedule', 'article_calendar_schedule'];
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-track]');
+    if (!el) return;
+    var label = el.getAttribute('data-track');
+    var isPhone = PHONE.indexOf(label) !== -1, isText = TEXT.indexOf(label) !== -1, isCal = CALENDAR.indexOf(label) !== -1;
+    if (typeof gtag === 'function') gtag('event', isPhone ? 'phone_call' : isText ? 'text_message' : 'cta_click', { cta_label: label });
+    if (typeof fbq === 'function') {
+      if (isPhone || isText) fbq('track', 'Contact', { content_name: label });
+      else if (isCal) fbq('track', 'Schedule', { content_name: label });
+      else fbq('trackCustom', 'CTAClick', { button: label });
+    }
+  });
+})();
 (function () {
   var t = document.getElementById('navToggle'), l = document.getElementById('navLinks');
   if (!t || !l) return;

@@ -233,7 +233,7 @@ These came out of an "it looks too AI" review. Keep new sections consistent:
 - One label per intent, sitewide: the guide CTA is always "Get Free Guide", calendar links always say "Book a 15-Min Call", and the phone appears as a small "Or call/text Allan at (281) 865-7146" text link. Max two buttons per block.
 - Serif (Newsreader) only for the hero headline, section titles (`h2`) and big numbers. Every `h3`, label, button and paragraph is Public Sans. Three heading sizes: hero, `h2` (`.section-title` scale), `h3` (~1.125rem sans).
 - One system, defined in the `DESIGN SYSTEM (2026-10-03)` block at the end of `<style>`: sections use `padding:var(--section-y) var(--gutter)`, everything rounded uses `var(--radius)` (8px), the navy (`--veridian`) block is reserved for the single "your agent represents you" statement.
-- Reviews must be real client words. Don't write or "polish" testimonials; Allan will supply real Google reviews to replace the current ones.
+- The testimonials are real client reviews (Allan confirmed 2026-10-03). Never rewrite, "polish" or invent review text; only add reviews Allan supplies, word for word.
 - **Design passes must not delete content.** Change styling/layout only; removing any visible text, section or element needs Allan's OK first.
 
 ### Animation Conventions
@@ -330,7 +330,7 @@ python3 build.py          # generates index.html from template.html
   - `.btn-outline` — transparent with border, secondary CTAs
   - `.btn-nav` — filled navy, used in navigation
 - **Section pattern:** `.section-header` + `.section-title` (a plain-sentence Spectral heading). See "Style rules" under Design System; the old `.section-eyebrow`/`<em>` accent/`.section-line` pattern was removed on purpose.
-- **Tracking:** clickable CTAs carry `data-track="..."` labels that feed GA4 `cta_click`/`phone_call` and Meta Pixel events (see the click handler near `PHONE_LABELS` in `template.html`). Keep existing labels stable when restyling; a label in `PHONE_LABELS` counts as a phone-call conversion.
+- **Tracking:** clickable CTAs carry `data-track="..."` labels that feed GA4 `cta_click`/`phone_call`/`text_message` and Meta Pixel events (`Contact` for phone/text, `Schedule` for calendar, `CTAClick` otherwise). Homepage: the handler near `PHONE_LABELS`/`TEXT_LABELS` in `template.html`. Content pages: the same handler inline at the bottom of each page (`PHONE`/`TEXT`/`CALENDAR` arrays; labels `nav_*`, `article_*`, `sticky_call_bar`, `sticky_text_bar`). Keep labels stable when restyling, since phone/text labels count as contact conversions.
 - **Lead-capture forms must verify the response before showing success.** Both the main `#contact` form and the sticky CTA bar POST to the same Google Apps Script `SCRIPT_URL` — always check `response.ok` in `.then()` before showing the success panel/firing `fbq`/`gtag` conversion events, and show a retry message in `.catch()`. Do not use `no-cors` mode or an unconditional `.finally()` for "success," since that reports success (and fires fake ad-platform conversions) even when the lead was never actually delivered.
 
 ---
