@@ -58,6 +58,8 @@ newconsguide/
 
 > **Important:** `index.html` and `sitemap.xml` are **generated artifacts**. Always edit `template.html` or `stats.json` — never edit `index.html`/`sitemap.xml` directly, they will be overwritten on the next `python3 build.py`.
 
+> **Content page chrome (2026-10-03):** every blog/guide/FAQ/privacy page shares the same nav (Homes, Process, About, Market, FAQ, Blog, Contact + "Book a 15-Min Call" link + "Get Free Guide" button, hamburger menu on phones), the same footer links, a thin mobile `.sticky-call` Call/Text strip, and one `.article-cta` box: page-specific `<strong>` headline + one `<p>`, then Get Free Guide + Book a 15-Min Call buttons and the "Or call/text Allan" link. Styling for all of it is the `DESIGN SYSTEM (2026-10-03)` block at the end of `content-pages.css`. Copy these from `article-template.html` when adding a page; don't invent new CTA labels.
+
 > **New content pages:** Start from `article-template.html`, follow the instructions in its header comment, add the new file's path to `build.py`'s `SITEMAP_PAGES` list and to `blog.html`'s post grid, then run `python3 build.py`. These pages use the shared `content-pages.css` stylesheet, not the inline styles in `template.html`.
 
 ---
