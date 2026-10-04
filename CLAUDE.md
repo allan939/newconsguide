@@ -89,6 +89,8 @@ Reads `template.html`, performs string substitution using `{{placeholder}}` toke
 | `{{builders_with_incentives_trend}}` | `stats.builders_with_incentives_trend` |
 | `{{stats_updated}}` | top-level `last_updated` |
 
+> **Retired: Journey section.** The six-step "From pre-approval to the closing table" section was merged into the five-step `#process` list on 2026-10-03. Its CSS (`.journey-*`) and the old `.process-timeline` CSS are now unused.
+
 > **Retired: Builder Deals section.** A homepage "Builder Deals" section (`{{deals_cards}}`/`{{deals_updated}}` placeholders, `deals.json`, `scrape_deals.py`) existed at various points but was removed for good — Allan's call, since per-community and per-house incentive terms change too fast (weekly, sometimes per-house) to keep accurate on a static page without constant upkeep. Builder incentives are now handled conversationally (the FAQ mentions general incentive ranges; specifics are "contact me" territory) rather than as structured, dated data on the page. **Do not re-add a deals data pipeline without confirming with Allan first** — this has been tried and reverted more than once.
 
 ### `scrape_stats.py`
@@ -170,24 +172,23 @@ The homepage (`index.html`) runs in this order:
 
 | Section | ID / class | Description |
 |---|---|---|
-| Navigation | `#navbar` (fixed) | Logo, nav links, "Book 15-Min Call" link, "Get Free Guide" button; hamburger menu on mobile |
-| Hero | `.hero` | Full-bleed `houston-skyline-dusk.jpeg` behind a dark gradient; white headline, subhead, "Get Free Guide" + "Call or text" buttons, calendar link, 50+/$0/2 hrs facts row. On mobile the copy sits at the bottom of a full-height photo |
-| Benefits strip | `.hero-proof-band` | Three one-line buyer benefits under the hero |
-| About | `#about` | Agent bio, credentials, modern-dusk house photo |
-| Why your own agent | `.myth-section` | Three cards; the middle one is the navy highlight card |
-| Testimonials | `.testimonials-section` | Featured quote + $18K stat, three client cards |
-| Journey | `.journey-section` | Six-step pre-approval to closing timeline |
-| Market Stats | `#stats` | 4 stats from `stats.json` (the only `{{placeholder}}` section) |
-| Process | `#process` | Alternating photo/text timeline |
-| Contact | `#contact` | Custom HTML form → Google Apps Script backend |
-| Property Search | `#search` | YLOPO widget (embedded) |
-| Area links | `.marquee-section` | Static wrapped list of area-guide links (no longer animated) |
-| Corridors | `.communities-section` | Coverage map SVG + per-area rows |
+| Navigation | `#navbar` (fixed) | Logo, nav links, "Book a 15-Min Call" link, "Get Free Guide" button; hamburger menu on mobile |
+| Hero | `.hero` | Full-bleed `houston-skyline-dusk.jpeg` behind a dark gradient. "Houston New Construction Realtor" tag, headline, one supporting line, exactly two buttons (Get Free Guide + Book a 15-Min Call), a small "Or call/text Allan" phone link, 50+/$0/2 hrs facts row |
+| Trust bar | `.hero-proof-band` | Houston-wide · New construction focus · English / Español · $0 cost to buyers |
+| Featured homes | `#search` | YLOPO widget (embedded). Its blocking script sits here, so `motionScan()` runs just before it |
+| Why your own agent | `.myth-section` | Navy statement block (`.myth-statement`) + three short points |
+| Process | `#process` | Heading + photo on the left, five numbered steps (`.steps`) on the right |
+| Testimonials | `.testimonials-section` | One featured review + $18K stat; the other reviews sit in a `<details>` behind "Read More Reviews" |
+| About | `#about` | Short bio, three pillars, 2×2 credentials, house photo |
+| Market Stats | `#stats` | One lead stat (median price) + three supporting rows from `stats.json` (the only `{{placeholder}}` section) |
+| Area links | `.marquee-section` | Static wrapped list of area-guide links |
+| Corridors | `.communities-section` | Coverage map SVG + per-area rows (the long `.community-note` is hidden on phones) |
 | FAQ | `#faq` | 3 Q&As + link to `faq.html` |
 | Blog | `#blog` | 3 article cards + link to `blog.html` |
+| Contact | `#contact` | Final CTA: custom HTML form → Google Apps Script backend |
 | Footer | `footer` | Contact info + TREC compliance links (dark) |
 
-Also on the page: mobile sticky call bar (`.sticky-call`), desktop sticky lead bar (`#sticky-cta-bar`, its own name+phone form), exit-intent popup (`#exit-popup`), floating SMS button, cookie consent banner (gates GA4 + Meta Pixel).
+Also on the page: thin mobile call/text strip (`.sticky-call`, Call + Text buttons), desktop sticky lead bar (`#sticky-cta-bar`, its own name+phone form), exit-intent popup (`#exit-popup`), floating SMS button, cookie consent banner (gates GA4 + Meta Pixel).
 
 ---
 
@@ -227,7 +228,10 @@ Allan picked Newsreader + Public Sans on 2026-10-02, replacing Spectral + Inter,
 These came out of an "it looks too AI" review. Keep new sections consistent:
 - Headings are plain sentences: no small uppercase "eyebrow" label above every section, no "plain words + *blue italic phrase*" split, no thin accent line under titles.
 - No decorative 01/02/03 numbers, no arrows (↗ →) in button labels, no glow/blur backgrounds, no fake UI (play buttons without video, etc.).
-- One label per intent: the guide CTA is always "Get Free Guide"; calendar links say "Book a 15-min call".
+- One label per intent, sitewide: the guide CTA is always "Get Free Guide", calendar links always say "Book a 15-Min Call", and the phone appears as a small "Or call/text Allan at (281) 865-7146" text link. Max two buttons per block.
+- Serif (Newsreader) only for the hero headline, section titles (`h2`) and big numbers. Every `h3`, label, button and paragraph is Public Sans. Three heading sizes: hero, `h2` (`.section-title` scale), `h3` (~1.125rem sans).
+- One system, defined in the `DESIGN SYSTEM (2026-10-03)` block at the end of `<style>`: sections use `padding:var(--section-y) var(--gutter)`, everything rounded uses `var(--radius)` (8px), the navy (`--veridian`) block is reserved for the single "your agent represents you" statement.
+- Reviews must be real client words. Don't write or "polish" testimonials; Allan will supply real Google reviews to replace the current ones.
 - **Design passes must not delete content.** Change styling/layout only; removing any visible text, section or element needs Allan's OK first.
 
 ### Animation Conventions
