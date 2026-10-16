@@ -196,7 +196,9 @@ Also on the page: thin mobile call/text strip (`.sticky-call`, Call + Text butto
 
 ## Design System
 
-Current look (2026-10-02): a light **"Stone"** palette with a navy accent, Newsreader headlines and Public Sans body text, and a full-bleed Houston skyline hero with white copy over a dark wash. The same tokens are defined in both `template.html` (`:root`) and `content-pages.css` (`:root`), so the homepage and all content pages match. Keep them in sync.
+**Current look (2026-10-16): "New Home Buddy" style.** Allan asked for the newhomebuddy.com look: airy blue-gray page (`--bg #f6f9fc`), deep navy `#0b425e` + bright blue `#0278bd` accents, **Hanken Grotesk** for everything (bold, tight headings), pill buttons, white rounded cards (16–24px) with hairline borders and soft shadows, soft blue/lilac gradient washes, and a light hero with the skyline photo in a rounded card on the right. It's all in the `NEW HOME BUDDY LOOK (2026-10-16)` block at the end of `<style>` in `template.html` and at the end of `content-pages.css`; those blocks override the older tables and rules below (Stone palette, Newsreader/Public Sans, 8px radius, no-pill buttons), which are kept for history.
+
+Previous look (2026-10-02): a light **"Stone"** palette with a navy accent, Newsreader headlines and Public Sans body text, and a full-bleed Houston skyline hero with white copy over a dark wash. The same tokens are defined in both `template.html` (`:root`) and `content-pages.css` (`:root`), so the homepage and all content pages match. Keep them in sync.
 
 ### Color Palette (CSS custom properties)
 
