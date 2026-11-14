@@ -17,8 +17,15 @@ The website for my real estate business. It helps Houston-area buyers compare ne
 | Part | What it does |
 |---|---|
 | `build.py` | Python script that builds the homepage from a template plus the market numbers in `stats.json`, and regenerates the sitemap. |
-| `scrape_stats.py` + GitHub Actions | A scheduled monthly job that tries to pull the latest Houston market stats. If the data can't be fetched or looks wrong, the site keeps the last good numbers and opens a GitHub Issue so I can update them by hand. |
+| GitHub Actions | When I update the monthly market numbers in `stats.json`, a workflow rebuilds the homepage and publishes it automatically. |
 | GitHub Pages | Hosts the site on my custom domain. |
+
+## Monthly market stats update
+
+Once a month, after HAR publishes its market report:
+1. Open HAR's monthly Houston housing report.
+2. On GitHub, open `stats.json`, click the pencil icon, and update the month, median price, active listings, months of inventory and days on market.
+3. Click **Commit changes**. The homepage rebuilds and goes live within a few minutes.
 
 ## Tools
 
@@ -27,7 +34,7 @@ HTML, CSS, JavaScript, Python, GitHub Actions, GitHub Pages, Google Apps Script.
 ## What I learned
 
 - Writing for a real audience: every page answers questions my buyers actually ask.
-- Automation needs a fallback. The monthly update checks its own data before publishing and alerts me when something breaks.
+- Automation should respect the source. I first tried scraping HAR's market stats automatically, but HAR blocks bots, so I switched to a quick manual update that still rebuilds the site automatically.
 - Small, frequent changes (400+ commits) beat big rewrites.
 
 ---

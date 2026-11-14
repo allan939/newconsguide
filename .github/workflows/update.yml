@@ -1,9 +1,10 @@
 name: Update Website
 
 on:
-  # Runs on the 12th of every month at 9am CT (HAR posts data around the 10th)
-  schedule:
-    - cron: '0 14 12 * *'
+  # Rebuild the homepage whenever the market numbers in stats.json are edited
+  push:
+    branches: [main]
+    paths: [stats.json]
 
   # Lets you click "Run" manually anytime from GitHub Actions tab
   workflow_dispatch:
@@ -13,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      issues: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,12 +24,6 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Auto-fetch HAR market stats
-        run: python3 scrape_stats.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-
       - name: Build page from latest data
         run: python3 build.py
 
@@ -37,6 +31,6 @@ jobs:
         run: |
           git config user.name "Auto Updater"
           git config user.email "action@github.com"
-          git add index.html stats.json
-          git diff --staged --quiet || git commit -m "Auto-update: $(date '+%B %Y') market stats refreshed"
+          git add index.html
+          git diff --staged --quiet || git commit -m "Rebuild homepage from updated market stats"
           git push
