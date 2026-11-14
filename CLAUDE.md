@@ -46,8 +46,8 @@ newconsguide/
 ├── houston-new-construction-under-300k.html
 ├── how-much-is-3-5-percent-down-houston.html
 ├── llms.txt                            # Plain-text site summary for AI crawlers
-├── AI_TRUST_SEO_AUDIT.md, AI_VISIBILITY_PLAN.md,
-│   WEBSITE_AUDIT_2026-08-08.md, WEBSITE_AUDIT_2026-09-11.md   # Planning/audit notes (not linked from the site)
+├── docs/notes/   # Planning/audit notes: AI_TRUST_SEO_AUDIT.md, AI_VISIBILITY_PLAN.md, WEBSITE_AUDIT_*.md (not linked from the site)
+├── docs/screenshot-newconsguide.jpg   # README screenshot
 ├── AskOzzie Logo.png / AskOzzie Team White Logo.png
 ├── houston-home-*.jpeg (6 files), houston-skyline-dusk.jpeg   # Site photography. houston-skyline-dusk.jpeg is the homepage hero photo (houston-home-modern-dusk.jpeg is the About photo); houston-home-sunset-facade.jpeg is the og:image / twitter:image. Grep for a filename before deleting any image.
 └── .github/
