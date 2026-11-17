@@ -1379,6 +1379,131 @@ footer{background:var(--navy);}
   .cta-section{background:var(--bg);}
   .cta-section-inner{padding:28px 18px;gap:28px;border-radius:22px;}
 }
+
+/* ── UX PASS (2026-11-16) ─────────────────────────────────────
+   Same look (slate page, navy, IBM Plex Sans, pills). Goal: stop every
+   block being the same white card, shorten the phone page, and add
+   scroll-linked life. No content removed.
+   - Why-agent points, About pillars + credentials: plain columns/rows
+     on hairlines instead of cards.
+   - Process: a real timeline. Each connector fills navy with scroll
+     (--sp, set by the UX PASS script) and markers light up (.is-passed).
+   - Stats, FAQ, corridors: one panel with divided rows, not card stacks.
+   - Phones: hero copy + buttons first, photo after; corridors and blog
+     cards are swipe rows.
+   - Scroll progress bar, slow hero photo drift, number count-up, nav
+     highlight for the section in view.
+   ─────────────────────────────────────────────────────────── */
+
+/* Scroll progress (CSS scroll timeline; hidden where unsupported) */
+.scroll-progress{display:none;position:fixed;top:0;left:0;right:0;height:3px;background:var(--veridian-mid);transform-origin:left;transform:scaleX(0);z-index:1002;pointer-events:none;}
+@supports (animation-timeline:scroll()){
+  .scroll-progress{display:block;animation:ux-progress linear both;animation-timeline:scroll(root);}
+}
+@keyframes ux-progress{to{transform:scaleX(1);}}
+
+/* Nav: mark the section in view */
+.nav-links a{position:relative;}
+@media(min-width:769px){
+  .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:2px;background:var(--veridian);transform:scaleX(0);transform-origin:left;transition:transform 0.35s var(--ease-out);}
+  .nav-links a.is-current{color:var(--veridian);}
+  .nav-links a.is-current::after{transform:scaleX(1);}
+}
+
+/* Hero: facts as one divided row, photo drifts slowly */
+.hero-facts{gap:0;}
+.hero-facts span{background:none;border:none;border-left:1px solid var(--border-strong);border-radius:0;box-shadow:none;padding:2px 26px;}
+.hero-facts span:first-child{border-left:none;padding-left:0;}
+.hero-facts b,.cred-num,.stat-number,.testimonial-stat-num{font-variant-numeric:tabular-nums;}
+html.motion.hero-in .hero-photo-single-img{animation:m-settle 1.9s var(--ease-out) backwards,ux-drift 26s ease-in-out 2s infinite alternate;}
+@keyframes ux-drift{from{transform:scale(1) translateY(0);}to{transform:scale(1.08) translateY(-1.5%);}}
+
+.hero-proof .hero-proof-item:first-child{padding-left:16px;}
+
+/* Why your own agent: three plain columns under the navy statement */
+.myth-card,.myth-card:last-child,.myth-card:nth-child(n){background:none;border:none;border-top:1px solid var(--border-strong);border-radius:0;box-shadow:none;padding:22px 0 0;}
+.myth-card h3{font-size:1.2rem;margin-bottom:8px;}
+
+/* Process: timeline */
+.steps{display:block;border-top:none;}
+.step,.step:last-child{position:relative;background:none;border:none;border-radius:0;box-shadow:none;padding:0 0 38px;grid-template-columns:48px minmax(0,1fr);gap:24px;align-items:start;}
+.step:last-child{padding-bottom:0;}
+.step:not(:last-child)::before,.step:not(:last-child)::after{content:'';position:absolute;left:23px;top:52px;bottom:4px;width:2px;border-radius:2px;background:var(--border-strong);}
+.step:not(:last-child)::after{background:var(--veridian);transform-origin:top;transform:scaleY(var(--sp,0));}
+.step-num,.step:last-child .step-num{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid var(--border-strong);font-size:0.95rem;font-weight:700;letter-spacing:0;line-height:1;color:var(--text-3);transition:background-color 0.35s ease,border-color 0.35s ease,color 0.35s ease,box-shadow 0.35s ease;}
+.step.is-passed .step-num{background:var(--veridian);border-color:var(--veridian);color:#fff;box-shadow:0 0 0 6px rgba(11,66,94,0.1);}
+.step>div{padding-top:9px;}
+.step-title{font-size:1.2rem;}
+
+/* Reviews: drop the colored top edge */
+.review-featured{border-top:1px solid var(--border);}
+
+/* About: rows and plain figures instead of cards */
+.pillars{display:block;border-top:1px solid var(--border-strong);}
+.pillar{background:none;border:none;border-bottom:1px solid var(--border);border-radius:0;box-shadow:none;padding:16px 0;}
+.about-credentials>*{background:none;border:none;border-top:1px solid var(--border-strong);border-radius:0;box-shadow:none;padding:14px 0 0;}
+
+/* Market snapshot: lead figure + one divided panel, equal height */
+.stats-layout{align-items:stretch;gap:32px;}
+.stat-lead{border-top:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
+.stat-list{display:flex;flex-direction:column;justify-content:center;gap:0;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:8px 30px;}
+.stat-row,.stat-row:first-child,.stat-row:nth-child(n){background:none;border:none;border-bottom:1px solid var(--border);border-radius:0;box-shadow:none;padding:24px 0;}
+.stat-row:last-child{border-bottom:none;}
+
+/* FAQ: one panel */
+.faq-list{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:6px 32px;}
+.faq-list .faq-item,.faq-list .faq-item:last-child{background:none;border:none;border-bottom:1px solid var(--border);border-radius:0;box-shadow:none;margin:0;padding:28px 0;}
+.faq-list .faq-item:last-child{border-bottom:none;}
+
+/* Corridors (desktop): one panel, divided rows */
+@media(min-width:769px){
+  .communities-list{max-width:1200px;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-soft);padding:4px 36px;}
+  .community-row{background:none;border:none;border-bottom:1px solid var(--border);border-radius:0;box-shadow:none;margin:0;padding:30px 0;}
+  .community-row:last-child{border-bottom:none;}
+  .community-row:hover{background:none;}
+  .community-name{transition:color 0.2s ease;}
+}
+@media(hover:hover) and (pointer:fine){
+  .community-row:hover .community-name{color:var(--veridian);}
+  .marquee-section a{transition:transform 0.2s var(--ease-out),color 0.2s ease,border-color 0.2s ease;}
+  .marquee-section a:hover{transform:translateY(-2px);}
+}
+
+/* Desktop lead bar steps aside over the hero and the contact form */
+#sticky-cta-bar.scta-visible.scta-tuck{transform:translateY(100%);}
+
+@media(max-width:768px){
+  :root{--section-y:64px;}
+  /* Copy and buttons first on phones; photo follows */
+  .hero .hero-split{gap:28px;padding-top:28px;}
+  .hero-photo-col{order:2;min-height:0;}
+  .hero-photo-single{aspect-ratio:16/10;}
+  .hero-facts span{flex:1 1 0;padding:2px 12px;}
+  .myth-card,.myth-card:last-child,.myth-card:nth-child(n){padding:18px 0 0;}
+  .step,.step:last-child{grid-template-columns:44px minmax(0,1fr);gap:16px;padding:0 0 28px;}
+  .step:last-child{padding-bottom:0;}
+  .step-num,.step:last-child .step-num{width:44px;height:44px;font-size:0.88rem;}
+  .step:not(:last-child)::before,.step:not(:last-child)::after{left:21px;top:48px;}
+  .step>div{padding-top:7px;}
+  .stat-list{padding:4px 22px;}
+  .stat-row,.stat-row:first-child,.stat-row:nth-child(n){padding:18px 0;}
+  .faq-list{padding:2px 20px;}
+  .faq-list .faq-item,.faq-list .faq-item:last-child{padding:22px 0;}
+  /* Swipe rows: corridors and blog cards */
+  .communities-list,.blog-cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gutter);-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 calc(var(--gutter) * -1);padding:4px var(--gutter) 14px;border-top:none;max-width:none;}
+  .communities-list::-webkit-scrollbar,.blog-cards::-webkit-scrollbar{display:none;}
+  .communities-list .community-row{flex:0 0 84%;scroll-snap-align:start;margin:0;align-content:start;}
+  .blog-cards .blog-card{flex:0 0 84%;scroll-snap-align:start;}
+  p.swipe-hint{display:flex;}
+  .hero-proof .hero-proof-item:first-child{padding-left:12px;}
+}
+.swipe-hint{display:none;align-items:center;gap:8px;margin:0 0 10px;font-size:0.8rem;font-weight:600;color:var(--text-3);}
+.swipe-hint::after{content:'';flex:1;height:1px;background:var(--border-strong);}
+@media(prefers-reduced-motion:reduce){
+  html.motion.hero-in .hero-photo-single-img{animation:none;}
+  .scroll-progress{display:none !important;}
+  .step:not(:last-child)::after{transform:none;}
+}
 </style>
 <script type="application/ld+json">
 [
@@ -1563,6 +1688,7 @@ gtag('config','G-HTK9Z1G2RQ');
   </div>
 </div>
 
+<div class="scroll-progress" aria-hidden="true"></div>
 <nav id="navbar">
   <a href="#" class="nav-logo">
     <img src="AskOzzie Logo.png" alt="AskOzzie Real Estate Team × AEA Realty" class="nav-logo-img">
@@ -2020,6 +2146,7 @@ gtag('config','G-HTK9Z1G2RQ');
       <text x="255" y="87" text-anchor="end" fill="#34495a" font-size="9" font-family="IBM Plex Sans,system-ui,sans-serif">&amp; Tomball · NW</text>
     </svg>
   </div>
+  <p class="swipe-hint" aria-hidden="true">Swipe to see all areas</p>
   <div class="communities-list">
     <div class="community-row" data-motion="rise">
       <div class="community-dir">West Houston</div>
@@ -2186,6 +2313,7 @@ gtag('config','G-HTK9Z1G2RQ');
   <div class="blog-section-inner">
     <h2 class="section-title blog-section-title" data-motion="heading">Houston new construction blog</h2>
     <p class="blog-section-sub" data-motion="fade">Market updates, builder incentive strategies, neighborhood comparisons, and city guides to help you buy smart.</p>
+    <p class="swipe-hint" aria-hidden="true">Swipe for more articles</p>
     <div class="blog-cards">
       <article class="blog-card" data-motion="rise">
         <a href="blog-houston-new-construction-2026.html" class="blog-card-media" style="background-image:url('houston-home-stone-facade.jpeg');" data-track="blog_houston_2026">
@@ -2775,6 +2903,96 @@ function declineCookies() {
     <button class="cookie-accept" onclick="acceptCookies()">Accept All</button>
   </div>
 </div>
+
+<script>
+// ── UX PASS (2026-11-16) ─────────────────────────────────────────────────────
+// Scroll-linked process timeline, number count-up, nav highlight for the
+// section in view, and tucking the desktop lead bar away over the hero and
+// the contact form. Visual only: no tracking, form or lead logic lives here.
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Process timeline: each connector fills as you scroll past it
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.steps .step'));
+  function updateSteps() {
+    var mark = window.innerHeight * 0.62;
+    steps.forEach(function (s) {
+      var r = s.getBoundingClientRect();
+      var num = s.querySelector('.step-num');
+      var head = num ? num.offsetHeight : 48;
+      s.classList.toggle('is-passed', reduce || r.top + head / 2 < mark);
+      var p = (mark - r.top - head) / Math.max(1, r.height - head);
+      s.style.setProperty('--sp', reduce ? 1 : Math.min(1, Math.max(0, p)).toFixed(3));
+    });
+  }
+
+  // Desktop lead bar: out of the way while the hero buttons or the form are on screen
+  var bar = document.getElementById('sticky-cta-bar');
+  var hero = document.querySelector('.hero');
+  var contact = document.getElementById('contact');
+  function updateBar() {
+    if (!bar) return;
+    var overHero = hero && window.scrollY < hero.offsetHeight - 120;
+    var c = contact && contact.getBoundingClientRect();
+    var overForm = c && c.top < window.innerHeight * 0.85 && c.bottom > 0;
+    bar.classList.toggle('scta-tuck', !!(overHero || overForm));
+  }
+
+  // Nav: highlight the link for the section in view
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]')).filter(function (a) {
+    return a.getAttribute('href').length > 1 && document.querySelector(a.getAttribute('href'));
+  });
+  function updateNav() {
+    var mark = window.innerHeight * 0.4, current = null;
+    links.forEach(function (a) {
+      var r = document.querySelector(a.getAttribute('href')).getBoundingClientRect();
+      if (r.top <= mark && r.bottom > mark) current = a;
+    });
+    links.forEach(function (a) { a.classList.toggle('is-current', a === current); });
+  }
+
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { ticking = false; updateSteps(); updateBar(); updateNav(); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  updateSteps(); updateBar(); updateNav();
+
+  // Count-up: figures run up to their value the first time they are seen.
+  // The final text is always restored exactly as written in the page.
+  if (reduce || !('IntersectionObserver' in window)) return;
+  var figures = document.querySelectorAll('.hero-facts b, .cred-num:not(.cred-num--word), .testimonial-stat-num, .stat-number:not(.stat-number--word)');
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      run(e.target);
+    });
+  }, { threshold: 0.6 });
+  function run(el) {
+    var full = el.textContent;
+    var m = full.match(/^(\D*?)(\d[\d,]*)(.*)$/);
+    if (!m) return;
+    var target = parseInt(m[2].replace(/,/g, ''), 10);
+    if (!target) return;
+    var commas = m[2].indexOf(',') > -1;
+    var start = null, dur = 1100;
+    function frame(t) {
+      if (start === null) start = t;
+      var k = Math.min(1, (t - start) / dur);
+      var eased = 1 - Math.pow(1 - k, 3);
+      var v = Math.round(target * eased);
+      el.textContent = m[1] + (commas ? v.toLocaleString('en-US') : v) + m[3];
+      if (k < 1) requestAnimationFrame(frame); else el.textContent = full;
+    }
+    requestAnimationFrame(frame);
+  }
+  Array.prototype.forEach.call(figures, function (el) { io.observe(el); });
+})();
+</script>
 
 </body>
 </html>
