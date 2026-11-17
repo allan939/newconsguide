@@ -1504,6 +1504,40 @@ html.motion.hero-in .hero-photo-single-img{animation:m-settle 1.9s var(--ease-ou
   .scroll-progress{display:none !important;}
   .step:not(:last-child)::after{transform:none;}
 }
+
+/* Hero lead form (2026-11-16): the right column is now a short skyline
+   band with a "Get Free Guide" form card overlapping it. The hero
+   "Get Free Guide" button jumps to this form (#hero-form). */
+.hero .hero-split{align-items:center;}
+.hero-photo-col{display:flex;flex-direction:column;}
+.hero-photo-single{aspect-ratio:auto;height:clamp(230px,23vw,310px);}
+.hero .hero-photo-single-img{object-position:center 52%;}
+.hero-form-card{position:relative;z-index:2;margin:-104px 28px 0;background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:28px 28px 22px;scroll-margin-top:120px;}
+.hero-form-title{font-size:1.35rem;font-weight:700;letter-spacing:-0.015em;line-height:1.2;color:var(--text-1);margin:0 0 6px;}
+.hero-form-sub{font-size:0.92rem;line-height:1.5;color:var(--text-2);margin:0 0 18px;}
+.hf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.hf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px;min-width:0;}
+.hf-field label{font-size:0.82rem;font-weight:600;color:var(--text-2);}
+.hf-field label span{font-weight:400;color:var(--text-3);}
+.hf-field input,.hf-field select{width:100%;min-width:0;height:48px;padding:0 14px;border:1px solid var(--border-strong);border-radius:12px;background:#f6f8fa;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:1rem;color:var(--text-1);outline:none;transition:border-color 0.2s ease,box-shadow 0.2s ease,background-color 0.2s ease;}
+.hf-field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2334495a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+.hf-field input::placeholder{color:#8a9aa8;}
+.hf-field input:focus,.hf-field select:focus{border-color:var(--veridian);background-color:#fff;box-shadow:0 0 0 3px rgba(11,66,94,0.14);}
+.hf-field .hf-bad{border-color:#d2554c;box-shadow:0 0 0 3px rgba(210,85,76,0.14);animation:m-shake 0.38s var(--ease-out);}
+.hf-submit{display:block;width:100%;margin-top:6px;text-align:center;cursor:pointer;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:1rem;}
+.hf-submit:disabled{opacity:0.7;cursor:default;}
+.hf-error{margin:12px 0 0;font-size:0.86rem;color:#b3392f;}
+.hf-note{margin:12px 0 0;text-align:center;font-size:0.8rem;color:var(--text-3);}
+.hf-success{text-align:center;padding:26px 6px 14px;}
+.hf-success:not([hidden])>*{animation:m-rise 0.6s var(--ease-out) backwards;}
+html.motion:not(.hero-in) .hero-form-card{opacity:0;}
+html.motion.hero-in .hero-form-card{animation:m-rise 0.8s var(--ease-out) 0.45s backwards;}
+@media(max-width:768px){
+  .hero-photo-single{aspect-ratio:auto;height:200px;}
+  .hero-form-card{margin:-76px 10px 0;padding:22px 18px 18px;scroll-margin-top:84px;}
+  .hf-row{grid-template-columns:1fr;gap:0;}
+}
+@media(prefers-reduced-motion:reduce){.hf-field .hf-bad{animation:none;}}
 </style>
 <script type="application/ld+json">
 [
@@ -1725,7 +1759,7 @@ gtag('config','G-HTK9Z1G2RQ');
       <div class="hero-footer">
         <p class="hero-sub">I help Houston-area buyers compare builders, negotiate incentives, and understand the numbers before they sign.</p>
         <div class="hero-ctas">
-          <a href="#contact" class="btn-primary" data-track="hero_get_free_guide">Get Free Guide</a>
+          <a href="#hero-form" class="btn-primary" data-track="hero_get_free_guide">Get Free Guide</a>
           <a href="https://calendar.app.google/X6mwsEmCrP26LE257" target="_blank" rel="noopener" class="btn-outline" data-track="hero_calendar_schedule">Book a 15-Min Call</a>
         </div>
         <a href="tel:+12818657146" class="hero-calendar-link" data-track="hero_phone_click">Or call/text Allan at (281) 865-7146</a>
@@ -1735,6 +1769,38 @@ gtag('config','G-HTK9Z1G2RQ');
     <div class="hero-photo-col">
       <div class="hero-photo-single">
         <img class="hero-photo-single-img" src="houston-skyline-dusk.jpeg" alt="Houston skyline at dusk" width="736" height="1308" fetchpriority="high" decoding="async">
+      </div>
+      <div class="hero-form-card" id="hero-form">
+        <form id="heroForm" novalidate>
+          <p class="hero-form-title">Get your free new construction guide</p>
+          <p class="hero-form-sub">Tell me where you&rsquo;re looking and I&rsquo;ll reply within 2 hours.</p>
+          <div class="form-hp" aria-hidden="true"><label for="hf_website">Website</label><input type="text" name="website" id="hf_website" tabindex="-1" autocomplete="off"></div>
+          <div class="hf-row">
+            <div class="hf-field"><label for="hf_name">Your name</label><input type="text" id="hf_name" name="name" placeholder="Jane Smith" autocomplete="name" required></div>
+            <div class="hf-field"><label for="hf_phone">Phone</label><input type="tel" id="hf_phone" name="phone" inputmode="tel" placeholder="(713) 555-0100" autocomplete="tel" required></div>
+          </div>
+          <div class="hf-field"><label for="hf_area">Area of Houston</label><select id="hf_area" name="area" required>
+          <option value="" disabled selected>Select an area…</option>
+          <option value="Northwest Houston / Cypress">Northwest Houston / Cypress</option>
+          <option value="West Houston / Katy">West Houston / Katy</option>
+          <option value="Southwest Houston / Fulshear">Southwest Houston / Fulshear</option>
+          <option value="North Houston / The Woodlands">North Houston / The Woodlands</option>
+          <option value="Northeast Houston / New Caney">Northeast Houston / New Caney</option>
+          <option value="East Houston / Baytown">East Houston / Baytown</option>
+          <option value="South Houston / Pearland">South Houston / Pearland</option>
+          <option value="Sugar Land / Missouri City">Sugar Land / Missouri City</option>
+          <option value="Open to Multiple Areas">Open to Multiple Areas</option>
+          </select></div>
+          <div class="hf-field"><label for="hf_email">Email <span>(optional, to send the guide)</span></label><input type="email" id="hf_email" name="email" placeholder="jane@email.com" autocomplete="email"></div>
+          <button type="submit" class="btn-primary hf-submit" data-track="hero_form_submit">Get Free Guide</button>
+          <p class="hf-error" id="hf_error" role="alert" hidden>Something went wrong. Please try again or call (281) 865-7146.</p>
+          <p class="hf-note">Free. No obligation. No spam, ever.</p>
+        </form>
+        <div class="hf-success" id="hf_success" role="status" hidden>
+          <div class="form-success-icon" aria-hidden="true">&#10003;</div>
+          <p class="hero-form-title" id="hf_success_msg">Got it! I&rsquo;ll be in touch within 2 hours.</p>
+          <p class="hero-form-sub">Want to talk sooner? Call or text (281) 865-7146.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -2991,6 +3057,53 @@ function declineCookies() {
     requestAnimationFrame(frame);
   }
   Array.prototype.forEach.call(figures, function (el) { io.observe(el); });
+})();
+
+// Hero lead form: same Apps Script endpoint and rules as the other forms
+// (success only after response.ok; conversions fire only then).
+(function () {
+  var form = document.getElementById('heroForm');
+  if (!form) return;
+  var nameEl = document.getElementById('hf_name'), phoneEl = document.getElementById('hf_phone');
+  var areaEl = document.getElementById('hf_area'), emailEl = document.getElementById('hf_email');
+  var btn = form.querySelector('.hf-submit'), err = document.getElementById('hf_error');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('hf_website').value !== '') return;
+    var name = nameEl.value.trim(), phone = phoneEl.value.trim(), email = emailEl.value.trim();
+    var bad = [];
+    if (!name) bad.push(nameEl);
+    if (phone.replace(/\D/g, '').length < 10) bad.push(phoneEl);
+    if (!areaEl.value) bad.push(areaEl);
+    if (email && (email.indexOf('@') < 1 || email.indexOf('.') < 0)) bad.push(emailEl);
+    [nameEl, phoneEl, areaEl, emailEl].forEach(function (f) { f.classList.toggle('hf-bad', bad.indexOf(f) > -1); });
+    if (bad.length) { bad[0].focus(); return; }
+    err.hidden = true;
+    btn.disabled = true;
+    btn.textContent = 'Sending\u2026';
+    var payload = new URLSearchParams({ source: 'hero-form', name: name, phone: phone, area: areaEl.value, email: email, website: '' });
+    var ctrl = new AbortController();
+    var timer = setTimeout(function () { ctrl.abort(); }, 10000);
+    fetch(SCRIPT_URL, { method: 'POST', body: payload, signal: ctrl.signal })
+      .then(function (response) {
+        clearTimeout(timer);
+        if (!response.ok) { throw new Error('Server error ' + response.status); }
+        form.hidden = true;
+        document.getElementById('hf_success_msg').textContent = 'Got it, ' + name.split(' ')[0] + '! I\u2019ll be in touch within 2 hours.';
+        document.getElementById('hf_success').hidden = false;
+        if (typeof fbq === 'function') fbq('track', 'Lead', { content_name: 'Hero Form' });
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { source: 'hero_form' });
+      })
+      .catch(function () {
+        clearTimeout(timer);
+        btn.disabled = false;
+        btn.textContent = 'Get Free Guide';
+        err.hidden = false;
+      });
+  });
+  // The hero button jumps to the form: put the cursor in the first field
+  var jump = document.querySelector('a[href="#hero-form"]');
+  if (jump) jump.addEventListener('click', function () { setTimeout(function () { nameEl.focus({ preventScroll: true }); }, 450); });
 })();
 </script>
 
